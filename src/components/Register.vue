@@ -80,16 +80,14 @@
                               :placeholder="$t('register_agePlaceholder')">
                 </b-form-input>
               </b-form-group>
-              <autocomplete :suggestions="countries" v-model="selectedCountry"></autocomplete>
               <b-form-group id="countryGroup"
                             :label="$t('register_country')"
                             label-for="countryInput">
-                <b-form-input id="countryInput"
-                              type="text"
-                              v-model="form.country"
-                              required
+                <autocomplete :id="'countryInput'"
+                              :suggestions="countries"
+                              v-model="selectedCountry"
                               :placeholder="$t('register_countryPlaceholder')">
-                </b-form-input>
+                </autocomplete>
               </b-form-group>
               <b-row id="buttons-section">
                 <b-button type="submit">{{ $t('login_login') }}</b-button>
@@ -142,14 +140,7 @@ export default {
         { text: 'Technology', value: 'technology' }
       ],
       selectedCountry: '',
-      countries: [
-        { country: 'Alemanha' },
-        { country: 'Áustria' },
-        { country: 'Bélgica' },
-        { country: 'Bielorrúsia' },
-        { country: 'Bogotá' },
-        { country: 'Colômbia' }
-      ]
+      countries: this.loadCountries(this.$i18n.locale)
     }
   },
   methods: {
@@ -159,6 +150,16 @@ export default {
     changeLang(lang) {
       this.$i18n.locale = lang;
       this.lang = lang;
+      this.countries = this.loadCountries(lang);
+    },
+    loadCountries(lang) {
+      if (lang == "en") {
+        var list = require('../../static/language/countries_en.json');
+      }
+      else {
+        var list = require('../../static/language/countries_pt.json');
+      }
+      return list.countries;
     }
   }
 }

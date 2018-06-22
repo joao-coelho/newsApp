@@ -1,15 +1,20 @@
 <template>
-    <div style="position:relative" v-bind:class="{'open':openSuggestion}">
-        <input class="form-control" type="text" :value="value" @input="updateValue($event.target.value)"
+    <div id="autocomplete" v-bind:class="{'open': openSuggestion}">
+        <input class="form-control" type="text"
+          :id="id"
+          :value="value"
+          @input="updateValue($event.target.value)"
+          v-on:blur="hideDropdown()"
+          :placeholder="placeholder"
           @keydown.enter = 'enter'
           @keydown.down = 'down'
           @keydown.up = 'up'
         >
-        <ul class="dropdown-menu" style="width:100%">
+        <ul class="dropdown-menu">
             <li v-for="(suggestion, index) in matches"
                 v-bind:class="{'active': isActive(index)}"
                 @click="suggestionClick(index)">
-              <a href="#">{{ suggestion.country }}</a>
+              {{ suggestion.country }}
             </li>
         </ul>
     </div>
@@ -25,6 +30,14 @@ export default {
     suggestions: {
       type: Array,
       required: true
+    },
+    placeholder: {
+      type: String,
+      required: true
+    },
+    id: {
+      type: String,
+      required: true
     }
   },
   data () {
@@ -37,7 +50,8 @@ export default {
     // Filtering the suggestion based on the input
     matches () {
       return this.suggestions.filter((obj) => {
-        return obj.country.indexOf(this.value) >= 0
+        let country = obj.country.toUpperCase();
+        return country.indexOf(this.value.toUpperCase()) >= 0
       })
     },
     openSuggestion () {
@@ -47,6 +61,10 @@ export default {
     }
   },
   methods: {
+    hideDropdown(){
+      let elem = document.querySelector("#autocomplete");
+      elem.classList.remove("open");
+    },
     updateValue (value) {
       if (this.open === false) {
         this.open = true
@@ -83,3 +101,25 @@ export default {
   }
 }
 </script>
+
+<style scoped lang="scss">
+#autocomplete {
+  position: relative;
+}
+.open ul.dropdown-menu {
+  display: block;
+}
+ul.dropdown-menu {
+  width: 100%;
+  display: none;
+  padding: 0;
+  li {
+    color: #2c3e50;
+    padding: 5px;
+
+  }
+  li.active {
+    background-color: #efefef;
+  }
+}
+</style>

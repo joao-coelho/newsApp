@@ -31,6 +31,7 @@ const actions = {
   [AUTH_REQUEST]: ({commit, dispatch}, user) => {
     return new Promise((resolve, reject) => { // The Promise used for router redirect in login
       commit(AUTH_REQUEST)
+      console.log(user);
       /*axios({url: 'auth', data: user, method: 'POST' })
         .then(resp => {
           const token = resp.data.token

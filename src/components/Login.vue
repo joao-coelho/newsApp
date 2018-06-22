@@ -65,6 +65,8 @@
 </template>
 
 <script>
+import {AUTH_REQUEST} from '../store/action_calls/authentication'
+
 export default {
   name: 'Login',
   data () {
@@ -79,10 +81,14 @@ export default {
   },
   methods: {
     login() {
-      const { username, password } = this
-      this.$store.dispatch(AUTH_REQUEST, { username, password }).then(() => {
-        this.$router.push('/')
-      })
+      let user = {
+        username: this.form.username,
+        password: this.form.pwd
+      }
+      this.$store.dispatch(AUTH_REQUEST, user)
+        .then(() => {
+          //this.$router.push('/')
+        })
     },
     changeLang(lang) {
       this.$i18n.locale = lang;
