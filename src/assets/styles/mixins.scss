@@ -1,0 +1,15 @@
+@mixin flex-layout($horizontal, $vertical) {
+  display: flex;
+  justify-content: $horizontal;
+  align-items: $vertical;
+}
+
+@mixin checkboxes-colors($backgr, $arrow) {
+  .custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
+    background-color: $backgr;
+  }
+  .custom-control-input:checked ~ .custom-control-label::before {
+    color: $arrow;
+    background-color: $backgr;
+  }
+}

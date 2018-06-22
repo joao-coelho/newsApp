@@ -1,0 +1,27 @@
+{
+	"login_username": "Nome de utilizador:",
+	"login_password": "Palavra-passe:",
+	"login_userPlaceholder": "Introduza o seu nome de utilizador",
+	"login_pwdPlaceholder": "Introduza a sua palavra-passe",
+	"login_register": "Criar conta",
+	"login_login": "Iniciar sessão",
+	"login_rememberMe": "Manter sessão iniciada",
+
+	"register_details": "Detalhes da Conta",
+	"register_personal": "Dados Pessoais",
+	"register_username": "Nome de utilizador:",
+	"register_password": "Palavra-passe:",
+	"register_repeatPwd": "Confirmar palavra-passe:",
+	"register_userPlaceholder": "Escolha um nome de utilizador",
+	"register_pwdPlaceholder": "Escolha uma palavra-passe",
+	"register_repeatPwdPlaceholder": "Repita a palavra-passe anterior",
+	"register_setPreferences": "Definir preferências",
+	"register_name": "Nome:",
+	"register_age": "Idade:",
+	"register_country": "País:",
+	"register_namePlaceholder": "O seu nome",
+	"register_agePlaceholder": "A sua idade",
+	"register_countryPlaceholder": "O seu país",
+	"register_channelInfo": "Características do Canal",
+	"register_newsType": "Que temática de notícias caracterizará o seu canal?"
+}
