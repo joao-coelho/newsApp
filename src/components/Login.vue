@@ -1,22 +1,7 @@
 <template>
   <div class="login">
     <b-container fluid>
-      <b-row id="navbar-section">
-        <b-col cols="12">
-          <b-navbar type="dark">
-            <b-navbar-brand>
-              <img src="../assets/images/logo.png" class="d-inline-block align-center" alt="Brand Logo">
-              Brand Name
-            </b-navbar-brand>
-            <b-navbar-nav>
-              <b-nav-item-dropdown :text="lang.toUpperCase()">
-                <b-dropdown-item @click='changeLang("en")'>EN</b-dropdown-item>
-                <b-dropdown-item @click='changeLang("pt")'>PT</b-dropdown-item>
-              </b-nav-item-dropdown>
-            </b-navbar-nav>
-          </b-navbar>
-        </b-col>
-      </b-row>
+      <navbar-login></navbar-login>
       <b-form-row>
         <b-col md="6" id="img-section">
           <b-img src="../assets/images/connections.png" fluid alt="Login Image"/>
@@ -66,17 +51,20 @@
 
 <script>
 import {AUTH_REQUEST} from '../store/action_calls/authentication'
+import NavbarLogin from './NavbarLogin'
 
 export default {
   name: 'Login',
+  components: {
+    NavbarLogin
+  },
   data () {
     return {
       form: {
         username: '',
         pwd: '',
         checked: 'no'
-      },
-      lang: this.$i18n.locale
+      }
     }
   },
   methods: {
@@ -89,10 +77,6 @@ export default {
         .then(() => {
           //this.$router.push('/')
         })
-    },
-    changeLang(lang) {
-      this.$i18n.locale = lang;
-      this.lang = lang;
     }
   }
 }
@@ -103,25 +87,6 @@ export default {
 
 @import "styles/global.scss";
 
-#navbar-section {
-  div {
-    padding: 0;
-  }
-  .navbar {
-    background-color: $blue;
-    border-bottom: 1px solid #29487d;
-    height: 50px;
-  }
-  .navbar-brand img {
-    height: 30px;
-    width: 30px;
-    margin-right: 10px;
-  }
-  .navbar-nav .dropdown-menu {
-    position: sticky;
-    min-width: 6rem;
-  }
-}
 .form-row {
   margin-top: 5vh;
 }

@@ -1,22 +1,7 @@
 <template>
   <div class="register">
     <b-container fluid>
-      <b-row id="navbar-section">
-        <b-col cols="12">
-          <b-navbar type="dark">
-            <b-navbar-brand>
-              <img src="../assets/images/logo.png" class="d-inline-block align-center" alt="Brand Logo">
-              Brand Name
-            </b-navbar-brand>
-            <b-navbar-nav>
-              <b-nav-item-dropdown :text="lang.toUpperCase()">
-                <b-dropdown-item @click='changeLang("en")'>EN</b-dropdown-item>
-                <b-dropdown-item @click='changeLang("pt")'>PT</b-dropdown-item>
-              </b-nav-item-dropdown>
-            </b-navbar-nav>
-          </b-navbar>
-        </b-col>
-      </b-row>
+      <navbar-login></navbar-login>
       <b-form-row>
         <b-col cols="12" offset-sm="2" sm="8" offset-md="0" md="6" offset-lg="0" lg="4" class="registration_form">
           <b-card :title="$t('register_details')">
@@ -117,11 +102,13 @@
 
 <script>
 import Autocomplete from './Autocomplete'
+import NavbarLogin from './NavbarLogin'
 
 export default {
   name: 'Register',
   components: {
-    Autocomplete
+    Autocomplete,
+    NavbarLogin
   },
   data () {
     return {
@@ -129,7 +116,6 @@ export default {
         username: '',
         pwd: ''
       },
-      lang: this.$i18n.locale,
       selectedType: '',
       types: [
         { text: 'Business', value: 'business' },
@@ -139,18 +125,12 @@ export default {
         { text: 'Sports', value: 'sports' },
         { text: 'Technology', value: 'technology' }
       ],
-      selectedCountry: '',
-      countries: this.loadCountries(this.$i18n.locale)
+      selectedCountry: ''
     }
   },
   methods: {
     register() {
 
-    },
-    changeLang(lang) {
-      this.$i18n.locale = lang;
-      this.lang = lang;
-      this.countries = this.loadCountries(lang);
     },
     loadCountries(lang) {
       if (lang == "en") {
@@ -161,6 +141,11 @@ export default {
       }
       return list.countries;
     }
+  },
+  computed: {
+    countries() {
+      return this.loadCountries(this.$i18n.locale);
+    }
   }
 }
 </script>
@@ -170,25 +155,6 @@ export default {
 
 @import "styles/global.scss";
 
-#navbar-section {
-  div {
-    padding: 0;
-  }
-  .navbar {
-    background-color: $blue;
-    border-bottom: 1px solid #29487d;
-    height: 50px;
-  }
-  .navbar-brand img {
-    height: 30px;
-    width: 30px;
-    margin-right: 10px;
-  }
-  .navbar-nav .dropdown-menu {
-    position: sticky;
-    min-width: 6rem;
-  }
-}
 .form-row {
   margin-top: 5vh;
 }
