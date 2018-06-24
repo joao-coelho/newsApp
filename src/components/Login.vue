@@ -8,6 +8,10 @@
         </b-col>
         <b-col cols="12" offset-sm="2" sm="8" offset-md="0" md="6" offset-lg="1" lg="4" id="form-section">
           <b-card>
+            <h4 class="card-title">
+              {{ $t('login_title') }}
+              <img src="../assets/images/logo.png" class="d-inline-block align-center" alt="Brand Logo">
+            </h4>
             <b-form @submit="login">
               <b-form-group id="usernameGroup"
                             :label="$t('login_username')"
@@ -87,6 +91,12 @@ export default {
 
 @import "styles/global.scss";
 
+.card-title {
+  img {
+    width: 30px;
+    height: 30px;
+  }
+}
 .form-row {
   margin-top: 5vh;
 }
@@ -96,12 +106,18 @@ export default {
     width: 100%;
     border: 0.5px solid #ccc;
   }
+  .card-title {
+    color: #bdbdbd;
+    font-weight: bold;
+    text-align: right;
+    font-size: 1.3rem;
+  }
 }
 #buttons-section {
   @include flex-layout(space-between, center);
   margin: 0;
   a {
-    color: #2c3e50;
+    color: $blue;
   }
   button {
     background-color: $blue;

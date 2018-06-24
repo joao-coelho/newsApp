@@ -30,4 +30,5 @@ export default {
   padding: 0;
 }
 @include checkboxes-colors($blue, #fff);
+@include radio-btns-colors($blue);
 </style>

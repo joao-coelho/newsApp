@@ -5,11 +5,23 @@
 }
 
 @mixin checkboxes-colors($backgr, $arrow) {
+  .custom-control-label:hover {
+    cursor: pointer;
+  }
   .custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
     background-color: $backgr;
   }
   .custom-control-input:checked ~ .custom-control-label::before {
     color: $arrow;
     background-color: $backgr;
+  }
+}
+
+@mixin radio-btns-colors($color) {
+  .custom-radio .custom-control-input:checked ~ .custom-control-label::before {
+    background-color: $color;
+  }
+  .custom-control-label:hover {
+    cursor: pointer;
   }
 }
