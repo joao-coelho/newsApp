@@ -42,6 +42,7 @@ public class ProjectEAPersistentManager extends PersistentManager {
 		aMetadataSources.addAnnotatedClass(newsapp.Article.class);
 		aMetadataSources.addAnnotatedClass(newsapp.Comment.class);
 		aMetadataSources.addAnnotatedClass(newsapp.Category.class);
+		aMetadataSources.addAnnotatedClass(newsapp.Suggestion.class);
 		aMetadataSources.addAnnotatedClass(newsapp.ChannelSuggestion.class);
 		aMetadataSources.addAnnotatedClass(newsapp.ArticleSuggestion.class);
 		aMetadataSources.addAnnotatedClass(newsapp.ContentType.class);

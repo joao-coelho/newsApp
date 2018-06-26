@@ -41,13 +41,10 @@ public class Channel implements Serializable {
 		
 	};
 	
-	@Column(name="Attribute", nullable=false, length=10)	
-	@Id	
-	@GeneratedValue(generator="NEWSAPP_CHANNEL_ATTRIBUTE_GENERATOR")	
-	@org.hibernate.annotations.GenericGenerator(name="NEWSAPP_CHANNEL_ATTRIBUTE_GENERATOR", strategy="native")	
-	private int attribute;
-	
 	@Column(name="ID", nullable=false, length=10)	
+	@Id	
+	@GeneratedValue(generator="NEWSAPP_CHANNEL_ID_GENERATOR")	
+	@org.hibernate.annotations.GenericGenerator(name="NEWSAPP_CHANNEL_ID_GENERATOR", strategy="native")	
 	private int ID;
 	
 	@Column(name="Name", nullable=true, length=255)	
@@ -67,34 +64,26 @@ public class Channel implements Serializable {
 	
 	@OneToMany(targetEntity=newsapp.Article.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
-	@JoinColumns({ @JoinColumn(name="ChannelAttribute", nullable=false) })	
+	@JoinColumns({ @JoinColumn(name="ChannelID", nullable=false) })	
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
 	private java.util.Set ORM_articles = new java.util.HashSet();
 	
 	@OneToMany(targetEntity=newsapp.ContentType.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
-	@JoinColumns({ @JoinColumn(name="ChannelAttribute", nullable=false) })	
+	@JoinColumns({ @JoinColumn(name="ChannelID", nullable=false) })	
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
 	private java.util.Set ORM__fields = new java.util.HashSet();
 	
-	private void setAttribute(int value) {
-		this.attribute = value;
-	}
-	
-	public int getAttribute() {
-		return attribute;
-	}
-	
-	public int getORMID() {
-		return getAttribute();
-	}
-	
-	public void setID(int value) {
+	private void setID(int value) {
 		this.ID = value;
 	}
 	
 	public int getID() {
 		return ID;
+	}
+	
+	public int getORMID() {
+		return getID();
 	}
 	
 	public void setName(String value) {
@@ -172,7 +161,7 @@ public class Channel implements Serializable {
 	public final newsapp.ContentTypeSetCollection _fields = new newsapp.ContentTypeSetCollection(this, _ormAdapter, ORMConstants.KEY_CHANNEL__FIELDS, ORMConstants.KEY_MUL_ONE_TO_MANY);
 	
 	public String toString() {
-		return String.valueOf(getAttribute());
+		return String.valueOf(getID());
 	}
 	
 }

@@ -19,29 +19,49 @@ import org.orm.PersistentSession;
 import org.orm.criteria.*;
 
 public class ChannelSuggestionDetachedCriteria extends AbstractORMDetachedCriteria {
-	public final IntegerExpression attribute;
+	public final IntegerExpression ID;
+	public final IntegerExpression authorId;
+	public final AssociationExpression author;
+	public final StringExpression comment;
+	public final DateExpression madeAt;
+	public final CollectionExpression receivers;
 	public final IntegerExpression targetId;
 	public final AssociationExpression target;
-	public final IntegerExpression ID;
 	
 	public ChannelSuggestionDetachedCriteria() {
 		super(newsapp.ChannelSuggestion.class, newsapp.ChannelSuggestionCriteria.class);
-		attribute = new IntegerExpression("attribute", this.getDetachedCriteria());
-		targetId = new IntegerExpression("target.attribute", this.getDetachedCriteria());
-		target = new AssociationExpression("target", this.getDetachedCriteria());
 		ID = new IntegerExpression("ID", this.getDetachedCriteria());
+		authorId = new IntegerExpression("author.ID", this.getDetachedCriteria());
+		author = new AssociationExpression("author", this.getDetachedCriteria());
+		comment = new StringExpression("comment", this.getDetachedCriteria());
+		madeAt = new DateExpression("madeAt", this.getDetachedCriteria());
+		receivers = new CollectionExpression("ORM_receivers", this.getDetachedCriteria());
+		targetId = new IntegerExpression("target.ID", this.getDetachedCriteria());
+		target = new AssociationExpression("target", this.getDetachedCriteria());
 	}
 	
 	public ChannelSuggestionDetachedCriteria(DetachedCriteria aDetachedCriteria) {
 		super(aDetachedCriteria, newsapp.ChannelSuggestionCriteria.class);
-		attribute = new IntegerExpression("attribute", this.getDetachedCriteria());
-		targetId = new IntegerExpression("target.attribute", this.getDetachedCriteria());
-		target = new AssociationExpression("target", this.getDetachedCriteria());
 		ID = new IntegerExpression("ID", this.getDetachedCriteria());
+		authorId = new IntegerExpression("author.ID", this.getDetachedCriteria());
+		author = new AssociationExpression("author", this.getDetachedCriteria());
+		comment = new StringExpression("comment", this.getDetachedCriteria());
+		madeAt = new DateExpression("madeAt", this.getDetachedCriteria());
+		receivers = new CollectionExpression("ORM_receivers", this.getDetachedCriteria());
+		targetId = new IntegerExpression("target.ID", this.getDetachedCriteria());
+		target = new AssociationExpression("target", this.getDetachedCriteria());
 	}
 	
 	public ChannelDetachedCriteria createTargetCriteria() {
 		return new ChannelDetachedCriteria(createCriteria("target"));
+	}
+	
+	public UserDetachedCriteria createAuthorCriteria() {
+		return new UserDetachedCriteria(createCriteria("author"));
+	}
+	
+	public UserDetachedCriteria createReceiversCriteria() {
+		return new UserDetachedCriteria(createCriteria("ORM_receivers"));
 	}
 	
 	public ChannelSuggestion uniqueChannelSuggestion(PersistentSession session) {

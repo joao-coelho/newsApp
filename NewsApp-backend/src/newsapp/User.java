@@ -33,27 +33,34 @@ public class User implements Serializable {
 		return null;
 	}
 	
+	private void this_setOwner(Object owner, int key) {
+		if (key == ORMConstants.KEY_USER_MYCHANNEL) {
+			this.myChannel = (newsapp.Channel) owner;
+		}
+	}
+	
 	@Transient	
 	org.orm.util.ORMAdapter _ormAdapter = new org.orm.util.AbstractORMAdapter() {
 		public java.util.Set getSet(int key) {
 			return this_getSet(key);
 		}
 		
+		public void setOwner(Object owner, int key) {
+			this_setOwner(owner, key);
+		}
+		
 	};
 	
-	@Column(name="Attribute", nullable=false, length=10)	
+	@Column(name="ID", nullable=false, length=10)	
 	@Id	
-	@GeneratedValue(generator="NEWSAPP_USER_ATTRIBUTE_GENERATOR")	
-	@org.hibernate.annotations.GenericGenerator(name="NEWSAPP_USER_ATTRIBUTE_GENERATOR", strategy="native")	
-	private int attribute;
+	@GeneratedValue(generator="NEWSAPP_USER_ID_GENERATOR")	
+	@org.hibernate.annotations.GenericGenerator(name="NEWSAPP_USER_ID_GENERATOR", strategy="native")	
+	private int ID;
 	
 	@ManyToOne(targetEntity=newsapp.Channel.class, fetch=FetchType.LAZY)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
-	@JoinColumns({ @JoinColumn(name="ChannelAttribute", referencedColumnName="Attribute", nullable=false) })	
+	@JoinColumns({ @JoinColumn(name="ChannelID", referencedColumnName="ID", nullable=false) })	
 	private newsapp.Channel myChannel;
-	
-	@Column(name="ID", nullable=false, length=10)	
-	private int ID;
 	
 	@Column(name="Username", nullable=true, length=255)	
 	private String username;
@@ -63,34 +70,26 @@ public class User implements Serializable {
 	
 	@OneToMany(targetEntity=newsapp.Channel.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
-	@JoinColumns({ @JoinColumn(name="UserAttribute", nullable=false) })	
+	@JoinColumns({ @JoinColumn(name="UserID", nullable=false) })	
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
 	private java.util.Set ORM_subscriptions = new java.util.HashSet();
 	
 	@OneToMany(targetEntity=newsapp.Category.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
-	@JoinColumns({ @JoinColumn(name="UserAttribute", nullable=false) })	
+	@JoinColumns({ @JoinColumn(name="UserID", nullable=false) })	
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
 	private java.util.Set ORM_preferences = new java.util.HashSet();
 	
-	private void setAttribute(int value) {
-		this.attribute = value;
-	}
-	
-	public int getAttribute() {
-		return attribute;
-	}
-	
-	public int getORMID() {
-		return getAttribute();
-	}
-	
-	public void setID(int value) {
+	private void setID(int value) {
 		this.ID = value;
 	}
 	
 	public int getID() {
 		return ID;
+	}
+	
+	public int getORMID() {
+		return getID();
 	}
 	
 	public void setUsername(String value) {
@@ -140,7 +139,7 @@ public class User implements Serializable {
 	public final newsapp.CategorySetCollection preferences = new newsapp.CategorySetCollection(this, _ormAdapter, ORMConstants.KEY_USER_PREFERENCES, ORMConstants.KEY_MUL_ONE_TO_MANY);
 	
 	public String toString() {
-		return String.valueOf(getAttribute());
+		return String.valueOf(getID());
 	}
 	
 }

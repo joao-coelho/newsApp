@@ -19,10 +19,10 @@ import org.hibernate.LockMode;
 import java.util.List;
 
 public class ArticleDAO {
-	public static Article loadArticleByORMID(int attribute) throws PersistentException {
+	public static Article loadArticleByORMID(int ID) throws PersistentException {
 		try {
 			PersistentSession session = ProjectEAPersistentManager.instance().getSession();
-			return loadArticleByORMID(session, attribute);
+			return loadArticleByORMID(session, ID);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -30,10 +30,10 @@ public class ArticleDAO {
 		}
 	}
 	
-	public static Article getArticleByORMID(int attribute) throws PersistentException {
+	public static Article getArticleByORMID(int ID) throws PersistentException {
 		try {
 			PersistentSession session = ProjectEAPersistentManager.instance().getSession();
-			return getArticleByORMID(session, attribute);
+			return getArticleByORMID(session, ID);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -41,10 +41,10 @@ public class ArticleDAO {
 		}
 	}
 	
-	public static Article loadArticleByORMID(int attribute, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Article loadArticleByORMID(int ID, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = ProjectEAPersistentManager.instance().getSession();
-			return loadArticleByORMID(session, attribute, lockMode);
+			return loadArticleByORMID(session, ID, lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -52,10 +52,10 @@ public class ArticleDAO {
 		}
 	}
 	
-	public static Article getArticleByORMID(int attribute, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Article getArticleByORMID(int ID, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = ProjectEAPersistentManager.instance().getSession();
-			return getArticleByORMID(session, attribute, lockMode);
+			return getArticleByORMID(session, ID, lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -63,9 +63,9 @@ public class ArticleDAO {
 		}
 	}
 	
-	public static Article loadArticleByORMID(PersistentSession session, int attribute) throws PersistentException {
+	public static Article loadArticleByORMID(PersistentSession session, int ID) throws PersistentException {
 		try {
-			return (Article) session.load(newsapp.Article.class, new Integer(attribute));
+			return (Article) session.load(newsapp.Article.class, new Integer(ID));
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -73,9 +73,9 @@ public class ArticleDAO {
 		}
 	}
 	
-	public static Article getArticleByORMID(PersistentSession session, int attribute) throws PersistentException {
+	public static Article getArticleByORMID(PersistentSession session, int ID) throws PersistentException {
 		try {
-			return (Article) session.get(newsapp.Article.class, new Integer(attribute));
+			return (Article) session.get(newsapp.Article.class, new Integer(ID));
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -83,9 +83,9 @@ public class ArticleDAO {
 		}
 	}
 	
-	public static Article loadArticleByORMID(PersistentSession session, int attribute, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Article loadArticleByORMID(PersistentSession session, int ID, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
-			return (Article) session.load(newsapp.Article.class, new Integer(attribute), lockMode);
+			return (Article) session.load(newsapp.Article.class, new Integer(ID), lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -93,9 +93,9 @@ public class ArticleDAO {
 		}
 	}
 	
-	public static Article getArticleByORMID(PersistentSession session, int attribute, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Article getArticleByORMID(PersistentSession session, int ID, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
-			return (Article) session.get(newsapp.Article.class, new Integer(attribute), lockMode);
+			return (Article) session.get(newsapp.Article.class, new Integer(ID), lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();

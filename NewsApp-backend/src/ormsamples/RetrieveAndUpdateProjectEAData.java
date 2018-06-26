@@ -24,6 +24,9 @@ public class RetrieveAndUpdateProjectEAData {
 			newsapp.Category lnewsappCategory = newsapp.CategoryDAO.loadCategoryByQuery(null, null);
 			// Update the properties of the persistent object
 			newsapp.CategoryDAO.save(lnewsappCategory);
+			newsapp.Suggestion lnewsappSuggestion = newsapp.SuggestionDAO.loadSuggestionByQuery(null, null);
+			// Update the properties of the persistent object
+			newsapp.SuggestionDAO.save(lnewsappSuggestion);
 			newsapp.ChannelSuggestion lnewsappChannelSuggestion = newsapp.ChannelSuggestionDAO.loadChannelSuggestionByQuery(null, null);
 			// Update the properties of the persistent object
 			newsapp.ChannelSuggestionDAO.save(lnewsappChannelSuggestion);
@@ -45,43 +48,49 @@ public class RetrieveAndUpdateProjectEAData {
 		System.out.println("Retrieving User by UserCriteria");
 		newsapp.UserCriteria lnewsappUserCriteria = new newsapp.UserCriteria();
 		// Please uncomment the follow line and fill in parameter(s)
-		//lnewsappUserCriteria.attribute.eq();
+		//lnewsappUserCriteria.ID.eq();
 		System.out.println(lnewsappUserCriteria.uniqueUser());
 		
 		System.out.println("Retrieving Channel by ChannelCriteria");
 		newsapp.ChannelCriteria lnewsappChannelCriteria = new newsapp.ChannelCriteria();
 		// Please uncomment the follow line and fill in parameter(s)
-		//lnewsappChannelCriteria.attribute.eq();
+		//lnewsappChannelCriteria.ID.eq();
 		System.out.println(lnewsappChannelCriteria.uniqueChannel());
 		
 		System.out.println("Retrieving Article by ArticleCriteria");
 		newsapp.ArticleCriteria lnewsappArticleCriteria = new newsapp.ArticleCriteria();
 		// Please uncomment the follow line and fill in parameter(s)
-		//lnewsappArticleCriteria.attribute.eq();
+		//lnewsappArticleCriteria.ID.eq();
 		System.out.println(lnewsappArticleCriteria.uniqueArticle());
 		
 		System.out.println("Retrieving Comment by CommentCriteria");
 		newsapp.CommentCriteria lnewsappCommentCriteria = new newsapp.CommentCriteria();
 		// Please uncomment the follow line and fill in parameter(s)
-		//lnewsappCommentCriteria.attribute.eq();
+		//lnewsappCommentCriteria.ID.eq();
 		System.out.println(lnewsappCommentCriteria.uniqueComment());
 		
 		System.out.println("Retrieving Category by CategoryCriteria");
 		newsapp.CategoryCriteria lnewsappCategoryCriteria = new newsapp.CategoryCriteria();
 		// Please uncomment the follow line and fill in parameter(s)
-		//lnewsappCategoryCriteria.attribute.eq();
+		//lnewsappCategoryCriteria.ID.eq();
 		System.out.println(lnewsappCategoryCriteria.uniqueCategory());
+		
+		System.out.println("Retrieving Suggestion by SuggestionCriteria");
+		newsapp.SuggestionCriteria lnewsappSuggestionCriteria = new newsapp.SuggestionCriteria();
+		// Please uncomment the follow line and fill in parameter(s)
+		//lnewsappSuggestionCriteria.ID.eq();
+		System.out.println(lnewsappSuggestionCriteria.uniqueSuggestion());
 		
 		System.out.println("Retrieving ChannelSuggestion by ChannelSuggestionCriteria");
 		newsapp.ChannelSuggestionCriteria lnewsappChannelSuggestionCriteria = new newsapp.ChannelSuggestionCriteria();
 		// Please uncomment the follow line and fill in parameter(s)
-		//lnewsappChannelSuggestionCriteria.attribute.eq();
+		//lnewsappChannelSuggestionCriteria.ID.eq();
 		System.out.println(lnewsappChannelSuggestionCriteria.uniqueChannelSuggestion());
 		
 		System.out.println("Retrieving ArticleSuggestion by ArticleSuggestionCriteria");
 		newsapp.ArticleSuggestionCriteria lnewsappArticleSuggestionCriteria = new newsapp.ArticleSuggestionCriteria();
 		// Please uncomment the follow line and fill in parameter(s)
-		//lnewsappArticleSuggestionCriteria.attribute.eq();
+		//lnewsappArticleSuggestionCriteria.ID.eq();
 		System.out.println(lnewsappArticleSuggestionCriteria.uniqueArticleSuggestion());
 		
 		System.out.println("Retrieving ContentType by ContentTypeCriteria");

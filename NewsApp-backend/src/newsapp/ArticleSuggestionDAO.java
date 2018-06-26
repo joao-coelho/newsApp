@@ -19,10 +19,10 @@ import org.hibernate.LockMode;
 import java.util.List;
 
 public class ArticleSuggestionDAO {
-	public static ArticleSuggestion loadArticleSuggestionByORMID(int attribute) throws PersistentException {
+	public static ArticleSuggestion loadArticleSuggestionByORMID(int ID) throws PersistentException {
 		try {
 			PersistentSession session = ProjectEAPersistentManager.instance().getSession();
-			return loadArticleSuggestionByORMID(session, attribute);
+			return loadArticleSuggestionByORMID(session, ID);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -30,10 +30,10 @@ public class ArticleSuggestionDAO {
 		}
 	}
 	
-	public static ArticleSuggestion getArticleSuggestionByORMID(int attribute) throws PersistentException {
+	public static ArticleSuggestion getArticleSuggestionByORMID(int ID) throws PersistentException {
 		try {
 			PersistentSession session = ProjectEAPersistentManager.instance().getSession();
-			return getArticleSuggestionByORMID(session, attribute);
+			return getArticleSuggestionByORMID(session, ID);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -41,10 +41,10 @@ public class ArticleSuggestionDAO {
 		}
 	}
 	
-	public static ArticleSuggestion loadArticleSuggestionByORMID(int attribute, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static ArticleSuggestion loadArticleSuggestionByORMID(int ID, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = ProjectEAPersistentManager.instance().getSession();
-			return loadArticleSuggestionByORMID(session, attribute, lockMode);
+			return loadArticleSuggestionByORMID(session, ID, lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -52,10 +52,10 @@ public class ArticleSuggestionDAO {
 		}
 	}
 	
-	public static ArticleSuggestion getArticleSuggestionByORMID(int attribute, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static ArticleSuggestion getArticleSuggestionByORMID(int ID, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = ProjectEAPersistentManager.instance().getSession();
-			return getArticleSuggestionByORMID(session, attribute, lockMode);
+			return getArticleSuggestionByORMID(session, ID, lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -63,9 +63,9 @@ public class ArticleSuggestionDAO {
 		}
 	}
 	
-	public static ArticleSuggestion loadArticleSuggestionByORMID(PersistentSession session, int attribute) throws PersistentException {
+	public static ArticleSuggestion loadArticleSuggestionByORMID(PersistentSession session, int ID) throws PersistentException {
 		try {
-			return (ArticleSuggestion) session.load(newsapp.ArticleSuggestion.class, new Integer(attribute));
+			return (ArticleSuggestion) session.load(newsapp.ArticleSuggestion.class, new Integer(ID));
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -73,9 +73,9 @@ public class ArticleSuggestionDAO {
 		}
 	}
 	
-	public static ArticleSuggestion getArticleSuggestionByORMID(PersistentSession session, int attribute) throws PersistentException {
+	public static ArticleSuggestion getArticleSuggestionByORMID(PersistentSession session, int ID) throws PersistentException {
 		try {
-			return (ArticleSuggestion) session.get(newsapp.ArticleSuggestion.class, new Integer(attribute));
+			return (ArticleSuggestion) session.get(newsapp.ArticleSuggestion.class, new Integer(ID));
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -83,9 +83,9 @@ public class ArticleSuggestionDAO {
 		}
 	}
 	
-	public static ArticleSuggestion loadArticleSuggestionByORMID(PersistentSession session, int attribute, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static ArticleSuggestion loadArticleSuggestionByORMID(PersistentSession session, int ID, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
-			return (ArticleSuggestion) session.load(newsapp.ArticleSuggestion.class, new Integer(attribute), lockMode);
+			return (ArticleSuggestion) session.load(newsapp.ArticleSuggestion.class, new Integer(ID), lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -93,9 +93,9 @@ public class ArticleSuggestionDAO {
 		}
 	}
 	
-	public static ArticleSuggestion getArticleSuggestionByORMID(PersistentSession session, int attribute, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static ArticleSuggestion getArticleSuggestionByORMID(PersistentSession session, int ID, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
-			return (ArticleSuggestion) session.get(newsapp.ArticleSuggestion.class, new Integer(attribute), lockMode);
+			return (ArticleSuggestion) session.get(newsapp.ArticleSuggestion.class, new Integer(ID), lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();

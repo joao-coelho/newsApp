@@ -70,7 +70,6 @@ public class CommentSetCollection extends org.orm.util.ORMSet {
 	/**
 	 * Return an sorted array containing all of the persistent objects in ORMSet
 	 * @param propertyName Name of the property for sorting:<ul>
-	 * <li>attribute</li>
 	 * <li>ID</li>
 	 * <li>content</li>
 	 * <li>addedAt</li>
@@ -84,7 +83,6 @@ public class CommentSetCollection extends org.orm.util.ORMSet {
 	/**
 	 * Return an sorted array containing all of the persistent objects in ORMSet
 	 * @param propertyName Name of the property for sorting:<ul>
-	 * <li>attribute</li>
 	 * <li>ID</li>
 	 * <li>content</li>
 	 * <li>addedAt</li>

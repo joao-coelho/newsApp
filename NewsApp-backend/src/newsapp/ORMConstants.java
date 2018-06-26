@@ -30,6 +30,10 @@ public interface ORMConstants extends org.orm.util.ORMBaseConstants {
 	
 	final int KEY_COMMENT_AUTHOR = -1444551797;
 	
+	final int KEY_SUGGESTION_AUTHOR = -1198847994;
+	
+	final int KEY_SUGGESTION_RECEIVERS = 1291425801;
+	
 	final int KEY_USER_MYCHANNEL = -343654813;
 	
 	final int KEY_USER_PREFERENCES = -413133660;

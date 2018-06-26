@@ -19,17 +19,25 @@ import org.orm.PersistentSession;
 import org.orm.criteria.*;
 
 public class ArticleSuggestionCriteria extends AbstractORMCriteria {
-	public final IntegerExpression attribute;
+	public final IntegerExpression ID;
+	public final IntegerExpression authorId;
+	public final AssociationExpression author;
+	public final StringExpression comment;
+	public final DateExpression madeAt;
+	public final CollectionExpression receivers;
 	public final IntegerExpression targetId;
 	public final AssociationExpression target;
-	public final IntegerExpression ID;
 	
 	public ArticleSuggestionCriteria(Criteria criteria) {
 		super(criteria);
-		attribute = new IntegerExpression("attribute", this);
-		targetId = new IntegerExpression("target.attribute", this);
-		target = new AssociationExpression("target", this);
 		ID = new IntegerExpression("ID", this);
+		authorId = new IntegerExpression("author.ID", this);
+		author = new AssociationExpression("author", this);
+		comment = new StringExpression("comment", this);
+		madeAt = new DateExpression("madeAt", this);
+		receivers = new CollectionExpression("ORM_receivers", this);
+		targetId = new IntegerExpression("target.ID", this);
+		target = new AssociationExpression("target", this);
 	}
 	
 	public ArticleSuggestionCriteria(PersistentSession session) {
@@ -42,6 +50,14 @@ public class ArticleSuggestionCriteria extends AbstractORMCriteria {
 	
 	public ArticleCriteria createTargetCriteria() {
 		return new ArticleCriteria(createCriteria("target"));
+	}
+	
+	public UserCriteria createAuthorCriteria() {
+		return new UserCriteria(createCriteria("author"));
+	}
+	
+	public UserCriteria createReceiversCriteria() {
+		return new UserCriteria(createCriteria("ORM_receivers"));
 	}
 	
 	public ArticleSuggestion uniqueArticleSuggestion() {

@@ -19,10 +19,9 @@ import org.orm.PersistentSession;
 import org.orm.criteria.*;
 
 public class UserDetachedCriteria extends AbstractORMDetachedCriteria {
-	public final IntegerExpression attribute;
+	public final IntegerExpression ID;
 	public final IntegerExpression myChannelId;
 	public final AssociationExpression myChannel;
-	public final IntegerExpression ID;
 	public final StringExpression username;
 	public final StringExpression password;
 	public final CollectionExpression subscriptions;
@@ -30,10 +29,9 @@ public class UserDetachedCriteria extends AbstractORMDetachedCriteria {
 	
 	public UserDetachedCriteria() {
 		super(newsapp.User.class, newsapp.UserCriteria.class);
-		attribute = new IntegerExpression("attribute", this.getDetachedCriteria());
-		myChannelId = new IntegerExpression("myChannel.attribute", this.getDetachedCriteria());
-		myChannel = new AssociationExpression("myChannel", this.getDetachedCriteria());
 		ID = new IntegerExpression("ID", this.getDetachedCriteria());
+		myChannelId = new IntegerExpression("myChannel.ID", this.getDetachedCriteria());
+		myChannel = new AssociationExpression("myChannel", this.getDetachedCriteria());
 		username = new StringExpression("username", this.getDetachedCriteria());
 		password = new StringExpression("password", this.getDetachedCriteria());
 		subscriptions = new CollectionExpression("ORM_subscriptions", this.getDetachedCriteria());
@@ -42,10 +40,9 @@ public class UserDetachedCriteria extends AbstractORMDetachedCriteria {
 	
 	public UserDetachedCriteria(DetachedCriteria aDetachedCriteria) {
 		super(aDetachedCriteria, newsapp.UserCriteria.class);
-		attribute = new IntegerExpression("attribute", this.getDetachedCriteria());
-		myChannelId = new IntegerExpression("myChannel.attribute", this.getDetachedCriteria());
-		myChannel = new AssociationExpression("myChannel", this.getDetachedCriteria());
 		ID = new IntegerExpression("ID", this.getDetachedCriteria());
+		myChannelId = new IntegerExpression("myChannel.ID", this.getDetachedCriteria());
+		myChannel = new AssociationExpression("myChannel", this.getDetachedCriteria());
 		username = new StringExpression("username", this.getDetachedCriteria());
 		password = new StringExpression("password", this.getDetachedCriteria());
 		subscriptions = new CollectionExpression("ORM_subscriptions", this.getDetachedCriteria());

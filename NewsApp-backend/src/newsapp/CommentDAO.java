@@ -19,10 +19,10 @@ import org.hibernate.LockMode;
 import java.util.List;
 
 public class CommentDAO {
-	public static Comment loadCommentByORMID(int attribute) throws PersistentException {
+	public static Comment loadCommentByORMID(int ID) throws PersistentException {
 		try {
 			PersistentSession session = ProjectEAPersistentManager.instance().getSession();
-			return loadCommentByORMID(session, attribute);
+			return loadCommentByORMID(session, ID);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -30,10 +30,10 @@ public class CommentDAO {
 		}
 	}
 	
-	public static Comment getCommentByORMID(int attribute) throws PersistentException {
+	public static Comment getCommentByORMID(int ID) throws PersistentException {
 		try {
 			PersistentSession session = ProjectEAPersistentManager.instance().getSession();
-			return getCommentByORMID(session, attribute);
+			return getCommentByORMID(session, ID);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -41,10 +41,10 @@ public class CommentDAO {
 		}
 	}
 	
-	public static Comment loadCommentByORMID(int attribute, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Comment loadCommentByORMID(int ID, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = ProjectEAPersistentManager.instance().getSession();
-			return loadCommentByORMID(session, attribute, lockMode);
+			return loadCommentByORMID(session, ID, lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -52,10 +52,10 @@ public class CommentDAO {
 		}
 	}
 	
-	public static Comment getCommentByORMID(int attribute, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Comment getCommentByORMID(int ID, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = ProjectEAPersistentManager.instance().getSession();
-			return getCommentByORMID(session, attribute, lockMode);
+			return getCommentByORMID(session, ID, lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -63,9 +63,9 @@ public class CommentDAO {
 		}
 	}
 	
-	public static Comment loadCommentByORMID(PersistentSession session, int attribute) throws PersistentException {
+	public static Comment loadCommentByORMID(PersistentSession session, int ID) throws PersistentException {
 		try {
-			return (Comment) session.load(newsapp.Comment.class, new Integer(attribute));
+			return (Comment) session.load(newsapp.Comment.class, new Integer(ID));
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -73,9 +73,9 @@ public class CommentDAO {
 		}
 	}
 	
-	public static Comment getCommentByORMID(PersistentSession session, int attribute) throws PersistentException {
+	public static Comment getCommentByORMID(PersistentSession session, int ID) throws PersistentException {
 		try {
-			return (Comment) session.get(newsapp.Comment.class, new Integer(attribute));
+			return (Comment) session.get(newsapp.Comment.class, new Integer(ID));
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -83,9 +83,9 @@ public class CommentDAO {
 		}
 	}
 	
-	public static Comment loadCommentByORMID(PersistentSession session, int attribute, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Comment loadCommentByORMID(PersistentSession session, int ID, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
-			return (Comment) session.load(newsapp.Comment.class, new Integer(attribute), lockMode);
+			return (Comment) session.load(newsapp.Comment.class, new Integer(ID), lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -93,9 +93,9 @@ public class CommentDAO {
 		}
 	}
 	
-	public static Comment getCommentByORMID(PersistentSession session, int attribute, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Comment getCommentByORMID(PersistentSession session, int ID, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
-			return (Comment) session.get(newsapp.Comment.class, new Integer(attribute), lockMode);
+			return (Comment) session.get(newsapp.Comment.class, new Integer(ID), lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();

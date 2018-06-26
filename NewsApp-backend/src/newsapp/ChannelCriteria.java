@@ -19,7 +19,6 @@ import org.orm.PersistentSession;
 import org.orm.criteria.*;
 
 public class ChannelCriteria extends AbstractORMCriteria {
-	public final IntegerExpression attribute;
 	public final IntegerExpression ID;
 	public final StringExpression name;
 	public final StringExpression description;
@@ -31,7 +30,6 @@ public class ChannelCriteria extends AbstractORMCriteria {
 	
 	public ChannelCriteria(Criteria criteria) {
 		super(criteria);
-		attribute = new IntegerExpression("attribute", this);
 		ID = new IntegerExpression("ID", this);
 		name = new StringExpression("name", this);
 		description = new StringExpression("description", this);

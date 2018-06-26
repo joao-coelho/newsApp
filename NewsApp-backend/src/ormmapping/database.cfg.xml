@@ -31,6 +31,21 @@
     <ServerName></ServerName>
     <SelectedForm>true</SelectedForm>
   </Setting>
+  <Setting type="256">
+    <Driver>PostgreSQL</Driver>
+    <DriverFiles>/home/miguel/Transferências/postgresql-42.2.2.jar</DriverFiles>
+    <Dialect>org.hibernate.dialect.PostgreSQLDialect</Dialect>
+    <DriverClass>org.postgresql.Driver</DriverClass>
+    <URL>jdbc:postgresql://127.0.0.1:5432/newsdb</URL>
+    <UserName>miguel</UserName>
+    <EncryptedPassword>32F3ACE632ECEBAFB24DCAF99A8C6CDC</EncryptedPassword>
+    <HostName>127.0.0.1</HostName>
+    <PortNO>5432</PortNO>
+    <DBName>newsdb</DBName>
+    <ServiceName></ServiceName>
+    <ServerName></ServerName>
+    <SelectedForm>true</SelectedForm>
+  </Setting>
   <Setting type="2">
     <Driver></Driver>
     <DriverFiles></DriverFiles>

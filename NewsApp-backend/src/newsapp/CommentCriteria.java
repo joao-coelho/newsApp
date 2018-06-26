@@ -19,19 +19,17 @@ import org.orm.PersistentSession;
 import org.orm.criteria.*;
 
 public class CommentCriteria extends AbstractORMCriteria {
-	public final IntegerExpression attribute;
+	public final IntegerExpression ID;
 	public final IntegerExpression authorId;
 	public final AssociationExpression author;
-	public final IntegerExpression ID;
 	public final StringExpression content;
 	public final DateExpression addedAt;
 	
 	public CommentCriteria(Criteria criteria) {
 		super(criteria);
-		attribute = new IntegerExpression("attribute", this);
-		authorId = new IntegerExpression("author.attribute", this);
-		author = new AssociationExpression("author", this);
 		ID = new IntegerExpression("ID", this);
+		authorId = new IntegerExpression("author.ID", this);
+		author = new AssociationExpression("author", this);
 		content = new StringExpression("content", this);
 		addedAt = new DateExpression("addedAt", this);
 	}

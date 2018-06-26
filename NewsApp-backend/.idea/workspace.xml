@@ -1,7 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4f279b3b-9d04-40fe-8812-16fed992c4b0" name="Default" comment="" />
+    <list default="true" id="be79518e-7dbf-4b33-97be-bf003b7994f4" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/NewsApp.iml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/lib/orm.jar" afterPath="$PROJECT_DIR$/lib/orm.jar" />
+      <change beforePath="$PROJECT_DIR$/src/newsapp/Article.java" afterPath="$PROJECT_DIR$/src/newsapp/Article.java" />
+      <change beforePath="$PROJECT_DIR$/src/newsapp/ArticleCriteria.java" afterPath="$PROJECT_DIR$/src/newsapp/ArticleCriteria.java" />
+      <change beforePath="$PROJECT_DIR$/src/newsapp/ArticleDAO.java" afterPath="$PROJECT_DIR$/src/newsapp/ArticleDAO.java" />
+      <change beforePath="$PROJECT_DIR$/src/newsapp/ArticleDetachedCriteria.java" afterPath="$PROJECT_DIR$/src/newsapp/ArticleDetachedCriteria.java" />
+      <change beforePath="$PROJECT_DIR$/src/newsapp/ArticleSetCollection.java" afterPath="$PROJECT_DIR$/src/newsapp/ArticleSetCollection.java" />
+      <change beforePath="$PROJECT_DIR$/src/newsapp/ArticleSuggestion.java" afterPath="$PROJECT_DIR$/src/newsapp/ArticleSuggestion.java" />
+      <change beforePath="$PROJECT_DIR$/src/newsapp/ArticleSuggestionCriteria.java" afterPath="$PROJECT_DIR$/src/newsapp/ArticleSuggestionCriteria.java" />
+      <change beforePath="$PROJECT_DIR$/src/newsapp/ArticleSuggestionDAO.java" afterPath="$PROJECT_DIR$/src/newsapp/ArticleSuggestionDAO.java" />
+      <change beforePath="$PROJECT_DIR$/src/newsapp/ArticleSuggestionDetachedCriteria.java" afterPath="$PROJECT_DIR$/src/newsapp/ArticleSuggestionDetachedCriteria.java" />
+      <change beforePath="$PROJECT_DIR$/src/newsapp/Category.java" afterPath="$PROJECT_DIR$/src/newsapp/Category.java" />
+      <change beforePath="$PROJECT_DIR$/src/newsapp/CategoryCriteria.java" afterPath="$PROJECT_DIR$/src/newsapp/CategoryCriteria.java" />
+      <change beforePath="$PROJECT_DIR$/src/newsapp/CategoryDAO.java" afterPath="$PROJECT_DIR$/src/newsapp/CategoryDAO.java" />
+      <change beforePath="$PROJECT_DIR$/src/newsapp/CategoryDetachedCriteria.java" afterPath="$PROJECT_DIR$/src/newsapp/CategoryDetachedCriteria.java" />
+      <change beforePath="$PROJECT_DIR$/src/newsapp/CategorySetCollection.java" afterPath="$PROJECT_DIR$/src/newsapp/CategorySetCollection.java" />
+      <change beforePath="$PROJECT_DIR$/src/newsapp/Channel.java" afterPath="$PROJECT_DIR$/src/newsapp/Channel.java" />
+      <change beforePath="$PROJECT_DIR$/src/newsapp/ChannelCriteria.java" afterPath="$PROJECT_DIR$/src/newsapp/ChannelCriteria.java" />
+      <change beforePath="$PROJECT_DIR$/src/newsapp/ChannelDAO.java" afterPath="$PROJECT_DIR$/src/newsapp/ChannelDAO.java" />
+      <change beforePath="$PROJECT_DIR$/src/newsapp/ChannelDetachedCriteria.java" afterPath="$PROJECT_DIR$/src/newsapp/ChannelDetachedCriteria.java" />
+      <change beforePath="$PROJECT_DIR$/src/newsapp/ChannelSetCollection.java" afterPath="$PROJECT_DIR$/src/newsapp/ChannelSetCollection.java" />
+      <change beforePath="$PROJECT_DIR$/src/newsapp/ChannelSuggestion.java" afterPath="$PROJECT_DIR$/src/newsapp/ChannelSuggestion.java" />
+      <change beforePath="$PROJECT_DIR$/src/newsapp/ChannelSuggestionCriteria.java" afterPath="$PROJECT_DIR$/src/newsapp/ChannelSuggestionCriteria.java" />
+      <change beforePath="$PROJECT_DIR$/src/newsapp/ChannelSuggestionDAO.java" afterPath="$PROJECT_DIR$/src/newsapp/ChannelSuggestionDAO.java" />
+      <change beforePath="$PROJECT_DIR$/src/newsapp/ChannelSuggestionDetachedCriteria.java" afterPath="$PROJECT_DIR$/src/newsapp/ChannelSuggestionDetachedCriteria.java" />
+      <change beforePath="$PROJECT_DIR$/src/newsapp/Comment.java" afterPath="$PROJECT_DIR$/src/newsapp/Comment.java" />
+      <change beforePath="$PROJECT_DIR$/src/newsapp/CommentCriteria.java" afterPath="$PROJECT_DIR$/src/newsapp/CommentCriteria.java" />
+      <change beforePath="$PROJECT_DIR$/src/newsapp/CommentDAO.java" afterPath="$PROJECT_DIR$/src/newsapp/CommentDAO.java" />
+      <change beforePath="$PROJECT_DIR$/src/newsapp/CommentDetachedCriteria.java" afterPath="$PROJECT_DIR$/src/newsapp/CommentDetachedCriteria.java" />
+      <change beforePath="$PROJECT_DIR$/src/newsapp/CommentSetCollection.java" afterPath="$PROJECT_DIR$/src/newsapp/CommentSetCollection.java" />
+      <change beforePath="$PROJECT_DIR$/src/newsapp/ORMConstants.java" afterPath="$PROJECT_DIR$/src/newsapp/ORMConstants.java" />
+      <change beforePath="$PROJECT_DIR$/src/newsapp/ProjectEAPersistentManager.java" afterPath="$PROJECT_DIR$/src/newsapp/ProjectEAPersistentManager.java" />
+      <change beforePath="$PROJECT_DIR$/src/newsapp/Suggestion.java" afterPath="$PROJECT_DIR$/src/newsapp/Suggestion.java" />
+      <change beforePath="$PROJECT_DIR$/src/newsapp/User.java" afterPath="$PROJECT_DIR$/src/newsapp/User.java" />
+      <change beforePath="$PROJECT_DIR$/src/newsapp/UserCriteria.java" afterPath="$PROJECT_DIR$/src/newsapp/UserCriteria.java" />
+      <change beforePath="$PROJECT_DIR$/src/newsapp/UserDAO.java" afterPath="$PROJECT_DIR$/src/newsapp/UserDAO.java" />
+      <change beforePath="$PROJECT_DIR$/src/newsapp/UserDetachedCriteria.java" afterPath="$PROJECT_DIR$/src/newsapp/UserDetachedCriteria.java" />
+      <change beforePath="$PROJECT_DIR$/src/ormmapping/ProjectEA.cfg.xml" afterPath="$PROJECT_DIR$/src/ormmapping/ProjectEA.cfg.xml" />
+      <change beforePath="$PROJECT_DIR$/src/ormmapping/ProjectEA.erd.xml" afterPath="$PROJECT_DIR$/src/ormmapping/ProjectEA.erd.xml" />
+      <change beforePath="$PROJECT_DIR$/src/ormmapping/database.cfg.xml" afterPath="$PROJECT_DIR$/src/ormmapping/database.cfg.xml" />
+      <change beforePath="$PROJECT_DIR$/src/ormsamples/CreateProjectEAData.java" afterPath="$PROJECT_DIR$/src/ormsamples/CreateProjectEAData.java" />
+      <change beforePath="$PROJECT_DIR$/src/ormsamples/DeleteProjectEAData.java" afterPath="$PROJECT_DIR$/src/ormsamples/DeleteProjectEAData.java" />
+      <change beforePath="$PROJECT_DIR$/src/ormsamples/ListProjectEAData.java" afterPath="$PROJECT_DIR$/src/ormsamples/ListProjectEAData.java" />
+      <change beforePath="$PROJECT_DIR$/src/ormsamples/RetrieveAndUpdateProjectEAData.java" afterPath="$PROJECT_DIR$/src/ormsamples/RetrieveAndUpdateProjectEAData.java" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -12,58 +61,18 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="NewsApp.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/newsapp/NewsApp.java">
+      <file leaf-file-name="NewsApp-backend.iml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/NewsApp-backend.iml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="20" lean-forward="false" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
+            <state relative-caret-position="306">
+              <caret line="18" column="16" lean-forward="false" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SocialConnectorFactory.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/newsapp/SocialConnectorFactory.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="35" lean-forward="false" selection-start-line="2" selection-start-column="35" selection-end-line="2" selection-end-column="35" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FacebookConnector.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/newsapp/FacebookConnector.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="31" lean-forward="false" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TwitterConnector.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/newsapp/TwitterConnector.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="30" lean-forward="false" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="30" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SocialConnector.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/newsapp/SocialConnector.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="32" lean-forward="false" selection-start-line="2" selection-start-column="32" selection-end-line="2" selection-end-column="32" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ChannelSuggestionDAO.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/newsapp/ChannelSuggestionDAO.java">
+      <file leaf-file-name="ArticleDAO.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/newsapp/ArticleDAO.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="85">
               <caret line="20" column="13" lean-forward="false" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
@@ -72,41 +81,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ChannelSuggestion.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/newsapp/ChannelSuggestion.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="20" column="51" lean-forward="false" selection-start-line="20" selection-start-column="51" selection-end-line="20" selection-end-column="51" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Suggestion.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/newsapp/Suggestion.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="24" lean-forward="false" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SuggestionFactory.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/newsapp/SuggestionFactory.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ArticleSuggestion.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ArticleSuggestion.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/newsapp/ArticleSuggestion.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-34">
-              <caret line="20" column="13" lean-forward="false" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+            <state relative-caret-position="272">
+              <caret line="29" column="4" lean-forward="true" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -114,13 +93,8 @@
       </file>
     </leaf>
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Interface" />
-        <option value="Class" />
-      </list>
-    </option>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="GradleLocalSettings">
     <option name="externalProjectsViewState">
@@ -134,15 +108,6 @@
       </map>
     </option>
   </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/src/newsapp/FacebookConnector.java" />
-        <option value="$PROJECT_DIR$/src/newsapp/TwitterConnector.java" />
-        <option value="$PROJECT_DIR$/src/newsapp/Suggestion.java" />
-      </list>
-    </option>
-  </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsGulpfileManager">
@@ -154,6 +119,7 @@
     <option name="width" value="1366" />
     <option name="height" value="738" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
@@ -169,6 +135,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -192,9 +159,8 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -205,7 +171,6 @@
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -309,50 +274,49 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="4f279b3b-9d04-40fe-8812-16fed992c4b0" name="Default" comment="" />
-      <created>1529873545378</created>
+      <changelist id="be79518e-7dbf-4b33-97be-bf003b7994f4" name="Default" comment="" />
+      <created>1530047547892</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1529873545378</updated>
-      <workItem from="1529873549965" duration="67000" />
-      <workItem from="1529876078055" duration="1020000" />
+      <updated>1530047547892</updated>
+      <workItem from="1530047551002" duration="74000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1087000" />
+    <option name="totallyTimeSpent" value="74000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="30" width="1366" height="738" extended-state="6" />
+    <frame x="0" y="30" width="1920" height="1050" extended-state="6" />
     <layout>
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24963397" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -366,47 +330,7 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/newsapp/NewsApp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="20" lean-forward="false" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/newsapp/SocialConnectorFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="35" lean-forward="false" selection-start-line="2" selection-start-column="35" selection-end-line="2" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/newsapp/FacebookConnector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="31" lean-forward="false" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/newsapp/TwitterConnector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="30" lean-forward="false" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/newsapp/SocialConnector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="32" lean-forward="false" selection-start-line="2" selection-start-column="32" selection-end-line="2" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/newsapp/ChannelSuggestionDAO.java">
+    <entry file="file://$PROJECT_DIR$/src/newsapp/SuggestionCriteria.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="20" column="13" lean-forward="false" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
@@ -414,34 +338,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/newsapp/ChannelSuggestion.java">
+    <entry file="file://$PROJECT_DIR$/NewsApp-backend.iml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="20" column="51" lean-forward="false" selection-start-line="20" selection-start-column="51" selection-end-line="20" selection-end-column="51" />
+        <state relative-caret-position="306">
+          <caret line="18" column="16" lean-forward="false" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/newsapp/ArticleDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="20" column="13" lean-forward="false" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/newsapp/ArticleSuggestion.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-34">
-          <caret line="20" column="13" lean-forward="false" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/newsapp/Suggestion.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="24" lean-forward="false" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/newsapp/SuggestionFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+        <state relative-caret-position="272">
+          <caret line="29" column="4" lean-forward="true" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="4" />
           <folding />
         </state>
       </provider>

@@ -19,7 +19,6 @@ import org.orm.PersistentSession;
 import org.orm.criteria.*;
 
 public class ArticleDetachedCriteria extends AbstractORMDetachedCriteria {
-	public final IntegerExpression attribute;
 	public final IntegerExpression ID;
 	public final StringExpression title;
 	public final StringExpression content;
@@ -30,7 +29,6 @@ public class ArticleDetachedCriteria extends AbstractORMDetachedCriteria {
 	
 	public ArticleDetachedCriteria() {
 		super(newsapp.Article.class, newsapp.ArticleCriteria.class);
-		attribute = new IntegerExpression("attribute", this.getDetachedCriteria());
 		ID = new IntegerExpression("ID", this.getDetachedCriteria());
 		title = new StringExpression("title", this.getDetachedCriteria());
 		content = new StringExpression("content", this.getDetachedCriteria());
@@ -42,7 +40,6 @@ public class ArticleDetachedCriteria extends AbstractORMDetachedCriteria {
 	
 	public ArticleDetachedCriteria(DetachedCriteria aDetachedCriteria) {
 		super(aDetachedCriteria, newsapp.ArticleCriteria.class);
-		attribute = new IntegerExpression("attribute", this.getDetachedCriteria());
 		ID = new IntegerExpression("ID", this.getDetachedCriteria());
 		title = new StringExpression("title", this.getDetachedCriteria());
 		content = new StringExpression("content", this.getDetachedCriteria());

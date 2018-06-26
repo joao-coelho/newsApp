@@ -36,19 +36,16 @@ public class Comment implements Serializable {
 		
 	};
 	
-	@Column(name="Attribute", nullable=false, length=10)	
+	@Column(name="ID", nullable=false, length=10)	
 	@Id	
-	@GeneratedValue(generator="NEWSAPP_COMMENT_ATTRIBUTE_GENERATOR")	
-	@org.hibernate.annotations.GenericGenerator(name="NEWSAPP_COMMENT_ATTRIBUTE_GENERATOR", strategy="native")	
-	private int attribute;
+	@GeneratedValue(generator="NEWSAPP_COMMENT_ID_GENERATOR")	
+	@org.hibernate.annotations.GenericGenerator(name="NEWSAPP_COMMENT_ID_GENERATOR", strategy="native")	
+	private int ID;
 	
 	@ManyToOne(targetEntity=newsapp.User.class, fetch=FetchType.LAZY)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.LOCK})	
-	@JoinColumns({ @JoinColumn(name="UserAttribute", referencedColumnName="Attribute", nullable=false) })	
+	@JoinColumns({ @JoinColumn(name="UserID", referencedColumnName="ID", nullable=false) })	
 	private newsapp.User author;
-	
-	@Column(name="ID", nullable=false, length=10)	
-	private int ID;
 	
 	@Column(name="Content", nullable=true, length=255)	
 	private String content;
@@ -57,24 +54,16 @@ public class Comment implements Serializable {
 	@Temporal(TemporalType.DATE)	
 	private java.util.Date addedAt;
 	
-	private void setAttribute(int value) {
-		this.attribute = value;
-	}
-	
-	public int getAttribute() {
-		return attribute;
-	}
-	
-	public int getORMID() {
-		return getAttribute();
-	}
-	
-	public void setID(int value) {
+	private void setID(int value) {
 		this.ID = value;
 	}
 	
 	public int getID() {
 		return ID;
+	}
+	
+	public int getORMID() {
+		return getID();
 	}
 	
 	public void setContent(String value) {
@@ -102,7 +91,7 @@ public class Comment implements Serializable {
 	}
 	
 	public String toString() {
-		return String.valueOf(getAttribute());
+		return String.valueOf(getID());
 	}
 	
 }

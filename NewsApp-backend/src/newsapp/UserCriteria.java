@@ -19,10 +19,9 @@ import org.orm.PersistentSession;
 import org.orm.criteria.*;
 
 public class UserCriteria extends AbstractORMCriteria {
-	public final IntegerExpression attribute;
+	public final IntegerExpression ID;
 	public final IntegerExpression myChannelId;
 	public final AssociationExpression myChannel;
-	public final IntegerExpression ID;
 	public final StringExpression username;
 	public final StringExpression password;
 	public final CollectionExpression subscriptions;
@@ -30,10 +29,9 @@ public class UserCriteria extends AbstractORMCriteria {
 	
 	public UserCriteria(Criteria criteria) {
 		super(criteria);
-		attribute = new IntegerExpression("attribute", this);
-		myChannelId = new IntegerExpression("myChannel.attribute", this);
-		myChannel = new AssociationExpression("myChannel", this);
 		ID = new IntegerExpression("ID", this);
+		myChannelId = new IntegerExpression("myChannel.ID", this);
+		myChannel = new AssociationExpression("myChannel", this);
 		username = new StringExpression("username", this);
 		password = new StringExpression("password", this);
 		subscriptions = new CollectionExpression("ORM_subscriptions", this);

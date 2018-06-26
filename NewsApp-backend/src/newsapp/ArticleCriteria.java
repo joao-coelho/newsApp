@@ -19,7 +19,6 @@ import org.orm.PersistentSession;
 import org.orm.criteria.*;
 
 public class ArticleCriteria extends AbstractORMCriteria {
-	public final IntegerExpression attribute;
 	public final IntegerExpression ID;
 	public final StringExpression title;
 	public final StringExpression content;
@@ -30,7 +29,6 @@ public class ArticleCriteria extends AbstractORMCriteria {
 	
 	public ArticleCriteria(Criteria criteria) {
 		super(criteria);
-		attribute = new IntegerExpression("attribute", this);
 		ID = new IntegerExpression("ID", this);
 		title = new StringExpression("title", this);
 		content = new StringExpression("content", this);

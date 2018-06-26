@@ -19,10 +19,10 @@ import org.hibernate.LockMode;
 import java.util.List;
 
 public class ChannelDAO {
-	public static Channel loadChannelByORMID(int attribute) throws PersistentException {
+	public static Channel loadChannelByORMID(int ID) throws PersistentException {
 		try {
 			PersistentSession session = ProjectEAPersistentManager.instance().getSession();
-			return loadChannelByORMID(session, attribute);
+			return loadChannelByORMID(session, ID);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -30,10 +30,10 @@ public class ChannelDAO {
 		}
 	}
 	
-	public static Channel getChannelByORMID(int attribute) throws PersistentException {
+	public static Channel getChannelByORMID(int ID) throws PersistentException {
 		try {
 			PersistentSession session = ProjectEAPersistentManager.instance().getSession();
-			return getChannelByORMID(session, attribute);
+			return getChannelByORMID(session, ID);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -41,10 +41,10 @@ public class ChannelDAO {
 		}
 	}
 	
-	public static Channel loadChannelByORMID(int attribute, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Channel loadChannelByORMID(int ID, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = ProjectEAPersistentManager.instance().getSession();
-			return loadChannelByORMID(session, attribute, lockMode);
+			return loadChannelByORMID(session, ID, lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -52,10 +52,10 @@ public class ChannelDAO {
 		}
 	}
 	
-	public static Channel getChannelByORMID(int attribute, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Channel getChannelByORMID(int ID, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = ProjectEAPersistentManager.instance().getSession();
-			return getChannelByORMID(session, attribute, lockMode);
+			return getChannelByORMID(session, ID, lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -63,9 +63,9 @@ public class ChannelDAO {
 		}
 	}
 	
-	public static Channel loadChannelByORMID(PersistentSession session, int attribute) throws PersistentException {
+	public static Channel loadChannelByORMID(PersistentSession session, int ID) throws PersistentException {
 		try {
-			return (Channel) session.load(newsapp.Channel.class, new Integer(attribute));
+			return (Channel) session.load(newsapp.Channel.class, new Integer(ID));
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -73,9 +73,9 @@ public class ChannelDAO {
 		}
 	}
 	
-	public static Channel getChannelByORMID(PersistentSession session, int attribute) throws PersistentException {
+	public static Channel getChannelByORMID(PersistentSession session, int ID) throws PersistentException {
 		try {
-			return (Channel) session.get(newsapp.Channel.class, new Integer(attribute));
+			return (Channel) session.get(newsapp.Channel.class, new Integer(ID));
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -83,9 +83,9 @@ public class ChannelDAO {
 		}
 	}
 	
-	public static Channel loadChannelByORMID(PersistentSession session, int attribute, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Channel loadChannelByORMID(PersistentSession session, int ID, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
-			return (Channel) session.load(newsapp.Channel.class, new Integer(attribute), lockMode);
+			return (Channel) session.load(newsapp.Channel.class, new Integer(ID), lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -93,9 +93,9 @@ public class ChannelDAO {
 		}
 	}
 	
-	public static Channel getChannelByORMID(PersistentSession session, int attribute, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Channel getChannelByORMID(PersistentSession session, int ID, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
-			return (Channel) session.get(newsapp.Channel.class, new Integer(attribute), lockMode);
+			return (Channel) session.get(newsapp.Channel.class, new Integer(ID), lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();

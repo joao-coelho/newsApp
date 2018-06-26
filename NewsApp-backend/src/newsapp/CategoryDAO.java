@@ -19,10 +19,10 @@ import org.hibernate.LockMode;
 import java.util.List;
 
 public class CategoryDAO {
-	public static Category loadCategoryByORMID(int attribute) throws PersistentException {
+	public static Category loadCategoryByORMID(int ID) throws PersistentException {
 		try {
 			PersistentSession session = ProjectEAPersistentManager.instance().getSession();
-			return loadCategoryByORMID(session, attribute);
+			return loadCategoryByORMID(session, ID);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -30,10 +30,10 @@ public class CategoryDAO {
 		}
 	}
 	
-	public static Category getCategoryByORMID(int attribute) throws PersistentException {
+	public static Category getCategoryByORMID(int ID) throws PersistentException {
 		try {
 			PersistentSession session = ProjectEAPersistentManager.instance().getSession();
-			return getCategoryByORMID(session, attribute);
+			return getCategoryByORMID(session, ID);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -41,10 +41,10 @@ public class CategoryDAO {
 		}
 	}
 	
-	public static Category loadCategoryByORMID(int attribute, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Category loadCategoryByORMID(int ID, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = ProjectEAPersistentManager.instance().getSession();
-			return loadCategoryByORMID(session, attribute, lockMode);
+			return loadCategoryByORMID(session, ID, lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -52,10 +52,10 @@ public class CategoryDAO {
 		}
 	}
 	
-	public static Category getCategoryByORMID(int attribute, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Category getCategoryByORMID(int ID, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = ProjectEAPersistentManager.instance().getSession();
-			return getCategoryByORMID(session, attribute, lockMode);
+			return getCategoryByORMID(session, ID, lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -63,9 +63,9 @@ public class CategoryDAO {
 		}
 	}
 	
-	public static Category loadCategoryByORMID(PersistentSession session, int attribute) throws PersistentException {
+	public static Category loadCategoryByORMID(PersistentSession session, int ID) throws PersistentException {
 		try {
-			return (Category) session.load(newsapp.Category.class, new Integer(attribute));
+			return (Category) session.load(newsapp.Category.class, new Integer(ID));
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -73,9 +73,9 @@ public class CategoryDAO {
 		}
 	}
 	
-	public static Category getCategoryByORMID(PersistentSession session, int attribute) throws PersistentException {
+	public static Category getCategoryByORMID(PersistentSession session, int ID) throws PersistentException {
 		try {
-			return (Category) session.get(newsapp.Category.class, new Integer(attribute));
+			return (Category) session.get(newsapp.Category.class, new Integer(ID));
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -83,9 +83,9 @@ public class CategoryDAO {
 		}
 	}
 	
-	public static Category loadCategoryByORMID(PersistentSession session, int attribute, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Category loadCategoryByORMID(PersistentSession session, int ID, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
-			return (Category) session.load(newsapp.Category.class, new Integer(attribute), lockMode);
+			return (Category) session.load(newsapp.Category.class, new Integer(ID), lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -93,9 +93,9 @@ public class CategoryDAO {
 		}
 	}
 	
-	public static Category getCategoryByORMID(PersistentSession session, int attribute, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Category getCategoryByORMID(PersistentSession session, int ID, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
-			return (Category) session.get(newsapp.Category.class, new Integer(attribute), lockMode);
+			return (Category) session.get(newsapp.Category.class, new Integer(ID), lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();

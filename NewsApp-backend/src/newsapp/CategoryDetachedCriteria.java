@@ -19,20 +19,17 @@ import org.orm.PersistentSession;
 import org.orm.criteria.*;
 
 public class CategoryDetachedCriteria extends AbstractORMDetachedCriteria {
-	public final IntegerExpression attribute;
 	public final IntegerExpression ID;
 	public final StringExpression description;
 	
 	public CategoryDetachedCriteria() {
 		super(newsapp.Category.class, newsapp.CategoryCriteria.class);
-		attribute = new IntegerExpression("attribute", this.getDetachedCriteria());
 		ID = new IntegerExpression("ID", this.getDetachedCriteria());
 		description = new StringExpression("description", this.getDetachedCriteria());
 	}
 	
 	public CategoryDetachedCriteria(DetachedCriteria aDetachedCriteria) {
 		super(aDetachedCriteria, newsapp.CategoryCriteria.class);
-		attribute = new IntegerExpression("attribute", this.getDetachedCriteria());
 		ID = new IntegerExpression("ID", this.getDetachedCriteria());
 		description = new StringExpression("description", this.getDetachedCriteria());
 	}

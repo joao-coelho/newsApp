@@ -24,6 +24,9 @@ public class DeleteProjectEAData {
 			newsapp.Category lnewsappCategory = newsapp.CategoryDAO.loadCategoryByQuery(null, null);
 			// Delete the persistent object
 			newsapp.CategoryDAO.delete(lnewsappCategory);
+			newsapp.Suggestion lnewsappSuggestion = newsapp.SuggestionDAO.loadSuggestionByQuery(null, null);
+			// Delete the persistent object
+			newsapp.SuggestionDAO.delete(lnewsappSuggestion);
 			newsapp.ChannelSuggestion lnewsappChannelSuggestion = newsapp.ChannelSuggestionDAO.loadChannelSuggestionByQuery(null, null);
 			// Delete the persistent object
 			newsapp.ChannelSuggestionDAO.delete(lnewsappChannelSuggestion);

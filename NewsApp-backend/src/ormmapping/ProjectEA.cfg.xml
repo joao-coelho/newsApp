@@ -9,11 +9,11 @@ License Type: Academic
 <hibernate-configuration>
 	<session-factory>
    	<!-- properties -->
-		<property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
-		<property name="connection.driver_class">org.mariadb.jdbc.Driver</property>
-		<property name="connection.url">jdbc:mariadb://127.0.0.1:3306/newsdb</property>
-		<property name="connection.username">root</property>
-		<property name="connection.password">silva</property>
+		<property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+		<property name="connection.driver_class">org.postgresql.Driver</property>
+		<property name="connection.url">jdbc:postgresql://127.0.0.1:5432/newsdb</property>
+		<property name="connection.username">miguel</property>
+		<property name="connection.password"></property>
 		<property name="show_sql">false</property>
 		<property name="query.substitutions">true 1, false 0, yes 'Y', no 'N'</property>
 		<!-- mapping files -->

@@ -2,7 +2,7 @@
 
 <Model quotesql="1" tablecharset="" mysql_version="504" mssql_version="2005" derby_version="106" ingres_version="9">
   <Entity name="User" Unlogged="false" PKClustered="0">
-    <Column name="Attribute">
+    <Column name="ID">
       <PrimaryKey>true</PrimaryKey>
       <ForeignKey>false</ForeignKey>
       <Type>9</Type>
@@ -13,10 +13,10 @@
       <Index>false</Index>
       <UserTypes/>
     </Column>
-    <Column name="ChannelAttribute">
+    <Column name="SuggestionID">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>Diagrama de classes.Channel.Attribute</ReferencedColumn>
+      <ReferencedColumn>newsapp.Suggestion.ID</ReferencedColumn>
       <Type>9</Type>
       <Length>10</Length>
       <Nullable>false</Nullable>
@@ -25,9 +25,10 @@
       <Index>false</Index>
       <UserTypes/>
     </Column>
-    <Column name="ID">
+    <Column name="ChannelID">
       <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>false</ForeignKey>
+      <ForeignKey>true</ForeignKey>
+      <ReferencedColumn>newsapp.Channel.ID</ReferencedColumn>
       <Type>9</Type>
       <Length>10</Length>
       <Nullable>false</Nullable>
@@ -60,7 +61,7 @@
     </Column>
   </Entity>
   <Entity name="Channel" Unlogged="false" PKClustered="0">
-    <Column name="Attribute">
+    <Column name="ID">
       <PrimaryKey>true</PrimaryKey>
       <ForeignKey>false</ForeignKey>
       <Type>9</Type>
@@ -71,21 +72,10 @@
       <Index>false</Index>
       <UserTypes/>
     </Column>
-    <Column name="UserAttribute">
+    <Column name="UserID">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>Diagrama de classes.User.Attribute</ReferencedColumn>
-      <Type>9</Type>
-      <Length>10</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <UserTypes/>
-    </Column>
-    <Column name="ID">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>false</ForeignKey>
+      <ReferencedColumn>newsapp.User.ID</ReferencedColumn>
       <Type>9</Type>
       <Length>10</Length>
       <Nullable>false</Nullable>
@@ -151,7 +141,7 @@
     </Column>
   </Entity>
   <Entity name="Article" Unlogged="false" PKClustered="0">
-    <Column name="Attribute">
+    <Column name="ID">
       <PrimaryKey>true</PrimaryKey>
       <ForeignKey>false</ForeignKey>
       <Type>9</Type>
@@ -162,21 +152,10 @@
       <Index>false</Index>
       <UserTypes/>
     </Column>
-    <Column name="ChannelAttribute">
+    <Column name="ChannelID">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>Diagrama de classes.Channel.Attribute</ReferencedColumn>
-      <Type>9</Type>
-      <Length>10</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <UserTypes/>
-    </Column>
-    <Column name="ID">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>false</ForeignKey>
+      <ReferencedColumn>newsapp.Channel.ID</ReferencedColumn>
       <Type>9</Type>
       <Length>10</Length>
       <Nullable>false</Nullable>
@@ -220,7 +199,7 @@
     </Column>
   </Entity>
   <Entity name="Comment" Unlogged="false" PKClustered="0">
-    <Column name="Attribute">
+    <Column name="ID">
       <PrimaryKey>true</PrimaryKey>
       <ForeignKey>false</ForeignKey>
       <Type>9</Type>
@@ -231,10 +210,10 @@
       <Index>false</Index>
       <UserTypes/>
     </Column>
-    <Column name="UserAttribute">
+    <Column name="UserID">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>Diagrama de classes.User.Attribute</ReferencedColumn>
+      <ReferencedColumn>newsapp.User.ID</ReferencedColumn>
       <Type>9</Type>
       <Length>10</Length>
       <Nullable>false</Nullable>
@@ -243,21 +222,10 @@
       <Index>false</Index>
       <UserTypes/>
     </Column>
-    <Column name="ArticleAttribute">
+    <Column name="ArticleID">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>Diagrama de classes.Article.Attribute</ReferencedColumn>
-      <Type>9</Type>
-      <Length>10</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <UserTypes/>
-    </Column>
-    <Column name="ID">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>false</ForeignKey>
+      <ReferencedColumn>newsapp.Article.ID</ReferencedColumn>
       <Type>9</Type>
       <Length>10</Length>
       <Nullable>false</Nullable>
@@ -290,7 +258,7 @@
     </Column>
   </Entity>
   <Entity name="Category" Unlogged="false" PKClustered="0">
-    <Column name="Attribute">
+    <Column name="ID">
       <PrimaryKey>true</PrimaryKey>
       <ForeignKey>false</ForeignKey>
       <Type>9</Type>
@@ -301,10 +269,10 @@
       <Index>false</Index>
       <UserTypes/>
     </Column>
-    <Column name="UserAttribute">
+    <Column name="UserID">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>Diagrama de classes.User.Attribute</ReferencedColumn>
+      <ReferencedColumn>newsapp.User.ID</ReferencedColumn>
       <Type>9</Type>
       <Length>10</Length>
       <Nullable>false</Nullable>
@@ -313,21 +281,10 @@
       <Index>false</Index>
       <UserTypes/>
     </Column>
-    <Column name="ArticleAttribute">
+    <Column name="ArticleID">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>Diagrama de classes.Article.Attribute</ReferencedColumn>
-      <Type>9</Type>
-      <Length>10</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <UserTypes/>
-    </Column>
-    <Column name="ID">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>false</ForeignKey>
+      <ReferencedColumn>newsapp.Article.ID</ReferencedColumn>
       <Type>9</Type>
       <Length>10</Length>
       <Nullable>false</Nullable>
@@ -348,8 +305,8 @@
       <UserTypes/>
     </Column>
   </Entity>
-  <Entity name="ChannelSuggestion" Unlogged="false" PKClustered="0">
-    <Column name="Attribute">
+  <Entity name="Suggestion" Unlogged="false" PKClustered="0">
+    <Column name="ID">
       <PrimaryKey>true</PrimaryKey>
       <ForeignKey>false</ForeignKey>
       <Type>9</Type>
@@ -360,10 +317,10 @@
       <Index>false</Index>
       <UserTypes/>
     </Column>
-    <Column name="ChannelAttribute">
+    <Column name="ArticleID">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>Diagrama de classes.Channel.Attribute</ReferencedColumn>
+      <ReferencedColumn>newsapp.Article.ID</ReferencedColumn>
       <Type>9</Type>
       <Length>10</Length>
       <Nullable>true</Nullable>
@@ -372,34 +329,10 @@
       <Index>false</Index>
       <UserTypes/>
     </Column>
-    <Column name="ID">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>false</ForeignKey>
-      <Type>9</Type>
-      <Length>10</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <UserTypes/>
-    </Column>
-  </Entity>
-  <Entity name="ArticleSuggestion" Unlogged="false" PKClustered="0">
-    <Column name="Attribute">
-      <PrimaryKey>true</PrimaryKey>
-      <ForeignKey>false</ForeignKey>
-      <Type>9</Type>
-      <Length>10</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <UserTypes/>
-    </Column>
-    <Column name="ArticleAttribute">
+    <Column name="ChannelID">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>Diagrama de classes.Article.Attribute</ReferencedColumn>
+      <ReferencedColumn>newsapp.Channel.ID</ReferencedColumn>
       <Type>9</Type>
       <Length>10</Length>
       <Nullable>true</Nullable>
@@ -408,11 +341,45 @@
       <Index>false</Index>
       <UserTypes/>
     </Column>
-    <Column name="ID">
+    <Column name="UserID">
       <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>false</ForeignKey>
+      <ForeignKey>true</ForeignKey>
+      <ReferencedColumn>newsapp.User.ID</ReferencedColumn>
       <Type>9</Type>
       <Length>10</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+    <Column name="Comment">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>27</Type>
+      <Length>255</Length>
+      <Nullable>true</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+    <Column name="MadeAt">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>17</Type>
+      <Length>0</Length>
+      <Nullable>true</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+    <Column name="Discriminator">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>27</Type>
+      <Length>255</Length>
       <Nullable>false</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
@@ -432,10 +399,10 @@
       <Index>false</Index>
       <UserTypes/>
     </Column>
-    <Column name="ArticleAttribute">
+    <Column name="ArticleID">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>Diagrama de classes.Article.Attribute</ReferencedColumn>
+      <ReferencedColumn>newsapp.Article.ID</ReferencedColumn>
       <Type>9</Type>
       <Length>10</Length>
       <Nullable>false</Nullable>
@@ -444,10 +411,10 @@
       <Index>false</Index>
       <UserTypes/>
     </Column>
-    <Column name="ChannelAttribute">
+    <Column name="ChannelID">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>Diagrama de classes.Channel.Attribute</ReferencedColumn>
+      <ReferencedColumn>newsapp.Channel.ID</ReferencedColumn>
       <Type>9</Type>
       <Length>10</Length>
       <Nullable>false</Nullable>
@@ -468,114 +435,134 @@
       <UserTypes/>
     </Column>
   </Entity>
-  <ForeignKey name="FKChannel584627">
+  <ForeignKey name="FKChannel88893">
     <ReferenceTable>Channel</ReferenceTable>
     <ReferencedTable>User</ReferencedTable>
     <Columns>
-      <Column>UserAttribute</Column>
+      <Column>UserID</Column>
     </Columns>
     <RefColumns>
-      <Column>Attribute</Column>
+      <Column>ID</Column>
     </RefColumns>
   </ForeignKey>
-  <ForeignKey name="FKUser912158">
+  <ForeignKey name="FKUser990031">
     <ReferenceTable>User</ReferenceTable>
     <ReferencedTable>Channel</ReferencedTable>
     <Columns>
-      <Column>ChannelAttribute</Column>
+      <Column>ChannelID</Column>
     </Columns>
     <RefColumns>
-      <Column>Attribute</Column>
+      <Column>ID</Column>
     </RefColumns>
   </ForeignKey>
-  <ForeignKey name="FKArticle542507">
+  <ForeignKey name="FKArticle351210">
     <ReferenceTable>Article</ReferenceTable>
     <ReferencedTable>Channel</ReferencedTable>
     <Columns>
-      <Column>ChannelAttribute</Column>
+      <Column>ChannelID</Column>
     </Columns>
     <RefColumns>
-      <Column>Attribute</Column>
+      <Column>ID</Column>
     </RefColumns>
   </ForeignKey>
-  <ForeignKey name="FKComment970517">
+  <ForeignKey name="FKComment841720">
     <ReferenceTable>Comment</ReferenceTable>
     <ReferencedTable>Article</ReferencedTable>
     <Columns>
-      <Column>ArticleAttribute</Column>
+      <Column>ArticleID</Column>
     </Columns>
     <RefColumns>
-      <Column>Attribute</Column>
+      <Column>ID</Column>
     </RefColumns>
   </ForeignKey>
-  <ForeignKey name="FKComment136260">
+  <ForeignKey name="FKComment537260">
     <ReferenceTable>Comment</ReferenceTable>
     <ReferencedTable>User</ReferencedTable>
     <Columns>
-      <Column>UserAttribute</Column>
+      <Column>UserID</Column>
     </Columns>
     <RefColumns>
-      <Column>Attribute</Column>
+      <Column>ID</Column>
     </RefColumns>
   </ForeignKey>
-  <ForeignKey name="FKCategory928590">
+  <ForeignKey name="FKCategory57388">
     <ReferenceTable>Category</ReferenceTable>
     <ReferencedTable>Article</ReferencedTable>
     <Columns>
-      <Column>ArticleAttribute</Column>
+      <Column>ArticleID</Column>
     </Columns>
     <RefColumns>
-      <Column>Attribute</Column>
+      <Column>ID</Column>
     </RefColumns>
   </ForeignKey>
-  <ForeignKey name="FKCategory936221">
+  <ForeignKey name="FKCategory361848">
     <ReferenceTable>Category</ReferenceTable>
     <ReferencedTable>User</ReferencedTable>
     <Columns>
-      <Column>UserAttribute</Column>
+      <Column>UserID</Column>
     </Columns>
     <RefColumns>
-      <Column>Attribute</Column>
+      <Column>ID</Column>
     </RefColumns>
   </ForeignKey>
-  <ForeignKey name="FKChannelSug380541">
-    <ReferenceTable>ChannelSuggestion</ReferenceTable>
+  <ForeignKey name="FKSuggestion672977">
+    <ReferenceTable>Suggestion</ReferenceTable>
+    <ReferencedTable>User</ReferencedTable>
+    <Columns>
+      <Column>UserID</Column>
+    </Columns>
+    <RefColumns>
+      <Column>ID</Column>
+    </RefColumns>
+  </ForeignKey>
+  <ForeignKey name="FKUser92200">
+    <ReferenceTable>User</ReferenceTable>
+    <ReferencedTable>Suggestion</ReferencedTable>
+    <Columns>
+      <Column>SuggestionID</Column>
+    </Columns>
+    <RefColumns>
+      <Column>ID</Column>
+    </RefColumns>
+  </ForeignKey>
+  <ForeignKey name="FKSuggestion562614">
+    <ReferenceTable>Suggestion</ReferenceTable>
     <ReferencedTable>Channel</ReferencedTable>
     <Columns>
-      <Column>ChannelAttribute</Column>
+      <Column>ChannelID</Column>
     </Columns>
     <RefColumns>
-      <Column>Attribute</Column>
+      <Column>ID</Column>
     </RefColumns>
   </ForeignKey>
-  <ForeignKey name="FKArticleSug314149">
-    <ReferenceTable>ArticleSuggestion</ReferenceTable>
+  <ForeignKey name="FKSuggestion994152">
+    <ReferenceTable>Suggestion</ReferenceTable>
     <ReferencedTable>Article</ReferencedTable>
     <Columns>
-      <Column>ArticleAttribute</Column>
+      <Column>ArticleID</Column>
     </Columns>
     <RefColumns>
-      <Column>Attribute</Column>
+      <Column>ID</Column>
     </RefColumns>
   </ForeignKey>
-  <ForeignKey name="FKContentTyp966947">
+  <ForeignKey name="FKContentTyp889074">
     <ReferenceTable>ContentType</ReferenceTable>
     <ReferencedTable>Channel</ReferencedTable>
     <Columns>
-      <Column>ChannelAttribute</Column>
+      <Column>ChannelID</Column>
     </Columns>
     <RefColumns>
-      <Column>Attribute</Column>
+      <Column>ID</Column>
     </RefColumns>
   </ForeignKey>
-  <ForeignKey name="FKContentTyp654545">
+  <ForeignKey name="FKContentTyp525748">
     <ReferenceTable>ContentType</ReferenceTable>
     <ReferencedTable>Article</ReferencedTable>
     <Columns>
-      <Column>ArticleAttribute</Column>
+      <Column>ArticleID</Column>
     </Columns>
     <RefColumns>
-      <Column>Attribute</Column>
+      <Column>ID</Column>
     </RefColumns>
   </ForeignKey>
 </Model>

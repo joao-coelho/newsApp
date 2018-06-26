@@ -19,29 +19,26 @@ import org.orm.PersistentSession;
 import org.orm.criteria.*;
 
 public class CommentDetachedCriteria extends AbstractORMDetachedCriteria {
-	public final IntegerExpression attribute;
+	public final IntegerExpression ID;
 	public final IntegerExpression authorId;
 	public final AssociationExpression author;
-	public final IntegerExpression ID;
 	public final StringExpression content;
 	public final DateExpression addedAt;
 	
 	public CommentDetachedCriteria() {
 		super(newsapp.Comment.class, newsapp.CommentCriteria.class);
-		attribute = new IntegerExpression("attribute", this.getDetachedCriteria());
-		authorId = new IntegerExpression("author.attribute", this.getDetachedCriteria());
-		author = new AssociationExpression("author", this.getDetachedCriteria());
 		ID = new IntegerExpression("ID", this.getDetachedCriteria());
+		authorId = new IntegerExpression("author.ID", this.getDetachedCriteria());
+		author = new AssociationExpression("author", this.getDetachedCriteria());
 		content = new StringExpression("content", this.getDetachedCriteria());
 		addedAt = new DateExpression("addedAt", this.getDetachedCriteria());
 	}
 	
 	public CommentDetachedCriteria(DetachedCriteria aDetachedCriteria) {
 		super(aDetachedCriteria, newsapp.CommentCriteria.class);
-		attribute = new IntegerExpression("attribute", this.getDetachedCriteria());
-		authorId = new IntegerExpression("author.attribute", this.getDetachedCriteria());
-		author = new AssociationExpression("author", this.getDetachedCriteria());
 		ID = new IntegerExpression("ID", this.getDetachedCriteria());
+		authorId = new IntegerExpression("author.ID", this.getDetachedCriteria());
+		author = new AssociationExpression("author", this.getDetachedCriteria());
 		content = new StringExpression("content", this.getDetachedCriteria());
 		addedAt = new DateExpression("addedAt", this.getDetachedCriteria());
 	}

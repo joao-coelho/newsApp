@@ -44,13 +44,10 @@ public class Article implements Serializable {
 		
 	};
 	
-	@Column(name="Attribute", nullable=false, length=10)	
-	@Id	
-	@GeneratedValue(generator="NEWSAPP_ARTICLE_ATTRIBUTE_GENERATOR")	
-	@org.hibernate.annotations.GenericGenerator(name="NEWSAPP_ARTICLE_ATTRIBUTE_GENERATOR", strategy="native")	
-	private int attribute;
-	
 	@Column(name="ID", nullable=false, length=10)	
+	@Id	
+	@GeneratedValue(generator="NEWSAPP_ARTICLE_ID_GENERATOR")	
+	@org.hibernate.annotations.GenericGenerator(name="NEWSAPP_ARTICLE_ID_GENERATOR", strategy="native")	
 	private int ID;
 	
 	@Column(name="Title", nullable=true, length=255)	
@@ -64,40 +61,32 @@ public class Article implements Serializable {
 	
 	@OneToMany(targetEntity=newsapp.Comment.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
-	@JoinColumns({ @JoinColumn(name="ArticleAttribute", nullable=false) })	
+	@JoinColumns({ @JoinColumn(name="ArticleID", nullable=false) })	
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
 	private java.util.Set ORM_comments = new java.util.HashSet();
 	
 	@OneToMany(targetEntity=newsapp.Category.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
-	@JoinColumns({ @JoinColumn(name="ArticleAttribute", nullable=false) })	
+	@JoinColumns({ @JoinColumn(name="ArticleID", nullable=false) })	
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
 	private java.util.Set ORM_categories = new java.util.HashSet();
 	
 	@OneToMany(targetEntity=newsapp.ContentType.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
-	@JoinColumns({ @JoinColumn(name="ArticleAttribute", nullable=false) })	
+	@JoinColumns({ @JoinColumn(name="ArticleID", nullable=false) })	
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
 	private java.util.Set ORM__contentType = new java.util.HashSet();
 	
-	private void setAttribute(int value) {
-		this.attribute = value;
-	}
-	
-	public int getAttribute() {
-		return attribute;
-	}
-	
-	public int getORMID() {
-		return getAttribute();
-	}
-	
-	public void setID(int value) {
+	private void setID(int value) {
 		this.ID = value;
 	}
 	
 	public int getID() {
 		return ID;
+	}
+	
+	public int getORMID() {
+		return getID();
 	}
 	
 	public void setTitle(String value) {
@@ -162,7 +151,7 @@ public class Article implements Serializable {
 	public final newsapp.ContentTypeSetCollection _contentType = new newsapp.ContentTypeSetCollection(this, _ormAdapter, ORMConstants.KEY_ARTICLE__CONTENTTYPE, ORMConstants.KEY_MUL_ONE_TO_MANY);
 	
 	public String toString() {
-		return String.valueOf(getAttribute());
+		return String.valueOf(getID());
 	}
 	
 }
