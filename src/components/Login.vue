@@ -98,7 +98,7 @@ export default {
   }
 }
 .form-row {
-  margin-top: 5vh;
+  margin-top: 75px;
 }
 #form-section {
   @include flex-layout(center, center);

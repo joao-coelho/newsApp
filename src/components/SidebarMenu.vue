@@ -1,6 +1,6 @@
 <template>
   <b-row id="sidebar">
-    <b-col class="nav-side-menu" md="3">
+    <b-col class="nav-side-menu" md="4" lg="2">
       <a class="toggle-btn"><font-awesome-icon icon="bars"/></a>
       <div class="menu-list">
         <ul id="menu-content" class="menu-content">
@@ -85,17 +85,14 @@ export default {
 @import "styles/global.scss";
 
 .nav-side-menu {
-  overflow: auto;
   font-size: 1rem;
   font-weight: 200;
-  border: 1px solid #29487d;
-  border-top: 0px;
-  position: fixed;
-  height: 100%;
+  border-right: 1px solid #29487d;
+  position: static;
   padding: 0;
   .menu-list {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
     ul, li {
       list-style: none;
       padding: 0px;

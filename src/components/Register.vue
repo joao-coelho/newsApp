@@ -164,24 +164,24 @@
                 <b-col sm="4">
                   <b-form-group>
                     <b-form-checkbox-group stacked
-                                           :options="types1"
-                                           v-model="channelSelectedTypes">
+                                           v-model="channelSelectedTypes"
+                                           :options="types1">
                     </b-form-checkbox-group>
                   </b-form-group>
                 </b-col>
                 <b-col sm="4">
                   <b-form-group>
                     <b-form-checkbox-group stacked
-                                           :options="types2"
-                                           v-model="channelSelectedTypes">
+                                           v-model="channelSelectedTypes"
+                                           :options="types2">
                     </b-form-checkbox-group>
                   </b-form-group>
                 </b-col>
                 <b-col sm="4">
                   <b-form-group>
                     <b-form-checkbox-group stacked
-                                           :options="types3"
-                                           v-model="channelSelectedTypes">
+                                           v-model="channelSelectedTypes"
+                                           :options="types3">
                     </b-form-checkbox-group>
                   </b-form-group>
                 </b-col>
@@ -219,27 +219,6 @@ export default {
       name: '',
       age: '',
       selectedTypes: [],
-      types1: [
-        { text: 'Business', value: 'business' },
-        { text: 'Entertainment', value: 'entertainment' },
-        { text: 'Health', value: 'health' },
-        { text: 'Science', value: 'science' },
-        { text: 'Sports', value: 'sports' }
-      ],
-      types2: [
-        { text: 'Technology', value: 'technology' },
-        { text: 'Politics', value: 'politics' },
-        { text: 'Weather', value: 'weather' },
-        { text: 'Finance', value: 'finance' },
-        { text: 'Economy', value: 'economy' }
-      ],
-      types3: [
-        { text: 'Education', value: 'education' },
-        { text: 'Religion', value: 'religion' },
-        { text: 'Environment', value: 'environment' },
-        { text: 'Government', value: 'government' },
-        { text: 'Arts', value: 'arts' }
-      ],
       allSelected: false,
       selectedCountry: '',
       createChannel: false,
@@ -262,26 +241,62 @@ export default {
     },
     selectAll() {
       this.selectedTypes = this.allSelected ? [] : this.allTypes;
+      console.log(this.selectedTypes);
     },
     channelSelectAll() {
       this.channelSelectedTypes = this.channelAllSelected ? [] : this.allTypes;
     },
     changeCreateChannel() {
       this.createChannel = !this.createChannel;
+    },
+    typesBuilder(min, max, list) {
+      var res = [];
+      if (this.$i18n.locale == 'en') {
+        for(var i = min; i < max; i++){
+          let obj = {
+            "text": list[i].en,
+            "value": list[i].value
+          }
+          res.push(obj);
+        }
+      }
+      else {
+        for(var i = min; i < max; i++){
+          let obj = {
+            "text": list[i].pt,
+            "value": list[i].value
+          }
+          res.push(obj);
+        }
+      }
+      return res;
     }
   },
   computed: {
     countries() {
       return this.loadCountries(this.$i18n.locale);
     },
-    allTypes() {
-      var list = [];
-      for(var i = 0; i < 5; i++){
-        list.push(this.types1[i].value);
-        list.push(this.types2[i].value);
-        list.push(this.types3[i].value);
-      }
+    categories() {
+      var list = require('../../static/language/categories.json');
       return list;
+    },
+    types1() {
+      return this.typesBuilder(0, 5, this.categories);
+    },
+    types2() {
+      return this.typesBuilder(5, 10, this.categories);
+    },
+    types3() {
+      return this.typesBuilder(10, 15, this.categories);
+    },
+    allTypes() {
+      var all = [];
+      for (var i = 0; i < 5; i++) {
+        all.push(this.types1[i].value);
+        all.push(this.types2[i].value);
+        all.push(this.types3[i].value);
+      }
+      return all;
     }
   },
   watch: {
@@ -315,7 +330,7 @@ export default {
     color: $blue;
   }
   @include flex-layout(space-between, center);
-  margin: 20px 20px 0 20px;
+  margin: 75px 20px 0 20px;
   div {
     display: flex;
     flex-direction: column;

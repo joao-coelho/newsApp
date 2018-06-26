@@ -43,10 +43,14 @@ export default {
     padding: 0;
   }
   .navbar {
+    position: fixed;
+    top: 0;
     background-color: $blue;
     border-bottom: 1px solid #29487d;
     height: 50px;
+    width: 100%;
     flex-wrap: nowrap;
+    z-index: 999;
   }
   .navbar-brand img {
     height: 30px;
