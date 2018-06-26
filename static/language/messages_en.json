@@ -40,5 +40,15 @@
 	"register_newsType": "What kind of news will you be publishing?",
 	"register_moreInfo": "More info",
 	"register_checkAll": "Select all",
-	"register_register": "Register"
+	"register_register": "Register",
+
+	"feed_searchbar": "Search...",
+	"feed_menuNews": "News feed",
+	"feed_menuTrending": "Trending",
+	"feed_menuSubscriptions": "Subscriptions",
+	"feed_menuLikes": "Likes/Comments",
+	"feed_menuCategories": "Categories",
+	"feed_menuPreferences": "Preferences",
+	"feed_menuSettings": "Settings",
+	"feed_menuHelp": "Help"
 }

@@ -40,5 +40,15 @@
 	"register_newsType": "Que temática de notícias caracterizará o seu canal?",
 	"register_moreInfo": "Saber mais",
 	"register_checkAll": "Selecionar tudo",
-	"register_register": "Registar"
+	"register_register": "Registar",
+
+	"feed_searchbar": "Procurar...",
+	"feed_menuNews": "Feed de notícias",
+	"feed_menuTrending": "Tendências",
+	"feed_menuSubscriptions": "Subscrições",
+	"feed_menuLikes": "Gostos/Comentários",
+	"feed_menuCategories": "Categorias",
+	"feed_menuPreferences": "Preferências",
+	"feed_menuSettings": "Definições",
+	"feed_menuHelp": "Ajuda"
 }

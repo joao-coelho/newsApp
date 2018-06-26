@@ -8,6 +8,38 @@ import BootstrapVue from "bootstrap-vue"
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap-vue/dist/bootstrap-vue.css"
 import Vuei18n from 'vue-i18n'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faBars, faNewspaper, faFire, faThumbsUp, faListUl,
+ 				 faUserTie, faChess, faHeartbeat, faFlask, faFutbol,
+				 faDesktop, faGavel, faSun, faHandHoldingUsd, faChartLine,
+			 	 faGraduationCap, faChurch, faTree, faBalanceScale, faCog,
+				 faPencilAlt, faHeart, faQuestionCircle } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+library.add(faBars)
+library.add(faNewspaper)
+library.add(faFire)
+library.add(faThumbsUp)
+library.add(faListUl)
+library.add(faUserTie)
+library.add(faChess)
+library.add(faHeartbeat)
+library.add(faFlask)
+library.add(faFutbol)
+library.add(faDesktop)
+library.add(faGavel)
+library.add(faSun)
+library.add(faHandHoldingUsd)
+library.add(faChartLine)
+library.add(faGraduationCap)
+library.add(faChurch)
+library.add(faTree)
+library.add(faBalanceScale)
+library.add(faCog)
+library.add(faPencilAlt)
+library.add(faHeart)
+library.add(faQuestionCircle)
+Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 Vue.use(BootstrapVue)
 Vue.use(Vuei18n)

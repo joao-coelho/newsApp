@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
+import Feed from '@/components/Feed'
 import Login from '@/components/Login'
 import Register from '@/components/Register'
 
@@ -12,7 +12,7 @@ export default new Router({
     {
       path: '/',
       name: 'Feed',
-      component: HelloWorld
+      component: Feed
     },
     {
       path: '/login',
