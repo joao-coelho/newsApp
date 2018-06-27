@@ -41,6 +41,10 @@
 	"register_moreInfo": "More info",
 	"register_checkAll": "Select all",
 	"register_register": "Register",
+	"register_usernameError": "Username already taken",
+	"register_passError": "Passwords don't appear to match",
+	"register_lengthError": "The password must have at least 6 characters",
+	"register_emailError": "Email already taken",
 
 	"feed_searchbar": "Search...",
 	"feed_menuNews": "News feed",

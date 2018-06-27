@@ -23,9 +23,14 @@
                   <b-form-input id="usernameInput"
                                 type="text"
                                 v-model="username"
+                                @keyup.native="verifyUsername()"
+                                :state="userState"
                                 required
                                 :placeholder="$t('register_userPlaceholder')">
                   </b-form-input>
+                  <b-form-invalid-feedback id="inputLiveFeedback">
+                    {{ $t( 'register_usernameError' ) }}
+                  </b-form-invalid-feedback>
                 </b-form-group>
                 <b-form-group id="pwdGroup"
                               :label="$t('register_password')"
@@ -33,19 +38,28 @@
                   <b-form-input id="pwdInput"
                                 type="password"
                                 v-model="pwd"
+                                :state="lengthState"
                                 required
                                 :placeholder="$t('register_pwdPlaceholder')">
                   </b-form-input>
+                  <b-form-invalid-feedback id="lengthFeedback">
+                    {{ $t( 'register_lengthError' ) }}
+                  </b-form-invalid-feedback>
                 </b-form-group>
                 <b-form-group id="pwdRepeatGroup"
                               :label="$t('register_repeatPwd')"
                               label-for="pwdInput">
-                  <b-form-input id="pwdInput"
+                  <b-form-input id="pwdInput_rep"
                                 type="password"
                                 v-model="pwd_rep"
+                                @keyup.native="verifyPass()"
+                                :state="passState"
                                 required
                                 :placeholder="$t('register_repeatPwdPlaceholder')">
                   </b-form-input>
+                  <b-form-invalid-feedback id="passFeedback">
+                    {{ $t( 'register_passError' ) }}
+                  </b-form-invalid-feedback>
                 </b-form-group>
               </b-form>
             </b-col>
@@ -88,9 +102,14 @@
                   <b-form-input id="emailInput"
                                 type="email"
                                 v-model="email"
+                                @keyup.native="verifyEmail()"
+                                :state="emailState"
                                 required
                                 :placeholder="$t('register_emailPlaceholder')">
                   </b-form-input>
+                  <b-form-invalid-feedback id="emailFeedback">
+                    {{ $t( 'register_emailError' ) }}
+                  </b-form-invalid-feedback>
                 </b-form-group>
               </b-form>
             </b-col>
@@ -203,6 +222,7 @@
 <script>
 import Autocomplete from './Autocomplete'
 import NavbarLogin from './NavbarLogin'
+import axios from 'axios'
 
 export default {
   name: 'Register',
@@ -218,6 +238,10 @@ export default {
       email: '',
       name: '',
       age: '',
+      userAvailable: -1,
+      emailAvailable: -1,
+      samePass: -1,
+      validLength: -1,
       selectedTypes: [],
       allSelected: false,
       selectedCountry: '',
@@ -228,7 +252,77 @@ export default {
   },
   methods: {
     register() {
-
+      console.log("Entrei");
+      if(userAvailable == 1 && emailAvailable == 1 &&
+         samePass == 1 && validLength == 1) {
+           let details = {
+             username: this.username,
+             password: this.pwd,
+             name: this.name,
+             age: this.age,
+             email: this.email,
+             country: this.selectedCountry,
+             types: this.selectedTypes,
+             channelTypes: this.channelSelectedTypes
+           }
+           axios({url: 'http://localhost:8091/register/submit', data: details, method: 'POST' })
+           .then(resp => {
+             var sucess = resp.data;
+             if(sucess == 1) {
+               this.$router.push('/login')
+             }
+           })
+         }
+    },
+    verifyUsername() {
+      if(this.username .length != 0) {
+        axios.get('http://localhost:8091/register/verifyUser', {
+          params: {
+            username: this.username
+          }
+        })
+        .then(resp => {
+          this.userAvailable = resp.data;
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+      }
+      else {
+        this.userAvailable = -1;
+      }
+    },
+    verifyEmail() {
+      if(this.email.length != 0) {
+        axios.get('http://localhost:8091/register/verifyEmail', {
+          params: {
+            email: this.email
+          }
+        })
+        .then(resp => {
+          this.emailAvailable = resp.data;
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+      }
+      else {
+        this.emailAvailable = -1;
+      }
+    },
+    verifyPass() {
+      if(this.pwd.length != 0) {
+        if(this.pwd_rep.length != 0) {
+          if (this.pwd == this.pwd_rep) this.samePass = 1;
+          else this.samePass = 0;
+        }
+        else {
+          this.samePass = -1;
+        }
+      }
+      else {
+        this.samepass = -1;
+      }
     },
     loadCountries(lang) {
       if (lang == "en") {
@@ -273,6 +367,44 @@ export default {
     }
   },
   computed: {
+    userState() {
+      if(this.userAvailable == 1) {
+        return true;
+      }
+      if(this.userAvailable == 0) {
+        return false;
+      }
+      return null;
+    },
+    passState() {
+      if(this.samePass == 1) {
+        return true;
+      }
+      if(this.samePass == 0) {
+        return false;
+      }
+      return null;
+    },
+    emailState() {
+      if(this.emailAvailable == 1) {
+        return true;
+      }
+      if(this.emailAvailable == 0) {
+        return false;
+      }
+      return null;
+    },
+    lengthState() {
+      var length = this.pwd.length;
+      if(length == 0) {
+        return null;
+      }
+      if(length < 6) {
+        return false;
+      }
+      this.validLength = 1;
+      return true;
+    },
     countries() {
       return this.loadCountries(this.$i18n.locale);
     },

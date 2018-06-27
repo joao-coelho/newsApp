@@ -41,6 +41,10 @@
 	"register_moreInfo": "Saber mais",
 	"register_checkAll": "Selecionar tudo",
 	"register_register": "Registar",
+	"register_usernameError": "O nome de utilizador pretendido já não se encontra disponível",
+	"register_passError": "As passwords não coincidem",
+	"register_lengthError": "A password tem que ser composta por, pelo menos, 6 caracteres",
+	"register_emailError": "O email pretendido já se encontra registado",
 
 	"feed_searchbar": "Procurar...",
 	"feed_menuNews": "Feed de notícias",
