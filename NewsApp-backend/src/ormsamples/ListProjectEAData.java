@@ -203,7 +203,7 @@ public class ListProjectEAData {
 		System.out.println("Listing ArticleCategory by Criteria...");
 		newsapp.ArticleCategoryCriteria lnewsappArticleCategoryCriteria = new newsapp.ArticleCategoryCriteria();
 		// Please uncomment the follow line and fill in parameter(s) 
-		//lnewsappArticleCategoryCriteria.ID.eq();
+		//lnewsappArticleCategoryCriteria.attribute.eq();
 		lnewsappArticleCategoryCriteria.setMaxResults(ROW_COUNT);
 		newsapp.ArticleCategory[] newsappArticleCategorys = lnewsappArticleCategoryCriteria.listArticleCategory();
 		length =newsappArticleCategorys== null ? 0 : Math.min(newsappArticleCategorys.length, ROW_COUNT); 

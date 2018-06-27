@@ -20,54 +20,54 @@ import org.orm.criteria.*;
 
 public class UserDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final IntegerExpression ID;
-	public final IntegerExpression _myChannelId;
-	public final AssociationExpression _myChannel;
+	public final CollectionExpression _subscriptions;
 	public final StringExpression username;
 	public final StringExpression password;
 	public final StringExpression name;
 	public final ShortExpression age;
 	public final StringExpression country;
 	public final CollectionExpression _preferences;
-	public final CollectionExpression _subscriptions;
+	public final IntegerExpression _myChannelId;
+	public final AssociationExpression _myChannel;
 	
 	public UserDetachedCriteria() {
 		super(newsapp.User.class, newsapp.UserCriteria.class);
 		ID = new IntegerExpression("ID", this.getDetachedCriteria());
-		_myChannelId = new IntegerExpression("_myChannel.ID", this.getDetachedCriteria());
-		_myChannel = new AssociationExpression("_myChannel", this.getDetachedCriteria());
+		_subscriptions = new CollectionExpression("ORM__subscriptions", this.getDetachedCriteria());
 		username = new StringExpression("username", this.getDetachedCriteria());
 		password = new StringExpression("password", this.getDetachedCriteria());
 		name = new StringExpression("name", this.getDetachedCriteria());
 		age = new ShortExpression("age", this.getDetachedCriteria());
 		country = new StringExpression("country", this.getDetachedCriteria());
 		_preferences = new CollectionExpression("ORM__preferences", this.getDetachedCriteria());
-		_subscriptions = new CollectionExpression("ORM__subscriptions", this.getDetachedCriteria());
+		_myChannelId = new IntegerExpression("_myChannel.ID", this.getDetachedCriteria());
+		_myChannel = new AssociationExpression("_myChannel", this.getDetachedCriteria());
 	}
 	
 	public UserDetachedCriteria(DetachedCriteria aDetachedCriteria) {
 		super(aDetachedCriteria, newsapp.UserCriteria.class);
 		ID = new IntegerExpression("ID", this.getDetachedCriteria());
-		_myChannelId = new IntegerExpression("_myChannel.ID", this.getDetachedCriteria());
-		_myChannel = new AssociationExpression("_myChannel", this.getDetachedCriteria());
+		_subscriptions = new CollectionExpression("ORM__subscriptions", this.getDetachedCriteria());
 		username = new StringExpression("username", this.getDetachedCriteria());
 		password = new StringExpression("password", this.getDetachedCriteria());
 		name = new StringExpression("name", this.getDetachedCriteria());
 		age = new ShortExpression("age", this.getDetachedCriteria());
 		country = new StringExpression("country", this.getDetachedCriteria());
 		_preferences = new CollectionExpression("ORM__preferences", this.getDetachedCriteria());
-		_subscriptions = new CollectionExpression("ORM__subscriptions", this.getDetachedCriteria());
+		_myChannelId = new IntegerExpression("_myChannel.ID", this.getDetachedCriteria());
+		_myChannel = new AssociationExpression("_myChannel", this.getDetachedCriteria());
 	}
 	
-	public ChannelDetachedCriteria create_myChannelCriteria() {
-		return new ChannelDetachedCriteria(createCriteria("_myChannel"));
+	public ChannelDetachedCriteria create_subscriptionsCriteria() {
+		return new ChannelDetachedCriteria(createCriteria("ORM__subscriptions"));
 	}
 	
 	public CategoryDetachedCriteria create_preferencesCriteria() {
 		return new CategoryDetachedCriteria(createCriteria("ORM__preferences"));
 	}
 	
-	public ChannelDetachedCriteria create_subscriptionsCriteria() {
-		return new ChannelDetachedCriteria(createCriteria("ORM__subscriptions"));
+	public ChannelDetachedCriteria create_myChannelCriteria() {
+		return new ChannelDetachedCriteria(createCriteria("_myChannel"));
 	}
 	
 	public User uniqueUser(PersistentSession session) {

@@ -22,25 +22,36 @@ public class ArticleCategory implements Serializable {
 	public ArticleCategory() {
 	}
 	
-	@Column(name="ID", nullable=false, length=10)	
+	@Column(name="Attribute", nullable=false, length=10)	
 	@Id	
-	@GeneratedValue(generator="NEWSAPP_ARTICLECATEGORY_ID_GENERATOR")	
-	@org.hibernate.annotations.GenericGenerator(name="NEWSAPP_ARTICLECATEGORY_ID_GENERATOR", strategy="native")	
+	@GeneratedValue(generator="NEWSAPP_ARTICLECATEGORY_ATTRIBUTE_GENERATOR")	
+	@org.hibernate.annotations.GenericGenerator(name="NEWSAPP_ARTICLECATEGORY_ATTRIBUTE_GENERATOR", strategy="native")	
+	private int attribute;
+	
+	@Column(name="ID", nullable=false, length=10)	
 	private int ID;
 	
 	@Column(name="Description", nullable=true, length=255)	
 	private String description;
 	
-	private void setID(int value) {
+	private void setAttribute(int value) {
+		this.attribute = value;
+	}
+	
+	public int getAttribute() {
+		return attribute;
+	}
+	
+	public int getORMID() {
+		return getAttribute();
+	}
+	
+	public void setID(int value) {
 		this.ID = value;
 	}
 	
 	public int getID() {
 		return ID;
-	}
-	
-	public int getORMID() {
-		return getID();
 	}
 	
 	public void setDescription(String value) {
@@ -52,7 +63,7 @@ public class ArticleCategory implements Serializable {
 	}
 	
 	public String toString() {
-		return String.valueOf(getID());
+		return String.valueOf(getAttribute());
 	}
 	
 }

@@ -19,10 +19,10 @@ import org.hibernate.LockMode;
 import java.util.List;
 
 public class ArticleCategoryDAO {
-	public static ArticleCategory loadArticleCategoryByORMID(int ID) throws PersistentException {
+	public static ArticleCategory loadArticleCategoryByORMID(int attribute) throws PersistentException {
 		try {
 			PersistentSession session = ProjectEAPersistentManager.instance().getSession();
-			return loadArticleCategoryByORMID(session, ID);
+			return loadArticleCategoryByORMID(session, attribute);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -30,10 +30,10 @@ public class ArticleCategoryDAO {
 		}
 	}
 	
-	public static ArticleCategory getArticleCategoryByORMID(int ID) throws PersistentException {
+	public static ArticleCategory getArticleCategoryByORMID(int attribute) throws PersistentException {
 		try {
 			PersistentSession session = ProjectEAPersistentManager.instance().getSession();
-			return getArticleCategoryByORMID(session, ID);
+			return getArticleCategoryByORMID(session, attribute);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -41,10 +41,10 @@ public class ArticleCategoryDAO {
 		}
 	}
 	
-	public static ArticleCategory loadArticleCategoryByORMID(int ID, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static ArticleCategory loadArticleCategoryByORMID(int attribute, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = ProjectEAPersistentManager.instance().getSession();
-			return loadArticleCategoryByORMID(session, ID, lockMode);
+			return loadArticleCategoryByORMID(session, attribute, lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -52,10 +52,10 @@ public class ArticleCategoryDAO {
 		}
 	}
 	
-	public static ArticleCategory getArticleCategoryByORMID(int ID, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static ArticleCategory getArticleCategoryByORMID(int attribute, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = ProjectEAPersistentManager.instance().getSession();
-			return getArticleCategoryByORMID(session, ID, lockMode);
+			return getArticleCategoryByORMID(session, attribute, lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -63,9 +63,9 @@ public class ArticleCategoryDAO {
 		}
 	}
 	
-	public static ArticleCategory loadArticleCategoryByORMID(PersistentSession session, int ID) throws PersistentException {
+	public static ArticleCategory loadArticleCategoryByORMID(PersistentSession session, int attribute) throws PersistentException {
 		try {
-			return (ArticleCategory) session.load(newsapp.ArticleCategory.class, new Integer(ID));
+			return (ArticleCategory) session.load(newsapp.ArticleCategory.class, new Integer(attribute));
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -73,9 +73,9 @@ public class ArticleCategoryDAO {
 		}
 	}
 	
-	public static ArticleCategory getArticleCategoryByORMID(PersistentSession session, int ID) throws PersistentException {
+	public static ArticleCategory getArticleCategoryByORMID(PersistentSession session, int attribute) throws PersistentException {
 		try {
-			return (ArticleCategory) session.get(newsapp.ArticleCategory.class, new Integer(ID));
+			return (ArticleCategory) session.get(newsapp.ArticleCategory.class, new Integer(attribute));
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -83,9 +83,9 @@ public class ArticleCategoryDAO {
 		}
 	}
 	
-	public static ArticleCategory loadArticleCategoryByORMID(PersistentSession session, int ID, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static ArticleCategory loadArticleCategoryByORMID(PersistentSession session, int attribute, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
-			return (ArticleCategory) session.load(newsapp.ArticleCategory.class, new Integer(ID), lockMode);
+			return (ArticleCategory) session.load(newsapp.ArticleCategory.class, new Integer(attribute), lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -93,9 +93,9 @@ public class ArticleCategoryDAO {
 		}
 	}
 	
-	public static ArticleCategory getArticleCategoryByORMID(PersistentSession session, int ID, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static ArticleCategory getArticleCategoryByORMID(PersistentSession session, int attribute, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
-			return (ArticleCategory) session.get(newsapp.ArticleCategory.class, new Integer(ID), lockMode);
+			return (ArticleCategory) session.get(newsapp.ArticleCategory.class, new Integer(attribute), lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();

@@ -57,10 +57,11 @@ public class User implements Serializable {
 	@org.hibernate.annotations.GenericGenerator(name="NEWSAPP_USER_ID_GENERATOR", strategy="native")	
 	private int ID;
 	
-	@ManyToOne(targetEntity=newsapp.Channel.class, fetch=FetchType.LAZY)	
+	@ManyToMany(targetEntity=newsapp.Channel.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
-	@JoinColumns({ @JoinColumn(name="ChannelID", referencedColumnName="ID", nullable=false) })	
-	private newsapp.Channel _myChannel;
+	@JoinTable(name="User_Channel", joinColumns={ @JoinColumn(name="UserID") }, inverseJoinColumns={ @JoinColumn(name="ChannelID") })	
+	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
+	private java.util.Set ORM__subscriptions = new java.util.HashSet();
 	
 	@Column(name="Username", nullable=true, length=255)	
 	private String username;
@@ -83,11 +84,10 @@ public class User implements Serializable {
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
 	private java.util.Set ORM__preferences = new java.util.HashSet();
 	
-	@OneToMany(targetEntity=newsapp.Channel.class)	
+	@ManyToOne(targetEntity=newsapp.Channel.class, fetch=FetchType.LAZY)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
-	@JoinColumns({ @JoinColumn(name="UserID", nullable=false) })	
-	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
-	private java.util.Set ORM__subscriptions = new java.util.HashSet();
+	@JoinColumns({ @JoinColumn(name="ChannelID", referencedColumnName="ID", nullable=false) })	
+	private newsapp.Channel _myChannel;
 	
 	private void setID(int value) {
 		this.ID = value;
@@ -165,7 +165,7 @@ public class User implements Serializable {
 	}
 	
 	@Transient	
-	public final newsapp.ChannelSetCollection _subscriptions = new newsapp.ChannelSetCollection(this, _ormAdapter, ORMConstants.KEY_USER__SUBSCRIPTIONS, ORMConstants.KEY_MUL_ONE_TO_MANY);
+	public final newsapp.ChannelSetCollection _subscriptions = new newsapp.ChannelSetCollection(this, _ormAdapter, ORMConstants.KEY_USER__SUBSCRIPTIONS, ORMConstants.KEY_MUL_MANY_TO_MANY);
 	
 	public void set_myChannel(newsapp.Channel value) {
 		this._myChannel = value;

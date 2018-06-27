@@ -20,28 +20,28 @@ import org.orm.criteria.*;
 
 public class UserCriteria extends AbstractORMCriteria {
 	public final IntegerExpression ID;
-	public final IntegerExpression _myChannelId;
-	public final AssociationExpression _myChannel;
+	public final CollectionExpression _subscriptions;
 	public final StringExpression username;
 	public final StringExpression password;
 	public final StringExpression name;
 	public final ShortExpression age;
 	public final StringExpression country;
 	public final CollectionExpression _preferences;
-	public final CollectionExpression _subscriptions;
+	public final IntegerExpression _myChannelId;
+	public final AssociationExpression _myChannel;
 	
 	public UserCriteria(Criteria criteria) {
 		super(criteria);
 		ID = new IntegerExpression("ID", this);
-		_myChannelId = new IntegerExpression("_myChannel.ID", this);
-		_myChannel = new AssociationExpression("_myChannel", this);
+		_subscriptions = new CollectionExpression("ORM__subscriptions", this);
 		username = new StringExpression("username", this);
 		password = new StringExpression("password", this);
 		name = new StringExpression("name", this);
 		age = new ShortExpression("age", this);
 		country = new StringExpression("country", this);
 		_preferences = new CollectionExpression("ORM__preferences", this);
-		_subscriptions = new CollectionExpression("ORM__subscriptions", this);
+		_myChannelId = new IntegerExpression("_myChannel.ID", this);
+		_myChannel = new AssociationExpression("_myChannel", this);
 	}
 	
 	public UserCriteria(PersistentSession session) {
@@ -52,16 +52,16 @@ public class UserCriteria extends AbstractORMCriteria {
 		this(ProjectEAPersistentManager.instance().getSession());
 	}
 	
-	public ChannelCriteria create_myChannelCriteria() {
-		return new ChannelCriteria(createCriteria("_myChannel"));
+	public ChannelCriteria create_subscriptionsCriteria() {
+		return new ChannelCriteria(createCriteria("ORM__subscriptions"));
 	}
 	
 	public CategoryCriteria create_preferencesCriteria() {
 		return new CategoryCriteria(createCriteria("ORM__preferences"));
 	}
 	
-	public ChannelCriteria create_subscriptionsCriteria() {
-		return new ChannelCriteria(createCriteria("ORM__subscriptions"));
+	public ChannelCriteria create_myChannelCriteria() {
+		return new ChannelCriteria(createCriteria("_myChannel"));
 	}
 	
 	public User uniqueUser() {

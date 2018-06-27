@@ -105,7 +105,7 @@ public class RetrieveAndUpdateProjectEAData {
 		System.out.println("Retrieving ArticleCategory by ArticleCategoryCriteria");
 		newsapp.ArticleCategoryCriteria lnewsappArticleCategoryCriteria = new newsapp.ArticleCategoryCriteria();
 		// Please uncomment the follow line and fill in parameter(s)
-		//lnewsappArticleCategoryCriteria.ID.eq();
+		//lnewsappArticleCategoryCriteria.attribute.eq();
 		System.out.println(lnewsappArticleCategoryCriteria.uniqueArticleCategory());
 		
 	}
