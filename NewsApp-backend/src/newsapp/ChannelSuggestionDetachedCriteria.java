@@ -20,22 +20,22 @@ import org.orm.criteria.*;
 
 public class ChannelSuggestionDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final IntegerExpression ID;
-	public final IntegerExpression _authorId;
-	public final AssociationExpression _author;
+	public final CollectionExpression _receivers;
 	public final StringExpression comment;
 	public final DateExpression addedAt;
-	public final CollectionExpression _receivers;
+	public final IntegerExpression _authorId;
+	public final AssociationExpression _author;
 	public final IntegerExpression _targetId;
 	public final AssociationExpression _target;
 	
 	public ChannelSuggestionDetachedCriteria() {
 		super(newsapp.ChannelSuggestion.class, newsapp.ChannelSuggestionCriteria.class);
 		ID = new IntegerExpression("ID", this.getDetachedCriteria());
-		_authorId = new IntegerExpression("_author.ID", this.getDetachedCriteria());
-		_author = new AssociationExpression("_author", this.getDetachedCriteria());
+		_receivers = new CollectionExpression("ORM__receivers", this.getDetachedCriteria());
 		comment = new StringExpression("comment", this.getDetachedCriteria());
 		addedAt = new DateExpression("addedAt", this.getDetachedCriteria());
-		_receivers = new CollectionExpression("ORM__receivers", this.getDetachedCriteria());
+		_authorId = new IntegerExpression("_author.ID", this.getDetachedCriteria());
+		_author = new AssociationExpression("_author", this.getDetachedCriteria());
 		_targetId = new IntegerExpression("_target.ID", this.getDetachedCriteria());
 		_target = new AssociationExpression("_target", this.getDetachedCriteria());
 	}
@@ -43,11 +43,11 @@ public class ChannelSuggestionDetachedCriteria extends AbstractORMDetachedCriter
 	public ChannelSuggestionDetachedCriteria(DetachedCriteria aDetachedCriteria) {
 		super(aDetachedCriteria, newsapp.ChannelSuggestionCriteria.class);
 		ID = new IntegerExpression("ID", this.getDetachedCriteria());
-		_authorId = new IntegerExpression("_author.ID", this.getDetachedCriteria());
-		_author = new AssociationExpression("_author", this.getDetachedCriteria());
+		_receivers = new CollectionExpression("ORM__receivers", this.getDetachedCriteria());
 		comment = new StringExpression("comment", this.getDetachedCriteria());
 		addedAt = new DateExpression("addedAt", this.getDetachedCriteria());
-		_receivers = new CollectionExpression("ORM__receivers", this.getDetachedCriteria());
+		_authorId = new IntegerExpression("_author.ID", this.getDetachedCriteria());
+		_author = new AssociationExpression("_author", this.getDetachedCriteria());
 		_targetId = new IntegerExpression("_target.ID", this.getDetachedCriteria());
 		_target = new AssociationExpression("_target", this.getDetachedCriteria());
 	}
@@ -56,12 +56,12 @@ public class ChannelSuggestionDetachedCriteria extends AbstractORMDetachedCriter
 		return new ChannelDetachedCriteria(createCriteria("_target"));
 	}
 	
-	public UserDetachedCriteria create_authorCriteria() {
-		return new UserDetachedCriteria(createCriteria("_author"));
-	}
-	
 	public UserDetachedCriteria create_receiversCriteria() {
 		return new UserDetachedCriteria(createCriteria("ORM__receivers"));
+	}
+	
+	public UserDetachedCriteria create_authorCriteria() {
+		return new UserDetachedCriteria(createCriteria("_author"));
 	}
 	
 	public ChannelSuggestion uniqueChannelSuggestion(PersistentSession session) {

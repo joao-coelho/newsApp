@@ -47,10 +47,11 @@ public class Suggestion implements Serializable {
 	@org.hibernate.annotations.GenericGenerator(name="NEWSAPP_SUGGESTION_ID_GENERATOR", strategy="native")	
 	private int ID;
 	
-	@ManyToOne(targetEntity=newsapp.User.class, fetch=FetchType.LAZY)	
+	@ManyToMany(targetEntity=newsapp.User.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
-	@JoinColumns({ @JoinColumn(name="UserID", referencedColumnName="ID", nullable=false) })	
-	private newsapp.User _author;
+	@JoinTable(name="Suggestion_User", joinColumns={ @JoinColumn(name="SuggestionID") }, inverseJoinColumns={ @JoinColumn(name="UserID") })	
+	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
+	private java.util.Set ORM__receivers = new java.util.HashSet();
 	
 	@Column(name="Comment", nullable=true, length=255)	
 	private String comment;
@@ -59,11 +60,10 @@ public class Suggestion implements Serializable {
 	@Temporal(TemporalType.DATE)	
 	private java.util.Date addedAt;
 	
-	@OneToMany(targetEntity=newsapp.User.class)	
+	@ManyToOne(targetEntity=newsapp.User.class, fetch=FetchType.LAZY)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
-	@JoinColumns({ @JoinColumn(name="SuggestionID", nullable=false) })	
-	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
-	private java.util.Set ORM__receivers = new java.util.HashSet();
+	@JoinColumns({ @JoinColumn(name="UserID", referencedColumnName="ID", nullable=false) })	
+	private newsapp.User _author;
 	
 	private void setID(int value) {
 		this.ID = value;
@@ -102,7 +102,7 @@ public class Suggestion implements Serializable {
 	}
 	
 	@Transient	
-	public final newsapp.UserSetCollection _receivers = new newsapp.UserSetCollection(this, _ormAdapter, ORMConstants.KEY_SUGGESTION__RECEIVERS, ORMConstants.KEY_MUL_ONE_TO_MANY);
+	public final newsapp.UserSetCollection _receivers = new newsapp.UserSetCollection(this, _ormAdapter, ORMConstants.KEY_SUGGESTION__RECEIVERS, ORMConstants.KEY_MUL_MANY_TO_MANY);
 	
 	public void set_author(newsapp.User value) {
 		this._author = value;

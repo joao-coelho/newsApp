@@ -25,18 +25,6 @@
       <Index>false</Index>
       <UserTypes/>
     </Column>
-    <Column name="SuggestionID">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>newsapp.Suggestion.ID</ReferencedColumn>
-      <Type>9</Type>
-      <Length>10</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <UserTypes/>
-    </Column>
     <Column name="Username">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>false</ForeignKey>
@@ -480,6 +468,32 @@
       <UserTypes/>
     </Column>
   </Entity>
+  <Entity name="Suggestion_User" Unlogged="false" PKClustered="0">
+    <Column name="SuggestionID">
+      <PrimaryKey>true</PrimaryKey>
+      <ForeignKey>true</ForeignKey>
+      <ReferencedColumn>newsapp.Suggestion.ID</ReferencedColumn>
+      <Type>9</Type>
+      <Length>10</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>assigned</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+    <Column name="UserID">
+      <PrimaryKey>true</PrimaryKey>
+      <ForeignKey>true</ForeignKey>
+      <ReferencedColumn>newsapp.User.ID</ReferencedColumn>
+      <Type>9</Type>
+      <Length>10</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>assigned</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+  </Entity>
   <ForeignKey name="FKCategory361848">
     <ReferenceTable>Category</ReferenceTable>
     <ReferencedTable>User</ReferencedTable>
@@ -540,11 +554,21 @@
       <Column>ID</Column>
     </RefColumns>
   </ForeignKey>
-  <ForeignKey name="FKUser92200">
-    <ReferenceTable>User</ReferenceTable>
+  <ForeignKey name="FKSuggestion816255">
+    <ReferenceTable>Suggestion_User</ReferenceTable>
     <ReferencedTable>Suggestion</ReferencedTable>
     <Columns>
       <Column>SuggestionID</Column>
+    </Columns>
+    <RefColumns>
+      <Column>ID</Column>
+    </RefColumns>
+  </ForeignKey>
+  <ForeignKey name="FKSuggestion962739">
+    <ReferenceTable>Suggestion_User</ReferenceTable>
+    <ReferencedTable>User</ReferencedTable>
+    <Columns>
+      <Column>UserID</Column>
     </Columns>
     <RefColumns>
       <Column>ID</Column>

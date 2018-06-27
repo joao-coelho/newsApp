@@ -20,22 +20,22 @@ import org.orm.criteria.*;
 
 public class ChannelSuggestionCriteria extends AbstractORMCriteria {
 	public final IntegerExpression ID;
-	public final IntegerExpression _authorId;
-	public final AssociationExpression _author;
+	public final CollectionExpression _receivers;
 	public final StringExpression comment;
 	public final DateExpression addedAt;
-	public final CollectionExpression _receivers;
+	public final IntegerExpression _authorId;
+	public final AssociationExpression _author;
 	public final IntegerExpression _targetId;
 	public final AssociationExpression _target;
 	
 	public ChannelSuggestionCriteria(Criteria criteria) {
 		super(criteria);
 		ID = new IntegerExpression("ID", this);
-		_authorId = new IntegerExpression("_author.ID", this);
-		_author = new AssociationExpression("_author", this);
+		_receivers = new CollectionExpression("ORM__receivers", this);
 		comment = new StringExpression("comment", this);
 		addedAt = new DateExpression("addedAt", this);
-		_receivers = new CollectionExpression("ORM__receivers", this);
+		_authorId = new IntegerExpression("_author.ID", this);
+		_author = new AssociationExpression("_author", this);
 		_targetId = new IntegerExpression("_target.ID", this);
 		_target = new AssociationExpression("_target", this);
 	}
@@ -52,12 +52,12 @@ public class ChannelSuggestionCriteria extends AbstractORMCriteria {
 		return new ChannelCriteria(createCriteria("_target"));
 	}
 	
-	public UserCriteria create_authorCriteria() {
-		return new UserCriteria(createCriteria("_author"));
-	}
-	
 	public UserCriteria create_receiversCriteria() {
 		return new UserCriteria(createCriteria("ORM__receivers"));
+	}
+	
+	public UserCriteria create_authorCriteria() {
+		return new UserCriteria(createCriteria("_author"));
 	}
 	
 	public ChannelSuggestion uniqueChannelSuggestion() {
