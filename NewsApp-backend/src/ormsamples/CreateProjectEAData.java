@@ -4,42 +4,41 @@
  */
 package ormsamples;
 
-import newsapp.data.*;
 import org.orm.*;
 public class CreateProjectEAData {
 	public void createTestData() throws PersistentException {
-		PersistentTransaction t = ProjectEAPersistentManager.instance().getSession().beginTransaction();
+		PersistentTransaction t = newsapp.ProjectEAPersistentManager.instance().getSession().beginTransaction();
 		try {
-			newsapp.Channel lnewsappChannel = ChannelDAO.createChannel();
-			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : _fields, articles
-			ChannelDAO.save(lnewsappChannel);
-			newsapp.Article lnewsappArticle = ArticleDAO.createArticle();
-			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : _articleCategories, comments
-			ArticleDAO.save(lnewsappArticle);
-			newsapp.Comment lnewsappComment = CommentDAO.createComment();
-			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : author
-			CommentDAO.save(lnewsappComment);
-			newsapp.Suggestion lnewsappSuggestion = SuggestionDAO.createSuggestion();
-			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : receivers, author
-			SuggestionDAO.save(lnewsappSuggestion);
-			newsapp.ChannelSuggestion lnewsappChannelSuggestion = ChannelSuggestionDAO.createChannelSuggestion();
+			newsapp.User lnewsappUser = newsapp.UserDAO.createUser();
+			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : _subscriptions, _preferences, _myChannel
+			newsapp.UserDAO.save(lnewsappUser);
+			newsapp.Category lnewsappCategory = newsapp.CategoryDAO.createCategory();
 			// Initialize the properties of the persistent object here
-			ChannelSuggestionDAO.save(lnewsappChannelSuggestion);
-			newsapp.ArticleSuggestion lnewsappArticleSuggestion = ArticleSuggestionDAO.createArticleSuggestion();
+			newsapp.CategoryDAO.save(lnewsappCategory);
+			newsapp.Comment lnewsappComment = newsapp.CommentDAO.createComment();
+			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : _author
+			newsapp.CommentDAO.save(lnewsappComment);
+			newsapp.Article lnewsappArticle = newsapp.ArticleDAO.createArticle();
+			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : _categories, _comments, likes
+			newsapp.ArticleDAO.save(lnewsappArticle);
+			newsapp.Channel lnewsappChannel = newsapp.ChannelDAO.createChannel();
+			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : _categories, _articles, subscribers, likes
+			newsapp.ChannelDAO.save(lnewsappChannel);
+			newsapp.Suggestion lnewsappSuggestion = newsapp.SuggestionDAO.createSuggestion();
+			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : _receivers, _author
+			newsapp.SuggestionDAO.save(lnewsappSuggestion);
+			newsapp.ArticleSuggestion lnewsappArticleSuggestion = newsapp.ArticleSuggestionDAO.createArticleSuggestion();
 			// Initialize the properties of the persistent object here
-			ArticleSuggestionDAO.save(lnewsappArticleSuggestion);
-			newsapp.User lnewsappUser = UserDAO.createUser();
-			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : _preferences, subscriptions, idade, myChannel
-			UserDAO.save(lnewsappUser);
-			newsapp.ChannelCategory lnewsappChannelCategory = ChannelCategoryDAO.createChannelCategory();
+			newsapp.ArticleSuggestionDAO.save(lnewsappArticleSuggestion);
+			newsapp.ChannelSuggestion lnewsappChannelSuggestion = newsapp.ChannelSuggestionDAO.createChannelSuggestion();
 			// Initialize the properties of the persistent object here
-			ChannelCategoryDAO.save(lnewsappChannelCategory);
-			newsapp.Category lnewsappCategory = CategoryDAO.createCategory();
+			newsapp.ChannelSuggestionDAO.save(lnewsappChannelSuggestion);
+			newsapp.ChannelCategory lnewsappChannelCategory = newsapp.ChannelCategoryDAO.createChannelCategory();
 			// Initialize the properties of the persistent object here
-			CategoryDAO.save(lnewsappCategory);
-			newsapp.ArticleCategory lnewsappArticleCategory = ArticleCategoryDAO.createArticleCategory();
+			newsapp.ChannelCategoryDAO.save(lnewsappChannelCategory);
+			newsapp.ArticleCategory lnewsappArticleCategory = newsapp.ArticleCategoryDAO.createArticleCategory();
 			// Initialize the properties of the persistent object here
-			ArticleCategoryDAO.save(lnewsappArticleCategory);
+			newsapp.ArticleCategoryDAO.save(lnewsappArticleCategory);
 			t.commit();
 		}
 		catch (Exception e) {
@@ -55,7 +54,7 @@ public class CreateProjectEAData {
 				createProjectEAData.createTestData();
 			}
 			finally {
-				ProjectEAPersistentManager.instance().disposePersistentManager();
+				newsapp.ProjectEAPersistentManager.instance().disposePersistentManager();
 			}
 		}
 		catch (Exception e) {

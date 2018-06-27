@@ -26,14 +26,14 @@ public class ArticleSuggestion extends newsapp.Suggestion implements Serializabl
 	@ManyToOne(targetEntity=newsapp.Article.class, fetch=FetchType.LAZY)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
 	@JoinColumns({ @JoinColumn(name="ArticleID", referencedColumnName="ID") })	
-	private newsapp.Article target;
+	private newsapp.Article _target;
 	
-	public void setTarget(newsapp.Article value) {
-		this.target = value;
+	public void set_target(newsapp.Article value) {
+		this._target = value;
 	}
 	
-	public newsapp.Article getTarget() {
-		return target;
+	public newsapp.Article get_target() {
+		return _target;
 	}
 	
 	public String toString() {

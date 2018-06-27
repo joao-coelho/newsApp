@@ -13,9 +13,6 @@
  */
 package newsapp;
 
-import newsapp.data.ORMConstants;
-import newsapp.data.UserSetCollection;
-
 import java.io.Serializable;
 import javax.persistence.*;
 @Entity
@@ -29,8 +26,8 @@ public class Suggestion implements Serializable {
 	}
 	
 	private java.util.Set this_getSet (int key) {
-		if (key == ORMConstants.KEY_SUGGESTION_RECEIVERS) {
-			return ORM_receivers;
+		if (key == ORMConstants.KEY_SUGGESTION__RECEIVERS) {
+			return ORM__receivers;
 		}
 		
 		return null;
@@ -53,20 +50,20 @@ public class Suggestion implements Serializable {
 	@ManyToOne(targetEntity=newsapp.User.class, fetch=FetchType.LAZY)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
 	@JoinColumns({ @JoinColumn(name="UserID", referencedColumnName="ID", nullable=false) })	
-	private newsapp.User author;
+	private newsapp.User _author;
 	
 	@Column(name="Comment", nullable=true, length=255)	
 	private String comment;
 	
-	@Column(name="MadeAt", nullable=true)	
+	@Column(name="AddedAt", nullable=true)	
 	@Temporal(TemporalType.DATE)	
-	private java.util.Date madeAt;
+	private java.util.Date addedAt;
 	
 	@OneToMany(targetEntity=newsapp.User.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
 	@JoinColumns({ @JoinColumn(name="SuggestionID", nullable=false) })	
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
-	private java.util.Set ORM_receivers = new java.util.HashSet();
+	private java.util.Set ORM__receivers = new java.util.HashSet();
 	
 	private void setID(int value) {
 		this.ID = value;
@@ -88,31 +85,31 @@ public class Suggestion implements Serializable {
 		return comment;
 	}
 	
-	public void setMadeAt(java.util.Date value) {
-		this.madeAt = value;
+	public void setAddedAt(java.util.Date value) {
+		this.addedAt = value;
 	}
 	
-	public java.util.Date getMadeAt() {
-		return madeAt;
+	public java.util.Date getAddedAt() {
+		return addedAt;
 	}
 	
-	private void setORM_Receivers(java.util.Set value) {
-		this.ORM_receivers = value;
+	private void setORM__receivers(java.util.Set value) {
+		this.ORM__receivers = value;
 	}
 	
-	private java.util.Set getORM_Receivers() {
-		return ORM_receivers;
+	private java.util.Set getORM__receivers() {
+		return ORM__receivers;
 	}
 	
 	@Transient	
-	public final UserSetCollection receivers = new UserSetCollection(this, _ormAdapter, ORMConstants.KEY_SUGGESTION_RECEIVERS, ORMConstants.KEY_MUL_ONE_TO_MANY);
+	public final newsapp.UserSetCollection _receivers = new newsapp.UserSetCollection(this, _ormAdapter, ORMConstants.KEY_SUGGESTION__RECEIVERS, ORMConstants.KEY_MUL_ONE_TO_MANY);
 	
-	public void setAuthor(newsapp.User value) {
-		this.author = value;
+	public void set_author(newsapp.User value) {
+		this._author = value;
 	}
 	
-	public newsapp.User getAuthor() {
-		return author;
+	public newsapp.User get_author() {
+		return _author;
 	}
 	
 	public String toString() {

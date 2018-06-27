@@ -13,8 +13,6 @@
  */
 package newsapp;
 
-import newsapp.data.ORMConstants;
-
 import java.io.Serializable;
 import javax.persistence.*;
 @Entity
@@ -25,8 +23,8 @@ public class Comment implements Serializable {
 	}
 	
 	private void this_setOwner(Object owner, int key) {
-		if (key == ORMConstants.KEY_COMMENT_AUTHOR) {
-			this.author = (newsapp.User) owner;
+		if (key == ORMConstants.KEY_COMMENT__AUTHOR) {
+			this._author = (newsapp.User) owner;
 		}
 	}
 	
@@ -47,7 +45,7 @@ public class Comment implements Serializable {
 	@ManyToOne(targetEntity=newsapp.User.class, fetch=FetchType.LAZY)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.LOCK})	
 	@JoinColumns({ @JoinColumn(name="UserID", referencedColumnName="ID", nullable=false) })	
-	private newsapp.User author;
+	private newsapp.User _author;
 	
 	@Column(name="Content", nullable=true, length=255)	
 	private String content;
@@ -84,12 +82,12 @@ public class Comment implements Serializable {
 		return addedAt;
 	}
 	
-	public void setAuthor(newsapp.User value) {
-		this.author = value;
+	public void set_author(newsapp.User value) {
+		this._author = value;
 	}
 	
-	public newsapp.User getAuthor() {
-		return author;
+	public newsapp.User get_author() {
+		return _author;
 	}
 	
 	public String toString() {

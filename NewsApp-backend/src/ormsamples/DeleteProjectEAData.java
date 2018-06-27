@@ -4,42 +4,41 @@
  */
 package ormsamples;
 
-import newsapp.data.*;
 import org.orm.*;
 public class DeleteProjectEAData {
 	public void deleteTestData() throws PersistentException {
-		PersistentTransaction t = ProjectEAPersistentManager.instance().getSession().beginTransaction();
+		PersistentTransaction t = newsapp.ProjectEAPersistentManager.instance().getSession().beginTransaction();
 		try {
-			newsapp.Channel lnewsappChannel = ChannelDAO.loadChannelByQuery(null, null);
+			newsapp.User lnewsappUser = newsapp.UserDAO.loadUserByQuery(null, null);
 			// Delete the persistent object
-			ChannelDAO.delete(lnewsappChannel);
-			newsapp.Article lnewsappArticle = ArticleDAO.loadArticleByQuery(null, null);
+			newsapp.UserDAO.delete(lnewsappUser);
+			newsapp.Category lnewsappCategory = newsapp.CategoryDAO.loadCategoryByQuery(null, null);
 			// Delete the persistent object
-			ArticleDAO.delete(lnewsappArticle);
-			newsapp.Comment lnewsappComment = CommentDAO.loadCommentByQuery(null, null);
+			newsapp.CategoryDAO.delete(lnewsappCategory);
+			newsapp.Comment lnewsappComment = newsapp.CommentDAO.loadCommentByQuery(null, null);
 			// Delete the persistent object
-			CommentDAO.delete(lnewsappComment);
-			newsapp.Suggestion lnewsappSuggestion = SuggestionDAO.loadSuggestionByQuery(null, null);
+			newsapp.CommentDAO.delete(lnewsappComment);
+			newsapp.Article lnewsappArticle = newsapp.ArticleDAO.loadArticleByQuery(null, null);
 			// Delete the persistent object
-			SuggestionDAO.delete(lnewsappSuggestion);
-			newsapp.ChannelSuggestion lnewsappChannelSuggestion = ChannelSuggestionDAO.loadChannelSuggestionByQuery(null, null);
+			newsapp.ArticleDAO.delete(lnewsappArticle);
+			newsapp.Channel lnewsappChannel = newsapp.ChannelDAO.loadChannelByQuery(null, null);
 			// Delete the persistent object
-			ChannelSuggestionDAO.delete(lnewsappChannelSuggestion);
-			newsapp.ArticleSuggestion lnewsappArticleSuggestion = ArticleSuggestionDAO.loadArticleSuggestionByQuery(null, null);
+			newsapp.ChannelDAO.delete(lnewsappChannel);
+			newsapp.Suggestion lnewsappSuggestion = newsapp.SuggestionDAO.loadSuggestionByQuery(null, null);
 			// Delete the persistent object
-			ArticleSuggestionDAO.delete(lnewsappArticleSuggestion);
-			newsapp.User lnewsappUser = UserDAO.loadUserByQuery(null, null);
+			newsapp.SuggestionDAO.delete(lnewsappSuggestion);
+			newsapp.ArticleSuggestion lnewsappArticleSuggestion = newsapp.ArticleSuggestionDAO.loadArticleSuggestionByQuery(null, null);
 			// Delete the persistent object
-			UserDAO.delete(lnewsappUser);
-			newsapp.ChannelCategory lnewsappChannelCategory = ChannelCategoryDAO.loadChannelCategoryByQuery(null, null);
+			newsapp.ArticleSuggestionDAO.delete(lnewsappArticleSuggestion);
+			newsapp.ChannelSuggestion lnewsappChannelSuggestion = newsapp.ChannelSuggestionDAO.loadChannelSuggestionByQuery(null, null);
 			// Delete the persistent object
-			ChannelCategoryDAO.delete(lnewsappChannelCategory);
-			newsapp.Category lnewsappCategory = CategoryDAO.loadCategoryByQuery(null, null);
+			newsapp.ChannelSuggestionDAO.delete(lnewsappChannelSuggestion);
+			newsapp.ChannelCategory lnewsappChannelCategory = newsapp.ChannelCategoryDAO.loadChannelCategoryByQuery(null, null);
 			// Delete the persistent object
-			CategoryDAO.delete(lnewsappCategory);
-			newsapp.ArticleCategory lnewsappArticleCategory = ArticleCategoryDAO.loadArticleCategoryByQuery(null, null);
+			newsapp.ChannelCategoryDAO.delete(lnewsappChannelCategory);
+			newsapp.ArticleCategory lnewsappArticleCategory = newsapp.ArticleCategoryDAO.loadArticleCategoryByQuery(null, null);
 			// Delete the persistent object
-			ArticleCategoryDAO.delete(lnewsappArticleCategory);
+			newsapp.ArticleCategoryDAO.delete(lnewsappArticleCategory);
 			t.commit();
 		}
 		catch (Exception e) {
@@ -55,7 +54,7 @@ public class DeleteProjectEAData {
 				deleteProjectEAData.deleteTestData();
 			}
 			finally {
-				ProjectEAPersistentManager.instance().disposePersistentManager();
+				newsapp.ProjectEAPersistentManager.instance().disposePersistentManager();
 			}
 		}
 		catch (Exception e) {

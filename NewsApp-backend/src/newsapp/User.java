@@ -13,10 +13,6 @@
  */
 package newsapp;
 
-import newsapp.data.CategorySetCollection;
-import newsapp.data.ChannelSetCollection;
-import newsapp.data.ORMConstants;
-
 import java.io.Serializable;
 import javax.persistence.*;
 @Entity
@@ -27,19 +23,19 @@ public class User implements Serializable {
 	}
 	
 	private java.util.Set this_getSet (int key) {
-		if (key == ORMConstants.KEY_USER_SUBSCRIPTIONS) {
-			return ORM_subscriptions;
-		}
-		else if (key == ORMConstants.KEY_USER__PREFERENCES) {
+		if (key == ORMConstants.KEY_USER__PREFERENCES) {
 			return ORM__preferences;
+		}
+		else if (key == ORMConstants.KEY_USER__SUBSCRIPTIONS) {
+			return ORM__subscriptions;
 		}
 		
 		return null;
 	}
 	
 	private void this_setOwner(Object owner, int key) {
-		if (key == ORMConstants.KEY_USER_MYCHANNEL) {
-			this.myChannel = (newsapp.Channel) owner;
+		if (key == ORMConstants.KEY_USER__MYCHANNEL) {
+			this._myChannel = (newsapp.Channel) owner;
 		}
 	}
 	
@@ -64,7 +60,7 @@ public class User implements Serializable {
 	@ManyToOne(targetEntity=newsapp.Channel.class, fetch=FetchType.LAZY)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
 	@JoinColumns({ @JoinColumn(name="ChannelID", referencedColumnName="ID", nullable=false) })	
-	private newsapp.Channel myChannel;
+	private newsapp.Channel _myChannel;
 	
 	@Column(name="Username", nullable=true, length=255)	
 	private String username;
@@ -72,26 +68,26 @@ public class User implements Serializable {
 	@Column(name="Password", nullable=true, length=255)	
 	private String password;
 	
-	@Column(name="Nome", nullable=true, length=255)	
-	private String nome;
+	@Column(name="Name", nullable=true, length=255)	
+	private String name;
 	
-	@Column(name="Idade", nullable=false)	
-	private short idade;
+	@Column(name="Age", nullable=true)	
+	private Short age;
 	
-	@Column(name="Nacionalidade", nullable=true, length=255)	
-	private String nacionalidade;
-	
-	@OneToMany(targetEntity=newsapp.Channel.class)	
-	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
-	@JoinColumns({ @JoinColumn(name="UserID", nullable=false) })	
-	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
-	private java.util.Set ORM_subscriptions = new java.util.HashSet();
+	@Column(name="Country", nullable=true, length=255)	
+	private String country;
 	
 	@OneToMany(targetEntity=newsapp.Category.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
 	@JoinColumns({ @JoinColumn(name="UserID", nullable=false) })	
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
 	private java.util.Set ORM__preferences = new java.util.HashSet();
+	
+	@OneToMany(targetEntity=newsapp.Channel.class)	
+	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
+	@JoinColumns({ @JoinColumn(name="UserID", nullable=false) })	
+	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
+	private java.util.Set ORM__subscriptions = new java.util.HashSet();
 	
 	private void setID(int value) {
 		this.ID = value;
@@ -121,48 +117,33 @@ public class User implements Serializable {
 		return password;
 	}
 	
-	public void setNome(String value) {
-		this.nome = value;
+	public void setName(String value) {
+		this.name = value;
 	}
 	
-	public String getNome() {
-		return nome;
+	public String getName() {
+		return name;
 	}
 	
-	public void setIdade(short value) {
-		this.idade = value;
+	public void setAge(short value) {
+		setAge(new Short(value));
 	}
 	
-	public short getIdade() {
-		return idade;
+	public void setAge(Short value) {
+		this.age = value;
 	}
 	
-	public void setNacionalidade(String value) {
-		this.nacionalidade = value;
+	public Short getAge() {
+		return age;
 	}
 	
-	public String getNacionalidade() {
-		return nacionalidade;
+	public void setCountry(String value) {
+		this.country = value;
 	}
 	
-	public void setMyChannel(newsapp.Channel value) {
-		this.myChannel = value;
+	public String getCountry() {
+		return country;
 	}
-	
-	public newsapp.Channel getMyChannel() {
-		return myChannel;
-	}
-	
-	private void setORM_Subscriptions(java.util.Set value) {
-		this.ORM_subscriptions = value;
-	}
-	
-	private java.util.Set getORM_Subscriptions() {
-		return ORM_subscriptions;
-	}
-	
-	@Transient	
-	public final ChannelSetCollection subscriptions = new ChannelSetCollection(this, _ormAdapter, ORMConstants.KEY_USER_SUBSCRIPTIONS, ORMConstants.KEY_MUL_ONE_TO_MANY);
 	
 	private void setORM__preferences(java.util.Set value) {
 		this.ORM__preferences = value;
@@ -173,7 +154,31 @@ public class User implements Serializable {
 	}
 	
 	@Transient	
-	public final CategorySetCollection _preferences = new CategorySetCollection(this, _ormAdapter, ORMConstants.KEY_USER__PREFERENCES, ORMConstants.KEY_MUL_ONE_TO_MANY);
+	public final newsapp.CategorySetCollection _preferences = new newsapp.CategorySetCollection(this, _ormAdapter, ORMConstants.KEY_USER__PREFERENCES, ORMConstants.KEY_MUL_ONE_TO_MANY);
+	
+	private void setORM__subscriptions(java.util.Set value) {
+		this.ORM__subscriptions = value;
+	}
+	
+	private java.util.Set getORM__subscriptions() {
+		return ORM__subscriptions;
+	}
+	
+	@Transient	
+	public final newsapp.ChannelSetCollection _subscriptions = new newsapp.ChannelSetCollection(this, _ormAdapter, ORMConstants.KEY_USER__SUBSCRIPTIONS, ORMConstants.KEY_MUL_ONE_TO_MANY);
+	
+	public void set_myChannel(newsapp.Channel value) {
+		this._myChannel = value;
+	}
+	
+	public newsapp.Channel get_myChannel() {
+		return _myChannel;
+	}
+	
+	public void setAge(Short age) {
+		//TODO: Implement Method
+		throw new UnsupportedOperationException();
+	}
 	
 	public String toString() {
 		return String.valueOf(getID());

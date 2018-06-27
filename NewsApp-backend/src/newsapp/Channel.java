@@ -13,10 +13,6 @@
  */
 package newsapp;
 
-import newsapp.data.ArticleSetCollection;
-import newsapp.data.ChannelCategorySetCollection;
-import newsapp.data.ORMConstants;
-
 import java.io.Serializable;
 import javax.persistence.*;
 @Entity
@@ -27,11 +23,11 @@ public class Channel implements Serializable {
 	}
 	
 	private java.util.Set this_getSet (int key) {
-		if (key == ORMConstants.KEY_CHANNEL_ARTICLES) {
-			return ORM_articles;
+		if (key == ORMConstants.KEY_CHANNEL__ARTICLES) {
+			return ORM__articles;
 		}
-		else if (key == ORMConstants.KEY_CHANNEL__FIELDS) {
-			return ORM__fields;
+		else if (key == ORMConstants.KEY_CHANNEL__CATEGORIES) {
+			return ORM__categories;
 		}
 		
 		return null;
@@ -57,26 +53,23 @@ public class Channel implements Serializable {
 	@Column(name="Description", nullable=true, length=255)	
 	private String description;
 	
-	@Column(name="Likes", nullable=true, length=10)	
-	private Integer likes;
+	@Column(name="Likes", nullable=false, length=10)	
+	private int likes;
 	
-	@Column(name="Subscribers", nullable=true, length=10)	
-	private Integer subscribers;
-	
-	@Column(name="Author_id", nullable=true, length=10)	
-	private Integer author_id;
+	@Column(name="Subscribers", nullable=false, length=10)	
+	private int subscribers;
 	
 	@OneToMany(targetEntity=newsapp.Article.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
 	@JoinColumns({ @JoinColumn(name="ChannelID", nullable=false) })	
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
-	private java.util.Set ORM_articles = new java.util.HashSet();
+	private java.util.Set ORM__articles = new java.util.HashSet();
 	
 	@OneToMany(targetEntity=newsapp.ChannelCategory.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
 	@JoinColumns({ @JoinColumn(name="ChannelID", nullable=false) })	
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
-	private java.util.Set ORM__fields = new java.util.HashSet();
+	private java.util.Set ORM__categories = new java.util.HashSet();
 	
 	private void setID(int value) {
 		this.ID = value;
@@ -107,62 +100,42 @@ public class Channel implements Serializable {
 	}
 	
 	public void setLikes(int value) {
-		setLikes(new Integer(value));
-	}
-	
-	public void setLikes(Integer value) {
 		this.likes = value;
 	}
 	
-	public Integer getLikes() {
+	public int getLikes() {
 		return likes;
 	}
 	
 	public void setSubscribers(int value) {
-		setSubscribers(new Integer(value));
-	}
-	
-	public void setSubscribers(Integer value) {
 		this.subscribers = value;
 	}
 	
-	public Integer getSubscribers() {
+	public int getSubscribers() {
 		return subscribers;
 	}
 	
-	public void setAuthor_id(int value) {
-		setAuthor_id(new Integer(value));
+	private void setORM__articles(java.util.Set value) {
+		this.ORM__articles = value;
 	}
 	
-	public void setAuthor_id(Integer value) {
-		this.author_id = value;
-	}
-	
-	public Integer getAuthor_id() {
-		return author_id;
-	}
-	
-	private void setORM_Articles(java.util.Set value) {
-		this.ORM_articles = value;
-	}
-	
-	private java.util.Set getORM_Articles() {
-		return ORM_articles;
+	private java.util.Set getORM__articles() {
+		return ORM__articles;
 	}
 	
 	@Transient	
-	public final ArticleSetCollection articles = new ArticleSetCollection(this, _ormAdapter, ORMConstants.KEY_CHANNEL_ARTICLES, ORMConstants.KEY_MUL_ONE_TO_MANY);
+	public final newsapp.ArticleSetCollection _articles = new newsapp.ArticleSetCollection(this, _ormAdapter, ORMConstants.KEY_CHANNEL__ARTICLES, ORMConstants.KEY_MUL_ONE_TO_MANY);
 	
-	private void setORM__fields(java.util.Set value) {
-		this.ORM__fields = value;
+	private void setORM__categories(java.util.Set value) {
+		this.ORM__categories = value;
 	}
 	
-	private java.util.Set getORM__fields() {
-		return ORM__fields;
+	private java.util.Set getORM__categories() {
+		return ORM__categories;
 	}
 	
 	@Transient	
-	public final ChannelCategorySetCollection _fields = new ChannelCategorySetCollection(this, _ormAdapter, ORMConstants.KEY_CHANNEL__FIELDS, ORMConstants.KEY_MUL_ONE_TO_MANY);
+	public final newsapp.ChannelCategorySetCollection _categories = new newsapp.ChannelCategorySetCollection(this, _ormAdapter, ORMConstants.KEY_CHANNEL__CATEGORIES, ORMConstants.KEY_MUL_ONE_TO_MANY);
 	
 	public String toString() {
 		return String.valueOf(getID());

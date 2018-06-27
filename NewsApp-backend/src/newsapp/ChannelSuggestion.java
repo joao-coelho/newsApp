@@ -26,14 +26,14 @@ public class ChannelSuggestion extends newsapp.Suggestion implements Serializabl
 	@ManyToOne(targetEntity=newsapp.Channel.class, fetch=FetchType.LAZY)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
 	@JoinColumns({ @JoinColumn(name="ChannelID", referencedColumnName="ID") })	
-	private newsapp.Channel target;
+	private newsapp.Channel _target;
 	
-	public void setTarget(newsapp.Channel value) {
-		this.target = value;
+	public void set_target(newsapp.Channel value) {
+		this._target = value;
 	}
 	
-	public newsapp.Channel getTarget() {
-		return target;
+	public newsapp.Channel get_target() {
+		return _target;
 	}
 	
 	public String toString() {

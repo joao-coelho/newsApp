@@ -13,10 +13,6 @@
  */
 package newsapp;
 
-import newsapp.data.ArticleCategorySetCollection;
-import newsapp.data.CommentSetCollection;
-import newsapp.data.ORMConstants;
-
 import java.io.Serializable;
 import javax.persistence.*;
 @Entity
@@ -27,11 +23,11 @@ public class Article implements Serializable {
 	}
 	
 	private java.util.Set this_getSet (int key) {
-		if (key == ORMConstants.KEY_ARTICLE_COMMENTS) {
-			return ORM_comments;
+		if (key == ORMConstants.KEY_ARTICLE__COMMENTS) {
+			return ORM__comments;
 		}
-		else if (key == ORMConstants.KEY_ARTICLE__ARTICLECATEGORIES) {
-			return ORM__articleCategories;
+		else if (key == ORMConstants.KEY_ARTICLE__CATEGORIES) {
+			return ORM__categories;
 		}
 		
 		return null;
@@ -57,20 +53,24 @@ public class Article implements Serializable {
 	@Column(name="Content", nullable=true, length=255)	
 	private String content;
 	
-	@Column(name="Likes", nullable=true, length=10)	
-	private Integer likes;
+	@Column(name="Likes", nullable=false, length=10)	
+	private int likes;
+	
+	@Column(name="AddedAt", nullable=true)	
+	@Temporal(TemporalType.DATE)	
+	private java.util.Date addedAt;
 	
 	@OneToMany(targetEntity=newsapp.Comment.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
 	@JoinColumns({ @JoinColumn(name="ArticleID", nullable=false) })	
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
-	private java.util.Set ORM_comments = new java.util.HashSet();
+	private java.util.Set ORM__comments = new java.util.HashSet();
 	
 	@OneToMany(targetEntity=newsapp.ArticleCategory.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
 	@JoinColumns({ @JoinColumn(name="ArticleID", nullable=false) })	
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
-	private java.util.Set ORM__articleCategories = new java.util.HashSet();
+	private java.util.Set ORM__categories = new java.util.HashSet();
 	
 	private void setID(int value) {
 		this.ID = value;
@@ -101,38 +101,42 @@ public class Article implements Serializable {
 	}
 	
 	public void setLikes(int value) {
-		setLikes(new Integer(value));
-	}
-	
-	public void setLikes(Integer value) {
 		this.likes = value;
 	}
 	
-	public Integer getLikes() {
+	public int getLikes() {
 		return likes;
 	}
 	
-	private void setORM_Comments(java.util.Set value) {
-		this.ORM_comments = value;
+	public void setAddedAt(java.util.Date value) {
+		this.addedAt = value;
 	}
 	
-	private java.util.Set getORM_Comments() {
-		return ORM_comments;
+	public java.util.Date getAddedAt() {
+		return addedAt;
 	}
 	
-	@Transient	
-	public final CommentSetCollection comments = new CommentSetCollection(this, _ormAdapter, ORMConstants.KEY_ARTICLE_COMMENTS, ORMConstants.KEY_MUL_ONE_TO_MANY);
-	
-	private void setORM__articleCategories(java.util.Set value) {
-		this.ORM__articleCategories = value;
+	private void setORM__comments(java.util.Set value) {
+		this.ORM__comments = value;
 	}
 	
-	private java.util.Set getORM__articleCategories() {
-		return ORM__articleCategories;
+	private java.util.Set getORM__comments() {
+		return ORM__comments;
 	}
 	
 	@Transient	
-	public final ArticleCategorySetCollection _articleCategories = new ArticleCategorySetCollection(this, _ormAdapter, ORMConstants.KEY_ARTICLE__ARTICLECATEGORIES, ORMConstants.KEY_MUL_ONE_TO_MANY);
+	public final newsapp.CommentSetCollection _comments = new newsapp.CommentSetCollection(this, _ormAdapter, ORMConstants.KEY_ARTICLE__COMMENTS, ORMConstants.KEY_MUL_ONE_TO_MANY);
+	
+	private void setORM__categories(java.util.Set value) {
+		this.ORM__categories = value;
+	}
+	
+	private java.util.Set getORM__categories() {
+		return ORM__categories;
+	}
+	
+	@Transient	
+	public final newsapp.ArticleCategorySetCollection _categories = new newsapp.ArticleCategorySetCollection(this, _ormAdapter, ORMConstants.KEY_ARTICLE__CATEGORIES, ORMConstants.KEY_MUL_ONE_TO_MANY);
 	
 	public String toString() {
 		return String.valueOf(getID());

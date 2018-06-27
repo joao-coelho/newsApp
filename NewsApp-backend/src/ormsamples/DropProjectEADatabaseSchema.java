@@ -4,7 +4,6 @@
  */
 package ormsamples;
 
-import newsapp.data.ProjectEAPersistentManager;
 import org.orm.*;
 public class DropProjectEADatabaseSchema {
 	public static void main(String[] args) {
@@ -12,8 +11,8 @@ public class DropProjectEADatabaseSchema {
 			System.out.println("Are you sure to drop table(s)? (Y/N)");
 			java.io.BufferedReader reader = new java.io.BufferedReader(new java.io.InputStreamReader(System.in));
 			if (reader.readLine().trim().toUpperCase().equals("Y")) {
-				ORMDatabaseInitiator.dropSchema(ProjectEAPersistentManager.instance());
-				ProjectEAPersistentManager.instance().disposePersistentManager();
+				ORMDatabaseInitiator.dropSchema(newsapp.ProjectEAPersistentManager.instance());
+				newsapp.ProjectEAPersistentManager.instance().disposePersistentManager();
 			}
 			
 		}
