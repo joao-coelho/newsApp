@@ -13,6 +13,10 @@
  */
 package newsapp;
 
+import newsapp.data.ArticleSetCollection;
+import newsapp.data.ChannelCategorySetCollection;
+import newsapp.data.ORMConstants;
+
 import java.io.Serializable;
 import javax.persistence.*;
 @Entity
@@ -68,7 +72,7 @@ public class Channel implements Serializable {
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
 	private java.util.Set ORM_articles = new java.util.HashSet();
 	
-	@OneToMany(targetEntity=newsapp.ContentType.class)	
+	@OneToMany(targetEntity=newsapp.ChannelCategory.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
 	@JoinColumns({ @JoinColumn(name="ChannelID", nullable=false) })	
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
@@ -147,7 +151,7 @@ public class Channel implements Serializable {
 	}
 	
 	@Transient	
-	public final newsapp.ArticleSetCollection articles = new newsapp.ArticleSetCollection(this, _ormAdapter, ORMConstants.KEY_CHANNEL_ARTICLES, ORMConstants.KEY_MUL_ONE_TO_MANY);
+	public final ArticleSetCollection articles = new ArticleSetCollection(this, _ormAdapter, ORMConstants.KEY_CHANNEL_ARTICLES, ORMConstants.KEY_MUL_ONE_TO_MANY);
 	
 	private void setORM__fields(java.util.Set value) {
 		this.ORM__fields = value;
@@ -158,7 +162,7 @@ public class Channel implements Serializable {
 	}
 	
 	@Transient	
-	public final newsapp.ContentTypeSetCollection _fields = new newsapp.ContentTypeSetCollection(this, _ormAdapter, ORMConstants.KEY_CHANNEL__FIELDS, ORMConstants.KEY_MUL_ONE_TO_MANY);
+	public final ChannelCategorySetCollection _fields = new ChannelCategorySetCollection(this, _ormAdapter, ORMConstants.KEY_CHANNEL__FIELDS, ORMConstants.KEY_MUL_ONE_TO_MANY);
 	
 	public String toString() {
 		return String.valueOf(getID());

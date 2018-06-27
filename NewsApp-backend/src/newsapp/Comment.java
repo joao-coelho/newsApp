@@ -13,6 +13,8 @@
  */
 package newsapp;
 
+import newsapp.data.ORMConstants;
+
 import java.io.Serializable;
 import javax.persistence.*;
 @Entity

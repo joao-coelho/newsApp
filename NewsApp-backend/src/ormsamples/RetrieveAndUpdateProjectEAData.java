@@ -4,38 +4,42 @@
  */
 package ormsamples;
 
+import newsapp.data.*;
 import org.orm.*;
 public class RetrieveAndUpdateProjectEAData {
 	public void retrieveAndUpdateTestData() throws PersistentException {
-		PersistentTransaction t = newsapp.ProjectEAPersistentManager.instance().getSession().beginTransaction();
+		PersistentTransaction t = ProjectEAPersistentManager.instance().getSession().beginTransaction();
 		try {
-			newsapp.User lnewsappUser = newsapp.UserDAO.loadUserByQuery(null, null);
+			newsapp.Channel lnewsappChannel = ChannelDAO.loadChannelByQuery(null, null);
 			// Update the properties of the persistent object
-			newsapp.UserDAO.save(lnewsappUser);
-			newsapp.Channel lnewsappChannel = newsapp.ChannelDAO.loadChannelByQuery(null, null);
+			ChannelDAO.save(lnewsappChannel);
+			newsapp.Article lnewsappArticle = ArticleDAO.loadArticleByQuery(null, null);
 			// Update the properties of the persistent object
-			newsapp.ChannelDAO.save(lnewsappChannel);
-			newsapp.Article lnewsappArticle = newsapp.ArticleDAO.loadArticleByQuery(null, null);
+			ArticleDAO.save(lnewsappArticle);
+			newsapp.Comment lnewsappComment = CommentDAO.loadCommentByQuery(null, null);
 			// Update the properties of the persistent object
-			newsapp.ArticleDAO.save(lnewsappArticle);
-			newsapp.Comment lnewsappComment = newsapp.CommentDAO.loadCommentByQuery(null, null);
+			CommentDAO.save(lnewsappComment);
+			newsapp.Suggestion lnewsappSuggestion = SuggestionDAO.loadSuggestionByQuery(null, null);
 			// Update the properties of the persistent object
-			newsapp.CommentDAO.save(lnewsappComment);
-			newsapp.Category lnewsappCategory = newsapp.CategoryDAO.loadCategoryByQuery(null, null);
+			SuggestionDAO.save(lnewsappSuggestion);
+			newsapp.ChannelSuggestion lnewsappChannelSuggestion = ChannelSuggestionDAO.loadChannelSuggestionByQuery(null, null);
 			// Update the properties of the persistent object
-			newsapp.CategoryDAO.save(lnewsappCategory);
-			newsapp.Suggestion lnewsappSuggestion = newsapp.SuggestionDAO.loadSuggestionByQuery(null, null);
+			ChannelSuggestionDAO.save(lnewsappChannelSuggestion);
+			newsapp.ArticleSuggestion lnewsappArticleSuggestion = ArticleSuggestionDAO.loadArticleSuggestionByQuery(null, null);
 			// Update the properties of the persistent object
-			newsapp.SuggestionDAO.save(lnewsappSuggestion);
-			newsapp.ChannelSuggestion lnewsappChannelSuggestion = newsapp.ChannelSuggestionDAO.loadChannelSuggestionByQuery(null, null);
+			ArticleSuggestionDAO.save(lnewsappArticleSuggestion);
+			newsapp.User lnewsappUser = UserDAO.loadUserByQuery(null, null);
 			// Update the properties of the persistent object
-			newsapp.ChannelSuggestionDAO.save(lnewsappChannelSuggestion);
-			newsapp.ArticleSuggestion lnewsappArticleSuggestion = newsapp.ArticleSuggestionDAO.loadArticleSuggestionByQuery(null, null);
+			UserDAO.save(lnewsappUser);
+			newsapp.ChannelCategory lnewsappChannelCategory = ChannelCategoryDAO.loadChannelCategoryByQuery(null, null);
 			// Update the properties of the persistent object
-			newsapp.ArticleSuggestionDAO.save(lnewsappArticleSuggestion);
-			newsapp.ContentType lnewsappContentType = newsapp.ContentTypeDAO.loadContentTypeByQuery(null, null);
+			ChannelCategoryDAO.save(lnewsappChannelCategory);
+			newsapp.Category lnewsappCategory = CategoryDAO.loadCategoryByQuery(null, null);
 			// Update the properties of the persistent object
-			newsapp.ContentTypeDAO.save(lnewsappContentType);
+			CategoryDAO.save(lnewsappCategory);
+			newsapp.ArticleCategory lnewsappArticleCategory = ArticleCategoryDAO.loadArticleCategoryByQuery(null, null);
+			// Update the properties of the persistent object
+			ArticleCategoryDAO.save(lnewsappArticleCategory);
 			t.commit();
 		}
 		catch (Exception e) {
@@ -45,59 +49,65 @@ public class RetrieveAndUpdateProjectEAData {
 	}
 	
 	public void retrieveByCriteria() throws PersistentException {
-		System.out.println("Retrieving User by UserCriteria");
-		newsapp.UserCriteria lnewsappUserCriteria = new newsapp.UserCriteria();
-		// Please uncomment the follow line and fill in parameter(s)
-		//lnewsappUserCriteria.ID.eq();
-		System.out.println(lnewsappUserCriteria.uniqueUser());
-		
 		System.out.println("Retrieving Channel by ChannelCriteria");
-		newsapp.ChannelCriteria lnewsappChannelCriteria = new newsapp.ChannelCriteria();
+		ChannelCriteria lnewsappChannelCriteria = new ChannelCriteria();
 		// Please uncomment the follow line and fill in parameter(s)
 		//lnewsappChannelCriteria.ID.eq();
 		System.out.println(lnewsappChannelCriteria.uniqueChannel());
 		
 		System.out.println("Retrieving Article by ArticleCriteria");
-		newsapp.ArticleCriteria lnewsappArticleCriteria = new newsapp.ArticleCriteria();
+		ArticleCriteria lnewsappArticleCriteria = new ArticleCriteria();
 		// Please uncomment the follow line and fill in parameter(s)
 		//lnewsappArticleCriteria.ID.eq();
 		System.out.println(lnewsappArticleCriteria.uniqueArticle());
 		
 		System.out.println("Retrieving Comment by CommentCriteria");
-		newsapp.CommentCriteria lnewsappCommentCriteria = new newsapp.CommentCriteria();
+		CommentCriteria lnewsappCommentCriteria = new CommentCriteria();
 		// Please uncomment the follow line and fill in parameter(s)
 		//lnewsappCommentCriteria.ID.eq();
 		System.out.println(lnewsappCommentCriteria.uniqueComment());
 		
-		System.out.println("Retrieving Category by CategoryCriteria");
-		newsapp.CategoryCriteria lnewsappCategoryCriteria = new newsapp.CategoryCriteria();
-		// Please uncomment the follow line and fill in parameter(s)
-		//lnewsappCategoryCriteria.ID.eq();
-		System.out.println(lnewsappCategoryCriteria.uniqueCategory());
-		
 		System.out.println("Retrieving Suggestion by SuggestionCriteria");
-		newsapp.SuggestionCriteria lnewsappSuggestionCriteria = new newsapp.SuggestionCriteria();
+		SuggestionCriteria lnewsappSuggestionCriteria = new SuggestionCriteria();
 		// Please uncomment the follow line and fill in parameter(s)
 		//lnewsappSuggestionCriteria.ID.eq();
 		System.out.println(lnewsappSuggestionCriteria.uniqueSuggestion());
 		
 		System.out.println("Retrieving ChannelSuggestion by ChannelSuggestionCriteria");
-		newsapp.ChannelSuggestionCriteria lnewsappChannelSuggestionCriteria = new newsapp.ChannelSuggestionCriteria();
+		ChannelSuggestionCriteria lnewsappChannelSuggestionCriteria = new ChannelSuggestionCriteria();
 		// Please uncomment the follow line and fill in parameter(s)
 		//lnewsappChannelSuggestionCriteria.ID.eq();
 		System.out.println(lnewsappChannelSuggestionCriteria.uniqueChannelSuggestion());
 		
 		System.out.println("Retrieving ArticleSuggestion by ArticleSuggestionCriteria");
-		newsapp.ArticleSuggestionCriteria lnewsappArticleSuggestionCriteria = new newsapp.ArticleSuggestionCriteria();
+		ArticleSuggestionCriteria lnewsappArticleSuggestionCriteria = new ArticleSuggestionCriteria();
 		// Please uncomment the follow line and fill in parameter(s)
 		//lnewsappArticleSuggestionCriteria.ID.eq();
 		System.out.println(lnewsappArticleSuggestionCriteria.uniqueArticleSuggestion());
 		
-		System.out.println("Retrieving ContentType by ContentTypeCriteria");
-		newsapp.ContentTypeCriteria lnewsappContentTypeCriteria = new newsapp.ContentTypeCriteria();
+		System.out.println("Retrieving User by UserCriteria");
+		UserCriteria lnewsappUserCriteria = new UserCriteria();
 		// Please uncomment the follow line and fill in parameter(s)
-		//lnewsappContentTypeCriteria.ID.eq();
-		System.out.println(lnewsappContentTypeCriteria.uniqueContentType());
+		//lnewsappUserCriteria.ID.eq();
+		System.out.println(lnewsappUserCriteria.uniqueUser());
+		
+		System.out.println("Retrieving ChannelCategory by ChannelCategoryCriteria");
+		ChannelCategoryCriteria lnewsappChannelCategoryCriteria = new ChannelCategoryCriteria();
+		// Please uncomment the follow line and fill in parameter(s)
+		//lnewsappChannelCategoryCriteria.ID.eq();
+		System.out.println(lnewsappChannelCategoryCriteria.uniqueChannelCategory());
+		
+		System.out.println("Retrieving Category by CategoryCriteria");
+		CategoryCriteria lnewsappCategoryCriteria = new CategoryCriteria();
+		// Please uncomment the follow line and fill in parameter(s)
+		//lnewsappCategoryCriteria.ID.eq();
+		System.out.println(lnewsappCategoryCriteria.uniqueCategory());
+		
+		System.out.println("Retrieving ArticleCategory by ArticleCategoryCriteria");
+		ArticleCategoryCriteria lnewsappArticleCategoryCriteria = new ArticleCategoryCriteria();
+		// Please uncomment the follow line and fill in parameter(s)
+		//lnewsappArticleCategoryCriteria.ID.eq();
+		System.out.println(lnewsappArticleCategoryCriteria.uniqueArticleCategory());
 		
 	}
 	
@@ -110,7 +120,7 @@ public class RetrieveAndUpdateProjectEAData {
 				//retrieveAndUpdateProjectEAData.retrieveByCriteria();
 			}
 			finally {
-				newsapp.ProjectEAPersistentManager.instance().disposePersistentManager();
+				ProjectEAPersistentManager.instance().disposePersistentManager();
 			}
 		}
 		catch (Exception e) {

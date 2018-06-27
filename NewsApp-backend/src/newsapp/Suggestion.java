@@ -13,6 +13,9 @@
  */
 package newsapp;
 
+import newsapp.data.ORMConstants;
+import newsapp.data.UserSetCollection;
+
 import java.io.Serializable;
 import javax.persistence.*;
 @Entity
@@ -93,14 +96,6 @@ public class Suggestion implements Serializable {
 		return madeAt;
 	}
 	
-	public void setAuthor(newsapp.User value) {
-		this.author = value;
-	}
-	
-	public newsapp.User getAuthor() {
-		return author;
-	}
-	
 	private void setORM_Receivers(java.util.Set value) {
 		this.ORM_receivers = value;
 	}
@@ -110,7 +105,15 @@ public class Suggestion implements Serializable {
 	}
 	
 	@Transient	
-	public final newsapp.UserSetCollection receivers = new newsapp.UserSetCollection(this, _ormAdapter, ORMConstants.KEY_SUGGESTION_RECEIVERS, ORMConstants.KEY_MUL_ONE_TO_MANY);
+	public final UserSetCollection receivers = new UserSetCollection(this, _ormAdapter, ORMConstants.KEY_SUGGESTION_RECEIVERS, ORMConstants.KEY_MUL_ONE_TO_MANY);
+	
+	public void setAuthor(newsapp.User value) {
+		this.author = value;
+	}
+	
+	public newsapp.User getAuthor() {
+		return author;
+	}
 	
 	public String toString() {
 		return String.valueOf(getID());

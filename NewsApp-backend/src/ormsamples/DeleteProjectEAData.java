@@ -4,38 +4,42 @@
  */
 package ormsamples;
 
+import newsapp.data.*;
 import org.orm.*;
 public class DeleteProjectEAData {
 	public void deleteTestData() throws PersistentException {
-		PersistentTransaction t = newsapp.ProjectEAPersistentManager.instance().getSession().beginTransaction();
+		PersistentTransaction t = ProjectEAPersistentManager.instance().getSession().beginTransaction();
 		try {
-			newsapp.User lnewsappUser = newsapp.UserDAO.loadUserByQuery(null, null);
+			newsapp.Channel lnewsappChannel = ChannelDAO.loadChannelByQuery(null, null);
 			// Delete the persistent object
-			newsapp.UserDAO.delete(lnewsappUser);
-			newsapp.Channel lnewsappChannel = newsapp.ChannelDAO.loadChannelByQuery(null, null);
+			ChannelDAO.delete(lnewsappChannel);
+			newsapp.Article lnewsappArticle = ArticleDAO.loadArticleByQuery(null, null);
 			// Delete the persistent object
-			newsapp.ChannelDAO.delete(lnewsappChannel);
-			newsapp.Article lnewsappArticle = newsapp.ArticleDAO.loadArticleByQuery(null, null);
+			ArticleDAO.delete(lnewsappArticle);
+			newsapp.Comment lnewsappComment = CommentDAO.loadCommentByQuery(null, null);
 			// Delete the persistent object
-			newsapp.ArticleDAO.delete(lnewsappArticle);
-			newsapp.Comment lnewsappComment = newsapp.CommentDAO.loadCommentByQuery(null, null);
+			CommentDAO.delete(lnewsappComment);
+			newsapp.Suggestion lnewsappSuggestion = SuggestionDAO.loadSuggestionByQuery(null, null);
 			// Delete the persistent object
-			newsapp.CommentDAO.delete(lnewsappComment);
-			newsapp.Category lnewsappCategory = newsapp.CategoryDAO.loadCategoryByQuery(null, null);
+			SuggestionDAO.delete(lnewsappSuggestion);
+			newsapp.ChannelSuggestion lnewsappChannelSuggestion = ChannelSuggestionDAO.loadChannelSuggestionByQuery(null, null);
 			// Delete the persistent object
-			newsapp.CategoryDAO.delete(lnewsappCategory);
-			newsapp.Suggestion lnewsappSuggestion = newsapp.SuggestionDAO.loadSuggestionByQuery(null, null);
+			ChannelSuggestionDAO.delete(lnewsappChannelSuggestion);
+			newsapp.ArticleSuggestion lnewsappArticleSuggestion = ArticleSuggestionDAO.loadArticleSuggestionByQuery(null, null);
 			// Delete the persistent object
-			newsapp.SuggestionDAO.delete(lnewsappSuggestion);
-			newsapp.ChannelSuggestion lnewsappChannelSuggestion = newsapp.ChannelSuggestionDAO.loadChannelSuggestionByQuery(null, null);
+			ArticleSuggestionDAO.delete(lnewsappArticleSuggestion);
+			newsapp.User lnewsappUser = UserDAO.loadUserByQuery(null, null);
 			// Delete the persistent object
-			newsapp.ChannelSuggestionDAO.delete(lnewsappChannelSuggestion);
-			newsapp.ArticleSuggestion lnewsappArticleSuggestion = newsapp.ArticleSuggestionDAO.loadArticleSuggestionByQuery(null, null);
+			UserDAO.delete(lnewsappUser);
+			newsapp.ChannelCategory lnewsappChannelCategory = ChannelCategoryDAO.loadChannelCategoryByQuery(null, null);
 			// Delete the persistent object
-			newsapp.ArticleSuggestionDAO.delete(lnewsappArticleSuggestion);
-			newsapp.ContentType lnewsappContentType = newsapp.ContentTypeDAO.loadContentTypeByQuery(null, null);
+			ChannelCategoryDAO.delete(lnewsappChannelCategory);
+			newsapp.Category lnewsappCategory = CategoryDAO.loadCategoryByQuery(null, null);
 			// Delete the persistent object
-			newsapp.ContentTypeDAO.delete(lnewsappContentType);
+			CategoryDAO.delete(lnewsappCategory);
+			newsapp.ArticleCategory lnewsappArticleCategory = ArticleCategoryDAO.loadArticleCategoryByQuery(null, null);
+			// Delete the persistent object
+			ArticleCategoryDAO.delete(lnewsappArticleCategory);
 			t.commit();
 		}
 		catch (Exception e) {
@@ -51,7 +55,7 @@ public class DeleteProjectEAData {
 				deleteProjectEAData.deleteTestData();
 			}
 			finally {
-				newsapp.ProjectEAPersistentManager.instance().disposePersistentManager();
+				ProjectEAPersistentManager.instance().disposePersistentManager();
 			}
 		}
 		catch (Exception e) {

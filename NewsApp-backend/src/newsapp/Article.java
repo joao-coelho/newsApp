@@ -13,6 +13,10 @@
  */
 package newsapp;
 
+import newsapp.data.ArticleCategorySetCollection;
+import newsapp.data.CommentSetCollection;
+import newsapp.data.ORMConstants;
+
 import java.io.Serializable;
 import javax.persistence.*;
 @Entity
@@ -26,11 +30,8 @@ public class Article implements Serializable {
 		if (key == ORMConstants.KEY_ARTICLE_COMMENTS) {
 			return ORM_comments;
 		}
-		else if (key == ORMConstants.KEY_ARTICLE_CATEGORIES) {
-			return ORM_categories;
-		}
-		else if (key == ORMConstants.KEY_ARTICLE__CONTENTTYPE) {
-			return ORM__contentType;
+		else if (key == ORMConstants.KEY_ARTICLE__ARTICLECATEGORIES) {
+			return ORM__articleCategories;
 		}
 		
 		return null;
@@ -65,17 +66,11 @@ public class Article implements Serializable {
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
 	private java.util.Set ORM_comments = new java.util.HashSet();
 	
-	@OneToMany(targetEntity=newsapp.Category.class)	
+	@OneToMany(targetEntity=newsapp.ArticleCategory.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
 	@JoinColumns({ @JoinColumn(name="ArticleID", nullable=false) })	
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
-	private java.util.Set ORM_categories = new java.util.HashSet();
-	
-	@OneToMany(targetEntity=newsapp.ContentType.class)	
-	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
-	@JoinColumns({ @JoinColumn(name="ArticleID", nullable=false) })	
-	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
-	private java.util.Set ORM__contentType = new java.util.HashSet();
+	private java.util.Set ORM__articleCategories = new java.util.HashSet();
 	
 	private void setID(int value) {
 		this.ID = value;
@@ -126,29 +121,18 @@ public class Article implements Serializable {
 	}
 	
 	@Transient	
-	public final newsapp.CommentSetCollection comments = new newsapp.CommentSetCollection(this, _ormAdapter, ORMConstants.KEY_ARTICLE_COMMENTS, ORMConstants.KEY_MUL_ONE_TO_MANY);
+	public final CommentSetCollection comments = new CommentSetCollection(this, _ormAdapter, ORMConstants.KEY_ARTICLE_COMMENTS, ORMConstants.KEY_MUL_ONE_TO_MANY);
 	
-	private void setORM_Categories(java.util.Set value) {
-		this.ORM_categories = value;
+	private void setORM__articleCategories(java.util.Set value) {
+		this.ORM__articleCategories = value;
 	}
 	
-	private java.util.Set getORM_Categories() {
-		return ORM_categories;
-	}
-	
-	@Transient	
-	public final newsapp.CategorySetCollection categories = new newsapp.CategorySetCollection(this, _ormAdapter, ORMConstants.KEY_ARTICLE_CATEGORIES, ORMConstants.KEY_MUL_ONE_TO_MANY);
-	
-	private void setORM__contentType(java.util.Set value) {
-		this.ORM__contentType = value;
-	}
-	
-	private java.util.Set getORM__contentType() {
-		return ORM__contentType;
+	private java.util.Set getORM__articleCategories() {
+		return ORM__articleCategories;
 	}
 	
 	@Transient	
-	public final newsapp.ContentTypeSetCollection _contentType = new newsapp.ContentTypeSetCollection(this, _ormAdapter, ORMConstants.KEY_ARTICLE__CONTENTTYPE, ORMConstants.KEY_MUL_ONE_TO_MANY);
+	public final ArticleCategorySetCollection _articleCategories = new ArticleCategorySetCollection(this, _ormAdapter, ORMConstants.KEY_ARTICLE__ARTICLECATEGORIES, ORMConstants.KEY_MUL_ONE_TO_MANY);
 	
 	public String toString() {
 		return String.valueOf(getID());
