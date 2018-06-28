@@ -1,59 +1,57 @@
 <template>
-  <b-row id="sidebar">
-    <b-col class="nav-side-menu" md="4" lg="2">
-      <a class="toggle-btn"><font-awesome-icon icon="bars"/></a>
-      <div class="menu-list">
-        <ul id="menu-content" class="menu-content">
-          <li>
-            <a href="#"><font-awesome-icon icon="newspaper"/>
-              {{ $t('feed_menuNews') }}
-            </a>
-          </li>
-          <li>
-            <a href="#"><font-awesome-icon icon="fire"/>
-              {{ $t('feed_menuTrending') }}
-            </a>
-          </li>
-          <li>
-            <a href="#"><font-awesome-icon icon="list-ul"/>
-              {{ $t('feed_menuSubscriptions') }}
-            </a>
-          </li>
-          <li>
-            <a href="#"><font-awesome-icon icon="thumbs-up"/>
-              {{ $t('feed_menuLikes') }}
-            </a>
-          </li>
-          <hr/>
-          <h4>{{ $t('feed_menuCategories') }}</h4>
-          <li v-for="category in categories">
-            <a v-if="$i18n.locale == 'en'" href="#"><font-awesome-icon :icon="category.icon"/>
-              {{ category.en }}
-            </a>
-            <a v-else href="#"><font-awesome-icon :icon="category.icon"/>
-              {{ category.pt }}
-            </a>
-          </li>
-          <hr/>
-          <li>
-            <a href="#"><font-awesome-icon icon="heart"/>
-              {{ $t('feed_menuPreferences') }}
-            </a>
-          </li>
-          <li>
-            <a href="#"><font-awesome-icon icon="cog"/>
-              {{ $t('feed_menuSettings') }}
-            </a>
-          </li>
-          <li>
-            <a href="#"><font-awesome-icon icon="question-circle"/>
-              {{ $t('feed_menuHelp') }}
-            </a>
-          </li>
-        </ul>
-      </div>
-    </b-col>
-  </b-row>
+  <b-col md="4" lg="2" class="nav-side-menu">
+    <a class="toggle-btn"><font-awesome-icon icon="bars"/></a>
+    <div class="menu-list">
+      <ul id="menu-content" class="menu-content">
+        <li>
+          <a href="#"><font-awesome-icon icon="newspaper"/>
+            {{ $t('feed_menuNews') }}
+          </a>
+        </li>
+        <li>
+          <a href="#"><font-awesome-icon icon="fire"/>
+            {{ $t('feed_menuTrending') }}
+          </a>
+        </li>
+        <li>
+          <a href="#"><font-awesome-icon icon="list-ul"/>
+            {{ $t('feed_menuSubscriptions') }}
+          </a>
+        </li>
+        <li>
+          <a href="#"><font-awesome-icon icon="thumbs-up"/>
+            {{ $t('feed_menuLikes') }}
+          </a>
+        </li>
+        <hr/>
+        <h4>{{ $t('feed_menuCategories') }}</h4>
+        <li v-for="category in categories">
+          <a v-if="$i18n.locale == 'en'" href="#"><font-awesome-icon :icon="category.icon"/>
+            {{ category.en }}
+          </a>
+          <a v-else href="#"><font-awesome-icon :icon="category.icon"/>
+            {{ category.pt }}
+          </a>
+        </li>
+        <hr/>
+        <li>
+          <a href="#"><font-awesome-icon icon="heart"/>
+            {{ $t('feed_menuPreferences') }}
+          </a>
+        </li>
+        <li>
+          <a href="#"><font-awesome-icon icon="cog"/>
+            {{ $t('feed_menuSettings') }}
+          </a>
+        </li>
+        <li>
+          <a href="#"><font-awesome-icon icon="question-circle"/>
+            {{ $t('feed_menuHelp') }}
+          </a>
+        </li>
+      </ul>
+    </div>
+  </b-col>
 </template>
 
 <script>
