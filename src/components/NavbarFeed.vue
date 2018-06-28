@@ -58,6 +58,7 @@ export default {
     height: 50px;
     width: 100%;
     flex-wrap: nowrap;
+    z-index: 999;
   }
   .navbar-brand {
     @media (max-width: $break-small) {
