@@ -169,9 +169,39 @@
             </b-col>
           </b-row>
           <b-row v-if="createChannel">
+          <b-col>
+            <b-row>
+              <b-col md='6'>
+                <b-form-group id="channelNameGroup"
+                              :label="$t('register_channelName')"
+                              label-for="channelNameInput">
+                  <b-form-input id="channelNameInput"
+                              type="text"
+                              v-model="channelName"
+                              @keyup.native="verifyChannelName()"
+                              :state="channelState"
+                              required
+                              :placeholder="$t('register_channelNamePlaceholder')">
+                  </b-form-input>
+                  <b-form-invalid-feedback id="channelFeedback">
+                    {{ $t( 'register_channelError' ) }}
+                  </b-form-invalid-feedback>
+                </b-form-group>
+              </b-col>
+            </b-row>
+          <b-row>
             <b-col>
-              <h5>{{ $t('register_channelNews') }}</h5>
-              <hr/>
+              <b-form-group id="channelDescriptionGroup"
+                            :label="$t('register_channelDescription')"
+                            label-for="channelDescriptionInput">
+                <b-form-input id="channelDescriptionInput"
+                              type="text"
+                              v-model="channelDescription"
+                              :placeholder="$t('register_channelDescriptionPlaceholder')">
+                </b-form-input>
+              </b-form-group>
+            </b-col>
+          </b-row>
               <p>{{ $t('register_channelTypes') }}</p>
               <b-form-group class="selectAllBox">
                 <b-form-checkbox v-model="channelAllSelected"
@@ -241,20 +271,23 @@ export default {
       userAvailable: -1,
       emailAvailable: -1,
       samePass: -1,
+      channelAvailable: -1,
       validLength: -1,
       selectedTypes: [],
       allSelected: false,
       selectedCountry: '',
       createChannel: false,
-      channelSelectedTypes: [],
-      channelAllSelected: false
+      channelAllSelected: false,
+      channelName: '',
+      channelDescription: '',
+      channelSelectedTypes: []
     }
   },
   methods: {
     register() {
       console.log("Entrei");
-      if(userAvailable == 1 && emailAvailable == 1 &&
-         samePass == 1 && validLength == 1) {
+      /*if(userAvailable == 1 && emailAvailable == 1 &&
+         samePass == 1 && validLength == 1) {*/
            let details = {
              username: this.username,
              password: this.pwd,
@@ -263,8 +296,12 @@ export default {
              email: this.email,
              country: this.selectedCountry,
              types: this.selectedTypes,
+             createChannel: this.createChannel,
+             channelName: this.channelName,
+             channelDescription: this.channelDescription,
              channelTypes: this.channelSelectedTypes
            }
+           //console.log(details);
            axios({url: 'http://localhost:8091/register/submit', data: details, method: 'POST' })
            .then(resp => {
              var sucess = resp.data;
@@ -272,7 +309,7 @@ export default {
                this.$router.push({name: 'Login', params: { afterRegister: true }});
              }
            })
-         }
+        // }
     },
     verifyUsername() {
       if(this.username.length != 0) {
@@ -308,6 +345,24 @@ export default {
       }
       else {
         this.emailAvailable = -1;
+      }
+    },
+    verifyChannelName() {
+      if(this.channelName != 0) {
+        axios.get('http://localhost:8091/register/verifyChannelName', {
+          params: {
+            channelName: this.channelName
+          }
+        })
+        .then(resp => {
+          this.channelAvailable = resp.data;
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+      }
+      else {
+        this.channelAvailable = -1;
       }
     },
     verifyPass() {
@@ -390,6 +445,15 @@ export default {
         return true;
       }
       if(this.emailAvailable == 0) {
+        return false;
+      }
+      return null;
+    },
+    channelState() {
+      if(this.channelAvailable == 1) {
+        return true;
+      }
+      if(this.channelAvailable == 0) {
         return false;
       }
       return null;
@@ -532,3 +596,4 @@ hr {
   }
 }
 </style>
+
