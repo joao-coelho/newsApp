@@ -7,6 +7,7 @@
 	"login_register": "Create account",
 	"login_login": "Login",
 	"login_rememberMe": "Remember me",
+	"login_afterRegister": "Registered successfully! Use the credentials you chose to login.",
 
 	"register_title": "Register",
 	"register_account": "Account and User Info",

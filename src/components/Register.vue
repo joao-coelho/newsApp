@@ -269,13 +269,13 @@ export default {
            .then(resp => {
              var sucess = resp.data;
              if(sucess == 1) {
-               this.$router.push('/login')
+               this.$router.push({name: 'Login', params: { afterRegister: true }});
              }
            })
          }
     },
     verifyUsername() {
-      if(this.username .length != 0) {
+      if(this.username.length != 0) {
         axios.get('http://localhost:8091/register/verifyUser', {
           params: {
             username: this.username

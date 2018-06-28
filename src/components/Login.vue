@@ -49,6 +49,16 @@
           </b-card>
         </b-col>
       </b-form-row>
+      <b-row class="register_sucess">
+        <b-col offset-md="2" md="8" offset-lg="3" lg="6">
+          <b-alert variant="success"
+                   dismissible
+                   :show="afterRegister"
+                   @dismissed="afterRegister=false">
+            {{ $t('login_afterRegister') }}
+          </b-alert>
+        </b-col>
+      </b-row>
     </b-container>
   </div>
 </template>
@@ -68,7 +78,8 @@ export default {
         username: '',
         pwd: '',
         checked: 'no'
-      }
+      },
+      afterRegister: Boolean
     }
   },
   methods: {
@@ -82,6 +93,9 @@ export default {
           //this.$router.push('/')
         })
     }
+  },
+  created() {
+    this.afterRegister = this.$route.params.afterRegister ? true : false;
   }
 }
 </script>
@@ -134,6 +148,15 @@ h1, h2 {
   }
   @media (max-width: 768px) {
     display: none;
+  }
+}
+.register_sucess {
+  margin-top: 20px;
+  .alert-success {
+    border-color: #37ba55;
+  }
+  @media (min-width: $break-large) {
+    margin-top: 40px;
   }
 }
 </style>
