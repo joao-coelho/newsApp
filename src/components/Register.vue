@@ -16,7 +16,7 @@
             <b-col cols="12" md="6">
               <h5>{{ $t('register_accountDetails') }}</h5>
               <hr/>
-              <b-form @submit="register">
+              <b-form>
                 <b-form-group id="usernameGroup"
                               :label="$t('login_username')"
                               label-for="usernameInput">
@@ -66,7 +66,7 @@
             <b-col cols="12" md="6">
               <h5>{{ $t('register_accountPersonal') }}</h5>
               <hr/>
-              <b-form @submit="register">
+              <b-form>
                 <b-form-group id="nameGroup"
                               :label="$t('register_name')"
                               label-for="nameInput">
@@ -208,7 +208,7 @@
             </b-col>
           </b-row>
           <b-row id="buttons-section">
-            <b-button type="submit">{{ $t('register_register') }}</b-button>
+            <b-button @click="register">{{ $t('register_register') }}</b-button>
           </b-row>
         </b-card>
       </b-form-row>
