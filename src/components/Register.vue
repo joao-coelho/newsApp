@@ -18,7 +18,7 @@
               <hr/>
               <b-form>
                 <b-form-group id="usernameGroup"
-                              :label="$t('login_username')"
+                              :label="$t('register_username')"
                               label-for="usernameInput">
                   <b-form-input id="usernameInput"
                                 type="text"
@@ -31,6 +31,9 @@
                   <b-form-invalid-feedback id="inputLiveFeedback">
                     {{ $t( 'register_usernameError' ) }}
                   </b-form-invalid-feedback>
+                  <b-form-text class="required_alert">
+                    {{ $t('register_required') }}
+                  </b-form-text>
                 </b-form-group>
                 <b-form-group id="pwdGroup"
                               :label="$t('register_password')"
@@ -45,6 +48,9 @@
                   <b-form-invalid-feedback id="lengthFeedback">
                     {{ $t( 'register_lengthError' ) }}
                   </b-form-invalid-feedback>
+                  <b-form-text class="required_alert">
+                    {{ $t('register_required') }}
+                  </b-form-text>
                 </b-form-group>
                 <b-form-group id="pwdRepeatGroup"
                               :label="$t('register_repeatPwd')"
@@ -60,6 +66,9 @@
                   <b-form-invalid-feedback id="passFeedback">
                     {{ $t( 'register_passError' ) }}
                   </b-form-invalid-feedback>
+                  <b-form-text class="required_alert">
+                    {{ $t('register_required') }}
+                  </b-form-text>
                 </b-form-group>
               </b-form>
             </b-col>
@@ -110,6 +119,9 @@
                   <b-form-invalid-feedback id="emailFeedback">
                     {{ $t( 'register_emailError' ) }}
                   </b-form-invalid-feedback>
+                  <b-form-text class="required_alert">
+                    {{ $t('register_required') }}
+                  </b-form-text>
                 </b-form-group>
               </b-form>
             </b-col>
@@ -186,6 +198,9 @@
                   <b-form-invalid-feedback id="channelFeedback">
                     {{ $t( 'register_channelError' ) }}
                   </b-form-invalid-feedback>
+                  <b-form-text class="required_alert">
+                    {{ $t('register_required') }}
+                  </b-form-text>
                 </b-form-group>
               </b-col>
             </b-row>
@@ -580,11 +595,18 @@ hr {
   }
   @media (max-width: 768px) {
     .form-group {
-      margin-bottom: 0;
+      margin-bottom: 10px;
     }
   }
   #channelTypes {
     display: none;
+  }
+  .required_alert.form-text {
+    float: right;
+    margin-top: 0.1rem;
+    &.text-muted {
+      color: rgba(255, 0, 0, 0.75) !important;
+    }
   }
 }
 #buttons-section {
@@ -596,4 +618,3 @@ hr {
   }
 }
 </style>
-

@@ -21,6 +21,10 @@
 	"register_channel": "Pretende criar o seu próprio canal para divulgação de conteúdo noticioso? Uma vez mais, a sua decisão pde ser alterada mais tarde.",
 	"register_yesChannel": "Sim, quero criar o meu próprio canal de notícias.",
 	"register_noChannel": "Não, pretendo apenas consultar notícias de outros canais.",
+	"register_channelName": "Nome:",
+	"register_channelNamePlaceholder": "Escolha um nome para o seu canal",
+	"register_channelDescription": "Descrição:",
+	"register_channelDescriptionPlaceholder": "Escolha uma descrição para o seu canal",
 	"register_channelNews": "Notícias do Canal",
 	"register_channelTypes": "Que conteúdos pretende explorar nas suas notícias futuras?",
 	"register_username": "Nome de utilizador:",
@@ -47,6 +51,7 @@
 	"register_lengthError": "A password tem que ser composta por, pelo menos, 6 caracteres",
 	"register_emailError": "O email pretendido já se encontra registado",
     "register_channelError": "O nome do canal já se encontra registado",
+    "register_required": "* campo obrigatório",
 
 	"feed_searchbar": "Procurar...",
 	"feed_menuNews": "Feed de notícias",

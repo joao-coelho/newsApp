@@ -21,6 +21,10 @@
 	"register_channel": "Do you want to create your own channel to publish news? Again, your option can be changed later.",
 	"register_yesChannel": "Yes, I want to have my own news channel.",
 	"register_noChannel": "No, I just intend to check other news channels.",
+	"register_channelName": "Name:",
+	"register_channelNamePlaceholder": "Enter a name for your channel",
+	"register_channelDescription": "Description:",
+	"register_channelDescriptionPlaceholder": "Enter a description for your channel",
 	"register_channelNews": "Channel News",
 	"register_channelTypes": "Which subjects do you intend to explore in your future news?",
 	"register_username": "Username:",
@@ -47,6 +51,7 @@
 	"register_lengthError": "The password must have at least 6 characters",
 	"register_emailError": "Email already taken",
     "register_channelError": "Channel already taken",
+    "register_required": "* required field",
 
 	"feed_searchbar": "Search...",
 	"feed_menuNews": "News feed",
