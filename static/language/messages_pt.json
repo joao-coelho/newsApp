@@ -50,8 +50,9 @@
 	"register_passError": "As passwords não coincidem",
 	"register_lengthError": "A password tem que ser composta por, pelo menos, 6 caracteres",
 	"register_emailError": "O email pretendido já se encontra registado",
-    "register_channelError": "O nome do canal já se encontra registado",
-    "register_required": "* campo obrigatório",
+  "register_channelError": "O nome do canal já se encontra registado",
+  "register_required": "* campo obrigatório",
+	"register_unsuccess": "Por favor preencha devidamente os campos obrigatórios",
 
 	"feed_searchbar": "Procurar...",
 	"feed_menuNews": "Feed de notícias",

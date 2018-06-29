@@ -50,8 +50,9 @@
 	"register_passError": "Passwords don't appear to match",
 	"register_lengthError": "The password must have at least 6 characters",
 	"register_emailError": "Email already taken",
-    "register_channelError": "Channel already taken",
-    "register_required": "* required field",
+  "register_channelError": "Channel already taken",
+  "register_required": "* required field",
+	"register_unsuccess": "Please fill in all required fields",
 
 	"feed_searchbar": "Search...",
 	"feed_menuNews": "News feed",

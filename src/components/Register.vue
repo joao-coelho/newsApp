@@ -255,6 +255,16 @@
           <b-row id="buttons-section">
             <b-button @click="register">{{ $t('register_register') }}</b-button>
           </b-row>
+          <b-row class="register_unsuccess">
+            <b-col offset-md="2" md="8" offset-lg="3" lg="6">
+              <b-alert variant="danger"
+                       dismissible
+                       :show="unsuccess"
+                       @dismissed="unsuccess=false">
+              {{ $t('register_unsuccess') }}
+              </b-alert>
+            </b-col>
+          </b-row>
         </b-card>
       </b-form-row>
     </b-container>
@@ -286,6 +296,7 @@ export default {
       userAvailable: -1,
       emailAvailable: -1,
       samePass: -1,
+      unsuccess: false,
       channelAvailable: -1,
       validLength: -1,
       selectedTypes: [],
@@ -301,8 +312,8 @@ export default {
   methods: {
     register() {
       console.log("Entrei");
-      /*if(userAvailable == 1 && emailAvailable == 1 &&
-         samePass == 1 && validLength == 1) {*/
+      if(this.userAvailable == 1 && this.emailAvailable == 1 &&
+         this.samePass == 1 && this.validLength == 1) {
            let details = {
              username: this.username,
              password: this.pwd,
@@ -324,7 +335,9 @@ export default {
                this.$router.push({name: 'Login', params: { afterRegister: true }});
              }
            })
-        // }
+      } else {
+        this.unsuccess = true
+      }
     },
     verifyUsername() {
       if(this.username.length != 0) {
@@ -484,6 +497,11 @@ export default {
       this.validLength = 1;
       return true;
     },
+    allFill() {
+      if(this.userAvailable == 1 && this.emailAvailable == 1 &&
+         this.samePass == 1 && this.validLength == 1) return true;
+      else return false;
+    },
     countries() {
       return this.loadCountries(this.$i18n.locale);
     },
@@ -615,6 +633,16 @@ hr {
   button {
     background-color: $blue;
     border-bottom: 1px solid #29487d;
+  }
+}
+.register_unsuccess {
+  margin-top: 20px;
+  .alert-danger {
+    border-color: #ba3636;
+  }
+  @media (min-width: $break-large) {
+    text-align: center;
+    margin-top: 20px;
   }
 }
 </style>
