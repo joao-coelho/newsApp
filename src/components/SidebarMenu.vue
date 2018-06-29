@@ -1,5 +1,5 @@
 <template>
-  <b-col md="4" lg="2" class="nav-side-menu">
+  <div class="nav-side-menu">
     <a class="toggle-btn"><font-awesome-icon icon="bars"/></a>
     <div class="menu-list">
       <ul id="menu-content" class="menu-content">
@@ -51,7 +51,7 @@
         </li>
       </ul>
     </div>
-  </b-col>
+  </div>
 </template>
 
 <script>
@@ -74,6 +74,10 @@ export default {
         return this.user_categories.includes(val);
       });
     }
+  },
+  mounted() {
+    var menu = document.getElementsByClassName("menu-list")[0];
+    menu.style.paddingRight = menu.offsetWidth - menu.clientWidth + "px";
   }
 }
 </script>
@@ -86,11 +90,20 @@ export default {
   font-size: 1rem;
   font-weight: 200;
   border-right: 1px solid #29487d;
-  position: static;
+  position: fixed;
+  width: 225px;
+  height: calc(100% - 50px);
+  margin-top: 50px;
   padding: 0;
+  overflow: hidden;
   .menu-list {
     padding-top: 1rem;
     padding-bottom: 1rem;
+    overflow-y: scroll;
+    padding-right: 0;
+    box-sizing: content-box;
+    width: 100%;
+    height: 100%;
     ul, li {
       list-style: none;
       padding: 0px;

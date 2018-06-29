@@ -14,6 +14,10 @@
           <span>{{ element.content }}</span>
         </div>
       </div>
+      <div class="news-share">
+        <img src="../assets/images/twitter.png"/>
+        <img src="../assets/images/facebook.png"/>
+      </div>
     </b-card>
   </div>
 </template>
@@ -32,6 +36,7 @@ export default {
   },
   computed: {
     when() {
+      //TODO: Handle the date format of the databse
       var date = new Date();
       return date;
     }
@@ -47,6 +52,7 @@ export default {
   width: 100%;
   height: 150px;
   border: 0.5px solid #ccc;
+  margin-top: 2rem;
   .news-image {
     width: 250px;
     height: 100%;
@@ -58,6 +64,17 @@ export default {
     height: 40px;
     top: -10px;
     left: -10px;
+  }
+  .news-share {
+    position: absolute;
+    top: -15px;
+    right: -10px;
+    img {
+      margin-left: 10px;
+      &:hover {
+        cursor: pointer;
+      }
+    }
   }
   .news-content {
     height: 100%;
