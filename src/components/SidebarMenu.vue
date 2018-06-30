@@ -94,9 +94,6 @@ export default {
   mounted() {
     var menu = document.getElementsByClassName("sidebar-menu-list")[0];
     menu.style.paddingRight = menu.offsetWidth - menu.clientWidth + "px";
-
-    var $li = menu.firstChild.childNodes;
-    $li[0].classList.add("active");
   }
 }
 </script>

@@ -4,14 +4,23 @@
       <img class="channel-logo" :src="element.channel.icon" alt="Channel Logo">
       <img class="news-image" v-if="element.image != ''" :src="element.image" left alt="News image"/>
       <div class="news-content">
-        <h4 class="news-title">{{ element.title }}</h4>
+        <h5 class="news-title">{{ element.title }}</h5>
         <div class="news-secondary">
-          <span>{{ element.channel.name }}</span>
-          <span>{{ element.likes }}</span>
-          <span>{{ when }}</span>
+          <div class="channel-name">
+            <span>{{ element.channel.name }}</span>
+          </div>
+          <div class="num-likes">
+            <span>{{ element.likes }}</span>
+            <font-awesome-icon icon="thumbs-up"/>
+          </div>
+          <div class="news-time">
+            <span>{{ when }}</span>
+            <font-awesome-icon icon="clock"/>
+          </div>
         </div>
+        <!--<div v-line-clamp:20="3" class="news-main">-->
         <div class="news-main">
-          <span>{{ element.content }}</span>
+          {{ element.content }}
         </div>
       </div>
       <div class="news-share">
@@ -37,8 +46,8 @@ export default {
   computed: {
     when() {
       //TODO: Handle the date format of the databse
-      var date = new Date();
-      return date;
+      //var date = new Date();
+      return this.element.datetime.time;
     }
   }
 }
@@ -55,7 +64,7 @@ export default {
   margin-top: 2rem;
   .news-image {
     width: 250px;
-    height: 100%;
+    height: 99%;
     float: left;
   }
   .channel-logo {
@@ -80,22 +89,55 @@ export default {
     height: 100%;
     margin-left: 250px;
     .news-title {
-      padding: 1rem 1rem 0.5rem 0.5rem;
+      padding: 1.1rem 1rem 0.25rem 0.5rem;
       color: $blue;
       font-weight: bold;
+      @media (max-width: $break-large) {
+        font-size: 1.15rem;
+      }
       margin-bottom: 0;
     }
     .news-secondary {
       @include flex-layout(flex-start, center);
-      padding: 0 1rem 0.5rem 0.5rem;
-      span {
+      flex-wrap: wrap;
+      padding: 0 1rem 0 0.5rem;
+      .channel-name {
         color: darkgrey;
-        margin-right: 30px;
+        font-size: 0.8rem;
+        &:hover {
+          color: #444;
+          cursor: pointer;
+          &::after {
+            color: darkgrey;
+          }
+        }
+        &::after {
+          content: '•';
+          margin: 0 10px;
+        }
+      }
+      .num-likes {
+        color: darkgrey;
+        font-size: 0.8rem;
+        &::after {
+          content: '•';
+          margin: 0 10px;
+        }
+      }
+      .news-time {
+        color: darkgrey;
+        font-size: 0.8rem;
       }
     }
     .news-main {
-      padding: 0 1rem 0.5rem 0.5rem;
-      color: darkgrey;
+      padding: 0.5rem 1rem 0.5rem 0.5rem;
+      color: #2c3e50;
+      font-size: 0.9rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-height: inherit;
+      line-height: 1.1;
     }
   }
   .card-body {
