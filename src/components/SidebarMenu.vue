@@ -1,31 +1,31 @@
 <template>
   <div class="nav-side-menu">
     <a class="toggle-btn"><font-awesome-icon icon="bars"/></a>
-    <div class="menu-list">
+    <div class="sidebar-menu-list">
       <ul id="menu-content" class="menu-content">
-        <li>
+        <li @click="changeOpt($event.target)">
           <a href="#"><font-awesome-icon icon="newspaper"/>
             {{ $t('feed_menuNews') }}
           </a>
         </li>
-        <li>
+        <li @click="changeOpt($event.target)">
           <a href="#"><font-awesome-icon icon="fire"/>
             {{ $t('feed_menuTrending') }}
           </a>
         </li>
-        <li>
+        <li @click="changeOpt($event.target)">
           <a href="#"><font-awesome-icon icon="list-ul"/>
             {{ $t('feed_menuSubscriptions') }}
           </a>
         </li>
-        <li>
+        <li @click="changeOpt($event.target)">
           <a href="#"><font-awesome-icon icon="thumbs-up"/>
             {{ $t('feed_menuLikes') }}
           </a>
         </li>
         <hr/>
         <h4>{{ $t('feed_menuCategories') }}</h4>
-        <li v-for="category in categories">
+        <li @click="changeOpt($event.target)" v-for="category in categories">
           <a v-if="$i18n.locale == 'en'" href="#"><font-awesome-icon :icon="category.icon"/>
             {{ category.en }}
           </a>
@@ -34,17 +34,17 @@
           </a>
         </li>
         <hr/>
-        <li>
+        <li @click="changeOpt($event.target)">
           <a href="#"><font-awesome-icon icon="heart"/>
             {{ $t('feed_menuPreferences') }}
           </a>
         </li>
-        <li>
+        <li @click="changeOpt($event.target)">
           <a href="#"><font-awesome-icon icon="cog"/>
             {{ $t('feed_menuSettings') }}
           </a>
         </li>
-        <li>
+        <li @click="changeOpt($event.target)">
           <a href="#"><font-awesome-icon icon="question-circle"/>
             {{ $t('feed_menuHelp') }}
           </a>
@@ -64,7 +64,23 @@ export default {
     }
   },
   methods: {
+    changeOpt(target) {
+      var menu = document.getElementsByClassName("sidebar-menu-list")[0];
+      var list = menu.firstChild.childNodes;
 
+      for (var i = 0; i < list.length; i++) {
+        var curr_elem = list[i].classList || "";
+        var leave = false;
+        if (curr_elem != "") {
+          if (curr_elem.contains("active")) {
+            leave = true;
+            curr_elem.remove("active");
+          }
+        }
+        if (leave) break;
+      }
+      target.classList.add("active");
+    }
   },
   computed: {
     categories() {
@@ -76,8 +92,11 @@ export default {
     }
   },
   mounted() {
-    var menu = document.getElementsByClassName("menu-list")[0];
+    var menu = document.getElementsByClassName("sidebar-menu-list")[0];
     menu.style.paddingRight = menu.offsetWidth - menu.clientWidth + "px";
+
+    var $li = menu.firstChild.childNodes;
+    $li[0].classList.add("active");
   }
 }
 </script>
@@ -96,40 +115,31 @@ export default {
   margin-top: 50px;
   padding: 0;
   overflow: hidden;
-  .menu-list {
+  .sidebar-menu-list {
     padding-top: 1rem;
     padding-bottom: 1rem;
     overflow-y: scroll;
     padding-right: 0;
     box-sizing: content-box;
     width: 100%;
-    height: 100%;
+    height: calc(100% - 50px);
     ul, li {
       list-style: none;
       padding: 0px;
       margin: 0px;
       line-height: 35px;
       cursor: pointer;
-      /*&:not(collapsed) .arrow:before {
-        font-family: FontAwesome;
-        content: "\f078";
-        display: inline-block;
-        padding-left: 10px;
-        padding-right: 10px;
-        vertical-align: middle;
-        float: right;
-      }
-      .active {
-        border-left: 3px solid #d19b3d;
-        background-color: #4f5b69;
-      }*/
     }
     li {
       padding: 0.3rem 1rem 0.2rem 1.5rem;
       &:hover {
         background-color: #ddd;
+        a svg {
+          color: $blue;
+        }
       }
-      &:active {
+      &.active {
+        background-color: #ddd;
         a svg {
           color: $blue;
           font-weight: bold;
@@ -165,7 +175,7 @@ export default {
       width: 40px;
       text-align: center;
     }
-    .menu-list .menu-content {
+    .sidebar-menu-list .menu-content {
       display: block;
     }
   }
