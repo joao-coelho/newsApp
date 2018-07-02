@@ -18,9 +18,9 @@
 	"register_preferences": "Selecione os tipos de conteúdo que gostaria de ver no seu feed. Não se preocupe, pode alterar as suas escolhas após o registo.",
 	"register_channelTitle": "O Meu Canal",
 	"register_createChannel": "Configuração",
-	"register_channel": "Pretende criar o seu próprio canal para divulgação de conteúdo noticioso? Uma vez mais, a sua decisão pde ser alterada mais tarde.",
-	"register_yesChannel": "Sim, quero criar o meu próprio canal de notícias.",
-	"register_noChannel": "Não, pretendo apenas consultar notícias de outros canais.",
+	"register_channel": "Pretende configurar agora o seu canal de notícias?",
+	"register_yesChannel": "Sim, quero configurá-lo agora.",
+	"register_noChannel": "Não, pretendo fazê-lo mais tarde.",
 	"register_channelName": "Nome:",
 	"register_channelNamePlaceholder": "Escolha um nome para o seu canal",
 	"register_channelDescription": "Descrição:",
@@ -50,8 +50,8 @@
 	"register_passError": "As passwords não coincidem",
 	"register_lengthError": "A password tem que ser composta por, pelo menos, 6 caracteres",
 	"register_emailError": "O email pretendido já se encontra registado",
-  "register_channelError": "O nome do canal já se encontra registado",
-  "register_required": "* campo obrigatório",
+  	"register_channelError": "O nome do canal já se encontra registado",
+  	"register_required": "* campo obrigatório",
 	"register_unsuccess": "Por favor preencha devidamente os campos obrigatórios",
 
 	"feed_searchbar": "Procurar...",
@@ -62,5 +62,6 @@
 	"feed_menuCategories": "Categorias",
 	"feed_menuPreferences": "Preferências",
 	"feed_menuSettings": "Definições",
-	"feed_menuHelp": "Ajuda"
+	"feed_menuHelp": "Ajuda",
+	"feed_addNews": "Publicar uma notícia no meu canal"
 }
