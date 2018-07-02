@@ -1,0 +1,18 @@
+[
+	{ "pt": "Negócio", "en": "Business", "value": "business", "icon": "user-tie" },
+	{ "pt": "Entretenimento", "en": "Entertainment", "value": "entertainment", "icon": "chess" },
+	{ "pt": "Saúde", "en": "Health", "value": "health", "icon": "heartbeat" },
+	{ "pt": "Ciência", "en": "Science", "value": "science", "icon": "flask" },
+	{ "pt": "Desporto", "en": "Sports", "value": "sports", "icon": "futbol" },
+	{ "pt": "Tecnologia", "en": "Technology", "value": "technology", "icon": "desktop" },
+	{ "pt": "Política", "en": "Politics", "value": "politics", "icon": "gavel" },
+	{ "pt": "Clima", "en": "Weather", "value": "weather", "icon": "sun" },
+	{ "pt": "Finanças", "en": "Finance", "value": "finance", "icon": "hand-holding-usd" },
+	{ "pt": "Economia", "en": "Economy", "value": "economy", "icon": "chart-line" },
+    { "pt": "Educação", "en": "Education", "value": "education", "icon": "graduation-cap" },
+    { "pt": "Religião", "en": "Religion", "value": "religion", "icon": "church" },
+    { "pt": "Ambiente", "en": "Environment", "value": "environment", "icon": "tree" },
+    { "pt": "Governo", "en": "Government", "value": "government", "icon": "balance-scale" },
+    { "pt": "Artes", "en": "Arts", "value": "arts", "icon": "pencil-alt" }	
+
+]
