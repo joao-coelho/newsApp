@@ -1,10 +1,16 @@
 package backend;
 
-import newsapp.User;
+
+
+import org.orm.PersistentException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Map;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
+
+import javax.servlet.http.HttpSession;
+
 
 @RestController
 @CrossOrigin
@@ -16,22 +22,29 @@ public class RegisterController {
 
     @RequestMapping(value = "/verifyUser", method = RequestMethod.GET)
     public int verifyUser(@RequestParam("username") String username) {
-        int result = r.verifyUser(username);
-        return result;
+        boolean result = r.verifyUsernameAvailability(username);
+        return result ? 1 : 0;
     }
 
     @RequestMapping(value = "/verifyEmail", method = RequestMethod.GET)
     public int verifyEmail(@RequestParam("email") String email) {
-        int result = r.verifyEmail(email);
-        return result;
+        /*
+        boolean result = r.verifyEmailAvailability(email);
+        return result ? 1 : 0;*/
+        return 1;
     }
 
-    /*
-    @RequestMapping(value = "/submitDetails", method = RequestMethod.POST)
-    public int submitDetails(@RequestBody UserDetails user) {
-        int result = r.submitDetails(user);
-        return result;
-    }*/
+    @RequestMapping(value = "/verifyChannelName", method = RequestMethod.GET)
+    public int verifyChannel(HttpSession session, @RequestParam("channelName") String channelName) {
+        boolean result = r.verifyChannelAvailability(channelName);
+        return result ? 1 : 0;
+    }
+
+    @RequestMapping(value = "/submit", method = RequestMethod.POST)
+    public int submitDetails(@RequestBody UserDetails user ) {
+        boolean result = r.registerUser(user);
+        return result ? 1 : 0;
+    }
 
 
 

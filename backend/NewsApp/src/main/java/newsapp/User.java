@@ -77,6 +77,7 @@ public class User implements Serializable {
 	
 	@Column(name="Country", nullable=true, length=255)	
 	private String country;
+
 	
 	@ManyToMany(targetEntity=newsapp.Category.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
