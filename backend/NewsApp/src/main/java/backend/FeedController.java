@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import sun.misc.Request;
 
+import javax.security.auth.message.callback.PrivateKeyCallback;
 import java.util.List;
 
 @RestController
@@ -40,8 +41,15 @@ public class FeedController {
     }
 
     @RequestMapping(value = "/likeComment", method = RequestMethod.GET)
-    public List<LikeComment> getNewsWithLikeComment(@RequestParam("token") int token) {
-        List<LikeComment> news = null; /*fs.newsWithLikeComment(token);*/
-        return news;
+    public LikeComment getNewsWithLikeComment(@RequestParam("token") int token) {
+        LikeComment lc = fs.getNewsWithLikeComment(token);
+        return lc;
     }
+
+    @RequestMapping(value = "/newFeed", method = RequestMethod.GET)
+    public List<NewsHeader> getNewFeed(@RequestParam("token") int token) {
+        List<NewsHeader> feed = fs.getNewFeed(token);
+        return feed;
+    }
+
 }

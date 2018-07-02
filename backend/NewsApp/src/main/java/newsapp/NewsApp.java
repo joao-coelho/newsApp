@@ -37,22 +37,34 @@ public class NewsApp extends SessionManager {
               }
     }*/
 
+    public static List<ChannelArticle> getCommentedArticles(List<Channel> channels, int token) {
+        List<ChannelArticle> articles = new ArrayList<>();
+        for(Channel c : channels) {
+            Iterator it = c._articles.getIterator();
+            while(it.hasNext()) {
+                Article a = (Article) it.next();
+                Iterator at  = a._comments.getIterator();
+                while(it.hasNext()) {
+                    Comment co = (Comment) it.next();
+                    if(co.get_author().getID() == token) {
+                        Channel channel = a.getChannel();
+                        ChannelArticle ca = new ChannelArticle(a.getChannel().getName(), a);
+                    }
+                }
+            }
+        }
+        return articles;
+    }
 
-    /*
-    public static List<ChannelArticle> getArticles(User u) {
+    public static List<ChannelArticle> getLikedArticles(User u) {
         List<ChannelArticle> articles = new ArrayList<>();
         Iterator it = u._likedArticles.getIterator();
         while(it.hasNext()) {
             Article a = (Article) it.next();
-            Channel c = null;
-            try {
-                a.get
-                ChannelDAO.getChannelByORMID(a.)
-            }
-            ChannelArticle ca = new ChannelArticle()
+            ChannelArticle ca = new ChannelArticle(a.getChannel().getName(), a);
         }
-
-    }*/
+        return articles;
+    }
 
     public static List<ChannelArticle> getArticles(List<Channel> channels) {
         List<ChannelArticle> articles = null;
@@ -282,6 +294,35 @@ public class NewsApp extends SessionManager {
             e.printStackTrace();
         }
         return c;
+    }
+
+    public static Channel getChannel(int id) {
+        Channel c = null;
+        try {
+            c = ChannelDAO.loadChannelByORMID(id);
+        } catch (PersistentException e) {
+            e.printStackTrace();
+        }
+        return c;
+    }
+
+    public static boolean createArticle(Channel c, String title, String content, String image_url) {
+        Article a = new Article();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Date date = new Date();
+        a.setChannel(c);
+        a.setLikes(0);
+        a.setAddedAt(date);
+        a.setTitle(title);
+        a.setImage_url(image_url);
+        a.setContent(content);
+        try {
+            ArticleDAO.save(a);
+            return true;
+        } catch (PersistentException e ) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
 

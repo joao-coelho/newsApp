@@ -60,17 +60,39 @@ public class FeedService implements IFeedService {
         return news;
     }
 
-    /*public List<LikeComment> getNewsWithLikeComment(int token) {
+    public LikeComment getNewsWithLikeComment(int token) {
         User u = NewsApp.getUser(token);
-        List<ChannelArticle> articles = NewsApp.getArticles(u);
+        List<ChannelArticle> likedArticles = NewsApp.getLikedArticles(u);
+        List<NewsHeader> likedNews = new ArrayList<>();
+        for(ChannelArticle ca : likedArticles) {
+            NewsHeader n = buildArticleHeader(ca);
+            likedNews.add(n);
+        }
+        List<Channel> channels = NewsApp.getChannels();
+        List<ChannelArticle> commentedArticles = NewsApp.getCommentedArticles(channels, token);
+        List<NewsHeader> commentedNews = new ArrayList<>();
+        for(ChannelArticle a : commentedArticles) {
+            NewsHeader nh = buildArticleHeader(a);
+            commentedNews.add(nh);
+        }
+        LikeComment lc = new LikeComment();
+        lc.setNewsWithLike(likedNews);
+        lc.setNewsWithComment(commentedNews);
+        return lc;
 
-        Iterator it = u._likedArticles.getIterator();
-        if
-        for()
-        List<Article> articlesWithLike = NewsApp.getArticles()
-        List<LikeComment> allNews = new ArrayList<>();
+    }
 
-    }*/
+    public List<NewsHeader> getNewFeed(int token) {
+        User user = NewsApp.getUser(token);
+        List<ChannelArticle> articles = NewsApp.getUserNews(user);
+        List<ChannelArticle> sortedArticles = NewsApp.OrderChannelArticlesByDateDesc(articles);
+        List<NewsHeader> newsHeaders = new ArrayList<>();
+        for(ChannelArticle a : sortedArticles) {
+            NewsHeader n = buildArticleHeader(a);
+            newsHeaders.add(n);
+        }
+        return newsHeaders;
+    }
 
     private ChannelHeader buildChannelHeader(Channel c) {
         ChannelHeader ch = new ChannelHeader();
