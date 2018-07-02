@@ -11,6 +11,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class NewsApp extends SessionManager {
 
@@ -36,6 +37,22 @@ public class NewsApp extends SessionManager {
               }
     }*/
 
+
+    /*
+    public static List<ChannelArticle> getArticles(User u) {
+        List<ChannelArticle> articles = new ArrayList<>();
+        Iterator it = u._likedArticles.getIterator();
+        while(it.hasNext()) {
+            Article a = (Article) it.next();
+            Channel c = null;
+            try {
+                a.get
+                ChannelDAO.getChannelByORMID(a.)
+            }
+            ChannelArticle ca = new ChannelArticle()
+        }
+
+    }*/
 
     public static List<ChannelArticle> getArticles(List<Channel> channels) {
         List<ChannelArticle> articles = null;

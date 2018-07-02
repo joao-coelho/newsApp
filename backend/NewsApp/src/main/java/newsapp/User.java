@@ -205,11 +205,7 @@ public class User implements Serializable {
 	
 	@Transient	
 	public final newsapp.ArticleSetCollection _likedArticles = new newsapp.ArticleSetCollection(this, _ormAdapter, ORMConstants.KEY_USER__LIKEDARTICLES, ORMConstants.KEY_MUL_MANY_TO_MANY);
-	
-	public void setAge(Short age) {
-		//TODO: Implement Method
-		throw new UnsupportedOperationException();
-	}
+
 	
 	public String toString() {
 		return String.valueOf(getID());

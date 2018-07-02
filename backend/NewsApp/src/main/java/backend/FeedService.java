@@ -37,7 +37,7 @@ public class FeedService implements IFeedService {
         return newsHeaders;
     }
 
-  
+
     public List<ChannelHeader> subscriptions(int token) {
         List<Channel> channels = NewsApp.getUserSubscriptionChannels(token);
         List<ChannelHeader> channelHeaders = new ArrayList<>();
@@ -59,6 +59,18 @@ public class FeedService implements IFeedService {
         }
         return news;
     }
+
+    /*public List<LikeComment> getNewsWithLikeComment(int token) {
+        User u = NewsApp.getUser(token);
+        List<ChannelArticle> articles = NewsApp.getArticles(u);
+
+        Iterator it = u._likedArticles.getIterator();
+        if
+        for()
+        List<Article> articlesWithLike = NewsApp.getArticles()
+        List<LikeComment> allNews = new ArrayList<>();
+
+    }*/
 
     private ChannelHeader buildChannelHeader(Channel c) {
         ChannelHeader ch = new ChannelHeader();

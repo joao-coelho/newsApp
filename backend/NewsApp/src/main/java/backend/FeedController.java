@@ -20,7 +20,7 @@ public class FeedController {
         return bf;
     }
 
-    @RequestMapping(value = "/treding", method = RequestMethod.GET)
+    @RequestMapping(value = "/trending", method = RequestMethod.GET)
     public List<NewsHeader> trending() {
         List<NewsHeader> trending = fs.trending();
         return trending;
@@ -35,7 +35,13 @@ public class FeedController {
     @RequestMapping(value = "/category", method = RequestMethod.GET)
     public List<NewsHeader> getNewsByCategory(@RequestParam("token") int token
                                               /*@RequestParam("category") String category*/) {
-        List<NewsHeader> news = fs.newsByCategory(token, "Politica");
+        List<NewsHeader> news = fs.newsByCategory(token, "Desporto");
+        return news;
+    }
+
+    @RequestMapping(value = "/likeComment", method = RequestMethod.GET)
+    public List<LikeComment> getNewsWithLikeComment(@RequestParam("token") int token) {
+        List<LikeComment> news = null; /*fs.newsWithLikeComment(token);*/
         return news;
     }
 }
