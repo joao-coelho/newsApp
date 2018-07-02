@@ -321,6 +321,39 @@ public class ChannelDAO {
 		}
 	}
 	
+	public static boolean deleteAndDissociate(newsapp.Channel channel)throws PersistentException {
+		try {
+			newsapp.Article[] l_articless = channel._articles.toArray();
+			for(int i = 0; i < l_articless.length; i++) {
+				l_articless[i].setChannel(null);
+			}
+			return delete(channel);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			throw new PersistentException(e);
+		}
+	}
+	
+	public static boolean deleteAndDissociate(newsapp.Channel channel, org.orm.PersistentSession session)throws PersistentException {
+		try {
+			newsapp.Article[] l_articless = channel._articles.toArray();
+			for(int i = 0; i < l_articless.length; i++) {
+				l_articless[i].setChannel(null);
+			}
+			try {
+				session.delete(channel);
+				return true;
+			} catch (Exception e) {
+				return false;
+			}
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			throw new PersistentException(e);
+		}
+	}
+	
 	public static boolean refresh(newsapp.Channel channel) throws PersistentException {
 		try {
 			ProjectEAPersistentManager.instance().getSession().refresh(channel);

@@ -16,10 +16,10 @@ public class CreateProjectEAData {
 			// Initialize the properties of the persistent object here
 			newsapp.CategoryDAO.save(lnewsappCategory);
 			newsapp.Comment lnewsappComment = newsapp.CommentDAO.createComment();
-			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : _author
+			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : _author, article
 			newsapp.CommentDAO.save(lnewsappComment);
 			newsapp.Article lnewsappArticle = newsapp.ArticleDAO.createArticle();
-			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : _categories, _comments, likes
+			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : _categories, _comments, likes, channel
 			newsapp.ArticleDAO.save(lnewsappArticle);
 			newsapp.Channel lnewsappChannel = newsapp.ChannelDAO.createChannel();
 			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : categories, _articles, subscribers

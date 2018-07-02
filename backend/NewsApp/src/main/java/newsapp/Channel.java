@@ -59,9 +59,8 @@ public class Channel implements Serializable {
 	@Column(name="Image_url", nullable=true, length=255)	
 	private String image_url;
 	
-	@OneToMany(targetEntity=newsapp.Article.class)	
+	@OneToMany(mappedBy="channel", targetEntity=newsapp.Article.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
-	@JoinColumns({ @JoinColumn(name="ChannelID", nullable=false) })	
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
 	private java.util.Set ORM__articles = new java.util.HashSet();
 	
@@ -124,7 +123,7 @@ public class Channel implements Serializable {
 	}
 	
 	@Transient	
-	public final newsapp.ArticleSetCollection _articles = new newsapp.ArticleSetCollection(this, _ormAdapter, ORMConstants.KEY_CHANNEL__ARTICLES, ORMConstants.KEY_MUL_ONE_TO_MANY);
+	public final newsapp.ArticleSetCollection _articles = new newsapp.ArticleSetCollection(this, _ormAdapter, ORMConstants.KEY_CHANNEL__ARTICLES, ORMConstants.KEY_ARTICLE_CHANNEL, ORMConstants.KEY_MUL_ONE_TO_MANY);
 	
 	private void setORM_Categories(java.util.Set value) {
 		this.ORM_categories = value;

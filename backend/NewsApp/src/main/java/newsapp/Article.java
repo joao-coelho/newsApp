@@ -33,10 +33,20 @@ public class Article implements Serializable {
 		return null;
 	}
 	
+	private void this_setOwner(Object owner, int key) {
+		if (key == ORMConstants.KEY_ARTICLE_CHANNEL) {
+			this.channel = (newsapp.Channel) owner;
+		}
+	}
+	
 	@Transient	
 	org.orm.util.ORMAdapter _ormAdapter = new org.orm.util.AbstractORMAdapter() {
 		public java.util.Set getSet(int key) {
 			return this_getSet(key);
+		}
+		
+		public void setOwner(Object owner, int key) {
+			this_setOwner(owner, key);
 		}
 		
 	};
@@ -46,6 +56,11 @@ public class Article implements Serializable {
 	@GeneratedValue(generator="NEWSAPP_ARTICLE_ID_GENERATOR")	
 	@org.hibernate.annotations.GenericGenerator(name="NEWSAPP_ARTICLE_ID_GENERATOR", strategy="native")	
 	private int ID;
+	
+	@ManyToOne(targetEntity=newsapp.Channel.class, fetch=FetchType.LAZY)	
+	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.LOCK})	
+	@JoinColumns({ @JoinColumn(name="ChannelID", referencedColumnName="ID", nullable=false) })	
+	private newsapp.Channel channel;
 	
 	@Column(name="Title", nullable=true, length=255)	
 	private String title;
@@ -63,9 +78,8 @@ public class Article implements Serializable {
 	@Column(name="Image_url", nullable=true, length=255)	
 	private String image_url;
 	
-	@OneToMany(targetEntity=newsapp.Comment.class)	
+	@OneToMany(mappedBy="article", targetEntity=newsapp.Comment.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
-	@JoinColumns({ @JoinColumn(name="ArticleID", nullable=false) })	
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
 	private java.util.Set ORM__comments = new java.util.HashSet();
 	
@@ -127,6 +141,30 @@ public class Article implements Serializable {
 		return image_url;
 	}
 	
+	public void setChannel(newsapp.Channel value) {
+		if (channel != null) {
+			channel._articles.remove(this);
+		}
+		if (value != null) {
+			value._articles.add(this);
+		}
+	}
+	
+	public newsapp.Channel getChannel() {
+		return channel;
+	}
+	
+	/**
+	 * This method is for internal use only.
+	 */
+	public void setORM_Channel(newsapp.Channel value) {
+		this.channel = value;
+	}
+	
+	private newsapp.Channel getORM_Channel() {
+		return channel;
+	}
+	
 	private void setORM__comments(java.util.Set value) {
 		this.ORM__comments = value;
 	}
@@ -136,7 +174,7 @@ public class Article implements Serializable {
 	}
 	
 	@Transient	
-	public final newsapp.CommentSetCollection _comments = new newsapp.CommentSetCollection(this, _ormAdapter, ORMConstants.KEY_ARTICLE__COMMENTS, ORMConstants.KEY_MUL_ONE_TO_MANY);
+	public final newsapp.CommentSetCollection _comments = new newsapp.CommentSetCollection(this, _ormAdapter, ORMConstants.KEY_ARTICLE__COMMENTS, ORMConstants.KEY_COMMENT_ARTICLE, ORMConstants.KEY_MUL_ONE_TO_MANY);
 	
 	private void setORM__categories(java.util.Set value) {
 		this.ORM__categories = value;

@@ -38,7 +38,7 @@ public class ArticleSetCollection extends org.orm.util.ORMSet {
 	 */
 	public void add(Article value) {
 		if (value != null) {
-			super.add(value, null);
+			super.add(value, value._ormAdapter);
 		}
 	}
 	
@@ -47,7 +47,7 @@ public class ArticleSetCollection extends org.orm.util.ORMSet {
 	 * @param value the persistent object
 	 */
 	public void remove(Article value) {
-		super.remove(value, null);
+		super.remove(value, value._ormAdapter);
 	}
 	
 	/**

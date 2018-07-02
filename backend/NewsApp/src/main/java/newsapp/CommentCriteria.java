@@ -20,6 +20,8 @@ import org.orm.criteria.*;
 
 public class CommentCriteria extends AbstractORMCriteria {
 	public final IntegerExpression ID;
+	public final IntegerExpression articleId;
+	public final AssociationExpression article;
 	public final IntegerExpression _authorId;
 	public final AssociationExpression _author;
 	public final StringExpression content;
@@ -28,6 +30,8 @@ public class CommentCriteria extends AbstractORMCriteria {
 	public CommentCriteria(Criteria criteria) {
 		super(criteria);
 		ID = new IntegerExpression("ID", this);
+		articleId = new IntegerExpression("article.ID", this);
+		article = new AssociationExpression("article", this);
 		_authorId = new IntegerExpression("_author.ID", this);
 		_author = new AssociationExpression("_author", this);
 		content = new StringExpression("content", this);
@@ -40,6 +44,10 @@ public class CommentCriteria extends AbstractORMCriteria {
 	
 	public CommentCriteria() throws PersistentException {
 		this(ProjectEAPersistentManager.instance().getSession());
+	}
+	
+	public ArticleCriteria createArticleCriteria() {
+		return new ArticleCriteria(createCriteria("article"));
 	}
 	
 	public UserCriteria create_authorCriteria() {

@@ -20,6 +20,8 @@ import org.orm.criteria.*;
 
 public class ArticleDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final IntegerExpression ID;
+	public final IntegerExpression channelId;
+	public final AssociationExpression channel;
 	public final StringExpression title;
 	public final StringExpression content;
 	public final IntegerExpression likes;
@@ -31,6 +33,8 @@ public class ArticleDetachedCriteria extends AbstractORMDetachedCriteria {
 	public ArticleDetachedCriteria() {
 		super(newsapp.Article.class, newsapp.ArticleCriteria.class);
 		ID = new IntegerExpression("ID", this.getDetachedCriteria());
+		channelId = new IntegerExpression("channel.ID", this.getDetachedCriteria());
+		channel = new AssociationExpression("channel", this.getDetachedCriteria());
 		title = new StringExpression("title", this.getDetachedCriteria());
 		content = new StringExpression("content", this.getDetachedCriteria());
 		likes = new IntegerExpression("likes", this.getDetachedCriteria());
@@ -43,6 +47,8 @@ public class ArticleDetachedCriteria extends AbstractORMDetachedCriteria {
 	public ArticleDetachedCriteria(DetachedCriteria aDetachedCriteria) {
 		super(aDetachedCriteria, newsapp.ArticleCriteria.class);
 		ID = new IntegerExpression("ID", this.getDetachedCriteria());
+		channelId = new IntegerExpression("channel.ID", this.getDetachedCriteria());
+		channel = new AssociationExpression("channel", this.getDetachedCriteria());
 		title = new StringExpression("title", this.getDetachedCriteria());
 		content = new StringExpression("content", this.getDetachedCriteria());
 		likes = new IntegerExpression("likes", this.getDetachedCriteria());
@@ -50,6 +56,10 @@ public class ArticleDetachedCriteria extends AbstractORMDetachedCriteria {
 		image_url = new StringExpression("image_url", this.getDetachedCriteria());
 		_comments = new CollectionExpression("ORM__comments", this.getDetachedCriteria());
 		_categories = new CollectionExpression("ORM__categories", this.getDetachedCriteria());
+	}
+	
+	public ChannelDetachedCriteria createChannelCriteria() {
+		return new ChannelDetachedCriteria(createCriteria("channel"));
 	}
 	
 	public CommentDetachedCriteria create_commentsCriteria() {

@@ -321,6 +321,47 @@ public class ArticleDAO {
 		}
 	}
 	
+	public static boolean deleteAndDissociate(newsapp.Article article)throws PersistentException {
+		try {
+			if (article.getChannel() != null) {
+				article.getChannel()._articles.remove(article);
+			}
+			
+			newsapp.Comment[] l_commentss = article._comments.toArray();
+			for(int i = 0; i < l_commentss.length; i++) {
+				l_commentss[i].setArticle(null);
+			}
+			return delete(article);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			throw new PersistentException(e);
+		}
+	}
+	
+	public static boolean deleteAndDissociate(newsapp.Article article, org.orm.PersistentSession session)throws PersistentException {
+		try {
+			if (article.getChannel() != null) {
+				article.getChannel()._articles.remove(article);
+			}
+			
+			newsapp.Comment[] l_commentss = article._comments.toArray();
+			for(int i = 0; i < l_commentss.length; i++) {
+				l_commentss[i].setArticle(null);
+			}
+			try {
+				session.delete(article);
+				return true;
+			} catch (Exception e) {
+				return false;
+			}
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			throw new PersistentException(e);
+		}
+	}
+	
 	public static boolean refresh(newsapp.Article article) throws PersistentException {
 		try {
 			ProjectEAPersistentManager.instance().getSession().refresh(article);

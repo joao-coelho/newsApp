@@ -23,7 +23,11 @@ public class Comment implements Serializable {
 	}
 	
 	private void this_setOwner(Object owner, int key) {
-		if (key == ORMConstants.KEY_COMMENT__AUTHOR) {
+		if (key == ORMConstants.KEY_COMMENT_ARTICLE) {
+			this.article = (newsapp.Article) owner;
+		}
+		
+		else if (key == ORMConstants.KEY_COMMENT__AUTHOR) {
 			this._author = (newsapp.User) owner;
 		}
 	}
@@ -41,6 +45,11 @@ public class Comment implements Serializable {
 	@GeneratedValue(generator="NEWSAPP_COMMENT_ID_GENERATOR")	
 	@org.hibernate.annotations.GenericGenerator(name="NEWSAPP_COMMENT_ID_GENERATOR", strategy="native")	
 	private int ID;
+	
+	@ManyToOne(targetEntity=newsapp.Article.class, fetch=FetchType.LAZY)	
+	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.LOCK})	
+	@JoinColumns({ @JoinColumn(name="ArticleID", referencedColumnName="ID", nullable=false) })	
+	private newsapp.Article article;
 	
 	@ManyToOne(targetEntity=newsapp.User.class, fetch=FetchType.LAZY)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.LOCK})	
@@ -80,6 +89,30 @@ public class Comment implements Serializable {
 	
 	public java.util.Date getAddedAt() {
 		return addedAt;
+	}
+	
+	public void setArticle(newsapp.Article value) {
+		if (article != null) {
+			article._comments.remove(this);
+		}
+		if (value != null) {
+			value._comments.add(this);
+		}
+	}
+	
+	public newsapp.Article getArticle() {
+		return article;
+	}
+	
+	/**
+	 * This method is for internal use only.
+	 */
+	public void setORM_Article(newsapp.Article value) {
+		this.article = value;
+	}
+	
+	private newsapp.Article getORM_Article() {
+		return article;
 	}
 	
 	public void set_author(newsapp.User value) {

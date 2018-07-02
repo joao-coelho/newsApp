@@ -20,6 +20,8 @@ import org.orm.criteria.*;
 
 public class CommentDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final IntegerExpression ID;
+	public final IntegerExpression articleId;
+	public final AssociationExpression article;
 	public final IntegerExpression _authorId;
 	public final AssociationExpression _author;
 	public final StringExpression content;
@@ -28,6 +30,8 @@ public class CommentDetachedCriteria extends AbstractORMDetachedCriteria {
 	public CommentDetachedCriteria() {
 		super(newsapp.Comment.class, newsapp.CommentCriteria.class);
 		ID = new IntegerExpression("ID", this.getDetachedCriteria());
+		articleId = new IntegerExpression("article.ID", this.getDetachedCriteria());
+		article = new AssociationExpression("article", this.getDetachedCriteria());
 		_authorId = new IntegerExpression("_author.ID", this.getDetachedCriteria());
 		_author = new AssociationExpression("_author", this.getDetachedCriteria());
 		content = new StringExpression("content", this.getDetachedCriteria());
@@ -37,10 +41,16 @@ public class CommentDetachedCriteria extends AbstractORMDetachedCriteria {
 	public CommentDetachedCriteria(DetachedCriteria aDetachedCriteria) {
 		super(aDetachedCriteria, newsapp.CommentCriteria.class);
 		ID = new IntegerExpression("ID", this.getDetachedCriteria());
+		articleId = new IntegerExpression("article.ID", this.getDetachedCriteria());
+		article = new AssociationExpression("article", this.getDetachedCriteria());
 		_authorId = new IntegerExpression("_author.ID", this.getDetachedCriteria());
 		_author = new AssociationExpression("_author", this.getDetachedCriteria());
 		content = new StringExpression("content", this.getDetachedCriteria());
 		addedAt = new DateExpression("addedAt", this.getDetachedCriteria());
+	}
+	
+	public ArticleDetachedCriteria createArticleCriteria() {
+		return new ArticleDetachedCriteria(createCriteria("article"));
 	}
 	
 	public UserDetachedCriteria create_authorCriteria() {

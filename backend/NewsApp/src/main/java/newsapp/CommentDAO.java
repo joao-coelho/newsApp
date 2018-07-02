@@ -321,6 +321,39 @@ public class CommentDAO {
 		}
 	}
 	
+	public static boolean deleteAndDissociate(newsapp.Comment comment)throws PersistentException {
+		try {
+			if (comment.getArticle() != null) {
+				comment.getArticle()._comments.remove(comment);
+			}
+			
+			return delete(comment);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			throw new PersistentException(e);
+		}
+	}
+	
+	public static boolean deleteAndDissociate(newsapp.Comment comment, org.orm.PersistentSession session)throws PersistentException {
+		try {
+			if (comment.getArticle() != null) {
+				comment.getArticle()._comments.remove(comment);
+			}
+			
+			try {
+				session.delete(comment);
+				return true;
+			} catch (Exception e) {
+				return false;
+			}
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			throw new PersistentException(e);
+		}
+	}
+	
 	public static boolean refresh(newsapp.Comment comment) throws PersistentException {
 		try {
 			ProjectEAPersistentManager.instance().getSession().refresh(comment);

@@ -20,6 +20,8 @@ public interface ORMConstants extends org.orm.util.ORMBaseConstants {
 	
 	final int KEY_ARTICLE__COMMENTS = 202365738;
 	
+	final int KEY_ARTICLE_CHANNEL = 2076005018;
+	
 	final int KEY_CHANNELSUGGESTION__TARGET = 1615403448;
 	
 	final int KEY_CHANNEL__ARTICLES = -1838378176;
@@ -27,6 +29,8 @@ public interface ORMConstants extends org.orm.util.ORMBaseConstants {
 	final int KEY_CHANNEL_CATEGORIES = 1070770936;
 	
 	final int KEY_COMMENT__AUTHOR = 117218474;
+	
+	final int KEY_COMMENT_ARTICLE = -1917302026;
 	
 	final int KEY_SUGGESTION__AUTHOR = -855898225;
 	

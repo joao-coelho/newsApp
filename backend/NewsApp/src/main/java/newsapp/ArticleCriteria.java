@@ -20,6 +20,8 @@ import org.orm.criteria.*;
 
 public class ArticleCriteria extends AbstractORMCriteria {
 	public final IntegerExpression ID;
+	public final IntegerExpression channelId;
+	public final AssociationExpression channel;
 	public final StringExpression title;
 	public final StringExpression content;
 	public final IntegerExpression likes;
@@ -31,6 +33,8 @@ public class ArticleCriteria extends AbstractORMCriteria {
 	public ArticleCriteria(Criteria criteria) {
 		super(criteria);
 		ID = new IntegerExpression("ID", this);
+		channelId = new IntegerExpression("channel.ID", this);
+		channel = new AssociationExpression("channel", this);
 		title = new StringExpression("title", this);
 		content = new StringExpression("content", this);
 		likes = new IntegerExpression("likes", this);
@@ -46,6 +50,10 @@ public class ArticleCriteria extends AbstractORMCriteria {
 	
 	public ArticleCriteria() throws PersistentException {
 		this(ProjectEAPersistentManager.instance().getSession());
+	}
+	
+	public ChannelCriteria createChannelCriteria() {
+		return new ChannelCriteria(createCriteria("channel"));
 	}
 	
 	public CommentCriteria create_commentsCriteria() {
