@@ -99,7 +99,6 @@ public class FeedService implements IFeedService {
         ch.setChannelName(c.getName());
         ch.setDescription(c.getDescription());
         ch.setId(c.getID());
-        ch.setLikes(c.getLikes());
         ch.setSubscribers(c.getSubscribers());
         return ch;
     }

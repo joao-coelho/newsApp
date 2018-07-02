@@ -5,7 +5,6 @@ public class ChannelHeader {
     private int id;
     private String channelName;
     private String description;
-    private int likes;
     private int subscribers;
 
 
@@ -35,14 +34,6 @@ public class ChannelHeader {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public int getLikes() {
-        return likes;
-    }
-
-    public void setLikes(int likes) {
-        this.likes = likes;
     }
 
     public int getSubscribers() {

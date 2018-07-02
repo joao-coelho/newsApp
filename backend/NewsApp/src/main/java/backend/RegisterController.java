@@ -28,10 +28,8 @@ public class RegisterController {
 
     @RequestMapping(value = "/verifyEmail", method = RequestMethod.GET)
     public int verifyEmail(@RequestParam("email") String email) {
-        /*
         boolean result = r.verifyEmailAvailability(email);
-        return result ? 1 : 0;*/
-        return 1;
+        return result ? 1 : 0;
     }
 
     @RequestMapping(value = "/verifyChannelName", method = RequestMethod.GET)

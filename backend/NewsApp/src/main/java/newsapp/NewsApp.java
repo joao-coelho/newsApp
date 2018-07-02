@@ -44,11 +44,12 @@ public class NewsApp extends SessionManager {
             while(it.hasNext()) {
                 Article a = (Article) it.next();
                 Iterator at  = a._comments.getIterator();
-                while(it.hasNext()) {
-                    Comment co = (Comment) it.next();
+                while(at.hasNext()) {
+                    Comment co = (Comment) at.next();
                     if(co.get_author().getID() == token) {
                         Channel channel = a.getChannel();
                         ChannelArticle ca = new ChannelArticle(a.getChannel().getName(), a);
+                        articles.add(ca);
                     }
                 }
             }
@@ -62,12 +63,13 @@ public class NewsApp extends SessionManager {
         while(it.hasNext()) {
             Article a = (Article) it.next();
             ChannelArticle ca = new ChannelArticle(a.getChannel().getName(), a);
+            articles.add(ca);
         }
         return articles;
     }
 
     public static List<ChannelArticle> getArticles(List<Channel> channels) {
-        List<ChannelArticle> articles = null;
+        List<ChannelArticle> articles = new ArrayList<>();
         for(Channel c : channels) {
             Iterator ti = c._articles.getIterator();
             while (ti.hasNext()) {
@@ -234,7 +236,6 @@ public class NewsApp extends SessionManager {
         Channel c = new Channel();
         c.setName(channelName);
         c.setDescription(description);
-        c.setLikes(0);
         c.setSubscribers(0);
         if (channelTypes.size() != 0) {
             for (String type : channelTypes) {
@@ -251,7 +252,7 @@ public class NewsApp extends SessionManager {
     }
 
 
-    public static User createUser(String username, String password, String name, int age,
+    public static User createUser(String username, String password, String email, String name, int age,
                                   String country, List<String> userTypes, Channel c) {
         User user = new User();
         if(userTypes.size() != 0) {
@@ -266,6 +267,7 @@ public class NewsApp extends SessionManager {
         user.setAge((short)age);
         user.setCountry(country);
         user.set_myChannel(c);
+        user.setEmail(email);
         try {
             UserDAO.save(user);
         } catch (PersistentException e) {

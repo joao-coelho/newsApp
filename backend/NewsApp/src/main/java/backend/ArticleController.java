@@ -17,4 +17,5 @@ public class ArticleController {
         boolean success = s.addArticle(ad);
         return success;
     }
+
 }
