@@ -60,6 +60,9 @@ public class Article implements Serializable {
 	@Temporal(TemporalType.DATE)	
 	private java.util.Date addedAt;
 	
+	@Column(name="Image_url", nullable=true, length=255)	
+	private String image_url;
+	
 	@OneToMany(targetEntity=newsapp.Comment.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
 	@JoinColumns({ @JoinColumn(name="ArticleID", nullable=false) })	
@@ -114,6 +117,14 @@ public class Article implements Serializable {
 	
 	public java.util.Date getAddedAt() {
 		return addedAt;
+	}
+	
+	public void setImage_url(String value) {
+		this.image_url = value;
+	}
+	
+	public String getImage_url() {
+		return image_url;
 	}
 	
 	private void setORM__comments(java.util.Set value) {

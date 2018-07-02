@@ -73,8 +73,8 @@ public class ChannelSetCollection extends org.orm.util.ORMSet {
 	 * <li>ID</li>
 	 * <li>name</li>
 	 * <li>description</li>
-	 * <li>likes</li>
 	 * <li>subscribers</li>
+	 * <li>image_url</li>
 	 * </ul>
 	 * @return The persistent objects sorted array
 	 */
@@ -88,8 +88,8 @@ public class ChannelSetCollection extends org.orm.util.ORMSet {
 	 * <li>ID</li>
 	 * <li>name</li>
 	 * <li>description</li>
-	 * <li>likes</li>
 	 * <li>subscribers</li>
+	 * <li>image_url</li>
 	 * </ul>
 	 * @param ascending true for ascending, false for descending
 	 * @return The persistent objects sorted array

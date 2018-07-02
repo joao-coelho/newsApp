@@ -80,6 +80,17 @@
       <Index>false</Index>
       <UserTypes/>
     </Column>
+    <Column name="Email">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>27</Type>
+      <Length>255</Length>
+      <Nullable>true</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
   </Entity>
   <Entity name="Category" Unlogged="false" PKClustered="0">
     <Column name="ID">
@@ -232,6 +243,17 @@
       <Index>false</Index>
       <UserTypes/>
     </Column>
+    <Column name="Image_url">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>27</Type>
+      <Length>255</Length>
+      <Nullable>true</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
   </Entity>
   <Entity name="Channel" Unlogged="false" PKClustered="0">
     <Column name="ID">
@@ -267,7 +289,7 @@
       <Index>false</Index>
       <UserTypes/>
     </Column>
-    <Column name="Likes">
+    <Column name="Subscribers">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>false</ForeignKey>
       <Type>9</Type>
@@ -278,12 +300,12 @@
       <Index>false</Index>
       <UserTypes/>
     </Column>
-    <Column name="Subscribers">
+    <Column name="Image_url">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>false</ForeignKey>
-      <Type>9</Type>
-      <Length>10</Length>
-      <Nullable>false</Nullable>
+      <Type>27</Type>
+      <Length>255</Length>
+      <Nullable>true</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
@@ -502,6 +524,32 @@
       <UserTypes/>
     </Column>
   </Entity>
+  <Entity name="User_Article" Unlogged="false" PKClustered="0">
+    <Column name="UserID">
+      <PrimaryKey>true</PrimaryKey>
+      <ForeignKey>true</ForeignKey>
+      <ReferencedColumn>newsapp.User.ID</ReferencedColumn>
+      <Type>9</Type>
+      <Length>10</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>assigned</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+    <Column name="ArticleID">
+      <PrimaryKey>true</PrimaryKey>
+      <ForeignKey>true</ForeignKey>
+      <ReferencedColumn>newsapp.Article.ID</ReferencedColumn>
+      <Type>9</Type>
+      <Length>10</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>assigned</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+  </Entity>
   <ForeignKey name="FKUser_Categ848082">
     <ReferenceTable>User_Category</ReferenceTable>
     <ReferencedTable>User</ReferencedTable>
@@ -667,6 +715,26 @@
     <ReferencedTable>Category</ReferencedTable>
     <Columns>
       <Column>CategoryID</Column>
+    </Columns>
+    <RefColumns>
+      <Column>ID</Column>
+    </RefColumns>
+  </ForeignKey>
+  <ForeignKey name="FKUser_Artic732470">
+    <ReferenceTable>User_Article</ReferenceTable>
+    <ReferencedTable>User</ReferencedTable>
+    <Columns>
+      <Column>UserID</Column>
+    </Columns>
+    <RefColumns>
+      <Column>ID</Column>
+    </RefColumns>
+  </ForeignKey>
+  <ForeignKey name="FKUser_Artic36931">
+    <ReferenceTable>User_Article</ReferenceTable>
+    <ReferencedTable>Article</ReferencedTable>
+    <Columns>
+      <Column>ArticleID</Column>
     </Columns>
     <RefColumns>
       <Column>ID</Column>

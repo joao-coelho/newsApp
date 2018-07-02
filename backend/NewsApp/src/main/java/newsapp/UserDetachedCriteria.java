@@ -26,9 +26,11 @@ public class UserDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final StringExpression name;
 	public final ShortExpression age;
 	public final StringExpression country;
+	public final StringExpression email;
 	public final CollectionExpression _preferences;
 	public final IntegerExpression _myChannelId;
 	public final AssociationExpression _myChannel;
+	public final CollectionExpression _likedArticles;
 	
 	public UserDetachedCriteria() {
 		super(newsapp.User.class, newsapp.UserCriteria.class);
@@ -39,9 +41,11 @@ public class UserDetachedCriteria extends AbstractORMDetachedCriteria {
 		name = new StringExpression("name", this.getDetachedCriteria());
 		age = new ShortExpression("age", this.getDetachedCriteria());
 		country = new StringExpression("country", this.getDetachedCriteria());
+		email = new StringExpression("email", this.getDetachedCriteria());
 		_preferences = new CollectionExpression("ORM__preferences", this.getDetachedCriteria());
 		_myChannelId = new IntegerExpression("_myChannel.ID", this.getDetachedCriteria());
 		_myChannel = new AssociationExpression("_myChannel", this.getDetachedCriteria());
+		_likedArticles = new CollectionExpression("ORM__likedArticles", this.getDetachedCriteria());
 	}
 	
 	public UserDetachedCriteria(DetachedCriteria aDetachedCriteria) {
@@ -53,9 +57,11 @@ public class UserDetachedCriteria extends AbstractORMDetachedCriteria {
 		name = new StringExpression("name", this.getDetachedCriteria());
 		age = new ShortExpression("age", this.getDetachedCriteria());
 		country = new StringExpression("country", this.getDetachedCriteria());
+		email = new StringExpression("email", this.getDetachedCriteria());
 		_preferences = new CollectionExpression("ORM__preferences", this.getDetachedCriteria());
 		_myChannelId = new IntegerExpression("_myChannel.ID", this.getDetachedCriteria());
 		_myChannel = new AssociationExpression("_myChannel", this.getDetachedCriteria());
+		_likedArticles = new CollectionExpression("ORM__likedArticles", this.getDetachedCriteria());
 	}
 	
 	public ChannelDetachedCriteria create_subscriptionsCriteria() {
@@ -68,6 +74,10 @@ public class UserDetachedCriteria extends AbstractORMDetachedCriteria {
 	
 	public ChannelDetachedCriteria create_myChannelCriteria() {
 		return new ChannelDetachedCriteria(createCriteria("_myChannel"));
+	}
+	
+	public ArticleDetachedCriteria create_likedArticlesCriteria() {
+		return new ArticleDetachedCriteria(createCriteria("ORM__likedArticles"));
 	}
 	
 	public User uniqueUser(PersistentSession session) {

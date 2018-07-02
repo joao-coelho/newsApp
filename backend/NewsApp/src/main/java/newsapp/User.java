@@ -29,6 +29,9 @@ public class User implements Serializable {
 		else if (key == ORMConstants.KEY_USER__SUBSCRIPTIONS) {
 			return ORM__subscriptions;
 		}
+		else if (key == ORMConstants.KEY_USER__LIKEDARTICLES) {
+			return ORM__likedArticles;
+		}
 		
 		return null;
 	}
@@ -77,7 +80,9 @@ public class User implements Serializable {
 	
 	@Column(name="Country", nullable=true, length=255)	
 	private String country;
-
+	
+	@Column(name="Email", nullable=true, length=255)	
+	private String email;
 	
 	@ManyToMany(targetEntity=newsapp.Category.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
@@ -89,6 +94,12 @@ public class User implements Serializable {
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
 	@JoinColumns({ @JoinColumn(name="ChannelID", referencedColumnName="ID", nullable=false) })	
 	private newsapp.Channel _myChannel;
+	
+	@ManyToMany(targetEntity=newsapp.Article.class)	
+	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
+	@JoinTable(name="User_Article", joinColumns={ @JoinColumn(name="UserID") }, inverseJoinColumns={ @JoinColumn(name="ArticleID") })	
+	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
+	private java.util.Set ORM__likedArticles = new java.util.HashSet();
 	
 	private void setID(int value) {
 		this.ID = value;
@@ -146,6 +157,14 @@ public class User implements Serializable {
 		return country;
 	}
 	
+	public void setEmail(String value) {
+		this.email = value;
+	}
+	
+	public String getEmail() {
+		return email;
+	}
+	
 	private void setORM__preferences(java.util.Set value) {
 		this.ORM__preferences = value;
 	}
@@ -174,6 +193,22 @@ public class User implements Serializable {
 	
 	public newsapp.Channel get_myChannel() {
 		return _myChannel;
+	}
+	
+	private void setORM__likedArticles(java.util.Set value) {
+		this.ORM__likedArticles = value;
+	}
+	
+	private java.util.Set getORM__likedArticles() {
+		return ORM__likedArticles;
+	}
+	
+	@Transient	
+	public final newsapp.ArticleSetCollection _likedArticles = new newsapp.ArticleSetCollection(this, _ormAdapter, ORMConstants.KEY_USER__LIKEDARTICLES, ORMConstants.KEY_MUL_MANY_TO_MANY);
+	
+	public void setAge(Short age) {
+		//TODO: Implement Method
+		throw new UnsupportedOperationException();
 	}
 	
 	public String toString() {

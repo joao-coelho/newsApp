@@ -22,8 +22,8 @@ public class ChannelDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final IntegerExpression ID;
 	public final StringExpression name;
 	public final StringExpression description;
-	public final IntegerExpression likes;
 	public final IntegerExpression subscribers;
+	public final StringExpression image_url;
 	public final CollectionExpression _articles;
 	public final CollectionExpression categories;
 	
@@ -32,8 +32,8 @@ public class ChannelDetachedCriteria extends AbstractORMDetachedCriteria {
 		ID = new IntegerExpression("ID", this.getDetachedCriteria());
 		name = new StringExpression("name", this.getDetachedCriteria());
 		description = new StringExpression("description", this.getDetachedCriteria());
-		likes = new IntegerExpression("likes", this.getDetachedCriteria());
 		subscribers = new IntegerExpression("subscribers", this.getDetachedCriteria());
+		image_url = new StringExpression("image_url", this.getDetachedCriteria());
 		_articles = new CollectionExpression("ORM__articles", this.getDetachedCriteria());
 		categories = new CollectionExpression("ORM_categories", this.getDetachedCriteria());
 	}
@@ -43,8 +43,8 @@ public class ChannelDetachedCriteria extends AbstractORMDetachedCriteria {
 		ID = new IntegerExpression("ID", this.getDetachedCriteria());
 		name = new StringExpression("name", this.getDetachedCriteria());
 		description = new StringExpression("description", this.getDetachedCriteria());
-		likes = new IntegerExpression("likes", this.getDetachedCriteria());
 		subscribers = new IntegerExpression("subscribers", this.getDetachedCriteria());
+		image_url = new StringExpression("image_url", this.getDetachedCriteria());
 		_articles = new CollectionExpression("ORM__articles", this.getDetachedCriteria());
 		categories = new CollectionExpression("ORM_categories", this.getDetachedCriteria());
 	}

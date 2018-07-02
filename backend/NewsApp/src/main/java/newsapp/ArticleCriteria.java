@@ -24,6 +24,7 @@ public class ArticleCriteria extends AbstractORMCriteria {
 	public final StringExpression content;
 	public final IntegerExpression likes;
 	public final DateExpression addedAt;
+	public final StringExpression image_url;
 	public final CollectionExpression _comments;
 	public final CollectionExpression _categories;
 	
@@ -34,6 +35,7 @@ public class ArticleCriteria extends AbstractORMCriteria {
 		content = new StringExpression("content", this);
 		likes = new IntegerExpression("likes", this);
 		addedAt = new DateExpression("addedAt", this);
+		image_url = new StringExpression("image_url", this);
 		_comments = new CollectionExpression("ORM__comments", this);
 		_categories = new CollectionExpression("ORM__categories", this);
 	}

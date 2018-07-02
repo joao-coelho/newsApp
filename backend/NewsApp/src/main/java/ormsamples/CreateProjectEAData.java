@@ -10,7 +10,7 @@ public class CreateProjectEAData {
 		PersistentTransaction t = newsapp.ProjectEAPersistentManager.instance().getSession().beginTransaction();
 		try {
 			newsapp.User lnewsappUser = newsapp.UserDAO.createUser();
-			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : _myChannel, _preferences, _subscriptions
+			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : _likedArticles, _myChannel, _preferences, _subscriptions
 			newsapp.UserDAO.save(lnewsappUser);
 			newsapp.Category lnewsappCategory = newsapp.CategoryDAO.createCategory();
 			// Initialize the properties of the persistent object here
@@ -22,7 +22,7 @@ public class CreateProjectEAData {
 			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : _categories, _comments, likes
 			newsapp.ArticleDAO.save(lnewsappArticle);
 			newsapp.Channel lnewsappChannel = newsapp.ChannelDAO.createChannel();
-			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : categories, _articles, subscribers, likes
+			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : categories, _articles, subscribers
 			newsapp.ChannelDAO.save(lnewsappChannel);
 			newsapp.Suggestion lnewsappSuggestion = newsapp.SuggestionDAO.createSuggestion();
 			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : _author, _receivers

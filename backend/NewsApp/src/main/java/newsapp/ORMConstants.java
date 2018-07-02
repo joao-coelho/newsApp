@@ -32,6 +32,8 @@ public interface ORMConstants extends org.orm.util.ORMBaseConstants {
 	
 	final int KEY_SUGGESTION__RECEIVERS = 380796896;
 	
+	final int KEY_USER__LIKEDARTICLES = 265890271;
+	
 	final int KEY_USER__MYCHANNEL = -2059539188;
 	
 	final int KEY_USER__PREFERENCES = -110576371;

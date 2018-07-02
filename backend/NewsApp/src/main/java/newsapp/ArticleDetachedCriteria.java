@@ -24,6 +24,7 @@ public class ArticleDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final StringExpression content;
 	public final IntegerExpression likes;
 	public final DateExpression addedAt;
+	public final StringExpression image_url;
 	public final CollectionExpression _comments;
 	public final CollectionExpression _categories;
 	
@@ -34,6 +35,7 @@ public class ArticleDetachedCriteria extends AbstractORMDetachedCriteria {
 		content = new StringExpression("content", this.getDetachedCriteria());
 		likes = new IntegerExpression("likes", this.getDetachedCriteria());
 		addedAt = new DateExpression("addedAt", this.getDetachedCriteria());
+		image_url = new StringExpression("image_url", this.getDetachedCriteria());
 		_comments = new CollectionExpression("ORM__comments", this.getDetachedCriteria());
 		_categories = new CollectionExpression("ORM__categories", this.getDetachedCriteria());
 	}
@@ -45,6 +47,7 @@ public class ArticleDetachedCriteria extends AbstractORMDetachedCriteria {
 		content = new StringExpression("content", this.getDetachedCriteria());
 		likes = new IntegerExpression("likes", this.getDetachedCriteria());
 		addedAt = new DateExpression("addedAt", this.getDetachedCriteria());
+		image_url = new StringExpression("image_url", this.getDetachedCriteria());
 		_comments = new CollectionExpression("ORM__comments", this.getDetachedCriteria());
 		_categories = new CollectionExpression("ORM__categories", this.getDetachedCriteria());
 	}

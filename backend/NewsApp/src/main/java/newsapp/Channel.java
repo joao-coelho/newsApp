@@ -53,11 +53,11 @@ public class Channel implements Serializable {
 	@Column(name="Description", nullable=true, length=255)	
 	private String description;
 	
-	@Column(name="Likes", nullable=false, length=10)	
-	private int likes;
-	
 	@Column(name="Subscribers", nullable=false, length=10)	
 	private int subscribers;
+	
+	@Column(name="Image_url", nullable=true, length=255)	
+	private String image_url;
 	
 	@OneToMany(targetEntity=newsapp.Article.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
@@ -99,20 +99,20 @@ public class Channel implements Serializable {
 		return description;
 	}
 	
-	public void setLikes(int value) {
-		this.likes = value;
-	}
-	
-	public int getLikes() {
-		return likes;
-	}
-	
 	public void setSubscribers(int value) {
 		this.subscribers = value;
 	}
 	
 	public int getSubscribers() {
 		return subscribers;
+	}
+	
+	public void setImage_url(String value) {
+		this.image_url = value;
+	}
+	
+	public String getImage_url() {
+		return image_url;
 	}
 	
 	private void setORM__articles(java.util.Set value) {
@@ -136,6 +136,16 @@ public class Channel implements Serializable {
 	
 	@Transient	
 	public final newsapp.CategorySetCollection categories = new newsapp.CategorySetCollection(this, _ormAdapter, ORMConstants.KEY_CHANNEL_CATEGORIES, ORMConstants.KEY_MUL_MANY_TO_MANY);
+	
+	public int getLikes() {
+		//TODO: Implement Method
+		throw new UnsupportedOperationException();
+	}
+	
+	public void setLikes(int likes) {
+		//TODO: Implement Method
+		throw new UnsupportedOperationException();
+	}
 	
 	public String toString() {
 		return String.valueOf(getID());

@@ -22,8 +22,8 @@ public class ChannelCriteria extends AbstractORMCriteria {
 	public final IntegerExpression ID;
 	public final StringExpression name;
 	public final StringExpression description;
-	public final IntegerExpression likes;
 	public final IntegerExpression subscribers;
+	public final StringExpression image_url;
 	public final CollectionExpression _articles;
 	public final CollectionExpression categories;
 	
@@ -32,8 +32,8 @@ public class ChannelCriteria extends AbstractORMCriteria {
 		ID = new IntegerExpression("ID", this);
 		name = new StringExpression("name", this);
 		description = new StringExpression("description", this);
-		likes = new IntegerExpression("likes", this);
 		subscribers = new IntegerExpression("subscribers", this);
+		image_url = new StringExpression("image_url", this);
 		_articles = new CollectionExpression("ORM__articles", this);
 		categories = new CollectionExpression("ORM_categories", this);
 	}

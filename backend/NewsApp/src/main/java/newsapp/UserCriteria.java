@@ -26,9 +26,11 @@ public class UserCriteria extends AbstractORMCriteria {
 	public final StringExpression name;
 	public final ShortExpression age;
 	public final StringExpression country;
+	public final StringExpression email;
 	public final CollectionExpression _preferences;
 	public final IntegerExpression _myChannelId;
 	public final AssociationExpression _myChannel;
+	public final CollectionExpression _likedArticles;
 	
 	public UserCriteria(Criteria criteria) {
 		super(criteria);
@@ -39,9 +41,11 @@ public class UserCriteria extends AbstractORMCriteria {
 		name = new StringExpression("name", this);
 		age = new ShortExpression("age", this);
 		country = new StringExpression("country", this);
+		email = new StringExpression("email", this);
 		_preferences = new CollectionExpression("ORM__preferences", this);
 		_myChannelId = new IntegerExpression("_myChannel.ID", this);
 		_myChannel = new AssociationExpression("_myChannel", this);
+		_likedArticles = new CollectionExpression("ORM__likedArticles", this);
 	}
 	
 	public UserCriteria(PersistentSession session) {
@@ -62,6 +66,10 @@ public class UserCriteria extends AbstractORMCriteria {
 	
 	public ChannelCriteria create_myChannelCriteria() {
 		return new ChannelCriteria(createCriteria("_myChannel"));
+	}
+	
+	public ArticleCriteria create_likedArticlesCriteria() {
+		return new ArticleCriteria(createCriteria("ORM__likedArticles"));
 	}
 	
 	public User uniqueUser() {
