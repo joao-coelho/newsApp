@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Feed from '@/components/Feed'
 import Login from '@/components/Login'
 import Register from '@/components/Register'
+import Article from '@/components/Article'
 import Subscriptions from '@/components/Subscriptions'
 
 Vue.use(Router)
@@ -26,9 +27,15 @@ export default new Router({
       component: Register
     },
     {
+<<<<<<< HEAD
+      path: '/article',
+      name: 'Article',
+      component: Article
+=======
       path: '/subscriptions',
       name: 'Subscriptions',
       component: Subscriptions
+>>>>>>> 03fd5510d01fe53df2143456622bff3166e21011
     }
   ]
 })
