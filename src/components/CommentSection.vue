@@ -16,8 +16,8 @@
     <b-container fluid>
       <b-row v-for="comment in comments" class="com-row">
         <b-col md="2">
-          <b-img v-if="comment.avatar" :src="comment.avatar" fluid alt="avatar"/>
-          <b-img v-else src="../assets/images/default-avatar.jpg" fluid alt="avatar"/>
+          <b-img class="avatar" v-if="comment.avatar" :src="comment.avatar" fluid alt="avatar"/>
+          <b-img class="avatar" v-else src="../assets/images/default-avatar.jpg" fluid alt="avatar"/>
         </b-col>
         <b-col md="10">
           <p class="com-author">{{ comment.author }}</p>
@@ -75,6 +75,10 @@ export default {
 #submit-button {
     margin-top: 1em;
     float: right;
+}
+
+.avatar {
+  max-height: 100px;
 }
 
 .com-row {

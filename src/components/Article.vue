@@ -24,17 +24,19 @@
           <b-row>
             <b-col md="2" id="col-left">
               <h4> Source </h4>
-              <b-img :src="source_image" fluid alt="Channel img" />
+              <b-img :src="source_image" fluid alt="Channel img"/>
               <a href="#"> <p>Send me to the original</p> </a>
               <a href="#"> <p>Open channel</p> </a>
               <h4> Share </h4>
-              <a href="#"><img src="../assets/images/twitter.png"></img></a>
-              <a href="#"><img src="../assets/images/facebook.png"></img></a>
+              <a href="#"><i class="fa-3x fab fa-twitter"></i></a>
+              <a href="#"><i class="fa-3x fab fa-facebook"></i></a>
               <a href="#"> <p>Share with a subscriber</p> </a>
             </b-col>
             <b-col md="10" id="col-right">
               <h5> {{subtitle}} </h5>
-              <p> {{author}} | {{date}} </p>
+              <p> {{author}} |
+                  {{date.toUTCString()}}
+              </p>
               <p> {{content}} </p>
               <b-img :src="image" fluid alt="News img"/>
               <comment-section></comment-section>
@@ -50,6 +52,7 @@
 
 <script>
 import CommentSection from './CommentSection'
+import axios from 'axios'
 
 export default {
   name: 'Article',
@@ -58,6 +61,7 @@ export default {
   },
   data() {
     return {
+      id: 1,
       title: "Some random titlaaaaaaaa aaaaaa aaaaaa aaaaa aaaaae",
       subtitle: "Some subtitle Some subtitleSome ",
       source: "source",
@@ -85,7 +89,7 @@ export default {
   },
   props: {
     element: {
-      type: Object,
+      type: Number,
       required: false
     }
   },
@@ -106,11 +110,17 @@ export default {
       this.next = current;
     }
   },
-  computed: {
-    when() {
-      var date = new Date();
-      return date;
-    }
+  created: function () {
+    axios.get('http://echo.jsontest.com/title/ipsum/content/blah', {
+      params: {
+        id: this.id
+      }
+    })
+    .then(resp => {
+      this.show();
+    }).catch(function (error) {
+      console.log(error);
+    });
   }
 }
 </script>
@@ -151,6 +161,9 @@ h2, h5 {
   font-size: 0.8em;
   p, img {
     margin-bottom: 1em;
+  }
+  img {
+    max-height: 100px;
   }
 }
 
