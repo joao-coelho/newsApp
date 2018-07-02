@@ -25,3 +25,16 @@
     cursor: pointer;
   }
 }
+
+@mixin modal-header-colors($color) {
+  .modal-content {
+    header {
+      background-color: $color;
+    }
+    footer button {
+      background-color: $blue;
+      border-color: $blue;
+    }
+  }
+
+}

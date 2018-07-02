@@ -65,5 +65,11 @@
 	"feed_menuHelp": "Help",
 	"feed_addNews": "Publish an article in my channel",
 	"feed_newsTitlePlaceholder": "Enter a title for your article",
-	"feed_newsTitle": "Title:"
+	"feed_newsTitle": "Title:",
+	"feed_modalTitle": "New article",
+	"feed_newsContent": "Text:",
+	"feed_newsContentPlaceholder": "Enter news content",
+	"feed_modalSubmit": "Publish",
+	"feed_newsCategory": "Choose news category:",
+	"feed_newsImage": "Append an image:"
 }

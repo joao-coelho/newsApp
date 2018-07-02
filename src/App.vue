@@ -10,8 +10,8 @@ export default {
   created: function () {
     if (!this.$store.getters.isAuthenticated) {
       //this.$router.push('/login')
-      //this.$router.push('/')
-      this.$router.push('/article')
+      this.$router.push('/')
+      //this.$router.push('/article')
     }
   }
 }
@@ -33,4 +33,5 @@ export default {
 }
 @include checkboxes-colors($blue, #fff);
 @include radio-btns-colors($blue);
+@include modal-header-colors($blue);
 </style>
