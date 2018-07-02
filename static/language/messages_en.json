@@ -63,5 +63,7 @@
 	"feed_menuPreferences": "Preferences",
 	"feed_menuSettings": "Settings",
 	"feed_menuHelp": "Help",
-	"feed_addNews": "Publish an article in my channel"
+	"feed_addNews": "Publish an article in my channel",
+	"feed_newsTitlePlaceholder": "Enter a title for your article",
+	"feed_newsTitle": "Title:"
 }

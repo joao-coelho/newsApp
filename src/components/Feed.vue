@@ -7,10 +7,24 @@
         <div id="news-section">
           <feed-element v-for="item in news" :element="item" :key="item.id"></feed-element>
         </div>
-        <b-button id="addBtn">+</b-button>
+        <b-button id="addBtn" @click="show">+</b-button>
         <b-tooltip target="addBtn" :title="$t('feed_addNews')" delay=1500></b-tooltip>
       </b-row>
     </b-container>
+    <modal name="publish">
+      <b-row>
+        <b-col>
+          <b-form-group :label="$t('feed_newsTitle')"
+                        label-for="newsTitleModal">
+            <b-form-input id="newsTitleModal"
+                          v-model="newsTitle"
+                          type="text"
+                          :placeholder="$t('feed_newsTitlePlaceholder')">
+            </b-form-input>
+          </b-form-group>
+        </b-col>
+      </b-row>
+    </modal>
   </div>
 </template>
 
@@ -28,6 +42,7 @@ export default {
   },
   data () {
     return {
+      newsTitle: String,
       categories: [
         "business",
         "sports",
@@ -128,6 +143,14 @@ export default {
           }
         }
       ]
+    }
+  },
+  methods: {
+    show () {
+      this.$modal.show('publish');
+    },
+    hide () {
+      this.$modal.hide('publish');
     }
   },
   mounted() {
