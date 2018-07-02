@@ -63,5 +63,13 @@
 	"feed_menuPreferences": "Preferências",
 	"feed_menuSettings": "Definições",
 	"feed_menuHelp": "Ajuda",
-	"feed_addNews": "Publicar uma notícia no meu canal"
+	"feed_addNews": "Publicar uma notícia no meu canal",
+	"feed_newsTitlePlaceholder": "Introduza um título para a sua notícia",
+	"feed_newsTitle": "Título:",
+	"feed_modalTitle": "Nova notícia",
+	"feed_newsContent": "Texto:",
+	"feed_newsContentPlaceholder": "Introduza o corpo da notícia",
+	"feed_modalSubmit": "Publicar",
+	"feed_newsCategory": "Selecione a(s) categoria(s) da notícia:",
+	"feed_newsImage": "Adicione uma imagem:"
 }
