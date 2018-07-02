@@ -7,8 +7,6 @@
         <div id="news-section">
           <feed-element v-for="item in news" :element="item" :key="item.id"></feed-element>
         </div>
-        <b-button id="addBtn">+</b-button>
-        <b-tooltip target="addBtn" :title="$t('feed_addNews')" delay=1500></b-tooltip>
       </b-row>
     </b-container>
   </div>
@@ -151,19 +149,5 @@ export default {
   @media (min-width: $break-large) {
     padding: 2rem 7rem;
   }
-}
-#addBtn {
-  position: fixed;
-  bottom: 3rem;
-  right: 3rem;
-  border-radius: 30px;
-  padding: 4px 14px;
-  font-size: 25px;
-  border-color: #39487d;
-  &:hover {
-    background-color: #29487d;
-  }
-  color: white;
-  background-color: $blue;
 }
 </style>

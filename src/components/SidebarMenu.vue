@@ -3,20 +3,20 @@
     <a class="toggle-btn"><font-awesome-icon icon="bars"/></a>
     <div class="sidebar-menu-list">
       <ul id="menu-content" class="menu-content">
-        <li>
-          <router-link to="/"><font-awesome-icon icon="newspaper"/>
+        <li @click="changeOpt($event.target)">
+          <a href="#"><font-awesome-icon icon="newspaper"/>
             {{ $t('feed_menuNews') }}
-          </router-link>
+          </a>
         </li>
         <li @click="changeOpt($event.target)">
           <a href="#"><font-awesome-icon icon="fire"/>
             {{ $t('feed_menuTrending') }}
           </a>
         </li>
-        <li>
-          <router-link to='/subscriptions'><font-awesome-icon icon="list-ul"/>
+        <li @click="changeOpt($event.target)">
+          <a href="#"><font-awesome-icon icon="list-ul"/>
             {{ $t('feed_menuSubscriptions') }}
-          </router-link>
+          </a>
         </li>
         <li @click="changeOpt($event.target)">
           <a href="#"><font-awesome-icon icon="thumbs-up"/>

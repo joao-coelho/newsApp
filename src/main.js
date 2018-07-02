@@ -13,9 +13,9 @@ import { faBars, faNewspaper, faFire, faThumbsUp, faListUl,
  				 faUserTie, faChess, faHeartbeat, faFlask, faFutbol,
 				 faDesktop, faGavel, faSun, faHandHoldingUsd, faChartLine,
 			 	 faGraduationCap, faChurch, faTree, faBalanceScale, faCog,
-				 faPencilAlt, faHeart, faQuestionCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons'
+				 faPencilAlt, faHeart, faQuestionCircle, faClock } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import VModal from 'vue-js-modal'
+import lineClamp from 'vue-line-clamp'
 
 library.add(faBars)
 library.add(faNewspaper)
@@ -40,12 +40,12 @@ library.add(faCog)
 library.add(faPencilAlt)
 library.add(faHeart)
 library.add(faQuestionCircle)
-library.add(faTimesCircle)
-Vue.component('font-awesome-icon', FontAwesomeIcon)
+library.add(faClock);
+Vue.component('font-awesome-icon', FontAwesomeIcon);
 
 Vue.use(BootstrapVue)
 Vue.use(Vuei18n)
-Vue.use(VModal)
+Vue.use(lineClamp)
 Vue.config.productionTip = false
 
 const messages_en = require('../static/language/messages_en.json');
