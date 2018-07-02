@@ -18,9 +18,9 @@
 	"register_preferences": "Please choose any subjects you wish to see in your feed. Don't worry, you can change your choices after the register.",
 	"register_channelTitle": "My Channel",
 	"register_createChannel": "Configuration",
-	"register_channel": "Do you want to create your own channel to publish news? Again, your option can be changed later.",
-	"register_yesChannel": "Yes, I want to have my own news channel.",
-	"register_noChannel": "No, I just intend to check other news channels.",
+	"register_channel": "Do you want to configurate your news channel now?",
+	"register_yesChannel": "Yes, I want to do it now.",
+	"register_noChannel": "No, I intend to configure it later.",
 	"register_channelName": "Name:",
 	"register_channelNamePlaceholder": "Enter a name for your channel",
 	"register_channelDescription": "Description:",
@@ -49,9 +49,9 @@
 	"register_usernameError": "Username already taken",
 	"register_passError": "Passwords don't appear to match",
 	"register_lengthError": "The password must have at least 6 characters",
-	"register_emailError": "Email already taken",
-  "register_channelError": "Channel already taken",
-  "register_required": "* required field",
+ 	"register_emailError": "Email already taken",
+    "register_channelError": "Channel already taken",
+    "register_required": "* required field",
 	"register_unsuccess": "Please fill in all required fields",
 
 	"feed_searchbar": "Search...",
@@ -62,5 +62,6 @@
 	"feed_menuCategories": "Categories",
 	"feed_menuPreferences": "Preferences",
 	"feed_menuSettings": "Settings",
-	"feed_menuHelp": "Help"
+	"feed_menuHelp": "Help",
+	"feed_addNews": "Publish an article in my channel"
 }
