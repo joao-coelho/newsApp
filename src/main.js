@@ -16,6 +16,7 @@ import { faBars, faNewspaper, faFire, faThumbsUp, faListUl,
 				 faPencilAlt, faHeart, faQuestionCircle, faTimesCircle, faClock } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import VModal from 'vue-js-modal'
+import axios from './axios.js'
 
 library.add(faBars)
 library.add(faNewspaper)
@@ -68,6 +69,7 @@ new Vue({
 	i18n,
   router,
   store,
+  axios,
   components: { App },
   template: '<App/>'
 })

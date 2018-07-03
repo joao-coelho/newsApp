@@ -1,5 +1,6 @@
 import { AUTH_REQUEST, AUTH_ERROR, AUTH_SUCCESS, AUTH_LOGOUT } from '../action_calls/authentication'
 import { USER_REQUEST } from '../action_calls/user'
+import axios from '../../axios'
 
 const state = {
   token: localStorage.getItem('user-token') || '',
@@ -31,29 +32,25 @@ const actions = {
   [AUTH_REQUEST]: ({commit, dispatch}, user) => {
     return new Promise((resolve, reject) => { // The Promise used for router redirect in login
       commit(AUTH_REQUEST)
-      console.log(user);
-      /*axios({url: 'auth', data: user, method: 'POST' })
+      //console.log(user);
+      axios({url: '/login/verifyCredentials', data: user, method: 'POST' })
         .then(resp => {
-          const token = resp.data.token
-          localStorage.setItem('user-token', token) // store the token in localstorage
-          commit(AUTH_SUCCESS, token)
-          // you have your token, now log in your user :)
-          dispatch(USER_REQUEST)
-          resolve(resp)
+          if (resp.data.success) {
+            const token = resp.data.token
+            localStorage.setItem('user-token', token) // store the token in localstorage
+            commit(AUTH_SUCCESS, token)
+            // you have your token, now log in your user :)
+            dispatch(USER_REQUEST, resp.data)
+            resolve(resp)
+          }
+          else {
+            const err = "login credentials invalid"
+            commit(AUTH_ERROR, err)
+            localStorage.removeItem('user-token') // if the request fails, remove any possible user token
+            reject(err)
+          }
         })
-        .catch(err => {
-          commit(AUTH_ERROR, err)
-          localStorage.removeItem('user-token') // if the request fails, remove any possible user token
-          reject(err)
-        })
-      */
-      setTimeout(() => {
-         localStorage.setItem("user-token", "some_token");
-         commit(AUTH_SUCCESS);
-         dispatch(USER_REQUEST);
-         resolve();
-      }, 1000);
-    })
+      })
   },
   [AUTH_LOGOUT]: ({commit, dispatch}) => {
     return new Promise((resolve, reject) => {

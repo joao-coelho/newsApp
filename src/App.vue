@@ -9,8 +9,8 @@ export default {
   name: 'App',
   created: function () {
     if (!this.$store.getters.isAuthenticated) {
-      //this.$router.push('/login')
-      this.$router.push('/')
+      this.$router.push('/login')
+      //this.$router.push('/')
       //this.$router.push('/article')
     }
   }

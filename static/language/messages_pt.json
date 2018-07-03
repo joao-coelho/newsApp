@@ -8,6 +8,7 @@
 	"login_login": "Iniciar sessão",
 	"login_rememberMe": "Manter sessão iniciada",
 	"login_afterRegister": "Registado com sucesso! Use as credenciais que escolheu para iniciar sessão.",
+	"login_wrongCredentials": "* credenciais de acesso inválidas",
 
 	"register_title": "Registo",
 	"register_account": "Informações de Conta e Utilizador",

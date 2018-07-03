@@ -8,6 +8,7 @@
 	"login_login": "Login",
 	"login_rememberMe": "Remember me",
 	"login_afterRegister": "Registered successfully! Use the credentials you chose to login.",
+	"login_wrongCredentials": "* incorrect login credentials",
 
 	"register_title": "Register",
 	"register_account": "Account and User Info",
