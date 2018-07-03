@@ -32,51 +32,49 @@ export default {
   },
   data() {
     return {
-      categories: [
-        "business",
-        "sports",
-        "health",
-        "science",
-        "economy",
-        "politics"
-      ],
-      fields: {
-        name: {
-          label: this.nameLabel,
-          sortable: true
-        },
-        description: {
-          label: this.descriptionLabel,
-          sortable: false
-        },
-        categories: {
-          label: this.categoriesLabel,
-          sortable: true
-        }
-      },
-      items: [
-        {
-          name: "Channel Name",
-          description: "Channel Description, a long one, reaaaaally long, like huge, yap that big biiiiiiiiiiiiitx",
-          categories: "Sports, Business"
-        },
-        {
-           name: "Channel Name",
-           description: "Channel Description, a long one, reaaaaally long, like huge, yap that big biiiiiiiiiiiiitx",
-           categories: "Sports, Business"
-         }
-      ]
+      items: []
     }
   },
   computed: {
+    fields() {
+      let labels = [
+        this.$t('subscriptions_channelName'),
+        this.$t('subscriptions_channelDescription'),
+        this.$t('subscriptions_channelCategories'),
+        this.$t('subscriptions_channelSubscribers')
+      ]
+
+      return {
+        channelName: {
+          label: labels[0],
+          sortable: true
+        },
+        description: {
+          label: labels[1],
+          sortable: false
+        },
+        categories: {
+          label: labels[2],
+          sortable: true
+        },
+        subscribers: {
+          label: labels[3],
+          sortable: true
+        }
+      }
+    },
     nameLabel() {
-      return this.$t('subscriptions_nameIcon');
+      console.log(this.$t('subscriptions_channelName'));
+      return this.$t('subscriptions_channelName');
     },
     descriptionLabel() {
       return this.$t('subscriptions_channelDescription');
     },
     categoriesLabel() {
       return this.$t('subscriptions_channelCategories');
+    },
+    subscribersLabel() {
+      return this.$t('subscriptions_channelSubscribers');
     }
   },
   methods: {
@@ -88,6 +86,15 @@ export default {
       var $li = menu.firstChild.childNodes;
       $li[4].classList.add("active");
     }
+    this.$axios.get("/feed/subscriptions", {
+      params: {
+        token: this.$store.getters.getToken
+      }
+    })
+    .then( resp => {
+      this.items = resp.data;
+      console.log(this.items);
+    })
   }
 }
 </script>

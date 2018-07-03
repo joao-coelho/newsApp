@@ -73,5 +73,10 @@
 	"feed_modalSubmit": "Publicar",
 	"feed_newsCategory": "Selecione a(s) categoria(s) da notícia:",
 	"feed_newsImage": "Adicione uma imagem:",
-	"feed_publishSuccess": "Notícia publicada com sucesso no seu canal!"
+	"feed_publishSuccess": "Notícia publicada com sucesso no seu canal!",
+
+	"subscriptions_channelName": "Nome",
+	"subscriptions_channelDescription": "Descrição",
+	"subscriptions_channelCategories": "Categoria",
+	"subscriptions_channelSubscribers": "Subscritores"
 }

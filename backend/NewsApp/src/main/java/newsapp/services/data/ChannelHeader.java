@@ -1,12 +1,14 @@
 package newsapp.services.data;
 
+import java.util.List;
+
 public class ChannelHeader {
 
     private int id;
     private String channelName;
     private String description;
-    private int likes;
     private int subscribers;
+    private List<String> categories;
 
 
     public ChannelHeader() {
@@ -37,12 +39,12 @@ public class ChannelHeader {
         this.description = description;
     }
 
-    public int getLikes() {
-        return likes;
+    public List<String> getCategories() {
+        return categories;
     }
 
-    public void setLikes(int likes) {
-        this.likes = likes;
+    public void setCategories(List<String> categories) {
+        this.categories = categories;
     }
 
     public int getSubscribers() {

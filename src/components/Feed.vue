@@ -208,7 +208,6 @@ export default {
         channel_id: this.$store.getters.getChannelId,
         token: this.$store.getters.getToken
       }
-      console.log(article);
 
       this.$axios({url: '/articles/addArticle', data: article, method: 'POST' })
         .then(resp => {

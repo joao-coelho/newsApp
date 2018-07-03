@@ -1,10 +1,7 @@
 package newsapp.services;
 
 import newsapp.business.NewsApp;
-import newsapp.business.model.Article;
-import newsapp.business.model.Channel;
-import newsapp.business.model.ChannelArticle;
-import newsapp.business.model.User;
+import newsapp.business.model.*;
 import newsapp.services.data.BaseFeed;
 import newsapp.services.data.ChannelHeader;
 import newsapp.services.data.LikeComment;
@@ -51,7 +48,8 @@ public class FeedService implements IFeedService {
         List<Channel> channels = NewsApp.getUserSubscriptionChannels(token);
         List<ChannelHeader> channelHeaders = new ArrayList<>();
         for(Channel c : channels) {
-            ChannelHeader ch = buildChannelHeader(c);
+            List<Category> categories = NewsApp.getChannelCategories(c);
+            ChannelHeader ch = buildChannelHeader(c, categories);
             channelHeaders.add(ch);
         }
         return channelHeaders;
@@ -103,12 +101,17 @@ public class FeedService implements IFeedService {
         return newsHeaders;
     }
 
-    private ChannelHeader buildChannelHeader(Channel c) {
+    private ChannelHeader buildChannelHeader(Channel c, List<Category> categories) {
         ChannelHeader ch = new ChannelHeader();
         ch.setChannelName(c.getName());
         ch.setDescription(c.getDescription());
         ch.setId(c.getID());
         ch.setSubscribers(c.getSubscribers());
+        List<String> ca = new ArrayList<>();
+        for(Category a : categories) {
+            ca.add(a.getDescription());
+        }
+        ch.setCategories(ca);
         return ch;
     }
 

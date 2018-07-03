@@ -348,6 +348,16 @@ public class NewsApp {
         return c;
     }
 
+    public static List<Category> getChannelCategories(Channel c) {
+        List<Category> categories = new ArrayList<>();
+        Iterator it = c.categories.getIterator();
+        while(it.hasNext()) {
+            Category category = (Category) it.next();
+            categories.add(category);
+        }
+        return categories;
+    }
+
     public static boolean createArticle(Channel c, String title, String content, String image_url) {
         Article a = new Article();
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
