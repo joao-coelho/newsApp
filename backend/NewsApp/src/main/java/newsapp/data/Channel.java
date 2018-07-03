@@ -136,16 +136,6 @@ public class Channel implements Serializable {
 	@Transient	
 	public final CategorySetCollection categories = new CategorySetCollection(this, _ormAdapter, ORMConstants.KEY_CHANNEL_CATEGORIES, ORMConstants.KEY_MUL_MANY_TO_MANY);
 	
-	public int getLikes() {
-		//TODO: Implement Method
-		throw new UnsupportedOperationException();
-	}
-	
-	public void setLikes(int likes) {
-		//TODO: Implement Method
-		throw new UnsupportedOperationException();
-	}
-	
 	public String toString() {
 		return String.valueOf(getID());
 	}

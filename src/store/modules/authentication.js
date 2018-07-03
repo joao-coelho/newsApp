@@ -9,6 +9,7 @@ const state = {
 
 const getters = {
     isAuthenticated: state => !!state.token,
+    getToken: state => state.token,
     authStatus: state => state.status
 }
 

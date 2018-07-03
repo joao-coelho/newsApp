@@ -8,6 +8,7 @@ public class LoginResponse {
     private int token;
     private String channelName;
     private List<String> categories;
+    private List<NewsHeader> news;
 
 
     public boolean getSuccess() {
@@ -40,5 +41,13 @@ public class LoginResponse {
 
     public void setCategories(List<String> categories) {
         this.categories = categories;
+    }
+
+    public List<NewsHeader> getNews() {
+        return news;
+    }
+
+    public void setNews(List<NewsHeader> news) {
+        this.news = news;
     }
 }

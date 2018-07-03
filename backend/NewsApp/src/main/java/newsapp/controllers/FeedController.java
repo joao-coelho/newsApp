@@ -37,9 +37,9 @@ public class FeedController {
     }
 
     @RequestMapping(value = "/category", method = RequestMethod.GET)
-    public List<NewsHeader> getNewsByCategory(@RequestParam("token") int token
-                                              /*@RequestParam("category") String category*/) {
-        List<NewsHeader> news = fs.newsByCategory(token, "Desporto");
+    public List<NewsHeader> getNewsByCategory(@RequestParam("token") int token,
+                                              @RequestParam("category") String category) {
+        List<NewsHeader> news = fs.newsByCategory(token, category);
         return news;
     }
 

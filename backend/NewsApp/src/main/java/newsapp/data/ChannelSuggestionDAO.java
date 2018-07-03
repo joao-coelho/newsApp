@@ -148,7 +148,7 @@ public class ChannelSuggestionDAO {
 	}
 	
 	public static List queryChannelSuggestion(PersistentSession session, String condition, String orderBy) throws PersistentException {
-		StringBuffer sb = new StringBuffer("From newsapp.ChannelSuggestion as ChannelSuggestion");
+		StringBuffer sb = new StringBuffer("From ChannelSuggestion as ChannelSuggestion");
 		if (condition != null)
 			sb.append(" Where ").append(condition);
 		if (orderBy != null)
@@ -164,7 +164,7 @@ public class ChannelSuggestionDAO {
 	}
 	
 	public static List queryChannelSuggestion(PersistentSession session, String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
-		StringBuffer sb = new StringBuffer("From newsapp.ChannelSuggestion as ChannelSuggestion");
+		StringBuffer sb = new StringBuffer("From ChannelSuggestion as ChannelSuggestion");
 		if (condition != null)
 			sb.append(" Where ").append(condition);
 		if (orderBy != null)
@@ -263,7 +263,7 @@ public class ChannelSuggestionDAO {
 	}
 	
 	public static java.util.Iterator iterateChannelSuggestionByQuery(PersistentSession session, String condition, String orderBy) throws PersistentException {
-		StringBuffer sb = new StringBuffer("From newsapp.ChannelSuggestion as ChannelSuggestion");
+		StringBuffer sb = new StringBuffer("From ChannelSuggestion as ChannelSuggestion");
 		if (condition != null)
 			sb.append(" Where ").append(condition);
 		if (orderBy != null)
@@ -279,7 +279,7 @@ public class ChannelSuggestionDAO {
 	}
 	
 	public static java.util.Iterator iterateChannelSuggestionByQuery(PersistentSession session, String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
-		StringBuffer sb = new StringBuffer("From newsapp.ChannelSuggestion as ChannelSuggestion");
+		StringBuffer sb = new StringBuffer("From ChannelSuggestion as ChannelSuggestion");
 		if (condition != null)
 			sb.append(" Where ").append(condition);
 		if (orderBy != null)

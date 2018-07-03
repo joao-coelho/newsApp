@@ -61,7 +61,7 @@
     <div class="sidebar-menu-list">
       <ul id="menu-content" class="menu-content">
         <li>
-          <router-link to="/"><font-awesome-icon icon="newspaper"/>
+          <router-link :to="{ path: '/', params: { fromLogin: false } }"><font-awesome-icon icon="newspaper"/>
             {{ $t('feed_menuNews') }}
           </router-link>
         </li>
@@ -112,7 +112,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
 
 export default {
   name: 'sidebar-menu',
@@ -149,18 +148,21 @@ export default {
     }
   },
   computed: {
-    user: mapState({ user: state => state.user.profile }),
+    user_categories() {
+      return this.$store.getters.getCategories;
+    },
     categories() {
       var list = require('../../static/language/categories.json');
       return list.filter(category => {
         let val = category.value;
-        return this.user.categories.includes(val);
+        return this.user_categories.includes(val);
       });
     }
   },
   mounted() {
     var menu = document.getElementsByClassName("sidebar-menu-list")[0];
-    menu.style.paddingRight = menu.offsetWidth - menu.clientWidth + "px";
+    if (menu)
+      menu.style.paddingRight = menu.offsetWidth - menu.clientWidth + "px";
   }
 }
 </script>

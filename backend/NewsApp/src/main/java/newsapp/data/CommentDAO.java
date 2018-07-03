@@ -148,7 +148,7 @@ public class CommentDAO {
 	}
 	
 	public static List queryComment(PersistentSession session, String condition, String orderBy) throws PersistentException {
-		StringBuffer sb = new StringBuffer("From newsapp.Comment as Comment");
+		StringBuffer sb = new StringBuffer("From Comment as Comment");
 		if (condition != null)
 			sb.append(" Where ").append(condition);
 		if (orderBy != null)
@@ -164,7 +164,7 @@ public class CommentDAO {
 	}
 	
 	public static List queryComment(PersistentSession session, String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
-		StringBuffer sb = new StringBuffer("From newsapp.Comment as Comment");
+		StringBuffer sb = new StringBuffer("From Comment as Comment");
 		if (condition != null)
 			sb.append(" Where ").append(condition);
 		if (orderBy != null)
@@ -263,7 +263,7 @@ public class CommentDAO {
 	}
 	
 	public static java.util.Iterator iterateCommentByQuery(PersistentSession session, String condition, String orderBy) throws PersistentException {
-		StringBuffer sb = new StringBuffer("From newsapp.Comment as Comment");
+		StringBuffer sb = new StringBuffer("From Comment as Comment");
 		if (condition != null)
 			sb.append(" Where ").append(condition);
 		if (orderBy != null)
@@ -279,7 +279,7 @@ public class CommentDAO {
 	}
 	
 	public static java.util.Iterator iterateCommentByQuery(PersistentSession session, String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
-		StringBuffer sb = new StringBuffer("From newsapp.Comment as Comment");
+		StringBuffer sb = new StringBuffer("From Comment as Comment");
 		if (condition != null)
 			sb.append(" Where ").append(condition);
 		if (orderBy != null)

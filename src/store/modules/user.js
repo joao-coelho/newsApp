@@ -3,15 +3,14 @@ import { AUTH_LOGOUT } from '../action_calls/authentication'
 
 const state = {
   status: '',
-  profile: {
-    channelName: '',
-    categories: []
-  }
+  channelName: localStorage.getItem('user-channel') || '',
+  categories: localStorage.getItem('user-categories') || []
 }
 
 const getters = {
-  getProfile: state => state.profile,
-  isProfileLoaded: state => !!state.profile.channelName,
+  getChannel: state => state.channelName,
+  getCategories: state => state.categories,
+  isProfileLoaded: state => !!state.channelName,
 }
 
 const actions = {
@@ -29,14 +28,16 @@ const mutations = {
   },
   [USER_SUCCESS]: (state, user) => {
     state.status = 'success'
-    state.profile.channelName = user.channelName
-    state.profile.categories = user.categories
+    state.channelName = user.channelName
+    state.categories = user.categories
   },
   [USER_ERROR]: (state) => {
     state.status = 'error'
   },
   [AUTH_LOGOUT]: (state) => {
-    state.profile = {}
+    state.status = 'not_loaded'
+    state.categories = []
+    state.channelName = ''
   }
 }
 

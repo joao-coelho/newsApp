@@ -109,7 +109,7 @@ public class NewsApp extends SessionManager {
     }
 
     public static List<ChannelArticle> getArticles(List<Channel> channels) {
-        List<ChannelArticle> articles = null;
+        List<ChannelArticle> articles = new ArrayList<>();
         for(Channel c : channels) {
             Iterator ti = c._articles.getIterator();
             while (ti.hasNext()) {
@@ -276,7 +276,6 @@ public class NewsApp extends SessionManager {
         Channel c = new Channel();
         c.setName(channelName);
         c.setDescription(description);
-        c.setLikes(0);
         c.setSubscribers(0);
         if (channelTypes.size() != 0) {
             for (String type : channelTypes) {

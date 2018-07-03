@@ -102,7 +102,8 @@ export default {
           this.$router.push({
              name: 'Feed',
              params: {
-              news: []
+              fromLogin: true,
+              news: data.news
              }
            });
         }).catch( err => {

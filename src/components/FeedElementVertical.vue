@@ -1,10 +1,10 @@
 <template>
   <b-card img-top
-          :img-src="element.image"
+          img-src="../assets/images/mundi-small.jpg"
           :title="element.title">
     <b-row class="news-secondary">
       <div class="channel-name">
-        <span>{{ element.channel.name }}</span>
+        <span>{{ element.channelName }}</span>
       </div>
       <div class="num-likes">
         <span>{{ element.likes }}</span>
@@ -37,7 +37,7 @@ export default {
     when() {
       //TODO: Handle the date format of the databse
       //var date = new Date();
-      return this.element.datetime.time;
+      return this.element.date;
     }
   }
 }

@@ -12,7 +12,7 @@
         </b-nav-form>
         <div id="myChannel_btn">
           <img src="../assets/images/logo.png" class="d-inline-block align-center" alt="Channel Logo">
-          <span>{{ profile.channelName }}</span>
+          <span>{{ channelName }}</span>
           <div id="notifications">
             <img src="../assets/images/notifications_icon.png" class="d-inline-block align-center" alt="Channel Logo">
             <div id="square">
@@ -26,7 +26,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
 
 export default {
   name: 'navbar-feed',
@@ -35,7 +34,11 @@ export default {
       lang: this.$i18n.locale
     }
   },
-  computed: mapState({ user: state => state.user.profile }),
+  computed: {
+    channelName() {
+      return this.$store.getters.getChannel;
+    }
+  },
   methods: {
     changeLang(lang) {
       this.$i18n.locale = lang;

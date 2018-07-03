@@ -148,7 +148,7 @@ public class CategoryDAO {
 	}
 	
 	public static List queryCategory(PersistentSession session, String condition, String orderBy) throws PersistentException {
-		StringBuffer sb = new StringBuffer("From newsapp.Category as Category");
+		StringBuffer sb = new StringBuffer("From Category as Category");
 		if (condition != null)
 			sb.append(" Where ").append(condition);
 		if (orderBy != null)
@@ -164,7 +164,7 @@ public class CategoryDAO {
 	}
 	
 	public static List queryCategory(PersistentSession session, String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
-		StringBuffer sb = new StringBuffer("From newsapp.Category as Category");
+		StringBuffer sb = new StringBuffer("From Category as Category");
 		if (condition != null)
 			sb.append(" Where ").append(condition);
 		if (orderBy != null)
@@ -263,7 +263,7 @@ public class CategoryDAO {
 	}
 	
 	public static java.util.Iterator iterateCategoryByQuery(PersistentSession session, String condition, String orderBy) throws PersistentException {
-		StringBuffer sb = new StringBuffer("From newsapp.Category as Category");
+		StringBuffer sb = new StringBuffer("From Category as Category");
 		if (condition != null)
 			sb.append(" Where ").append(condition);
 		if (orderBy != null)
@@ -279,7 +279,7 @@ public class CategoryDAO {
 	}
 	
 	public static java.util.Iterator iterateCategoryByQuery(PersistentSession session, String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
-		StringBuffer sb = new StringBuffer("From newsapp.Category as Category");
+		StringBuffer sb = new StringBuffer("From Category as Category");
 		if (condition != null)
 			sb.append(" Where ").append(condition);
 		if (orderBy != null)

@@ -1,12 +1,12 @@
 <template>
   <b-card>
-    <img class="channel-logo" :src="element.channel.icon" alt="Channel Logo">
-    <img class="news-image" v-if="element.image != ''" :src="element.image" left alt="News image"/>
+    <img class="channel-logo" src="../assets/images/logo.png" alt="Channel Logo">
+    <img class="news-image" src="../assets/images/mundi-small.jpg" left alt="News image"/>
     <div class="news-content">
       <h5 class="news-title">{{ element.title }}</h5>
       <div class="news-secondary">
         <div class="channel-name">
-          <span>{{ element.channel.name }}</span>
+          <span>{{ element.channelName }}</span>
         </div>
         <div class="num-likes">
           <span>{{ element.likes }}</span>
@@ -45,7 +45,7 @@ export default {
     when() {
       //TODO: Handle the date format of the databse
       //var date = new Date();
-      return this.element.datetime.time;
+      return this.element.date;
     }
   }
 }

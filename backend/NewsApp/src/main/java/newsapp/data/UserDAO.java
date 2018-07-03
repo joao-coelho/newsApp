@@ -148,7 +148,7 @@ public class UserDAO {
 	}
 	
 	public static List queryUser(PersistentSession session, String condition, String orderBy) throws PersistentException {
-		StringBuffer sb = new StringBuffer("From newsapp.User as User");
+		StringBuffer sb = new StringBuffer("From User as User");
 		if (condition != null)
 			sb.append(" Where ").append(condition);
 		if (orderBy != null)
@@ -164,7 +164,7 @@ public class UserDAO {
 	}
 	
 	public static List queryUser(PersistentSession session, String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
-		StringBuffer sb = new StringBuffer("From newsapp.User as User");
+		StringBuffer sb = new StringBuffer("From User as User");
 		if (condition != null)
 			sb.append(" Where ").append(condition);
 		if (orderBy != null)
@@ -263,7 +263,7 @@ public class UserDAO {
 	}
 	
 	public static java.util.Iterator iterateUserByQuery(PersistentSession session, String condition, String orderBy) throws PersistentException {
-		StringBuffer sb = new StringBuffer("From newsapp.User as User");
+		StringBuffer sb = new StringBuffer("From User as User");
 		if (condition != null)
 			sb.append(" Where ").append(condition);
 		if (orderBy != null)
@@ -279,7 +279,7 @@ public class UserDAO {
 	}
 	
 	public static java.util.Iterator iterateUserByQuery(PersistentSession session, String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
-		StringBuffer sb = new StringBuffer("From newsapp.User as User");
+		StringBuffer sb = new StringBuffer("From User as User");
 		if (condition != null)
 			sb.append(" Where ").append(condition);
 		if (orderBy != null)
