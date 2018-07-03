@@ -2,13 +2,21 @@
   <div class="feed">
     <b-container fluid>
       <navbar-feed></navbar-feed>
-      <b-row>
+      <b-row id="main-content">
         <sidebar-menu :user_categories="categories"></sidebar-menu>
         <div id="news-section">
           <feed-element v-for="item in news" :element="item" :key="item.id"></feed-element>
         </div>
         <b-button id="addBtn" v-b-modal.modal>+</b-button>
         <b-tooltip target="addBtn" :title="$t('feed_addNews')" delay=1500></b-tooltip>
+      </b-row>
+      <b-row id="main-content-small">
+        <b-col>
+          <sidebar-menu :user_categories="categories" small_screen></sidebar-menu>
+          <feed-element-vertical v-for="item in news" :element="item" :key="item.id"></feed-element-vertical>
+          <b-button id="addBtn" v-b-modal.modal>+</b-button>
+          <b-tooltip target="addBtn" :title="$t('feed_addNews')" delay=1500></b-tooltip>
+        </b-col>
       </b-row>
     </b-container>
     <b-modal id="modal" :title="$t('feed_modalTitle')" ok-only :ok-title="$t('feed_modalSubmit')"
@@ -76,13 +84,15 @@
 import NavbarFeed from './NavbarFeed'
 import SidebarMenu from './SidebarMenu'
 import FeedElement from './FeedElement'
+import FeedElementVertical from './FeedElementVertical'
 
 export default {
   name: 'Feed',
   components: {
     NavbarFeed,
     SidebarMenu,
-    FeedElement
+    FeedElement,
+    FeedElementVertical
   },
   data () {
     return {
@@ -264,6 +274,21 @@ export default {
 
 @import "styles/global.scss";
 
+#main-content {
+  @media (max-width: $break-medium) {
+    display: none;
+  }
+}
+#main-content-small {
+  margin-top: 55px;
+  @media (min-width: $break-medium) {
+    display: none;
+  }
+  #addBtn {
+    bottom: 1.5rem;
+    right: 1.5rem;
+  }
+}
 #news-section {
   padding: 2rem 4rem;
   margin-top: 50px;
@@ -271,6 +296,15 @@ export default {
   width: calc(100% - 225px);
   @media (min-width: $break-large) {
     padding: 2rem 7rem;
+  }
+  @media (max-width: $break-medium) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 0;
+    margin-top: 0;
+    width: 100%;
+    padding: 2rem 0.5rem;
   }
 }
 #addBtn {
