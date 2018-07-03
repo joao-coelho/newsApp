@@ -3,7 +3,7 @@
     <b-container fluid>
       <navbar-feed></navbar-feed>
       <b-row id="main-content">
-        <sidebar-menu :user_categories="categories"></sidebar-menu>
+        <sidebar-menu></sidebar-menu>
         <div id="news-section">
           <feed-element v-for="item in news" :element="item" :key="item.id"></feed-element>
         </div>
@@ -100,14 +100,8 @@ export default {
       newsContent: "",
       newsSelectedTypes: [],
       newsImage: '',
-      categories: [
-        "business",
-        "sports",
-        "health",
-        "science",
-        "economy",
-        "politics"
-      ],
+      categories: Array,
+      channelName: String,
       news: [
         {
           "channel": {

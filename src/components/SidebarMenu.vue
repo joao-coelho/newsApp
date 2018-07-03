@@ -112,13 +112,11 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: 'sidebar-menu',
   props: {
-    user_categories: {
-      type: Array,
-      required: true
-    },
     small_screen: {
       type: Boolean
     }
@@ -151,11 +149,12 @@ export default {
     }
   },
   computed: {
+    user: mapState({ user: state => state.user.profile }),
     categories() {
       var list = require('../../static/language/categories.json');
       return list.filter(category => {
         let val = category.value;
-        return this.user_categories.includes(val);
+        return this.user.categories.includes(val);
       });
     }
   },
