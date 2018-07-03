@@ -3,14 +3,14 @@
     <b-container fluid>
       <navbar-feed></navbar-feed>
       <b-row id="main-content">
-        <sidebar-menu :user_categories="categories"></sidebar-menu>
+        <sidebar-menu></sidebar-menu>
         <div id="subscriptions-section">
           <b-table hover :items="items" :fields="fields"></b-table>
         </div>
       </b-row>
       <b-row id="main-content-small">
         <b-col>
-          <sidebar-menu :user_categories="categories" small_screen></sidebar-menu>
+          <sidebar-menu small_screen></sidebar-menu>
           <div id="subscriptions-section">
             <b-table responsive :items="items" :fields="fields"></b-table>
           </div>
@@ -84,8 +84,10 @@ export default {
   },
   mounted() {
     var menu = document.getElementsByClassName("sidebar-menu-list")[0];
-    var $li = menu.firstChild.childNodes;
-    $li[4].classList.add("active");
+    if (menu) {
+      var $li = menu.firstChild.childNodes;
+      $li[4].classList.add("active");
+    }
   }
 }
 </script>

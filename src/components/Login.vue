@@ -182,7 +182,6 @@ h1, h2 {
   margin-bottom: 0.5rem;
   margin-left: 1rem;
   &.text-muted {
-    font-weight: bold;
     color: rgba(255, 0, 0, 0.75) !important;
   }
 }

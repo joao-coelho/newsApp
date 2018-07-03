@@ -72,5 +72,6 @@
 	"feed_newsContentPlaceholder": "Enter news content",
 	"feed_modalSubmit": "Publish",
 	"feed_newsCategory": "Choose news category:",
-	"feed_newsImage": "Append an image:"
+	"feed_newsImage": "Append an image:",
+	"feed_publishSuccess": "Article successfully published in your channel!"
 }

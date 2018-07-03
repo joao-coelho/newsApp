@@ -72,5 +72,6 @@
 	"feed_newsContentPlaceholder": "Introduza o corpo da notícia",
 	"feed_modalSubmit": "Publicar",
 	"feed_newsCategory": "Selecione a(s) categoria(s) da notícia:",
-	"feed_newsImage": "Adicione uma imagem:"
+	"feed_newsImage": "Adicione uma imagem:",
+	"feed_publishSuccess": "Notícia publicada com sucesso no seu canal!"
 }

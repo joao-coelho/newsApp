@@ -2,6 +2,7 @@ package newsapp.services;
 
 import newsapp.business.NewsApp;
 import newsapp.business.model.Article;
+import newsapp.business.model.Channel;
 import newsapp.business.model.ChannelArticle;
 import newsapp.business.model.User;
 import newsapp.services.data.Login;
@@ -26,12 +27,14 @@ public class LoginService implements ILoginService {
         } else {
             lr.setSuccess(true);
             lr.setToken(u.getID());
-            lr.setChannelName(u.get_myChannel().getName());
+            Channel channel = u.get_myChannel();
+            lr.setChannelName(channel.getName());
             List<String> categories = NewsApp.getUserCategories(u);
             lr.setCategories(categories);
             List<ChannelArticle> articles = NewsApp.getUserNews(u);
             List<ChannelArticle> sortedArticles = NewsApp.OrderChannelArticlesByDateDesc(articles);
             List<NewsHeader> newsHeaders = new ArrayList<>();
+            lr.setChannelId(channel.getID());
             for (ChannelArticle a : sortedArticles) {
                 NewsHeader n = buildArticleHeader(a);
                 newsHeaders.add(n);

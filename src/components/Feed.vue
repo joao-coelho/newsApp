@@ -19,8 +19,9 @@
         </b-col>
       </b-row>
     </b-container>
-    <b-modal id="modal" :title="$t('feed_modalTitle')" ok-only :ok-title="$t('feed_modalSubmit')"
-             header-text-variant="white">
+    <b-modal id="modal" :title="$t('feed_modalTitle')"
+             ok-only :ok-title="$t('feed_modalSubmit')"
+             header-text-variant="white" @ok="publishArticle">
       <b-container fluid id="newsForm">
         <b-row>
           <b-col>
@@ -29,23 +30,38 @@
               <b-form-input id="newsTitleModal"
                             v-model="newsTitle"
                             type="text"
+                            required
+                            @input="no_title=false"
                             :placeholder="$t('feed_newsTitlePlaceholder')">
               </b-form-input>
+              <b-form-text v-if="no_title" class="required_alert">
+                {{ $t('register_required') }}
+              </b-form-text>
             </b-form-group>
             <b-form-group :label="$t('feed_newsContent')"
                           label-for="newsContentModal">
               <b-form-textarea id="newsContentModal"
                    v-model="newsContent"
+                   @input="no_content=false"
                    :placeholder="$t('feed_newsContentPlaceholder')"
                    :rows="9">
               </b-form-textarea>
+              <b-form-text v-if="no_content" class="required_alert">
+                {{ $t('register_required') }}
+              </b-form-text>
             </b-form-group>
-            <p>{{ $t('feed_newsCategory') }}</p>
+            <div class="categoriesPlaceholder">
+              <p>{{ $t('feed_newsCategory') }}</p>
+              <b-form-text v-if="no_categories" class="required_alert">
+                {{ $t('register_required') }}
+              </b-form-text>
+            </div>
             <b-row>
               <b-col sm="4">
                 <b-form-group>
                   <b-form-checkbox-group stacked
                                          v-model="newsSelectedTypes"
+                                         @change="changeCategories"
                                          :options="types1">
                   </b-form-checkbox-group>
                 </b-form-group>
@@ -54,6 +70,7 @@
                 <b-form-group>
                   <b-form-checkbox-group stacked
                                          v-model="newsSelectedTypes"
+                                         @change="changeCategories"
                                          :options="types2">
                   </b-form-checkbox-group>
                 </b-form-group>
@@ -62,6 +79,7 @@
                 <b-form-group>
                   <b-form-checkbox-group stacked
                                          v-model="newsSelectedTypes"
+                                         @change="changeCategories"
                                          :options="types3">
                   </b-form-checkbox-group>
                 </b-form-group>
@@ -74,6 +92,9 @@
               <b-button variant=outline-danger @click="removeImage">X</b-button>
             </div>
           </b-col>
+        </b-row>
+        <b-row v-if="successfullyPublished" style="margin-top: 15px; justify-content: center">
+          <b-alert variant="success" show dismissible>{{ $t('feed_publishSuccess') }}</b-alert>
         </b-row>
       </b-container>
     </b-modal>
@@ -103,7 +124,11 @@ export default {
       categories: Array,
       channelName: String,
       news: [],
-      fromLogin: false
+      fromLogin: false,
+      no_title: false,
+      no_content: false,
+      no_categories: false,
+      successfullyPublished: false
     }
   },
   computed: {
@@ -162,9 +187,44 @@ export default {
     },
     removeImage: function (e) {
       this.newsImage = '';
+    },
+    changeCategories() {
+      this.no_categories = false;
+    },
+    publishArticle(event) {
+      event.preventDefault();
+      if (this.newsTitle == "")
+        this.no_title = true;
+      if (this.newsContent == "")
+        this.no_content = true;
+      if (this.newsSelectedTypes.length == 0)
+        this.no_categories = true;
+
+      let article = {
+        title: this.newsTitle,
+        content: this.newsContent,
+        categories: this.newsSelectedTypes,
+        image_url: '',
+        channel_id: this.$store.getters.getChannelId,
+        token: this.$store.getters.getToken
+      }
+      console.log(article);
+
+      this.$axios({url: '/articles/addArticle', data: article, method: 'POST' })
+        .then(resp => {
+          var sucess = resp.data;
+          if(sucess == 1) {
+            this.successfullyPublished = true;
+          }
+        })
     }
   },
   mounted() {
+    var menu = document.getElementsByClassName("sidebar-menu-list")[0];
+    if (menu) {
+      var $li = menu.firstChild.childNodes;
+      $li[0].classList.add("active");
+    }
     if (!this.fromLogin) {
       this.$axios.get("/feed/newFeed", {
         params: {
@@ -242,6 +302,22 @@ export default {
     img {
       width: 250px;
       height: 150px;
+    }
+  }
+  .categoriesPlaceholder {
+    display: flex;
+    @media (max-width: $break-small) {
+      flex-direction: column;
+      p {
+        margin-bottom: 0;
+      }
+    }
+  }
+  .required_alert.form-text {
+    margin-bottom: 0.5rem;
+    margin-left: 1rem;
+    &.text-muted {
+      color: rgba(255, 0, 0, 0.75) !important;
     }
   }
 }

@@ -3,6 +3,7 @@ import { AUTH_LOGOUT } from '../action_calls/authentication'
 
 const state = {
   status: '',
+  channelId: localStorage.getItem('user-channelId') || 0,
   channelName: localStorage.getItem('user-channel') || '',
   categories: localStorage.getItem('user-categories') || []
 }
@@ -10,7 +11,8 @@ const state = {
 const getters = {
   getChannel: state => state.channelName,
   getCategories: state => state.categories,
-  isProfileLoaded: state => !!state.channelName,
+  getChannelId: state => state.channelId,
+  isProfileLoaded: state => !!state.channelName
 }
 
 const actions = {
@@ -18,6 +20,7 @@ const actions = {
     commit(USER_REQUEST);
     localStorage.setItem('user-categories', user.categories);
     localStorage.setItem('user-channel', user.channelName);
+    localStorage.setItem('user-channelId', user.channel_id);
     commit(USER_SUCCESS, user);
   }
 }
