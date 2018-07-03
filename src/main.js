@@ -63,13 +63,14 @@ const i18n = new Vuei18n({
   messages
 })
 
+Vue.prototype.$axios = axios
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
 	i18n,
   router,
   store,
-  axios,
   components: { App },
   template: '<App/>'
 })

@@ -61,7 +61,7 @@
     <div class="sidebar-menu-list">
       <ul id="menu-content" class="menu-content">
         <li>
-          <router-link to="/"><font-awesome-icon icon="newspaper"/>
+          <router-link :to="{ path: '/', params: { fromLogin: false } }"><font-awesome-icon icon="newspaper"/>
             {{ $t('feed_menuNews') }}
           </router-link>
         </li>
@@ -112,13 +112,10 @@
 </template>
 
 <script>
+
 export default {
   name: 'sidebar-menu',
   props: {
-    user_categories: {
-      type: Array,
-      required: true
-    },
     small_screen: {
       type: Boolean
     }
@@ -151,6 +148,9 @@ export default {
     }
   },
   computed: {
+    user_categories() {
+      return this.$store.getters.getCategories;
+    },
     categories() {
       var list = require('../../static/language/categories.json');
       return list.filter(category => {
@@ -161,7 +161,8 @@ export default {
   },
   mounted() {
     var menu = document.getElementsByClassName("sidebar-menu-list")[0];
-    menu.style.paddingRight = menu.offsetWidth - menu.clientWidth + "px";
+    if (menu)
+      menu.style.paddingRight = menu.offsetWidth - menu.clientWidth + "px";
   }
 }
 </script>

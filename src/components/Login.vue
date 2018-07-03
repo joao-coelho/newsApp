@@ -96,9 +96,16 @@ export default {
         password: this.form.pwd
       }
       this.$store.dispatch(AUTH_REQUEST, user)
-        .then(() => {
+        .then( resp => {
           this.loginError = false;
-          this.$router.push('/');
+          var data = resp.data;
+          this.$router.push({
+             name: 'Feed',
+             params: {
+              fromLogin: true,
+              news: data.news
+             }
+           });
         }).catch( err => {
           // Instead, this happens:
           console.log("It failed!", err);

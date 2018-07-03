@@ -310,7 +310,6 @@ export default {
   },
   methods: {
     register() {
-      console.log("Entrei");
       if(this.userAvailable == 1 && this.emailAvailable == 1 &&
          this.samePass == 1 && this.validLength == 1) {
            let details = {
@@ -326,8 +325,7 @@ export default {
              channelDescription: this.channelDescription,
              channelTypes: this.channelSelectedTypes
            }
-           //console.log(details);
-           axios({url: '/register/submit', data: details, method: 'POST' })
+           this.$axios({url: '/register/submit', data: details, method: 'POST' })
            .then(resp => {
              var sucess = resp.data;
              if(sucess == 1) {
@@ -340,7 +338,7 @@ export default {
     },
     verifyUsername() {
       if(this.username.length != 0) {
-        axios.get('/register/verifyUser', {
+        this.$axios.get('/register/verifyUser', {
           params: {
             username: this.username
           }
@@ -358,7 +356,7 @@ export default {
     },
     verifyEmail() {
       if(this.email.length != 0) {
-        axios.get('/register/verifyEmail', {
+        this.$axios.get('/register/verifyEmail', {
           params: {
             email: this.email
           }
@@ -376,7 +374,7 @@ export default {
     },
     verifyChannelName() {
       if(this.channelName != 0) {
-        axios.get('/register/verifyChannelName', {
+        this.$axios.get('/register/verifyChannelName', {
           params: {
             channelName: this.channelName
           }

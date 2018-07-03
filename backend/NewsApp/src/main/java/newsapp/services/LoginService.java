@@ -21,7 +21,7 @@ public class LoginService implements ILoginService {
         String condition = NewsApp.buildComplexCondition(conditions);
         User u = NewsApp.getUser(condition);
         LoginResponse lr = new LoginResponse();
-        if(u == null) {
+        if (u == null) {
             lr.setSuccess(false);
         } else {
             lr.setSuccess(true);
@@ -32,7 +32,7 @@ public class LoginService implements ILoginService {
             List<ChannelArticle> articles = NewsApp.getUserNews(u);
             List<ChannelArticle> sortedArticles = NewsApp.OrderChannelArticlesByDateDesc(articles);
             List<NewsHeader> newsHeaders = new ArrayList<>();
-            for(ChannelArticle a : sortedArticles) {
+            for (ChannelArticle a : sortedArticles) {
                 NewsHeader n = buildArticleHeader(a);
                 newsHeaders.add(n);
             }
@@ -52,5 +52,4 @@ public class LoginService implements ILoginService {
         newsHeader.setChannelName(a.getChannelName());
         return newsHeader;
     }
-
 }
