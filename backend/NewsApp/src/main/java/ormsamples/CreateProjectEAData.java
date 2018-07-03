@@ -4,35 +4,36 @@
  */
 package ormsamples;
 
+import newsapp.data.*;
 import org.orm.*;
 public class CreateProjectEAData {
 	public void createTestData() throws PersistentException {
-		PersistentTransaction t = newsapp.ProjectEAPersistentManager.instance().getSession().beginTransaction();
+		PersistentTransaction t = ProjectEAPersistentManager.instance().getSession().beginTransaction();
 		try {
-			newsapp.User lnewsappUser = newsapp.UserDAO.createUser();
+			User lnewsappUser = UserDAO.createUser();
 			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : _likedArticles, _myChannel, _preferences, _subscriptions
-			newsapp.UserDAO.save(lnewsappUser);
-			newsapp.Category lnewsappCategory = newsapp.CategoryDAO.createCategory();
+			UserDAO.save(lnewsappUser);
+			Category lnewsappCategory = CategoryDAO.createCategory();
 			// Initialize the properties of the persistent object here
-			newsapp.CategoryDAO.save(lnewsappCategory);
-			newsapp.Comment lnewsappComment = newsapp.CommentDAO.createComment();
+			CategoryDAO.save(lnewsappCategory);
+			Comment lnewsappComment = CommentDAO.createComment();
 			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : _author, article
-			newsapp.CommentDAO.save(lnewsappComment);
-			newsapp.Article lnewsappArticle = newsapp.ArticleDAO.createArticle();
+			CommentDAO.save(lnewsappComment);
+			Article lnewsappArticle = ArticleDAO.createArticle();
 			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : _categories, _comments, likes, channel
-			newsapp.ArticleDAO.save(lnewsappArticle);
-			newsapp.Channel lnewsappChannel = newsapp.ChannelDAO.createChannel();
+			ArticleDAO.save(lnewsappArticle);
+			Channel lnewsappChannel = ChannelDAO.createChannel();
 			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : categories, _articles, subscribers
-			newsapp.ChannelDAO.save(lnewsappChannel);
-			newsapp.Suggestion lnewsappSuggestion = newsapp.SuggestionDAO.createSuggestion();
+			ChannelDAO.save(lnewsappChannel);
+			Suggestion lnewsappSuggestion = SuggestionDAO.createSuggestion();
 			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : _author, _receivers
-			newsapp.SuggestionDAO.save(lnewsappSuggestion);
-			newsapp.ChannelSuggestion lnewsappChannelSuggestion = newsapp.ChannelSuggestionDAO.createChannelSuggestion();
+			SuggestionDAO.save(lnewsappSuggestion);
+			ChannelSuggestion lnewsappChannelSuggestion = ChannelSuggestionDAO.createChannelSuggestion();
 			// Initialize the properties of the persistent object here
-			newsapp.ChannelSuggestionDAO.save(lnewsappChannelSuggestion);
-			newsapp.ArticleSuggestion lnewsappArticleSuggestion = newsapp.ArticleSuggestionDAO.createArticleSuggestion();
+			ChannelSuggestionDAO.save(lnewsappChannelSuggestion);
+			ArticleSuggestion lnewsappArticleSuggestion = ArticleSuggestionDAO.createArticleSuggestion();
 			// Initialize the properties of the persistent object here
-			newsapp.ArticleSuggestionDAO.save(lnewsappArticleSuggestion);
+			ArticleSuggestionDAO.save(lnewsappArticleSuggestion);
 			t.commit();
 		}
 		catch (Exception e) {
@@ -48,7 +49,7 @@ public class CreateProjectEAData {
 				createProjectEAData.createTestData();
 			}
 			finally {
-				newsapp.ProjectEAPersistentManager.instance().disposePersistentManager();
+				ProjectEAPersistentManager.instance().disposePersistentManager();
 			}
 		}
 		catch (Exception e) {

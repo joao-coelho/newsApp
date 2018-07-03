@@ -4,13 +4,14 @@
  */
 package ormsamples;
 
+import newsapp.data.*;
 import org.orm.*;
 public class ListProjectEAData {
 	private static final int ROW_COUNT = 100;
 	
 	public void listTestData() throws PersistentException {
 		System.out.println("Listing User...");
-		newsapp.User[] newsappUsers = newsapp.UserDAO.listUserByQuery(null, null);
+		User[] newsappUsers = UserDAO.listUserByQuery(null, null);
 		int length = Math.min(newsappUsers.length, ROW_COUNT);
 		for (int i = 0; i < length; i++) {
 			System.out.println(newsappUsers[i]);
@@ -18,7 +19,7 @@ public class ListProjectEAData {
 		System.out.println(length + " record(s) retrieved.");
 		
 		System.out.println("Listing Category...");
-		newsapp.Category[] newsappCategorys = newsapp.CategoryDAO.listCategoryByQuery(null, null);
+		Category[] newsappCategorys = CategoryDAO.listCategoryByQuery(null, null);
 		length = Math.min(newsappCategorys.length, ROW_COUNT);
 		for (int i = 0; i < length; i++) {
 			System.out.println(newsappCategorys[i]);
@@ -26,7 +27,7 @@ public class ListProjectEAData {
 		System.out.println(length + " record(s) retrieved.");
 		
 		System.out.println("Listing Comment...");
-		newsapp.Comment[] newsappComments = newsapp.CommentDAO.listCommentByQuery(null, null);
+		Comment[] newsappComments = CommentDAO.listCommentByQuery(null, null);
 		length = Math.min(newsappComments.length, ROW_COUNT);
 		for (int i = 0; i < length; i++) {
 			System.out.println(newsappComments[i]);
@@ -34,7 +35,7 @@ public class ListProjectEAData {
 		System.out.println(length + " record(s) retrieved.");
 		
 		System.out.println("Listing Article...");
-		newsapp.Article[] newsappArticles = newsapp.ArticleDAO.listArticleByQuery(null, null);
+		Article[] newsappArticles = ArticleDAO.listArticleByQuery(null, null);
 		length = Math.min(newsappArticles.length, ROW_COUNT);
 		for (int i = 0; i < length; i++) {
 			System.out.println(newsappArticles[i]);
@@ -42,7 +43,7 @@ public class ListProjectEAData {
 		System.out.println(length + " record(s) retrieved.");
 		
 		System.out.println("Listing Channel...");
-		newsapp.Channel[] newsappChannels = newsapp.ChannelDAO.listChannelByQuery(null, null);
+		Channel[] newsappChannels = ChannelDAO.listChannelByQuery(null, null);
 		length = Math.min(newsappChannels.length, ROW_COUNT);
 		for (int i = 0; i < length; i++) {
 			System.out.println(newsappChannels[i]);
@@ -50,7 +51,7 @@ public class ListProjectEAData {
 		System.out.println(length + " record(s) retrieved.");
 		
 		System.out.println("Listing Suggestion...");
-		newsapp.Suggestion[] newsappSuggestions = newsapp.SuggestionDAO.listSuggestionByQuery(null, null);
+		Suggestion[] newsappSuggestions = SuggestionDAO.listSuggestionByQuery(null, null);
 		length = Math.min(newsappSuggestions.length, ROW_COUNT);
 		for (int i = 0; i < length; i++) {
 			System.out.println(newsappSuggestions[i]);
@@ -58,7 +59,7 @@ public class ListProjectEAData {
 		System.out.println(length + " record(s) retrieved.");
 		
 		System.out.println("Listing ChannelSuggestion...");
-		newsapp.ChannelSuggestion[] newsappChannelSuggestions = newsapp.ChannelSuggestionDAO.listChannelSuggestionByQuery(null, null);
+		ChannelSuggestion[] newsappChannelSuggestions = ChannelSuggestionDAO.listChannelSuggestionByQuery(null, null);
 		length = Math.min(newsappChannelSuggestions.length, ROW_COUNT);
 		for (int i = 0; i < length; i++) {
 			System.out.println(newsappChannelSuggestions[i]);
@@ -66,7 +67,7 @@ public class ListProjectEAData {
 		System.out.println(length + " record(s) retrieved.");
 		
 		System.out.println("Listing ArticleSuggestion...");
-		newsapp.ArticleSuggestion[] newsappArticleSuggestions = newsapp.ArticleSuggestionDAO.listArticleSuggestionByQuery(null, null);
+		ArticleSuggestion[] newsappArticleSuggestions = ArticleSuggestionDAO.listArticleSuggestionByQuery(null, null);
 		length = Math.min(newsappArticleSuggestions.length, ROW_COUNT);
 		for (int i = 0; i < length; i++) {
 			System.out.println(newsappArticleSuggestions[i]);
@@ -77,11 +78,11 @@ public class ListProjectEAData {
 	
 	public void listByCriteria() throws PersistentException {
 		System.out.println("Listing User by Criteria...");
-		newsapp.UserCriteria lnewsappUserCriteria = new newsapp.UserCriteria();
+		UserCriteria lnewsappUserCriteria = new UserCriteria();
 		// Please uncomment the follow line and fill in parameter(s) 
 		//lnewsappUserCriteria.ID.eq();
 		lnewsappUserCriteria.setMaxResults(ROW_COUNT);
-		newsapp.User[] newsappUsers = lnewsappUserCriteria.listUser();
+		User[] newsappUsers = lnewsappUserCriteria.listUser();
 		int length =newsappUsers== null ? 0 : Math.min(newsappUsers.length, ROW_COUNT); 
 		for (int i = 0; i < length; i++) {
 			 System.out.println(newsappUsers[i]);
@@ -89,11 +90,11 @@ public class ListProjectEAData {
 		System.out.println(length + " User record(s) retrieved."); 
 		
 		System.out.println("Listing Category by Criteria...");
-		newsapp.CategoryCriteria lnewsappCategoryCriteria = new newsapp.CategoryCriteria();
+		CategoryCriteria lnewsappCategoryCriteria = new CategoryCriteria();
 		// Please uncomment the follow line and fill in parameter(s) 
 		//lnewsappCategoryCriteria.ID.eq();
 		lnewsappCategoryCriteria.setMaxResults(ROW_COUNT);
-		newsapp.Category[] newsappCategorys = lnewsappCategoryCriteria.listCategory();
+		Category[] newsappCategorys = lnewsappCategoryCriteria.listCategory();
 		length =newsappCategorys== null ? 0 : Math.min(newsappCategorys.length, ROW_COUNT); 
 		for (int i = 0; i < length; i++) {
 			 System.out.println(newsappCategorys[i]);
@@ -101,11 +102,11 @@ public class ListProjectEAData {
 		System.out.println(length + " Category record(s) retrieved."); 
 		
 		System.out.println("Listing Comment by Criteria...");
-		newsapp.CommentCriteria lnewsappCommentCriteria = new newsapp.CommentCriteria();
+		CommentCriteria lnewsappCommentCriteria = new CommentCriteria();
 		// Please uncomment the follow line and fill in parameter(s) 
 		//lnewsappCommentCriteria.ID.eq();
 		lnewsappCommentCriteria.setMaxResults(ROW_COUNT);
-		newsapp.Comment[] newsappComments = lnewsappCommentCriteria.listComment();
+		Comment[] newsappComments = lnewsappCommentCriteria.listComment();
 		length =newsappComments== null ? 0 : Math.min(newsappComments.length, ROW_COUNT); 
 		for (int i = 0; i < length; i++) {
 			 System.out.println(newsappComments[i]);
@@ -113,11 +114,11 @@ public class ListProjectEAData {
 		System.out.println(length + " Comment record(s) retrieved."); 
 		
 		System.out.println("Listing Article by Criteria...");
-		newsapp.ArticleCriteria lnewsappArticleCriteria = new newsapp.ArticleCriteria();
+		ArticleCriteria lnewsappArticleCriteria = new ArticleCriteria();
 		// Please uncomment the follow line and fill in parameter(s) 
 		//lnewsappArticleCriteria.ID.eq();
 		lnewsappArticleCriteria.setMaxResults(ROW_COUNT);
-		newsapp.Article[] newsappArticles = lnewsappArticleCriteria.listArticle();
+		Article[] newsappArticles = lnewsappArticleCriteria.listArticle();
 		length =newsappArticles== null ? 0 : Math.min(newsappArticles.length, ROW_COUNT); 
 		for (int i = 0; i < length; i++) {
 			 System.out.println(newsappArticles[i]);
@@ -125,11 +126,11 @@ public class ListProjectEAData {
 		System.out.println(length + " Article record(s) retrieved."); 
 		
 		System.out.println("Listing Channel by Criteria...");
-		newsapp.ChannelCriteria lnewsappChannelCriteria = new newsapp.ChannelCriteria();
+		ChannelCriteria lnewsappChannelCriteria = new ChannelCriteria();
 		// Please uncomment the follow line and fill in parameter(s) 
 		//lnewsappChannelCriteria.ID.eq();
 		lnewsappChannelCriteria.setMaxResults(ROW_COUNT);
-		newsapp.Channel[] newsappChannels = lnewsappChannelCriteria.listChannel();
+		Channel[] newsappChannels = lnewsappChannelCriteria.listChannel();
 		length =newsappChannels== null ? 0 : Math.min(newsappChannels.length, ROW_COUNT); 
 		for (int i = 0; i < length; i++) {
 			 System.out.println(newsappChannels[i]);
@@ -137,11 +138,11 @@ public class ListProjectEAData {
 		System.out.println(length + " Channel record(s) retrieved."); 
 		
 		System.out.println("Listing Suggestion by Criteria...");
-		newsapp.SuggestionCriteria lnewsappSuggestionCriteria = new newsapp.SuggestionCriteria();
+		SuggestionCriteria lnewsappSuggestionCriteria = new SuggestionCriteria();
 		// Please uncomment the follow line and fill in parameter(s) 
 		//lnewsappSuggestionCriteria.ID.eq();
 		lnewsappSuggestionCriteria.setMaxResults(ROW_COUNT);
-		newsapp.Suggestion[] newsappSuggestions = lnewsappSuggestionCriteria.listSuggestion();
+		Suggestion[] newsappSuggestions = lnewsappSuggestionCriteria.listSuggestion();
 		length =newsappSuggestions== null ? 0 : Math.min(newsappSuggestions.length, ROW_COUNT); 
 		for (int i = 0; i < length; i++) {
 			 System.out.println(newsappSuggestions[i]);
@@ -149,11 +150,11 @@ public class ListProjectEAData {
 		System.out.println(length + " Suggestion record(s) retrieved."); 
 		
 		System.out.println("Listing ChannelSuggestion by Criteria...");
-		newsapp.ChannelSuggestionCriteria lnewsappChannelSuggestionCriteria = new newsapp.ChannelSuggestionCriteria();
+		ChannelSuggestionCriteria lnewsappChannelSuggestionCriteria = new ChannelSuggestionCriteria();
 		// Please uncomment the follow line and fill in parameter(s) 
 		//lnewsappChannelSuggestionCriteria.ID.eq();
 		lnewsappChannelSuggestionCriteria.setMaxResults(ROW_COUNT);
-		newsapp.ChannelSuggestion[] newsappChannelSuggestions = lnewsappChannelSuggestionCriteria.listChannelSuggestion();
+		ChannelSuggestion[] newsappChannelSuggestions = lnewsappChannelSuggestionCriteria.listChannelSuggestion();
 		length =newsappChannelSuggestions== null ? 0 : Math.min(newsappChannelSuggestions.length, ROW_COUNT); 
 		for (int i = 0; i < length; i++) {
 			 System.out.println(newsappChannelSuggestions[i]);
@@ -161,11 +162,11 @@ public class ListProjectEAData {
 		System.out.println(length + " ChannelSuggestion record(s) retrieved."); 
 		
 		System.out.println("Listing ArticleSuggestion by Criteria...");
-		newsapp.ArticleSuggestionCriteria lnewsappArticleSuggestionCriteria = new newsapp.ArticleSuggestionCriteria();
+		ArticleSuggestionCriteria lnewsappArticleSuggestionCriteria = new ArticleSuggestionCriteria();
 		// Please uncomment the follow line and fill in parameter(s) 
 		//lnewsappArticleSuggestionCriteria.ID.eq();
 		lnewsappArticleSuggestionCriteria.setMaxResults(ROW_COUNT);
-		newsapp.ArticleSuggestion[] newsappArticleSuggestions = lnewsappArticleSuggestionCriteria.listArticleSuggestion();
+		ArticleSuggestion[] newsappArticleSuggestions = lnewsappArticleSuggestionCriteria.listArticleSuggestion();
 		length =newsappArticleSuggestions== null ? 0 : Math.min(newsappArticleSuggestions.length, ROW_COUNT); 
 		for (int i = 0; i < length; i++) {
 			 System.out.println(newsappArticleSuggestions[i]);
@@ -182,7 +183,7 @@ public class ListProjectEAData {
 				//listProjectEAData.listByCriteria();
 			}
 			finally {
-				newsapp.ProjectEAPersistentManager.instance().disposePersistentManager();
+				ProjectEAPersistentManager.instance().disposePersistentManager();
 			}
 		}
 		catch (Exception e) {
