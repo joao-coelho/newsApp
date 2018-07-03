@@ -13,6 +13,7 @@
  */
 package newsapp.data;
 
+import newsapp.business.model.Category;
 import org.orm.*;
 
 public class CategorySetCollection extends org.orm.util.ORMSet {

@@ -11,16 +11,17 @@
  * Licensee: José Miguel Ribeiro da Silva(Universidade do Minho)
  * License Type: Academic
  */
-package newsapp.data;
+package newsapp.business.model;
 
+import newsapp.data.ProjectEAPersistentManager;
 import org.orm.*;
 
-public class ArticleSetCollection extends org.orm.util.ORMSet {
-	public ArticleSetCollection(Object owner, org.orm.util.ORMAdapter adapter, int ownerKey, int targetKey, int collType) {
+public class ChannelSetCollection extends org.orm.util.ORMSet {
+	public ChannelSetCollection(Object owner, org.orm.util.ORMAdapter adapter, int ownerKey, int targetKey, int collType) {
 		super(owner, adapter, ownerKey, targetKey, true, collType);
 	}
 	
-	public ArticleSetCollection(Object owner, org.orm.util.ORMAdapter adapter, int ownerKey, int collType) {
+	public ChannelSetCollection(Object owner, org.orm.util.ORMAdapter adapter, int ownerKey, int collType) {
 		super(owner, adapter, ownerKey, -1, false, collType);
 	}
 	
@@ -36,9 +37,9 @@ public class ArticleSetCollection extends org.orm.util.ORMSet {
 	 * Add the specified persistent object to ORMSet
 	 * @param value the persistent object
 	 */
-	public void add(Article value) {
+	public void add(Channel value) {
 		if (value != null) {
-			super.add(value, value._ormAdapter);
+			super.add(value, null);
 		}
 	}
 	
@@ -46,8 +47,8 @@ public class ArticleSetCollection extends org.orm.util.ORMSet {
 	 * Remove the specified persistent object from ORMSet
 	 * @param value the persistent object
 	 */
-	public void remove(Article value) {
-		super.remove(value, value._ormAdapter);
+	public void remove(Channel value) {
+		super.remove(value, null);
 	}
 	
 	/**
@@ -55,7 +56,7 @@ public class ArticleSetCollection extends org.orm.util.ORMSet {
 	 * @param value the persistent object
 	 * @return True if this contains the specified persistent object
 	 */
-	public boolean contains(Article value) {
+	public boolean contains(Channel value) {
 		return super.contains(value);
 	}
 	
@@ -63,23 +64,22 @@ public class ArticleSetCollection extends org.orm.util.ORMSet {
 	 * Return an array containing all of the persistent objects in ORMSet
 	 * @return The persistent objects array
 	 */
-	public Article[] toArray() {
-		return (Article[]) super.toArray(new Article[size()]);
+	public Channel[] toArray() {
+		return (Channel[]) super.toArray(new Channel[size()]);
 	}
 	
 	/**
 	 * Return an sorted array containing all of the persistent objects in ORMSet
 	 * @param propertyName Name of the property for sorting:<ul>
 	 * <li>ID</li>
-	 * <li>title</li>
-	 * <li>content</li>
-	 * <li>likes</li>
-	 * <li>addedAt</li>
+	 * <li>name</li>
+	 * <li>description</li>
+	 * <li>subscribers</li>
 	 * <li>image_url</li>
 	 * </ul>
 	 * @return The persistent objects sorted array
 	 */
-	public Article[] toArray(String propertyName) {
+	public Channel[] toArray(String propertyName) {
 		return toArray(propertyName, true);
 	}
 	
@@ -87,17 +87,16 @@ public class ArticleSetCollection extends org.orm.util.ORMSet {
 	 * Return an sorted array containing all of the persistent objects in ORMSet
 	 * @param propertyName Name of the property for sorting:<ul>
 	 * <li>ID</li>
-	 * <li>title</li>
-	 * <li>content</li>
-	 * <li>likes</li>
-	 * <li>addedAt</li>
+	 * <li>name</li>
+	 * <li>description</li>
+	 * <li>subscribers</li>
 	 * <li>image_url</li>
 	 * </ul>
 	 * @param ascending true for ascending, false for descending
 	 * @return The persistent objects sorted array
 	 */
-	public Article[] toArray(String propertyName, boolean ascending) {
-		return (Article[]) super.toArray(new Article[size()], propertyName, ascending);
+	public Channel[] toArray(String propertyName, boolean ascending) {
+		return (Channel[]) super.toArray(new Channel[size()], propertyName, ascending);
 	}
 	
 	protected PersistentManager getPersistentManager() throws PersistentException {

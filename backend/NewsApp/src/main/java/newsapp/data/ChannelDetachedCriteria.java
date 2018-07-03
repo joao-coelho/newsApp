@@ -14,6 +14,8 @@
 package newsapp.data;
 
 import java.util.List;
+
+import newsapp.business.model.Channel;
 import org.hibernate.criterion.DetachedCriteria;
 import org.orm.PersistentSession;
 import org.orm.criteria.*;

@@ -12,11 +12,7 @@ License Type: Academic
 		<property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property>
 		<property name="connection.driver_class">org.postgresql.Driver</property>
 		<property name="connection.url">jdbc:postgresql://localhost:5432/newsdb</property>
-<<<<<<< HEAD
 		<property name="connection.username">miguel</property>
-=======
-		<property name="connection.username">jccoelho</property>
->>>>>>> 930443fd93c9608ea6b91c8edb3218e6e8dea9da
 		<property name="connection.password"></property>
 		<property name="show_sql">false</property>
 		<property name="query.substitutions">true 1, false 0, yes 'Y', no 'N'</property>

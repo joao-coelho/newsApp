@@ -13,6 +13,8 @@
  */
 package newsapp.data;
 
+import newsapp.business.model.Article;
+import newsapp.business.model.Comment;
 import org.orm.*;
 import org.hibernate.Query;
 
@@ -148,7 +150,7 @@ public class ArticleDAO {
 	}
 	
 	public static List queryArticle(PersistentSession session, String condition, String orderBy) throws PersistentException {
-		StringBuffer sb = new StringBuffer("From newsapp.Article as Article");
+		StringBuffer sb = new StringBuffer("From Article as Article");
 		if (condition != null)
 			sb.append(" Where ").append(condition);
 		if (orderBy != null)
@@ -164,7 +166,7 @@ public class ArticleDAO {
 	}
 	
 	public static List queryArticle(PersistentSession session, String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
-		StringBuffer sb = new StringBuffer("From newsapp.Article as Article");
+		StringBuffer sb = new StringBuffer("From Article as Article");
 		if (condition != null)
 			sb.append(" Where ").append(condition);
 		if (orderBy != null)
@@ -263,7 +265,7 @@ public class ArticleDAO {
 	}
 	
 	public static java.util.Iterator iterateArticleByQuery(PersistentSession session, String condition, String orderBy) throws PersistentException {
-		StringBuffer sb = new StringBuffer("From newsapp.Article as Article");
+		StringBuffer sb = new StringBuffer("From Article as Article");
 		if (condition != null)
 			sb.append(" Where ").append(condition);
 		if (orderBy != null)
@@ -279,7 +281,7 @@ public class ArticleDAO {
 	}
 	
 	public static java.util.Iterator iterateArticleByQuery(PersistentSession session, String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
-		StringBuffer sb = new StringBuffer("From newsapp.Article as Article");
+		StringBuffer sb = new StringBuffer("From Article as Article");
 		if (condition != null)
 			sb.append(" Where ").append(condition);
 		if (orderBy != null)

@@ -1,9 +1,9 @@
 package newsapp.services;
 
-import newsapp.data.Article;
-import newsapp.data.Category;
-import newsapp.data.Channel;
-import newsapp.data.NewsApp;
+import newsapp.business.model.Article;
+import newsapp.business.model.Category;
+import newsapp.business.model.Channel;
+import newsapp.business.NewsApp;
 import newsapp.services.data.ArticleDetails;
 import org.springframework.stereotype.Service;
 
@@ -31,17 +31,20 @@ public class ArticleService implements IArticleService {
         ArticleDetails articleDetails = new ArticleDetails();
 
         Article article = NewsApp.getArticle(id);
-        Channel channel = article.getChannel();
-        articleDetails.setChannel_id(channel.getID());
-        articleDetails.setContent(article.getContent());
-        articleDetails.setImage_url(article.getImage_url());
-        articleDetails.setTitle(article.getTitle());
-        articleDetails.setToken(0);
-
-        it = article._categories.getIterator();
-        while(it.hasNext()) {
-            Category c = (Category) it.next();
-            categories.add(c.getDescription());
+        if(article != null) {
+            Channel channel = article.getChannel();
+            articleDetails.setChannel_id(channel.getID());
+            articleDetails.setContent(article.getContent());
+            articleDetails.setImage_url(article.getImage_url());
+            articleDetails.setTitle(article.getTitle());
+            articleDetails.setToken(0);
+            System.out.println("olha eu a enviar cenas para o gajo" +
+                    "");
+            it = article._categories.getIterator();
+            while(it.hasNext()) {
+                Category c = (Category) it.next();
+                categories.add(c.getDescription());
+            }
         }
 
         return articleDetails;

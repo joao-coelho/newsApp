@@ -11,7 +11,7 @@
  * Licensee: José Miguel Ribeiro da Silva(Universidade do Minho)
  * License Type: Academic
  */
-package newsapp.data;
+package newsapp.business.model;
 
 import java.io.Serializable;
 import javax.persistence.*;

@@ -1,4 +1,4 @@
-package newsapp.data;
+package newsapp.business.model;
 
 public class ChannelArticle {
 

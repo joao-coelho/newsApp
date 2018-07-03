@@ -11,28 +11,28 @@
  * Licensee: José Miguel Ribeiro da Silva(Universidade do Minho)
  * License Type: Academic
  */
-package newsapp.data;
+package newsapp.business.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
 @Entity
 @org.hibernate.annotations.Proxy(lazy=false)
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-@DiscriminatorValue("ArticleSuggestion")
-public class ArticleSuggestion extends Suggestion implements Serializable {
-	public ArticleSuggestion() {
+@DiscriminatorValue("ChannelSuggestion")
+public class ChannelSuggestion extends Suggestion implements Serializable {
+	public ChannelSuggestion() {
 	}
 	
-	@ManyToOne(targetEntity=Article.class, fetch=FetchType.LAZY)
+	@ManyToOne(targetEntity=Channel.class, fetch=FetchType.LAZY)
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
-	@JoinColumns({ @JoinColumn(name="ArticleID", referencedColumnName="ID") })	
-	private Article _target;
+	@JoinColumns({ @JoinColumn(name="ChannelID", referencedColumnName="ID") })	
+	private Channel _target;
 	
-	public void set_target(Article value) {
+	public void set_target(Channel value) {
 		this._target = value;
 	}
 	
-	public Article get_target() {
+	public Channel get_target() {
 		return _target;
 	}
 	

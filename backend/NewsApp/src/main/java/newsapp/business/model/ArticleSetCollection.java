@@ -11,16 +11,17 @@
  * Licensee: José Miguel Ribeiro da Silva(Universidade do Minho)
  * License Type: Academic
  */
-package newsapp.data;
+package newsapp.business.model;
 
+import newsapp.data.ProjectEAPersistentManager;
 import org.orm.*;
 
-public class CommentSetCollection extends org.orm.util.ORMSet {
-	public CommentSetCollection(Object owner, org.orm.util.ORMAdapter adapter, int ownerKey, int targetKey, int collType) {
+public class ArticleSetCollection extends org.orm.util.ORMSet {
+	public ArticleSetCollection(Object owner, org.orm.util.ORMAdapter adapter, int ownerKey, int targetKey, int collType) {
 		super(owner, adapter, ownerKey, targetKey, true, collType);
 	}
 	
-	public CommentSetCollection(Object owner, org.orm.util.ORMAdapter adapter, int ownerKey, int collType) {
+	public ArticleSetCollection(Object owner, org.orm.util.ORMAdapter adapter, int ownerKey, int collType) {
 		super(owner, adapter, ownerKey, -1, false, collType);
 	}
 	
@@ -36,7 +37,7 @@ public class CommentSetCollection extends org.orm.util.ORMSet {
 	 * Add the specified persistent object to ORMSet
 	 * @param value the persistent object
 	 */
-	public void add(Comment value) {
+	public void add(Article value) {
 		if (value != null) {
 			super.add(value, value._ormAdapter);
 		}
@@ -46,7 +47,7 @@ public class CommentSetCollection extends org.orm.util.ORMSet {
 	 * Remove the specified persistent object from ORMSet
 	 * @param value the persistent object
 	 */
-	public void remove(Comment value) {
+	public void remove(Article value) {
 		super.remove(value, value._ormAdapter);
 	}
 	
@@ -55,7 +56,7 @@ public class CommentSetCollection extends org.orm.util.ORMSet {
 	 * @param value the persistent object
 	 * @return True if this contains the specified persistent object
 	 */
-	public boolean contains(Comment value) {
+	public boolean contains(Article value) {
 		return super.contains(value);
 	}
 	
@@ -63,20 +64,23 @@ public class CommentSetCollection extends org.orm.util.ORMSet {
 	 * Return an array containing all of the persistent objects in ORMSet
 	 * @return The persistent objects array
 	 */
-	public Comment[] toArray() {
-		return (Comment[]) super.toArray(new Comment[size()]);
+	public Article[] toArray() {
+		return (Article[]) super.toArray(new Article[size()]);
 	}
 	
 	/**
 	 * Return an sorted array containing all of the persistent objects in ORMSet
 	 * @param propertyName Name of the property for sorting:<ul>
 	 * <li>ID</li>
+	 * <li>title</li>
 	 * <li>content</li>
+	 * <li>likes</li>
 	 * <li>addedAt</li>
+	 * <li>image_url</li>
 	 * </ul>
 	 * @return The persistent objects sorted array
 	 */
-	public Comment[] toArray(String propertyName) {
+	public Article[] toArray(String propertyName) {
 		return toArray(propertyName, true);
 	}
 	
@@ -84,14 +88,17 @@ public class CommentSetCollection extends org.orm.util.ORMSet {
 	 * Return an sorted array containing all of the persistent objects in ORMSet
 	 * @param propertyName Name of the property for sorting:<ul>
 	 * <li>ID</li>
+	 * <li>title</li>
 	 * <li>content</li>
+	 * <li>likes</li>
 	 * <li>addedAt</li>
+	 * <li>image_url</li>
 	 * </ul>
 	 * @param ascending true for ascending, false for descending
 	 * @return The persistent objects sorted array
 	 */
-	public Comment[] toArray(String propertyName, boolean ascending) {
-		return (Comment[]) super.toArray(new Comment[size()], propertyName, ascending);
+	public Article[] toArray(String propertyName, boolean ascending) {
+		return (Article[]) super.toArray(new Article[size()], propertyName, ascending);
 	}
 	
 	protected PersistentManager getPersistentManager() throws PersistentException {

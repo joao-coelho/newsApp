@@ -13,6 +13,7 @@
  */
 package newsapp.data;
 
+import newsapp.business.model.User;
 import org.orm.*;
 
 public class UserSetCollection extends org.orm.util.ORMSet {

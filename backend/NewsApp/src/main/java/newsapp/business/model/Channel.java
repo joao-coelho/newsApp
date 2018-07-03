@@ -11,7 +11,10 @@
  * Licensee: José Miguel Ribeiro da Silva(Universidade do Minho)
  * License Type: Academic
  */
-package newsapp.data;
+package newsapp.business.model;
+
+import newsapp.data.CategorySetCollection;
+import newsapp.data.ORMConstants;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -135,16 +138,6 @@ public class Channel implements Serializable {
 	
 	@Transient	
 	public final CategorySetCollection categories = new CategorySetCollection(this, _ormAdapter, ORMConstants.KEY_CHANNEL_CATEGORIES, ORMConstants.KEY_MUL_MANY_TO_MANY);
-	
-	public int getLikes() {
-		//TODO: Implement Method
-		throw new UnsupportedOperationException();
-	}
-	
-	public void setLikes(int likes) {
-		//TODO: Implement Method
-		throw new UnsupportedOperationException();
-	}
 	
 	public String toString() {
 		return String.valueOf(getID());

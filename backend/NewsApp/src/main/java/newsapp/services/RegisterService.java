@@ -1,9 +1,9 @@
 package newsapp.services;
 
 
-import newsapp.data.Channel;
-import newsapp.data.NewsApp;
-import newsapp.data.User;
+import newsapp.business.model.Channel;
+import newsapp.business.NewsApp;
+import newsapp.business.model.User;
 import newsapp.services.data.UserDetails;
 import org.springframework.stereotype.Service;
 

@@ -1,6 +1,7 @@
-package newsapp.data;
+package newsapp.business;
 
-import newsapp.services.data.SessionManager;
+import newsapp.business.model.*;
+import newsapp.data.*;
 import org.hibernate.Query;
 import org.orm.PersistentException;
 import org.orm.PersistentSession;
@@ -9,8 +10,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-public class NewsApp extends SessionManager {
 
+public class NewsApp {
     /*
     private static String getSubstring(String s) {
         String sub = s.substring(0, s.length() - 1);
@@ -109,7 +110,7 @@ public class NewsApp extends SessionManager {
     }
 
     public static List<ChannelArticle> getArticles(List<Channel> channels) {
-        List<ChannelArticle> articles = null;
+        List<ChannelArticle> articles = new ArrayList<>();
         for(Channel c : channels) {
             Iterator ti = c._articles.getIterator();
             while (ti.hasNext()) {
@@ -276,7 +277,6 @@ public class NewsApp extends SessionManager {
         Channel c = new Channel();
         c.setName(channelName);
         c.setDescription(description);
-        c.setLikes(0);
         c.setSubscribers(0);
         if (channelTypes.size() != 0) {
             for (String type : channelTypes) {

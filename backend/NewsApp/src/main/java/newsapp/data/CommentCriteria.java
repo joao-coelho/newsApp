@@ -13,6 +13,7 @@
  */
 package newsapp.data;
 
+import newsapp.business.model.Comment;
 import org.hibernate.Criteria;
 import org.orm.PersistentException;
 import org.orm.PersistentSession;

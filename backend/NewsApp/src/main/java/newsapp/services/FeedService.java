@@ -1,6 +1,10 @@
 package newsapp.services;
 
-import newsapp.data.*;
+import newsapp.business.NewsApp;
+import newsapp.business.model.Article;
+import newsapp.business.model.Channel;
+import newsapp.business.model.ChannelArticle;
+import newsapp.business.model.User;
 import newsapp.services.data.BaseFeed;
 import newsapp.services.data.ChannelHeader;
 import newsapp.services.data.LikeComment;
@@ -28,6 +32,7 @@ public class FeedService implements IFeedService {
         bf.setNews(newsHeaders);
         return bf;
     }
+
 
     public List<NewsHeader> trending() {
         List<Channel> channels = NewsApp.getChannels();
@@ -103,7 +108,6 @@ public class FeedService implements IFeedService {
         ch.setChannelName(c.getName());
         ch.setDescription(c.getDescription());
         ch.setId(c.getID());
-        ch.setLikes(c.getLikes());
         ch.setSubscribers(c.getSubscribers());
         return ch;
     }

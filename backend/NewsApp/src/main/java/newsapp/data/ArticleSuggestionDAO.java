@@ -13,6 +13,7 @@
  */
 package newsapp.data;
 
+import newsapp.business.model.ArticleSuggestion;
 import org.orm.*;
 import org.hibernate.Query;
 
@@ -148,7 +149,7 @@ public class ArticleSuggestionDAO {
 	}
 	
 	public static List queryArticleSuggestion(PersistentSession session, String condition, String orderBy) throws PersistentException {
-		StringBuffer sb = new StringBuffer("From newsapp.ArticleSuggestion as ArticleSuggestion");
+		StringBuffer sb = new StringBuffer("From .ArticleSuggestion as ArticleSuggestion");
 		if (condition != null)
 			sb.append(" Where ").append(condition);
 		if (orderBy != null)
@@ -164,7 +165,7 @@ public class ArticleSuggestionDAO {
 	}
 	
 	public static List queryArticleSuggestion(PersistentSession session, String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
-		StringBuffer sb = new StringBuffer("From newsapp.ArticleSuggestion as ArticleSuggestion");
+		StringBuffer sb = new StringBuffer("From .ArticleSuggestion as ArticleSuggestion");
 		if (condition != null)
 			sb.append(" Where ").append(condition);
 		if (orderBy != null)
@@ -263,7 +264,7 @@ public class ArticleSuggestionDAO {
 	}
 	
 	public static java.util.Iterator iterateArticleSuggestionByQuery(PersistentSession session, String condition, String orderBy) throws PersistentException {
-		StringBuffer sb = new StringBuffer("From newsapp.ArticleSuggestion as ArticleSuggestion");
+		StringBuffer sb = new StringBuffer("From .ArticleSuggestion as ArticleSuggestion");
 		if (condition != null)
 			sb.append(" Where ").append(condition);
 		if (orderBy != null)
@@ -279,7 +280,7 @@ public class ArticleSuggestionDAO {
 	}
 	
 	public static java.util.Iterator iterateArticleSuggestionByQuery(PersistentSession session, String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
-		StringBuffer sb = new StringBuffer("From newsapp.ArticleSuggestion as ArticleSuggestion");
+		StringBuffer sb = new StringBuffer("From .ArticleSuggestion as ArticleSuggestion");
 		if (condition != null)
 			sb.append(" Where ").append(condition);
 		if (orderBy != null)

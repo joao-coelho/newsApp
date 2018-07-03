@@ -13,6 +13,7 @@
  */
 package newsapp.data;
 
+import newsapp.business.model.*;
 import org.orm.*;
 import org.orm.cfg.JDBCConnectionSetting;
 import org.hibernate.*;

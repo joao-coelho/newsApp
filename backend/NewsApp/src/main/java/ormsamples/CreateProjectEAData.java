@@ -4,6 +4,7 @@
  */
 package ormsamples;
 
+import newsapp.business.model.*;
 import newsapp.data.*;
 import org.orm.*;
 public class CreateProjectEAData {

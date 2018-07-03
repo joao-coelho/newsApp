@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
 @RestController
 @CrossOrigin
 @RequestMapping("/feed")
@@ -37,9 +36,9 @@ public class FeedController {
     }
 
     @RequestMapping(value = "/category", method = RequestMethod.GET)
-    public List<NewsHeader> getNewsByCategory(@RequestParam("token") int token
-                                              /*@RequestParam("category") String category*/) {
-        List<NewsHeader> news = fs.newsByCategory(token, "Desporto");
+    public List<NewsHeader> getNewsByCategory(@RequestParam("token") int token,
+                                              @RequestParam("category") String category) {
+        List<NewsHeader> news = fs.newsByCategory(token, category);
         return news;
     }
 
@@ -54,5 +53,4 @@ public class FeedController {
         List<NewsHeader> feed = fs.getNewFeed(token);
         return feed;
     }
-
 }
