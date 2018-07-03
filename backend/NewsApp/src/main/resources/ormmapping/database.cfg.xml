@@ -18,11 +18,19 @@
   </Setting>
   <Setting type="256">
     <Driver>PostgreSQL</Driver>
+<<<<<<< HEAD
     <DriverFiles>/home/miguel/Transferências/postgresql-42.2.2.jar</DriverFiles>
     <Dialect>org.hibernate.dialect.PostgreSQLDialect</Dialect>
     <DriverClass>org.postgresql.Driver</DriverClass>
     <URL>jdbc:postgresql://localhost:5432/newsdb</URL>
     <UserName>miguel</UserName>
+=======
+    <DriverFiles>/home/jccoelho/Downloads/postgresql-42.2.2.jar</DriverFiles>
+    <Dialect>org.hibernate.dialect.PostgreSQLDialect</Dialect>
+    <DriverClass>org.postgresql.Driver</DriverClass>
+    <URL>jdbc:postgresql://localhost:5432/newsdb</URL>
+    <UserName>jccoelho</UserName>
+>>>>>>> 930443fd93c9608ea6b91c8edb3218e6e8dea9da
     <EncryptedPassword>32F3ACE632ECEBAFB24DCAF99A8C6CDC</EncryptedPassword>
     <HostName>localhost</HostName>
     <PortNO>5432</PortNO>

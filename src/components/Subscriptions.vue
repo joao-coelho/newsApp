@@ -2,11 +2,19 @@
   <div class="subscriptions">
     <b-container fluid>
       <navbar-feed></navbar-feed>
-      <b-row>
+      <b-row id="main-content">
         <sidebar-menu :user_categories="categories"></sidebar-menu>
         <div id="subscriptions-section">
           <b-table hover :items="items" :fields="fields"></b-table>
         </div>
+      </b-row>
+      <b-row id="main-content-small">
+        <b-col>
+          <sidebar-menu :user_categories="categories" small_screen></sidebar-menu>
+          <div id="subscriptions-section">
+            <b-table responsive :items="items" :fields="fields"></b-table>
+          </div>
+        </b-col>
       </b-row>
     </b-container>
   </div>
@@ -86,14 +94,32 @@ export default {
 
 @import "styles/global.scss";
 
-#subscriptions-section {
-  padding: 2rem 4rem;
-  margin-top: 50px;
-  margin-left: 225px;
-  width: calc(100% - 225px);
-  @media (min-width: $break-large) {
-    padding: 2rem 7rem;
+#main-content {
+  @media (max-width: $break-medium) {
+    display: none;
+  }
+  #subscriptions-section {
+    padding: 2rem 4rem;
+    margin-top: 50px;
+    margin-left: 225px;
+    width: calc(100% - 225px);
+    @media (min-width: $break-large) {
+      padding: 2rem 7rem;
+    }
+    .table {
+      background-color: #fff;
+    }
   }
 }
-
+#main-content-small {
+  margin-top: 55px;
+  @media (min-width: $break-medium) {
+    display: none;
+  }
+  #subscriptions-section {
+    .table-responsive {
+      background-color: #fff;
+    }
+  }
+}
 </style>

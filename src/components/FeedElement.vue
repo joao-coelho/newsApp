@@ -1,34 +1,32 @@
 <template>
-  <div>
-    <b-card>
-      <img class="channel-logo" :src="element.channel.icon" alt="Channel Logo">
-      <img class="news-image" v-if="element.image != ''" :src="element.image" left alt="News image"/>
-      <div class="news-content">
-        <h5 class="news-title">{{ element.title }}</h5>
-        <div class="news-secondary">
-          <div class="channel-name">
-            <span>{{ element.channel.name }}</span>
-          </div>
-          <div class="num-likes">
-            <span>{{ element.likes }}</span>
-            <font-awesome-icon icon="thumbs-up"/>
-          </div>
-          <div class="news-time">
-            <span>{{ when }}</span>
-            <font-awesome-icon icon="clock"/>
-          </div>
+  <b-card>
+    <img class="channel-logo" :src="element.channel.icon" alt="Channel Logo">
+    <img class="news-image" v-if="element.image != ''" :src="element.image" left alt="News image"/>
+    <div class="news-content">
+      <h5 class="news-title">{{ element.title }}</h5>
+      <div class="news-secondary">
+        <div class="channel-name">
+          <span>{{ element.channel.name }}</span>
         </div>
-        <!--<div v-line-clamp:20="3" class="news-main">-->
-        <div class="news-main">
-          {{ element.content }}
+        <div class="num-likes">
+          <span>{{ element.likes }}</span>
+          <font-awesome-icon icon="thumbs-up"/>
+        </div>
+        <div class="news-time">
+          <span>{{ when }}</span>
+          <font-awesome-icon icon="clock"/>
         </div>
       </div>
-      <div class="news-share">
-        <img src="../assets/images/twitter.png"/>
-        <img src="../assets/images/facebook.png"/>
+      <!--<div v-line-clamp:20="3" class="news-main">-->
+      <div class="news-main">
+        {{ element.content }}
       </div>
-    </b-card>
-  </div>
+    </div>
+    <div class="news-share">
+      <img src="../assets/images/twitter.png"/>
+      <img src="../assets/images/facebook.png"/>
+    </div>
+  </b-card>
 </template>
 
 <script>

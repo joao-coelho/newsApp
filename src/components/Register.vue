@@ -277,7 +277,6 @@
 <script>
 import Autocomplete from './Autocomplete'
 import NavbarLogin from './NavbarLogin'
-import axios from 'axios'
 
 export default {
   name: 'Register',
@@ -328,7 +327,7 @@ export default {
              channelTypes: this.channelSelectedTypes
            }
            //console.log(details);
-           axios({url: 'http://localhost:8091/register/submit', data: details, method: 'POST' })
+           axios({url: '/register/submit', data: details, method: 'POST' })
            .then(resp => {
              var sucess = resp.data;
              if(sucess == 1) {
@@ -341,7 +340,7 @@ export default {
     },
     verifyUsername() {
       if(this.username.length != 0) {
-        axios.get('http://localhost:8091/register/verifyUser', {
+        axios.get('/register/verifyUser', {
           params: {
             username: this.username
           }
@@ -359,7 +358,7 @@ export default {
     },
     verifyEmail() {
       if(this.email.length != 0) {
-        axios.get('http://localhost:8091/register/verifyEmail', {
+        axios.get('/register/verifyEmail', {
           params: {
             email: this.email
           }
@@ -377,7 +376,7 @@ export default {
     },
     verifyChannelName() {
       if(this.channelName != 0) {
-        axios.get('http://localhost:8091/register/verifyChannelName', {
+        axios.get('/register/verifyChannelName', {
           params: {
             channelName: this.channelName
           }

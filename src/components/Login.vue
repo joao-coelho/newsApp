@@ -41,6 +41,11 @@
                                  {{ $t("login_rememberMe") }}
                 </b-form-checkbox>
               </b-form-group>
+              <b-row>
+                <b-form-text v-if="loginError" class="required_alert">
+                  {{ $t('login_wrongCredentials') }}
+                </b-form-text>
+              </b-row>
               <b-row id="buttons-section">
                 <b-button type="submit">{{ $t('login_login') }}</b-button>
                 <router-link to="/register">{{ $t('login_register') }}</router-link>
@@ -79,18 +84,25 @@ export default {
         pwd: '',
         checked: 'no'
       },
-      afterRegister: Boolean
+      afterRegister: Boolean,
+      loginError: false
     }
   },
   methods: {
-    login() {
+    login(event) {
+      event.preventDefault();
       let user = {
         username: this.form.username,
         password: this.form.pwd
       }
       this.$store.dispatch(AUTH_REQUEST, user)
         .then(() => {
-          //this.$router.push('/')
+          this.loginError = false;
+          this.$router.push('/');
+        }).catch( err => {
+          // Instead, this happens:
+          console.log("It failed!", err);
+          this.loginError = true;
         })
     }
   },
@@ -157,6 +169,14 @@ h1, h2 {
   }
   @media (min-width: $break-large) {
     margin-top: 40px;
+  }
+}
+.required_alert.form-text {
+  margin-bottom: 0.5rem;
+  margin-left: 1rem;
+  &.text-muted {
+    font-weight: bold;
+    color: rgba(255, 0, 0, 0.75) !important;
   }
 }
 </style>
