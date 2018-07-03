@@ -1,7 +1,8 @@
 <template>
   <div id="article">
-    <b-button @click="show()">Abrir</b-button>
+    <b-button @click="openArticle()">Abrir</b-button>
     <!-- Find a way to change width for mobile -->
+    <v-dialog/>
     <modal name="article-modal" height="auto" width="60%" :scrollable="true">
       <div id="article-content">
         <b-button id="close-button" @click="hide()"
@@ -29,7 +30,9 @@
               <a href="#"> <p>Open channel</p> </a>
               <h4> Share </h4>
               <a href="#"><i class="fa-3x fab fa-twitter"></i></a>
-              <a href="#"><i class="fa-3x fab fa-facebook"></i></a>
+              <a href="#">
+                <i class="fa-3x fab fa-facebook"></i>
+              </a>
               <a href="#"> <p>Share with a subscriber</p> </a>
             </b-col>
             <b-col md="10" id="col-right">
@@ -94,6 +97,33 @@ export default {
     }
   },
   methods: {
+    openArticle() {
+      axios.get('http://localhost:8888/articles/article', {
+        params: {
+          id: 1
+        }
+      })
+      .then(resp => {
+        if(resp.data["content"] != undefined) {
+          this.content = resp.data["content"];
+          this.title = resp.data["title"];
+          this.subtitle = resp.data["subtitle"];
+          this.show();
+        } else {
+          this.$modal.show('dialog', {
+            title: 'Alert!',
+            text: 'This article is not available!',
+            buttons: [
+              {
+                title: 'Close'
+              }
+            ]
+          });
+        }
+      }).catch(function (error) {
+        console.log(error);
+      });
+    },
     show () {
       this.$modal.show('article-modal');
     },
@@ -102,6 +132,7 @@ export default {
     },
     like () {
       // send like to server first
+      axios.post
       let icon = this.$refs.heart;
       let current = this.heart;
       let str = icon.className.replace(this.heart, this.next);
@@ -111,16 +142,7 @@ export default {
     }
   },
   created: function () {
-    axios.get('http://echo.jsontest.com/title/ipsum/content/blah', {
-      params: {
-        id: this.id
-      }
-    })
-    .then(resp => {
-      this.show();
-    }).catch(function (error) {
-      console.log(error);
-    });
+    this.openArticle();
   }
 }
 </script>

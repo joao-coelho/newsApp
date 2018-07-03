@@ -47,7 +47,7 @@ Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 Vue.use(BootstrapVue)
 Vue.use(Vuei18n)
-Vue.use(VModal)
+Vue.use(VModal, { dialog: true })
 Vue.config.productionTip = false
 
 const messages_en = require('../static/language/messages_en.json');
