@@ -22,7 +22,7 @@ const actions = {
     commit(USER_REQUEST);
     localStorage.setItem('user-categories', user.categories);
     localStorage.setItem('user-channel', user.channelName);
-    localStorage.setItem('user-channelId', user.channel_id);
+    localStorage.setItem('user-channelId', user.channelId);
     localStorage.setItem('user-channelIcon', user.channelIcon);
     commit(USER_SUCCESS, user);
   }

@@ -38,8 +38,6 @@ public class ArticleService implements IArticleService {
             articleDetails.setImage_url(article.getImage_url());
             articleDetails.setTitle(article.getTitle());
             articleDetails.setToken(0);
-            System.out.println("olha eu a enviar cenas para o gajo" +
-                    "");
             it = article._categories.getIterator();
             while(it.hasNext()) {
                 Category c = (Category) it.next();

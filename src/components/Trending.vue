@@ -206,7 +206,7 @@ export default {
         content: this.newsContent,
         categories: this.newsSelectedTypes,
         image_url: '',
-        channel_id: this.$store.getters.getChannelId,
+        channelid: this.$store.getters.getChannelId,
         token: this.$store.getters.getToken
       }
 
@@ -220,6 +220,7 @@ export default {
     },
     openArticle(index){
       this.article = this.news[index];
+      console.log(this.article);
       this.$refs.modalNews.show();
     }
   },

@@ -60,6 +60,9 @@ export default {
   height: 150px;
   border: 0.5px solid #ccc;
   margin-top: 2rem;
+  &:hover {
+    cursor: pointer;
+  }
   .news-image {
     width: 250px;
     height: 99%;

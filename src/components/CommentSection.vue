@@ -34,8 +34,7 @@ class Comment {
     this.avatar = null;
     this.author = "Ze";
     this.comment = "Comentario do Ze a falar de coisas do ze. \
-    O ze tem opiniao. A opiniao do Ze conta. Viva o Ze. \
-    Chupa Carlos Queiroz"
+    O ze tem opiniao. A opiniao do Ze conta. Viva o Ze."
   }
 }
 

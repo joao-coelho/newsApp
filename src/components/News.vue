@@ -20,20 +20,17 @@
         </b-row>
         <b-row>
           <b-col md="2" id="col-left">
-            <h4> Source </h4>
-            <b-img :src="element.channelIcon" fluid alt="Channel img"/>
-            <a href="#"> <p>Send me to the original</p> </a>
-            <a href="#"> <p>Open channel</p> </a>
-            <h4> Share </h4>
+            <h5> Source </h5>
+            <b-img :src="element.channelIcon" fluid alt="Channel img" style="margin-bottom: 25px;"/>
+            <h5> Share </h5>
             <a href="#"><i class="fa-3x fab fa-twitter"></i></a>
             <a href="#">
               <i class="fa-3x fab fa-facebook"></i>
             </a>
-            <a href="#"> <p>Share with a subscriber</p> </a>
           </b-col>
           <b-col md="10" id="col-right">
             <p> {{element.channelName}} |
-                {{date.toUTCString()}}
+                {{element.date}}
             </p>
             <p> {{element.content}} </p>
             <b-img :src="element.imageUrl" fluid alt="News img"/>
@@ -58,28 +55,6 @@ export default {
   },
   data() {
     return {
-      id: 1,
-      title: "Some random titlaaaaaaaa aaaaaa aaaaaa aaaaa aaaaae",
-      subtitle: "Some subtitle Some subtitleSome ",
-      source: "source",
-      source_image: "https://cdn.freebiesupply.com/logos/large/2x/cnn-1-logo-png-transparent.png",
-      date: new Date(),
-      author: "Some author",
-      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, \
-      sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \
-      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris \
-      nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in \
-      reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla \
-      pariatur. Excepteur sint occaecat cupidatat non proident, sunt in \
-      culpa qui officia deserunt mollit anim id est laborum. \
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, \
-      sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \
-      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris \
-      nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in \
-      reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla \
-      pariatur. Excepteur sint occaecat cupidatat non proident, sunt in \
-      culpa qui officia deserunt mollit anim id est laborum.",
-      image: "http://excitronpartners.com/wp-content/uploads/2016/11/deg-deg-1.jpg",
       heart: "far", // it will be necessary to check if the user likes this post (not possible right now)
       next: "fas"
     }
@@ -91,33 +66,6 @@ export default {
     }
   },
   methods: {
-    openArticle() {
-      axios.get('http://localhost:8080/articles/article', {
-        params: {
-          id: 1
-        }
-      })
-      .then(resp => {
-        if(resp.data["content"] != undefined) {
-          this.content = resp.data["content"];
-          this.title = resp.data["title"];
-          this.subtitle = resp.data["subtitle"];
-          this.show();
-        } else {
-          this.$modal.show('dialog', {
-            title: 'Alert!',
-            text: 'This article is not available!',
-            buttons: [
-              {
-                title: 'Close'
-              }
-            ]
-          });
-        }
-      }).catch(function (error) {
-        console.log(error);
-      });
-    },
     show () {
       this.$modal.show('article-modal');
     },
@@ -134,9 +82,6 @@ export default {
       this.heart = this.next;
       this.next = current;
     }
-  },
-  mounted: function () {
-    this.show();
   }
 }
 </script>
