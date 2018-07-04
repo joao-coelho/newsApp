@@ -91,7 +91,8 @@ public class NewsApp {
                     Comment co = (Comment) it.next();
                     if(co.get_author().getID() == token) {
                         Channel channel = a.getChannel();
-                        ChannelArticle ca = new ChannelArticle(a.getChannel().getName(), a);
+                        ChannelArticle ca = new ChannelArticle(channel.getName(),
+                                channel.getImage_url(), a);
                     }
                 }
             }
@@ -104,7 +105,8 @@ public class NewsApp {
         Iterator it = u._likedArticles.getIterator();
         while(it.hasNext()) {
             Article a = (Article) it.next();
-            ChannelArticle ca = new ChannelArticle(a.getChannel().getName(), a);
+            Channel c = a.getChannel();
+            ChannelArticle ca = new ChannelArticle(c.getName(), c.getImage_url(), a);
         }
         return articles;
     }
@@ -115,7 +117,7 @@ public class NewsApp {
             Iterator ti = c._articles.getIterator();
             while (ti.hasNext()) {
                 Article a = (Article) ti.next();
-                ChannelArticle ca = new ChannelArticle(c.getName(), a);
+                ChannelArticle ca = new ChannelArticle(c.getName(), c.getImage_url(), a);
                 articles.add(ca);
             }
         }
@@ -219,7 +221,7 @@ public class NewsApp {
             Iterator ti = channel._articles.getIterator();
             while (ti.hasNext()) {
                 Article a = (Article) ti.next();
-                ChannelArticle ca = new ChannelArticle(channel.getName(), a);
+                ChannelArticle ca = new ChannelArticle(channel.getName(), channel.getImage_url(), a);
                 articles.add(ca);
             }
         }
@@ -239,7 +241,8 @@ public class NewsApp {
                 while (ta.hasNext()) {
                     Category c = (Category) ta.next();
                     if (c.getDescription().equals(category)) {
-                        ChannelArticle ca = new ChannelArticle(channel.getName(), a);
+                        ChannelArticle ca = new ChannelArticle(channel.getName(),
+                                channel.getImage_url(), a);
                         articles.add(ca);
                         break;
                     }
@@ -273,11 +276,12 @@ public class NewsApp {
 
 
     public static Channel createChannel(String channelName, String description,
-                                        List<String> channelTypes) {
+                                        List<String> channelTypes, String channelIcon) {
         Channel c = new Channel();
         c.setName(channelName);
         c.setDescription(description);
         c.setSubscribers(0);
+        c.setImage_url(channelIcon);
         if (channelTypes.size() != 0) {
             for (String type : channelTypes) {
                 Category ca = findCategory(type);

@@ -98,6 +98,7 @@
         </b-row>
       </b-container>
     </b-modal>
+    <!--<article></article>-->
   </div>
 </template>
 
@@ -106,6 +107,7 @@ import NavbarFeed from './NavbarFeed'
 import SidebarMenu from './SidebarMenu'
 import FeedElement from './FeedElement'
 import FeedElementVertical from './FeedElementVertical'
+import Article from './Article'
 
 export default {
   name: 'Feed',
@@ -113,7 +115,8 @@ export default {
     NavbarFeed,
     SidebarMenu,
     FeedElement,
-    FeedElementVertical
+    FeedElementVertical,
+    Article
   },
   data () {
     return {

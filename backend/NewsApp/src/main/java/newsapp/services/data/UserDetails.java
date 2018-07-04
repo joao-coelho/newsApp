@@ -14,6 +14,16 @@ public class UserDetails {
     private boolean createChannel;
     private String channelName;
     private String channelDescription;
+
+    public String getChannelIcon() {
+        return channelIcon;
+    }
+
+    public void setChannelIcon(String channelIcon) {
+        this.channelIcon = channelIcon;
+    }
+
+    private String channelIcon;
     private List<String> channelTypes;
 
 

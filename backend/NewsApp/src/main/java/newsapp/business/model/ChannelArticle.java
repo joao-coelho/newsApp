@@ -3,11 +3,21 @@ package newsapp.business.model;
 public class ChannelArticle {
 
     private String channelName;
+    private String channelIcon;
     private Article article;
 
-    public ChannelArticle(String channelName, Article article) {
+    public ChannelArticle(String channelName, String channelIcon, Article article) {
         this.channelName = channelName;
+        this.channelIcon = channelIcon;
         this.article = article;
+    }
+
+    public String getChannelIcon() {
+        return channelIcon;
+    }
+
+    public void setChannelIcon(String channelIcon) {
+        this.channelIcon = channelIcon;
     }
 
     public String getChannelName() {

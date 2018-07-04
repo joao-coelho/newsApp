@@ -9,7 +9,15 @@ public class ChannelHeader {
     private String description;
     private int subscribers;
     private List<String> categories;
+    private String imageUrl;
 
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
 
     public ChannelHeader() {
 

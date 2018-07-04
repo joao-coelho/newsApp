@@ -107,6 +107,7 @@ public class FeedService implements IFeedService {
         ch.setDescription(c.getDescription());
         ch.setId(c.getID());
         ch.setSubscribers(c.getSubscribers());
+        ch.setImageUrl(c.getImage_url());
         List<String> ca = new ArrayList<>();
         for(Category a : categories) {
             ca.add(a.getDescription());
@@ -124,6 +125,8 @@ public class FeedService implements IFeedService {
         newsHeader.setTitle(article.getTitle());
         newsHeader.setLikes(article.getLikes());
         newsHeader.setChannelName(a.getChannelName());
+        newsHeader.setImageUrl(article.getImage_url());
+        newsHeader.setChannelIcon(a.getChannelIcon());
         return newsHeader;
     }
 

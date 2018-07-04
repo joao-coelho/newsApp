@@ -1,7 +1,7 @@
 <template>
   <b-card>
     <img class="channel-logo" :src="element.channelIcon" alt="Channel Logo">
-    <img class="news-image" :src="element.image_url" left alt="News image"/>
+    <img class="news-image" :src="element.imageUrl" left alt="News image"/>
     <div class="news-content">
       <h5 class="news-title">{{ element.title }}</h5>
       <div class="news-secondary">

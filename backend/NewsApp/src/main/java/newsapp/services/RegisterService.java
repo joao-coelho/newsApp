@@ -45,7 +45,7 @@ public class RegisterService implements IRegisterService  {
             channelName = user.getUsername();
             description = "";
         }
-        c = NewsApp.createChannel(channelName, description, channelTypes);
+        c = NewsApp.createChannel(channelName, description, channelTypes, user.getChannelIcon());
         if(c == null) return false;
         u = NewsApp.createUser(user.getUsername(), user.getPassword(), user.getName(),
                                 user.getAge(), user.getCountry(), user.getTypes(), c);

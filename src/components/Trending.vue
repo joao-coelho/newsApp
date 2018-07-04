@@ -223,6 +223,7 @@ export default {
     }
     this.$axios.get("/feed/trending")
     .then( resp => {
+      console.log(resp.data[0]);
       this.news = resp.data
     })
   }

@@ -6,10 +6,29 @@ public class NewsHeader {
 
     private int id;
     private String channelName;
+
+    private String channelIcon;
     private String title;
     private String content;
+    private String imageUrl;
     private int likes;
     private Date date;
+
+    public String getChannelIcon() {
+        return channelIcon;
+    }
+
+    public void setChannelIcon(String channelIcon) {
+        this.channelIcon = channelIcon;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
 
     public int getId() {
         return id;
