@@ -5,7 +5,7 @@
       <b-row id="main-content">
         <sidebar-menu></sidebar-menu>
         <div id="trending-section">
-          <feed-element v-for="item in news" :element="item" :key="item.id"></feed-element>
+          <feed-element v-for="(item, index) in news" :element="item" :key="index" @click.native="openArticle(index)"></feed-element>
         </div>
         <b-button id="addBtn" v-b-modal.modal>+</b-button>
         <b-tooltip target="addBtn" :title="$t('feed_addNews')" delay=1500></b-tooltip>
@@ -13,7 +13,7 @@
       <b-row id="main-content-small">
         <b-col>
           <sidebar-menu small_screen></sidebar-menu>
-          <feed-element-vertical v-for="item in news" :element="item" :key="item.id"></feed-element-vertical>
+          <feed-element-vertical v-for="(item, index) in news" :element="item" :key="index" @click.native="openArticle(index)"></feed-element-vertical>
           <b-button id="addBtn" v-b-modal.modal>+</b-button>
           <b-tooltip target="addBtn" :title="$t('feed_addNews')" delay=1500></b-tooltip>
         </b-col>
@@ -98,6 +98,7 @@
         </b-row>
       </b-container>
     </b-modal>
+    <news ref="modalNews" :element="article"></news>
   </div>
 </template>
 
@@ -106,6 +107,7 @@ import NavbarFeed from './NavbarFeed'
 import SidebarMenu from './SidebarMenu'
 import FeedElement from './FeedElement'
 import FeedElementVertical from './FeedElementVertical'
+import News from './News'
 
 export default {
   name: 'Trending',
@@ -113,7 +115,8 @@ export default {
     NavbarFeed,
     SidebarMenu,
     FeedElement,
-    FeedElementVertical
+    FeedElementVertical,
+    News
   },
   data() {
     return {
@@ -125,7 +128,8 @@ export default {
       no_title: false,
       no_content: false,
       no_categories: false,
-      successfullyPublished: false
+      successfullyPublished: false,
+      article: {}
     }
   },
   computed: {
@@ -213,6 +217,10 @@ export default {
             this.successfullyPublished = true;
           }
         })
+    },
+    openArticle(index){
+      this.article = this.news[index];
+      this.$refs.modalNews.show();
     }
   },
   mounted() {
@@ -223,7 +231,6 @@ export default {
     }
     this.$axios.get("/feed/trending")
     .then( resp => {
-      console.log(resp.data[0]);
       this.news = resp.data
     })
   }

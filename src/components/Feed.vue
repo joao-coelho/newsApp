@@ -5,7 +5,7 @@
       <b-row id="main-content">
         <sidebar-menu></sidebar-menu>
         <div id="news-section">
-          <feed-element v-for="item in news" :element="item" :key="item.id"></feed-element>
+          <feed-element v-for="(item, index) in news" :element="item" :key="index" @click.native="openArticle(index)"></feed-element>
         </div>
         <b-button id="addBtn" v-b-modal.modal>+</b-button>
         <b-tooltip target="addBtn" :title="$t('feed_addNews')" delay=1500></b-tooltip>
@@ -13,7 +13,7 @@
       <b-row id="main-content-small">
         <b-col>
           <sidebar-menu small_screen></sidebar-menu>
-          <feed-element-vertical v-for="item in news" :element="item" :key="item.id"></feed-element-vertical>
+          <feed-element-vertical v-for="(item, index) in news" :element="item" :key="index" @click.native="openArticle(index)"></feed-element-vertical>
           <b-button id="addBtn" v-b-modal.modal>+</b-button>
           <b-tooltip target="addBtn" :title="$t('feed_addNews')" delay=1500></b-tooltip>
         </b-col>
@@ -98,7 +98,7 @@
         </b-row>
       </b-container>
     </b-modal>
-    <!--<article></article>-->
+    <article ref="modalNews" :element="article"></article>
   </div>
 </template>
 
@@ -107,7 +107,7 @@ import NavbarFeed from './NavbarFeed'
 import SidebarMenu from './SidebarMenu'
 import FeedElement from './FeedElement'
 import FeedElementVertical from './FeedElementVertical'
-import Article from './Article'
+import News from './News'
 
 export default {
   name: 'Feed',
@@ -116,7 +116,7 @@ export default {
     SidebarMenu,
     FeedElement,
     FeedElementVertical,
-    Article
+    News
   },
   data () {
     return {
@@ -131,7 +131,8 @@ export default {
       no_title: false,
       no_content: false,
       no_categories: false,
-      successfullyPublished: false
+      successfullyPublished: false,
+      article: {}
     }
   },
   computed: {
@@ -219,6 +220,10 @@ export default {
             this.successfullyPublished = true;
           }
         })
+    },
+    openArticle(index){
+      this.article = this.news[index];
+      this.$refs.modalNews.show();
     }
   },
   mounted() {

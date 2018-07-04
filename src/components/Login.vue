@@ -99,6 +99,7 @@ export default {
         .then( resp => {
           this.loginError = false;
           var data = resp.data;
+          console.log(data);
           this.$router.push({
              name: 'Feed',
              params: {

@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import Feed from '@/components/Feed'
 import Login from '@/components/Login'
 import Register from '@/components/Register'
-import Article from '@/components/Article'
+import News from '@/components/News'
 import Subscriptions from '@/components/Subscriptions'
 import Trending from '@/components/Trending'
 
@@ -29,8 +29,8 @@ export default new Router({
     },
     {
       path: '/article',
-      name: 'Article',
-      component: Article
+      name: 'News',
+      component: News
     },
     {
       path: '/subscriptions',
