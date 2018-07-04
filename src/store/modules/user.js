@@ -5,6 +5,7 @@ const state = {
   status: '',
   channelId: localStorage.getItem('user-channelId') || 0,
   channelName: localStorage.getItem('user-channel') || '',
+  channelIcon: localStorage.getItem('user-channelIcon') || '',
   categories: localStorage.getItem('user-categories') || []
 }
 
@@ -12,6 +13,7 @@ const getters = {
   getChannel: state => state.channelName,
   getCategories: state => state.categories,
   getChannelId: state => state.channelId,
+  getChannelIcon: state => state.channelIcon,
   isProfileLoaded: state => !!state.channelName
 }
 
@@ -21,6 +23,7 @@ const actions = {
     localStorage.setItem('user-categories', user.categories);
     localStorage.setItem('user-channel', user.channelName);
     localStorage.setItem('user-channelId', user.channel_id);
+    localStorage.setItem('user-channelIcon', user.channelIcon);
     commit(USER_SUCCESS, user);
   }
 }
@@ -33,6 +36,7 @@ const mutations = {
     state.status = 'success'
     state.channelName = user.channelName
     state.categories = user.categories
+    state.channelIcon = user.channelIcon
   },
   [USER_ERROR]: (state) => {
     state.status = 'error'
@@ -41,6 +45,7 @@ const mutations = {
     state.status = 'not_loaded'
     state.categories = []
     state.channelName = ''
+    state.channelIcon = ''
   }
 }
 

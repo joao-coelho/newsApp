@@ -5,6 +5,7 @@ import Login from '@/components/Login'
 import Register from '@/components/Register'
 import Article from '@/components/Article'
 import Subscriptions from '@/components/Subscriptions'
+import Trending from '@/components/Trending'
 
 Vue.use(Router)
 
@@ -35,6 +36,11 @@ export default new Router({
       path: '/subscriptions',
       name: 'Subscriptions',
       component: Subscriptions
+    },
+    {
+      path: '/trending',
+      name: 'Trending',
+      component: Trending
     }
   ]
 })

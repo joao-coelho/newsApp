@@ -64,7 +64,6 @@ export default {
       }
     },
     nameLabel() {
-      console.log(this.$t('subscriptions_channelName'));
       return this.$t('subscriptions_channelName');
     },
     descriptionLabel() {
@@ -93,7 +92,6 @@ export default {
     })
     .then( resp => {
       this.items = resp.data;
-      console.log(this.items);
     })
   }
 }

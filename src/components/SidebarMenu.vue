@@ -8,10 +8,10 @@
             {{ $t('feed_menuNews') }}
           </router-link>
         </li>
-        <li @click="changeOpt($event.target)">
-          <a href="#"><font-awesome-icon icon="fire"/>
+        <li>
+          <router-link to="/trending"><font-awesome-icon icon="fire"/>
             {{ $t('feed_menuTrending') }}
-          </a>
+          </router-link>
         </li>
         <li>
           <router-link to='/subscriptions'><font-awesome-icon icon="list-ul"/>
@@ -65,10 +65,10 @@
             {{ $t('feed_menuNews') }}
           </router-link>
         </li>
-        <li @click="changeOpt($event.target)">
-          <a href="#"><font-awesome-icon icon="fire"/>
+        <li>
+          <router-link to="/trending"><font-awesome-icon icon="fire"/>
             {{ $t('feed_menuTrending') }}
-          </a>
+          </router-link>
         </li>
         <li>
           <router-link to='/subscriptions'><font-awesome-icon icon="list-ul"/>

@@ -1,6 +1,6 @@
 <template>
   <b-card img-top
-          img-src="../assets/images/mundi-small.jpg"
+          :img-src="element.image_url"
           :title="element.title">
     <b-row class="news-secondary">
       <div class="channel-name">

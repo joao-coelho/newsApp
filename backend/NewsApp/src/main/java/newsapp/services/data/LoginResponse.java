@@ -10,6 +10,7 @@ public class LoginResponse {
     private List<String> categories;
     private List<NewsHeader> news;
     private int channel_id;
+    private String channelIcon;
 
 
     public boolean getSuccess() {
@@ -44,8 +45,12 @@ public class LoginResponse {
         this.categories = categories;
     }
 
-    public List<NewsHeader> getNews() {
-        return news;
+    public String getChannelIcon() {
+        return channelIcon;
+    }
+
+    public void setChannelIcon(String icon) {
+        this.channelIcon = icon;
     }
 
     public int getChannelId() {
@@ -54,6 +59,10 @@ public class LoginResponse {
 
     public void setChannelId(int id) {
         this.channel_id = id;
+    }
+
+    public List<NewsHeader> getNews() {
+        return news;
     }
 
     public void setNews(List<NewsHeader> news) {

@@ -35,6 +35,7 @@ public class LoginService implements ILoginService {
             List<ChannelArticle> sortedArticles = NewsApp.OrderChannelArticlesByDateDesc(articles);
             List<NewsHeader> newsHeaders = new ArrayList<>();
             lr.setChannelId(channel.getID());
+            lr.setChannelIcon(channel.getImage_url());
             for (ChannelArticle a : sortedArticles) {
                 NewsHeader n = buildArticleHeader(a);
                 newsHeaders.add(n);
