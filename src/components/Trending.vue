@@ -206,7 +206,7 @@ export default {
         content: this.newsContent,
         categories: this.newsSelectedTypes,
         image_url: '',
-        channelid: this.$store.getters.getChannelId,
+        channel_id: this.$store.getters.getChannelId,
         token: this.$store.getters.getToken
       }
 

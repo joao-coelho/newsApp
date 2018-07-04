@@ -34,6 +34,7 @@ const mutations = {
   },
   [USER_SUCCESS]: (state, user) => {
     state.status = 'success'
+    state.channelId = user.channelId
     state.channelName = user.channelName
     state.categories = user.categories
     state.channelIcon = user.channelIcon
