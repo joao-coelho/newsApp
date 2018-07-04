@@ -268,8 +268,8 @@
         </b-card>
       </b-form-row>
     </b-container>
-    <b-modal ok-only id="infoModal" title="You want some info, nigga?">
-      <p class="my-4">Yo mama is so fat even this modal would scroll out of the screen.</p>
+    <b-modal ok-only id="infoModal" title="Informações adicionais">
+      <p class="my-4">Information displayed here./Informação exibida aqui</p>
     </b-modal>
   </div>
 </template>
