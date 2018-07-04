@@ -202,7 +202,7 @@ export default {
         content: this.newsContent,
         categories: this.newsSelectedTypes,
         image_url: '',
-        channel_id: this.$store.getters.getChannelId,
+        channelid: this.$store.getters.getChannelId,
         token: this.$store.getters.getToken
       }
 
@@ -212,7 +212,9 @@ export default {
           if(sucess == 1) {
             this.successfullyPublished = true;
           }
-        })
+        }).catch(function (error) {
+          console.log(article);
+        });
     }
   },
   mounted() {

@@ -98,9 +98,10 @@ export default {
   },
   methods: {
     openArticle() {
+      //cuidado - a porta nao esta 8888
       axios.get('http://localhost:8888/articles/article', {
         params: {
-          id: 1
+          id: 2610
         }
       })
       .then(resp => {

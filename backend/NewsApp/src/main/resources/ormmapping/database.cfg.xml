@@ -18,11 +18,11 @@
   </Setting>
   <Setting type="256">
     <Driver>PostgreSQL</Driver>
-    <DriverFiles>/home/jccoelho/Downloads/postgresql-42.2.2.jar</DriverFiles>
+    <DriverFiles>/home/miguel/Downloads/postgresql-42.2.2.jar</DriverFiles>
     <Dialect>org.hibernate.dialect.PostgreSQLDialect</Dialect>
     <DriverClass>org.postgresql.Driver</DriverClass>
     <URL>jdbc:postgresql://localhost:5432/newsdb</URL>
-    <UserName>jccoelho</UserName>
+    <UserName>miguel</UserName>
     <EncryptedPassword>32F3ACE632ECEBAFB24DCAF99A8C6CDC</EncryptedPassword>
     <HostName>localhost</HostName>
     <PortNO>5432</PortNO>
