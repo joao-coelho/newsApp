@@ -22,11 +22,13 @@
           <b-col md="2" id="col-left">
             <h5> Source </h5>
             <b-img :src="element.channelIcon" fluid alt="Channel img" style="margin-bottom: 25px;"/>
+             <a href="#"> <p>Open channel</p> </a>
             <h5> Share </h5>
             <a href="#"><i class="fa-3x fab fa-twitter"></i></a>
             <a href="#">
               <i class="fa-3x fab fa-facebook"></i>
             </a>
+            <a href="#"> <p>Share with a subscriber</p> </a>
           </b-col>
           <b-col md="10" id="col-right">
             <p> {{element.channelName}} |
