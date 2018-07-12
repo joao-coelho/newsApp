@@ -16,12 +16,9 @@ public class LoginController {
 
     @RequestMapping(value = "/verifyCredentials", method = RequestMethod.POST)
     public LoginResponse verifyUser(@RequestBody Login login) {
-        System.out.println("Entrei");
+
         LoginResponse lr = l.verifyCredentials(login);
-        System.out.println(lr.getChannelName());
-        System.out.println(lr.getToken());
-        System.out.println(lr.getSuccess());
-        System.out.println(lr.getCategories());
+
         return lr;
     }
 

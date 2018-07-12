@@ -1,7 +1,7 @@
 <template>
-  <modal name="article-modal" height="auto" width="60%" :scrollable="true">
+<!--  <modal name="article-modal" height="auto" width="60%" :scrollable="true">-->
     <div id="article-content">
-      <b-button id="close-button" @click="hide()"
+      <b-button id="close-button" @click="$emit('close')"
         variant="link">
         <font-awesome-icon icon="times-circle" size="lg"
         color="#ee0000"/>
@@ -9,7 +9,7 @@
       <b-container fluid>
         <b-row>
           <b-col md="10">
-            <h3> {{element.title}} </h3>
+            <h3> {{article.title}} </h3>
           </b-col>
           <b-col md="2">
             <b-button id="like-button" @click="like()"
@@ -21,7 +21,7 @@
         <b-row>
           <b-col md="2" id="col-left">
             <h5> Source </h5>
-            <b-img :src="element.channelIcon" fluid alt="Channel img" style="margin-bottom: 25px;"/>
+            <b-img :src="article.channelIcon" fluid alt="Channel img" style="margin-bottom: 25px;"/>
              <a href="#"> <p>Open channel</p> </a>
             <h5> Share </h5>
             <a href="#"><i class="fa-3x fab fa-twitter"></i></a>
@@ -31,24 +31,23 @@
             <a href="#"> <p>Share with a subscriber</p> </a>
           </b-col>
           <b-col md="10" id="col-right">
-            <p> {{element.channelName}} |
-                {{element.date}}
+            <p> {{article.channelName}} |
+                {{article.date}}
             </p>
-            <p> {{element.content}} </p>
-            <b-img :src="element.imageUrl" fluid alt="News img"/>
+            <p> {{article.content}} </p>
+            <b-img :src="article.imageUrl" fluid alt="News img"/>
             <comment-section></comment-section>
             <a href="#article-content" id="go-top"> <p>Take me to the top</p> </a>
           </b-col>
         </b-row>
       </b-container>
     </div>
-  </modal>
+  <!--</modal>-->
 </template>
 
 
 <script>
 import CommentSection from './CommentSection'
-import axios from 'axios'
 
 export default {
   name: 'News',
@@ -57,39 +56,70 @@ export default {
   },
   data() {
     return {
-      heart: "far", // it will be necessary to check if the user likes this post (not possible right now)
+      heart: "far",
       next: "fas"
     }
   },
   props: {
-    element: {
+    article: {
       type: Object,
-      required: false
+      required: true
     }
   },
   methods: {
-    show () {
-      this.$modal.show('article-modal');
-    },
-    hide () {
-      this.$modal.hide('article-modal');
-    },
     like () {
-      // send like to server first
-      axios.post
-      let icon = this.$refs.heart;
-      let current = this.heart;
-      let str = icon.className.replace(this.heart, this.next);
-      icon.className = str;
-      this.heart = this.next;
-      this.next = current;
+      this.$axios({url: '/articles/like',
+                  data: {
+                    id: this.article.id,
+                    token: this.$store.getters.getToken
+                  },
+                  method: 'POST' })
+        .then(resp => {
+          if(resp.status == 200) {
+            let icon = this.$refs.heart;
+            let current = this.heart;
+            let str = icon.className.replace(this.heart, this.next);
+            icon.className = str;
+            this.heart = this.next;
+            this.next = current;
+          }
+        }).catch(error => {
+          console.log(error);
+        });
+    },
+    checkLiked(id) {
+      this.$axios({url: '/articles/articleLiked',
+                  params: {
+                    article_id: id,
+                    user_id: this.$store.getters.getToken
+                  },
+                  method: 'GET' })
+        .then(resp => {
+          if(resp.data == true) {
+            let icon = this.$refs.heart;
+            let current = this.heart;
+            let str = icon.className.replace(this.heart, this.next);
+            icon.className = str;
+            this.heart = this.next;
+            this.next = current;
+          }
+        }).catch(error => {
+          console.log(error);
+        });
     }
+  },
+  mounted() {
+    this.$nextTick(function () {
+      this.checkLiked(this.article.id);
+      console.log("O id é: " + this.article.id);
+    })
   }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+
 <style scoped lang="scss">
+/* Add "scoped" attribute to limit CSS to this component only */
 
 @import "styles/global.scss";
 h2, h5 {

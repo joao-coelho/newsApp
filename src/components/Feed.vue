@@ -98,7 +98,7 @@
         </b-row>
       </b-container>
     </b-modal>
-    <article ref="modalNews" :element="article"></article>
+    <modals-container/>
   </div>
 </template>
 
@@ -222,8 +222,13 @@ export default {
         })
     },
     openArticle(index){
-      this.article = this.news[index];
-      this.$refs.modalNews.show();
+      this.$modal.show(News, {
+        article: this.news[index]
+      }, {
+        scrollable: true,
+        height: 'auto',
+        width: '60%'
+      });
     }
   },
   mounted() {
