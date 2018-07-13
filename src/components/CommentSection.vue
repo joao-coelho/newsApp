@@ -4,7 +4,7 @@
     <div id="write-comment">
       <b-form @submit="onSubmit">
         <b-form-textarea id="commentarea"
-                   v-model="comment_text"
+                   v-model="commentText"
                    placeholder="Type your comment here"
                    :no-resize="true"
                    :rows="3"
@@ -12,7 +12,7 @@
         <b-button id="submit-button" type="submit">Submit</b-button>
       </b-form>
     </div>
-    <h5> {{num_comments}} comments </h5>
+    <h5> {{numComments}} comments </h5>
     <b-container fluid>
       <b-row v-for="comment in comments" class="com-row">
         <b-col md="2">
@@ -30,11 +30,12 @@
 
 <script>
 class Comment {
-  constructor() {
-    this.avatar = null;
-    this.author = "Ze";
-    this.comment = "Comentario do Ze a falar de coisas do ze. \
-    O ze tem opiniao. A opiniao do Ze conta. Viva o Ze."
+  constructor(avatar, author, comment, authorId, addedAt) {
+    this.avatar = avatar;
+    this.author = author;
+    this.comment = comment;
+    this.authorId = authorId;
+    this.addedAt = addedAt;
   }
 }
 
@@ -42,16 +43,45 @@ export default {
   name: 'comment-section',
   data () {
     return {
-      num_comments: 2,
-      comments: [new Comment(), new Comment()],
-      comment_text: ''
+      numComments: 0,
+      comments: [],
+      commentText: ''
     }
   },
   methods: {
     onSubmit(event) {
       event.preventDefault();
-      alert(this.comment_text);
+      alert(this.commentText);
+    },
+    getComments() {
+      this.$axios({url: '/articles/comments',
+                  params: {
+                    article_id: this.article.id,
+                    token: this.$store.getters.getToken
+                  },
+                  method: 'GET' })
+        .then(resp => {
+          let comments = JSON.parse(resp);
+          let size = comments.length;
+          this.numComments = size;
+          for(var i = 0; i < size; i++) {
+            let comment = comments[i];
+            this.comments.push(
+              new Comment(comment.avatar,
+                comment.author,
+                comment.content,
+                comment.authorId,
+                comment.addedAt
+              )
+            );
+          }
+        }).catch(error => {
+          console.log(error);
+        });
     }
+  },
+  mounted() {
+    getComments();
   }
 }
 </script>
