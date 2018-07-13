@@ -16,9 +16,7 @@ public class LoginController {
 
     @RequestMapping(value = "/verifyCredentials", method = RequestMethod.POST)
     public LoginResponse verifyUser(@RequestBody Login login) {
-
         LoginResponse lr = l.verifyCredentials(login);
-
         return lr;
     }
 

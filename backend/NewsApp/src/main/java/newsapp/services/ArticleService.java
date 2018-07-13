@@ -10,6 +10,7 @@ import newsapp.services.data.CommentDetails;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -61,5 +62,10 @@ public class ArticleService implements IArticleService {
         for(Comment c : NewsApp.getArticleComments(article_id))
             result.add(new CommentDetails(c));
         return result;
+    }
+
+    public boolean addComment(int article_id, Date addedAt, int user_id, String content) {
+        boolean res = NewsApp.addComment(article_id, addedAt, user_id, content);
+        return res;
     }
 }

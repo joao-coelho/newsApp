@@ -78,5 +78,25 @@
 	"subscriptions_channelName": "Name",
 	"subscriptions_channelDescription": "Description",
 	"subscriptions_channelCategories": "Category",
-	"subscriptions_channelSubscribers": "Subscribers"
+	"subscriptions_channelSubscribers": "Subscribers",
+
+	"months_jan": "January",
+	"months_feb": "February",
+	"months_mar": "March",
+	"months_apr": "April",
+	"months_may": "May",
+	"months_jun": "June",
+	"months_jul": "July",
+	"months_aug": "August",
+	"months_sep": "September",
+	"months_oct": "October",
+	"months_nov": "November",
+	"months_dec": "December",
+
+	"comments_makeComment": "Make a comment here",
+	"comments_typeComment": "Type your comment here",
+	"comments_comment": "comment",
+	"comments_comments": "comments",
+	"comments_success": "Added comment successfully",
+	"comments_unsuccess": "There was a problem adding your comment, please try again."
 }

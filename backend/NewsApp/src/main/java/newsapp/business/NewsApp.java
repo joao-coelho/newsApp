@@ -129,15 +129,36 @@ public class NewsApp {
         List<Comment> result = new ArrayList<>();
         try {
             article = ArticleDAO.getArticleByORMID(article_id);
-            Iterator it = article._comments.getIterator();
-            while(it.hasNext()) {
-                Comment c = (Comment) it.next();
-                result.add(c);
+            if(article._comments != null) {
+                Iterator it = article._comments.getIterator();
+                while (it.hasNext()) {
+                    Comment c = (Comment) it.next();
+                    result.add(c);
+                }
             }
-        } catch (PersistentException pe) {
-            pe.printStackTrace();
+        } catch (PersistentException pe){
+                pe.printStackTrace();
         }
         return result;
+    }
+
+    public static boolean addComment(int article_id, Date addedAt, int user_id, String content) {
+        try {
+            User user = UserDAO.getUserByORMID(user_id);
+            Article article = ArticleDAO.getArticleByORMID(article_id);
+            Comment comment = new Comment();
+            comment.setArticle(article);
+            comment.set_author(user);
+            comment.setAddedAt(addedAt);
+            comment.setContent(content);
+            article._comments.add(comment);
+            CommentDAO.save(comment);
+            ArticleDAO.save(article);
+        } catch (PersistentException pe) {
+            pe.printStackTrace();
+            return false;
+        }
+        return true;
     }
 
     public static List<Channel> getChannels() {

@@ -6,10 +6,13 @@ import newsapp.business.model.User;
 import java.util.Date;
 
 public class CommentDetails {
+
     private String content;
     private Date addedAt;
     private String author;
     private int idAuthor;
+    private int articleId;
+    private int id;
     private String avatar;
 
     public CommentDetails() { }
@@ -21,6 +24,23 @@ public class CommentDetails {
         this.avatar = author.get_myChannel().getImage_url();
         this.idAuthor = author.getID();
         this.content = comment.getContent();
+        this.id = comment.getID();
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getArticleId() {
+        return articleId;
+    }
+
+    public void setArticleId(int articleId) {
+        this.articleId = articleId;
     }
 
     public String getContent() {

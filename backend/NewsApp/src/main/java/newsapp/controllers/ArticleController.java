@@ -50,4 +50,17 @@ public class ArticleController {
         List<CommentDetails> result = s.getArticleComments(article_id);
         return result;
     }
+
+    @RequestMapping(value = "/addComment", method =  RequestMethod.POST)
+    public ResponseEntity addComment(@RequestBody CommentDetails comment) {
+        boolean result;
+        result = s.addComment(comment.getArticleId(),
+                              comment.getAddedAt(),
+                              comment.getIdAuthor(),
+                              comment.getContent());
+        if (result) {
+            return ResponseEntity.ok(HttpStatus.OK);
+        }
+        return ResponseEntity.badRequest().body(HttpStatus.BAD_REQUEST);
+    }
 }

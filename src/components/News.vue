@@ -38,15 +38,17 @@
             <a href="#"> <p>Share with a subscriber</p> </a>
           </b-col>
           <b-col md="10" id="col-right">
-            <p> {{article.channelName}} |
-                {{article.date}}
+            <p> {{ article.channelName }} |
+                {{ realDate.getDate() }},
+                {{ $t(getMonth(realDate)) }}
+                {{ realDate.getFullYear() }}
             </p>
             <p> {{article.content}} </p>
             <b-img v-if="article.imageUrl" :src="article.imageUrl"
                    fluid alt="News img"/>
             <b-img v-else src="../assets/images/default-news.jpg"
                    fluid alt="News img"/>
-            <comment-section></comment-section>
+            <comment-section :articleId="article.id"></comment-section>
             <a href="#article-content" id="go-top"> <p>Take me to the top</p> </a>
           </b-col>
         </b-row>
@@ -67,7 +69,8 @@ export default {
   data() {
     return {
       heart: "far",
-      next: "fas"
+      next: "fas",
+      realDate: new Date()
     }
   },
   props: {
@@ -119,9 +122,8 @@ export default {
     }
   },
   mounted() {
-    this.$nextTick(function () {
-      this.checkLiked(this.article.id);
-    })
+    this.checkLiked(this.article.id);
+    this.realDate = new Date(this.article.date)
   }
 }
 </script>

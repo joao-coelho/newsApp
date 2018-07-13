@@ -64,7 +64,40 @@ const i18n = new Vuei18n({
 })
 
 Vue.prototype.$axios = axios
-
+Vue.mixin({
+  methods: {
+    getMonth(date) {
+      let month = '';
+      switch(date.getMonth()) {
+        case 0:
+          month = "months_jan"; break;
+        case 1:
+          month = "months_feb"; break;
+        case 2:
+          month = "months_mar"; break;
+        case 3:
+          month = "months_apr"; break;
+        case 4:
+          month = "months_may"; break;
+        case 5:
+          month = "months_jun"; break;
+        case 6:
+          month = "months_jul"; break;
+        case 7:
+          month = "months_aug"; break;
+        case 8:
+          month = "months_sep"; break;
+        case 9:
+          month = "months_oct"; break;
+        case 10:
+          month = "months_nov"; break;
+        case 11:
+          month = "months_dec"; break;
+      }
+      return month;
+    }
+  }
+})
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
