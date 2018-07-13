@@ -21,8 +21,15 @@
         <b-row>
           <b-col md="2" id="col-left">
             <h5> Source </h5>
-            <b-img :src="article.channelIcon" fluid alt="Channel img" style="margin-bottom: 25px;"/>
-             <a href="#"> <p>Open channel</p> </a>
+            <b-img v-if="article.channelIcon"
+                   :src="article.channelIcon"
+                   fluid alt="Channel img"
+                   style="margin-bottom: 25px;"/>
+            <b-img v-else
+                   src="../assets/images/default-avatar.jpg"
+                   fluid alt="Channel img"
+                   style="margin-bottom: 25px;"/>
+            <a href="#"> <p>Open channel</p> </a>
             <h5> Share </h5>
             <a href="#"><i class="fa-3x fab fa-twitter"></i></a>
             <a href="#">
@@ -35,7 +42,10 @@
                 {{article.date}}
             </p>
             <p> {{article.content}} </p>
-            <b-img :src="article.imageUrl" fluid alt="News img"/>
+            <b-img v-if="article.imageUrl" :src="article.imageUrl"
+                   fluid alt="News img"/>
+            <b-img v-else src="../assets/images/default-news.jpg"
+                   fluid alt="News img"/>
             <comment-section></comment-section>
             <a href="#article-content" id="go-top"> <p>Take me to the top</p> </a>
           </b-col>
@@ -111,7 +121,6 @@ export default {
   mounted() {
     this.$nextTick(function () {
       this.checkLiked(this.article.id);
-      console.log("O id é: " + this.article.id);
     })
   }
 }
