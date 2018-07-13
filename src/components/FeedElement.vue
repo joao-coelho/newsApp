@@ -1,30 +1,52 @@
 <template>
   <b-card>
-    <img class="channel-logo" :src="element.channelIcon" alt="Channel Logo">
-    <img class="news-image" :src="element.imageUrl" left alt="News image"/>
-    <div class="news-content">
-      <h5 class="news-title">{{ element.title }}</h5>
-      <div class="news-secondary">
-        <div class="channel-name">
-          <span>{{ element.channelName }}</span>
-        </div>
-        <div class="num-likes">
-          <span>{{ element.likes }}</span>
-          <font-awesome-icon icon="thumbs-up"/>
-        </div>
-        <div class="news-time">
-          <span>{{ when }}</span>
-          <font-awesome-icon icon="clock"/>
-        </div>
-      </div>
-      <!--<div v-line-clamp:20="3" class="news-main">-->
-      <div class="news-main">
-        {{ element.content }}
-      </div>
-    </div>
+    <b-container fluid>
+      <b-row>
+        <b-col md="4" class="no-padding">
+          <b-img v-if="element.imageUrl"
+                 center
+                 :src="element.imageUrl"
+                 fluid alt="News image"/>
+          <b-img v-else
+                 center
+                 src="../assets/images/default-news.jpg"
+                 fluid alt="News image"/>
+        </b-col>
+        <b-col md="8">
+          <div class="news-content">
+            <h5 class="news-title">{{ element.title }}</h5>
+            <div class="news-secondary">
+              <div class="channel-name">
+                <span>{{ element.channelName }}</span>
+              </div>
+              <div class="num-likes">
+                <span>{{ element.likes }}</span>
+                <font-awesome-icon icon="thumbs-up"/>
+              </div>
+              <div class="news-time">
+                <span>{{ when }}</span>
+                <font-awesome-icon icon="clock"/>
+              </div>
+            </div>
+          <!--<div v-line-clamp:20="3" class="news-main">-->
+            <div class="news-main">
+              {{ element.content }}
+            </div>
+          </div>
+        </b-col>
+      </b-row>
+    </b-container>
+    <b-img class="channel-logo" v-if="element.channelIcon"
+           rounded="circle"
+           :src="element.channelIcon"
+           alt="Channel Logo"/>
+    <b-img class="channel-logo" v-else
+           rounded="circle"
+           src="../assets/images/default-avatar.jpg"
+           alt="Channel Logo"/>
     <div class="news-share">
-      <img src="../assets/images/twitter.png"/>
-      <img src="../assets/images/facebook.png"/>
+     <img src="../assets/images/twitter.png"/>
+     <img src="../assets/images/facebook.png"/>
     </div>
   </b-card>
 </template>
@@ -57,17 +79,17 @@ export default {
 
 .card {
   width: 100%;
-  height: 150px;
+
   border: 0.5px solid #ccc;
   margin-top: 2rem;
   &:hover {
     cursor: pointer;
   }
-  .news-image {
-    width: 250px;
-    height: 99%;
-    float: left;
+
+  .no-padding {
+    padding: 0;
   }
+
   .channel-logo {
     position: absolute;
     width: 40px;
@@ -88,7 +110,6 @@ export default {
   }
   .news-content {
     height: 100%;
-    margin-left: 250px;
     .news-title {
       padding: 1.1rem 1rem 0.25rem 0.5rem;
       color: $blue;
@@ -142,7 +163,7 @@ export default {
     }
   }
   .card-body {
-    padding: 0;
+    padding: 0.1em;
   }
 }
 
