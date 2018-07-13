@@ -124,6 +124,22 @@ public class NewsApp {
         return articles;
     }
 
+    public static List<Comment> getArticleComments(int article_id) {
+        Article article;
+        List<Comment> result = new ArrayList<>();
+        try {
+            article = ArticleDAO.getArticleByORMID(article_id);
+            Iterator it = article._comments.getIterator();
+            while(it.hasNext()) {
+                Comment c = (Comment) it.next();
+                result.add(c);
+            }
+        } catch (PersistentException pe) {
+            pe.printStackTrace();
+        }
+        return result;
+    }
+
     public static List<Channel> getChannels() {
         String condition = "from Channel";
         List<Channel> l = null;

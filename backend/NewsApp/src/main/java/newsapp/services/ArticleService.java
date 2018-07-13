@@ -4,7 +4,9 @@ import newsapp.business.model.Article;
 import newsapp.business.model.Category;
 import newsapp.business.model.Channel;
 import newsapp.business.NewsApp;
+import newsapp.business.model.Comment;
 import newsapp.services.data.ArticleDetails;
+import newsapp.services.data.CommentDetails;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -51,6 +53,13 @@ public class ArticleService implements IArticleService {
     public boolean addArticle(ArticleDetails a) {
         Channel channel = NewsApp.getChannel(a.getChannel_id());
         boolean result = NewsApp.createArticle(channel,a.getTitle(),a.getContent(), a.getImage_url());
+        return result;
+    }
+
+    public List<CommentDetails> getArticleComments(int article_id) {
+        List<CommentDetails> result = new ArrayList<>();
+        for(Comment c : NewsApp.getArticleComments(article_id))
+            result.add(new CommentDetails(c));
         return result;
     }
 }
